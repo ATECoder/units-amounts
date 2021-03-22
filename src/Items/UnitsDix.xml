@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Dictionary>
+	<Words>
+		<Recognized>
+			<!-- UNITS -->
+			<Word>atm</Word>
+			<Word>bel</Word>
+			<Word>cd</Word>
+			<Word>dyn</Word>
+			<Word>kgf</Word>
+			<Word>kilopond</Word>
+			<Word>kp</Word>
+			<Word>lbf</Word>
+			<Word>Lightyear</Word>
+			<Word>Litre</Word>
+			<Word>MicroMetre</Word>
+			<Word>GigaMetre</Word>
+			<Word>Metre</Word>
+			<Word>Mho</Word>
+			<Word>mol</Word>
+			<Word>Neper</Word>
+			<Word>Permille</Word>
+			<Word>Permyriad</Word>
+			<Word>Seebeck</Word>
+			<Word>Siemens</Word>
+			<Word>Sievert</Word>
+			<Word>steradian</Word>
+			<Word>sv</Word>
+			<Word>wc</Word>
+			<!-- UNIT PREFIXES -->
+			<Word>da</Word>
+			<Word>Gi</Word>
+			<Word>Ei</Word>
+			<Word>Zi</Word>
+			<Word>Yi</Word>
+			<Word>Np</Word>
+			<Word>Yocto</Word>
+			<Word>Zepto</Word>
+			<Word>Atto</Word>
+			<Word>Femto</Word>
+			<Word>Pico</Word>
+			<Word>Nano</Word>
+			<Word>Micro</Word>
+			<Word>Milli</Word>
+			<Word>Centi</Word>
+			<Word>Deci</Word>
+			<Word>Deca</Word>
+			<Word>Hecto</Word>
+			<Word>Kilo</Word>
+			<Word>Mega</Word>
+			<Word>Giga</Word>
+			<Word>Tera</Word>
+			<Word>Peta</Word>
+			<Word>Exa</Word>
+			<Word>Zetta</Word>
+			<Word>Yotta</Word>
+			<Word>Kibi</Word>
+			<Word>Mebi</Word>
+			<Word>Gibi</Word>
+			<Word>Tebi</Word>
+			<Word>Pebi</Word>
+			<Word>Exbi</Word>
+			<Word>Zebi</Word>
+			<Word>Yobi</Word>
+			<!-- COMPOUND UNITS -->
+			<Word>ly</Word>
+			<Word>nmi</Word>
+			<Word>μm</Word>
+		</Recognized>
+		<Deprecated>
+			<Term PreferredAlternate=""></Term>
+		</Deprecated>
+		<Compound>
+			<Term CompoundAlternate=""></Term>
+		</Compound>
+		<DiscreteExceptions>
+			<Term></Term>
+		</DiscreteExceptions>
+	</Words>
+	<Acronyms>
+		<CasingExceptions>
+		</CasingExceptions>
+	</Acronyms>
+</Dictionary>

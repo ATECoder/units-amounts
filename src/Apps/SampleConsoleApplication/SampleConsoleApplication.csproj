@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>Exe</OutputType>
+    <!-- NuGet -->
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\StandardUnits\Arebis.StandardUnits.csproj" />
+    <ProjectReference Include="..\..\Libraries\TypedUnits\Arebis.TypedUnits.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <SignAssembly>true</SignAssembly>
+    <!-- NuGet -->
+    <IsPackable>true</IsPackable>
+    <PackageId>Arebis.Standard.Units</PackageId>
+    <Description>Unit and Amount Standard Units</Description>
+    <PackageTags>Units, Amounts</PackageTags>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DocumentationFile>bin\Debug\net5.0\Arebis.StandardUnits.xml</DocumentationFile>
+    <NoWarn>1591</NoWarn>
+    <BaseAddress>268500992</BaseAddress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DocumentationFile>bin\Release\net5.0\Arebis.StandardUnits.xml</DocumentationFile>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\..\Items\keyPair.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Items\ProductKey.cs">
+      <Link>Properties\ProductKey.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Items\keyPair.snk">
+      <Link>Properties\keyPair.snk</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="..\..\Items\Dix.xml" Link="Properties\Dix.xml" />
+    <CodeAnalysisDictionary Include="..\..\Items\UnitsDix.xml">
+      <Link>Properties\UnitsDix.xml</Link>
+    </CodeAnalysisDictionary>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TypedUnits\Arebis.TypedUnits.csproj" />
+  </ItemGroup>
+</Project>

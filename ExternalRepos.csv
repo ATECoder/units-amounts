@@ -1,0 +1,2 @@
+RemoteRepoName,LocalRepoName,RemoteRepoURL,TargetDirectory
+dn.UnitsAmounts,UnitsAmounts,https://git@bitbucket.org/davidhary/dn.UnitsAmounts.git,lib\vs\core
