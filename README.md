@@ -47,7 +47,6 @@ xcopy /Y %vslib%\core\ide\code\.runsettings %userprofile%\.runsettings
 where %userprofile% is the root user folder.
 
 ## Facilitated By[](#){name=FacilitatedBy}
-
 * [Visual Studio]
 * [Jarte RTF Editor]
 * [Wix Toolset]

@@ -3,12 +3,12 @@
     <LangVersion>latest</LangVersion>
 	<Authors>David Hary</Authors>
     <Company>Integrated Scientific Resources</Company>
-    <Copyright>(c) 2001 Scientific Resources, Inc. All rights reserved.</Copyright>
+    <Copyright>(c) 2013 Scientific Resources, Inc. All rights reserved.</Copyright>
     <NeutralLanguage>en-US</NeutralLanguage>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
     <!-- NuGet -->
-    <PackageProjectUrl>https://bitbucket.org/davidhary/dn.core</PackageProjectUrl>
+    <PackageProjectUrl>https://bitbucket.org/davidhary/dn.UnitsAmounts</PackageProjectUrl>
 	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 	<RepositoryUrl>$(PackageProjectUrl)</RepositoryUrl>
 	<RepositoryType>Git</RepositoryType>

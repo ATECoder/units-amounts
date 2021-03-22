@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://bitbucket.org/davidhary/dn0.unitsamounts</PackageProjectUrl>
+    <PackageProjectUrl>https://bitbucket.org/davidhary/dn.unitsamounts</PackageProjectUrl>
     <PackageTags>Strongly typed units and amounts</PackageTags>
     <Authors>Rudi Breedenraedt, David Hary</Authors>
     <Product>Arebis.UnitsAmounts</Product>
