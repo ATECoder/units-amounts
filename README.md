@@ -24,7 +24,7 @@ git clone git@bitbucket.org:davidhary/dn.UnitsAmounts.git
 
 Clone the repositories into the following folders (parents of the .git folder):
 ```
-%vslib%\VS\Core\UnitsAmounts
+%vslib%\core\UnitsAmounts
 ```
 where %vslib% is the root folder of the .NET libraries, e.g., %my%\lib\vs 
 and %my% is the root folder of the .NET solutions
@@ -79,16 +79,17 @@ at the following sites:
 None
 
 ### Links
-[IDE Repository]: https://www.bitbucket.org/davidhary/vs.ide
-[external repositories]: ExternalReposCommits.csv
 [Arebis Typed Units]: https://www.codeproject.com/Articles/611731/Working-with-Units-and-Amounts
 [Units Amounts Libraries]: https://bitbucket.org/davidhary/dn.UnitsAmounts
+[Rudi Breedenraedt]: https://www.codeproject.com/Articles/611731/Working-with-Units-and-Amounts
+
+[IDE Repository]: https://www.bitbucket.org/davidhary/vs.ide
+[external repositories]: ExternalReposCommits.csv
 
 [ATE Coder]: https://www.IntegratedScientificResources.com
 [Its all a remix]: https://www.everythingisaremix.info
 [John Simmons]: https://www.codeproject.com/script/Membership/View.aspx?mid=7741
 [Stack overflow]: https://www.stackoveflow.com
-[Rudi Breedenraedt]: https://www.codeproject.com/Articles/611731/Working-with-Units-and-Amounts
 
 [Visual Studio]: https://www.visualstudio.com/
 [Jarte RTF Editor]: https://www.jarte.com/ 
