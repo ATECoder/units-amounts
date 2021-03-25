@@ -29,9 +29,6 @@
   <ItemGroup>
     <None Include="..\..\Items\keyPair.snk" Link="Properties\keyPair.snk" />
   </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
     <Exec Command="&quot;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\TextTransform.exe&quot; -a !!build!true &quot;$(SolutionDir)Items\version.build.tt&quot;" />
   </Target>
