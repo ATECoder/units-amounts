@@ -1,8 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <OutputType>Library</OutputType>
     <SignAssembly>true</SignAssembly>
+    <NoWarn>1591</NoWarn>
+    <BaseAddress>268500992</BaseAddress>
+    <AssemblyOriginatorKeyFile>..\..\Items\keyPair.snk</AssemblyOriginatorKeyFile>
     <!-- NuGet -->
     <IsPackable>true</IsPackable>
     <PackageId>Arebis.Standard.Units</PackageId>
@@ -10,18 +13,10 @@
     <PackageTags>Units, Amounts</PackageTags>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DocumentationFile>bin\Debug\net5.0\Arebis.StandardUnits.xml</DocumentationFile>
-    <NoWarn>1591</NoWarn>
-    <BaseAddress>268500992</BaseAddress>
+    <DocumentationFile>bin\Debug\netstandard2.0\Arebis.StandardUnits.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DocumentationFile>bin\Release\net5.0\Arebis.StandardUnits.xml</DocumentationFile>
-    <NoWarn>1591</NoWarn>
-  </PropertyGroup>
-  <PropertyGroup>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>..\..\Items\keyPair.snk</AssemblyOriginatorKeyFile>
+    <DocumentationFile>bin\Release\netstandard2.0\Arebis.StandardUnits.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\..\Items\ProductKey.cs">

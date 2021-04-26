@@ -5,6 +5,7 @@
 namespace Arebis.UnitsAmounts
 {
     using System;
+    using System.Linq;
 
     /// <summary>   Amount. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
@@ -176,7 +177,7 @@ namespace Arebis.UnitsAmounts
             }
 
             // Handle the last unit:
-            amounts[units.Length - 1] = rest.ConvertedTo( units[^1], decimals );
+            amounts[units.Length - 1] = rest.ConvertedTo( units[units.Length - 1], decimals );
 
             return amounts;
         }
