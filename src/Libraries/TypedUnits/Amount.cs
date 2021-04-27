@@ -9,7 +9,6 @@ namespace Arebis.UnitsAmounts
 
     /// <summary>   Amount. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    [Serializable]
     public sealed class Amount :
         ICloneable,
         IComparable,

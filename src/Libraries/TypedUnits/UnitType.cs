@@ -12,9 +12,11 @@ namespace Arebis.UnitsAmounts
     using System.Text;
     using System.Threading;
 
-    /// <summary>   (Serializable) a unit type. This class cannot be inherited. </summary>
+
+    /// <summary>   a unit type. This class cannot be inherited. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    [Serializable]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage( "Usage", "CA2237:Mark ISerializable types with serializable",
+        Justification = "[Serializable] relates essentially just to BinaryFormatter, which usually isn't a good choice." )]
     public sealed class UnitType : ISerializable
     {
         #region " BASE UNIT TYPE SUPPORT "

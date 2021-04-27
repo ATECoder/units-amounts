@@ -8,7 +8,6 @@ namespace Arebis.UnitsAmounts
 
     /// <summary>   UNit. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    [Serializable]
     public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFormattable
     {
 
