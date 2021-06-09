@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <OutputType>Library</OutputType>
@@ -10,14 +10,11 @@
     <!-- NuGet -->
     <IsPackable>true</IsPackable>
     <PackageId>Arebis.Typed.Units</PackageId>
-    <Description>Strongly Typed Units and Amounts</Description>
     <PackageTags>Units, Amounts</PackageTags>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DocumentationFile>bin\Debug\netstandard2.0\Arebis.UnitsAmounts.xml</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DocumentationFile>bin\Release\netstandard2.0\Arebis.UnitsAmounts.xml</DocumentationFile>
+    <!-- Assembly Info -->
+    <Description>Strongly Typed Units and Amounts</Description>
+    <!-- Documentation -->
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\..\Items\ProductKey.cs" Link="Properties\ProductKey.cs" />
