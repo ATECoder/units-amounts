@@ -53,7 +53,7 @@ where %userprofile% is the root user folder.
 * [Atomineer Code Documentation]
 * [EW Software Spell Checker]
 * [Code Converter]
-* [Search and Replace]
+* [Funduc Search and Replace]
 
 ## Repository Owner[](#){name=Repository-Owner}
 
