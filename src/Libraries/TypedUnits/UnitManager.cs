@@ -1,7 +1,3 @@
-// file:	TypedUnits\UnitManager.cs
-//
-// summary:	Implements the unit manager class
-
 namespace Arebis.UnitsAmounts
 {
     using System;

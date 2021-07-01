@@ -1,7 +1,3 @@
-// file:	TypedUnits\IUnitConsumer.cs
-//
-// summary:	Declares the IUnitConsumer interface
-
 namespace Arebis.UnitsAmounts
 {
     using System;

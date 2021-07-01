@@ -1,7 +1,3 @@
-// file:	TypedUnits\Amount.cs
-//
-// summary:	Implements the amount class
-
 namespace Arebis.UnitsAmounts
 {
     using System;

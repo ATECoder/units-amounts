@@ -1,7 +1,3 @@
-// file:	TypedUnits\UnitAttributes.cs
-//
-// summary:	Implements the unit attributes class
-
 namespace Arebis.UnitsAmounts
 {
     using System;

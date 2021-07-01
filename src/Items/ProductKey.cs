@@ -1,7 +1,3 @@
-// file:	C:\My\lib\vs\core\UnitsAmounts\src\Items\ProductKey.cs
-//
-// summary:	Implements the product key class
-
 namespace Arebis.UnitsAmounts
 {
 

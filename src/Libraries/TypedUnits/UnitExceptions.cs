@@ -1,7 +1,3 @@
-// file:	TypedUnits\UnitExceptions.cs
-//
-// summary:	Implements the unit exceptions class
-
 namespace Arebis.UnitsAmounts
 {
     using System;
