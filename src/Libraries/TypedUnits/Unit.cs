@@ -216,8 +216,7 @@ namespace Arebis.UnitsAmounts
                 }
             }
 
-            return format switch
-            {
+            return format switch {
                 "UN" => this.Name,
                 _ => this.Symbol,
             };
