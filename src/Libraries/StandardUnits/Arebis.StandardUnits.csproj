@@ -11,7 +11,7 @@
     <IsPackable>true</IsPackable>
     <PackageId>Arebis.Standard.Units</PackageId>
     <Description>Unit and Amount Standard Units</Description>
-    <PackageTags>Units, Amounts</PackageTags>
+    <PackageTags>Units;Amounts</PackageTags>
     <!-- Documentation -->
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>

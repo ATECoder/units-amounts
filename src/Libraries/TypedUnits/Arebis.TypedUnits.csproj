@@ -10,7 +10,7 @@
     <!-- NuGet -->
     <IsPackable>true</IsPackable>
     <PackageId>Arebis.Typed.Units</PackageId>
-    <PackageTags>Units, Amounts</PackageTags>
+    <PackageTags>Units;Amounts</PackageTags>
     <!-- Assembly Info -->
     <Description>Strongly Typed Units and Amounts</Description>
     <!-- Documentation -->
