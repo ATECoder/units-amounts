@@ -1,0 +1,4 @@
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <!-- Problem is, this runs on every build even if the project is up-to-date -->
+    <Exec Command="&quot;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\TextTransform.exe&quot; -a !!build!true &quot;..\..\items\version.build.tt&quot;" />
+  </Target>
