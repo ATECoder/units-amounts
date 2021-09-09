@@ -3,7 +3,7 @@
     <LangVersion>latest</LangVersion>
 	<Authors>David Hary</Authors>
     <Company>Integrated Scientific Resources</Company>
-    <Copyright>(c) 2013 Scientific Resources, Inc. All rights reserved.</Copyright>
+    <Copyright>(c) 2013 Integrated Scientific Resources, Inc. All rights reserved.</Copyright>
     <NeutralLanguage>en-US</NeutralLanguage>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>

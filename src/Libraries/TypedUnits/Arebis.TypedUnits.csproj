@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     <OutputType>Library</OutputType>
@@ -23,17 +23,5 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Items\keyPair.snk" Link="Properties\keyPair.snk" />
-    <None Include="..\..\Items\version.build.props" Link="Properties\version.build.props">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>version.build.tt</DependentUpon>
-    </None>
-    <None Include="..\..\Items\version.build.tt" Link="Properties\version.build.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>version.build.props</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
 </Project>
