@@ -6,7 +6,6 @@
     <SignAssembly>true</SignAssembly>
     <DelaySign>false</DelaySign>
     <NoWarn>1591</NoWarn>
-    <BaseAddress>268435456</BaseAddress>
     <!-- NuGet -->
     <IsPackable>true</IsPackable>
     <PackageId>Arebis.Typed.Units</PackageId>

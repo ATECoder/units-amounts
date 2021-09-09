@@ -5,7 +5,6 @@
     <OutputType>Library</OutputType>
     <SignAssembly>true</SignAssembly>
     <NoWarn>1591</NoWarn>
-    <BaseAddress>268500992</BaseAddress>
     <AssemblyOriginatorKeyFile>..\..\Items\keyPair.snk</AssemblyOriginatorKeyFile>
     <!-- NuGet -->
     <IsPackable>true</IsPackable>
