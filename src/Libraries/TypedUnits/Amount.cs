@@ -172,7 +172,7 @@ namespace Arebis.UnitsAmounts
             }
 
             // Handle the last unit:
-            amounts[units.Length - 1] = rest.ConvertedTo( units[units.Length - 1], decimals );
+            amounts[units.Length - 1] = rest.ConvertedTo( units[^1], decimals );
 
             return amounts;
         }
