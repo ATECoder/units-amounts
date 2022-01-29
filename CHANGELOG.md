@@ -4,7 +4,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 
 ## [2.0.8060] 2022-01-25
-Target .NET 6.0.
+Targeting Visual Studio 2022, C# 10 and .NET 6.0.
 
 ## [2.0.7750] 2020-10-05
 Conversion of isr.Core to .NET 5.0.
