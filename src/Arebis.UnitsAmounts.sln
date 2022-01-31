@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31112.23
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Arebis.TypedUnits", "Libraries\TypedUnits\Arebis.TypedUnits.csproj", "{CE5F2F79-9828-49EA-8C59-CAE7994E66F8}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleConsoleApplication", "Apps\SampleConsoleApplication\SampleConsoleApplication.csproj", "{ECDA4450-16CA-4BF7-9FBF-7F27AEDF4D66}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Arebis.UnitsAmounts.MSTest", "Tests\UnitsAmounts\Arebis.UnitsAmounts.MSTest.csproj", "{2A945DC9-6151-425A-A779-D38834A87273}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grammophone.Serialization", "..\..\Grammophone.Serialization\Grammophone.Serialization.csproj", "{B0E855CB-8A43-4623-8184-31CD4B4EBB57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{2A945DC9-6151-425A-A779-D38834A87273}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A945DC9-6151-425A-A779-D38834A87273}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A945DC9-6151-425A-A779-D38834A87273}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0E855CB-8A43-4623-8184-31CD4B4EBB57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0E855CB-8A43-4623-8184-31CD4B4EBB57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0E855CB-8A43-4623-8184-31CD4B4EBB57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0E855CB-8A43-4623-8184-31CD4B4EBB57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -16,7 +16,7 @@ Clone the repository along with its requisite repositories to their respective r
 
 ### Repositories
 The repositories listed in [external repositories](ExternalReposCommits.csv) are required:
-* [Units](https://www.bitbucket.org/davidhary/dn.UnitsAmounts) - Units and Amounts Libraries
+* [Units Amounts Libraries]
 
 ```
 git clone git@bitbucket.org:davidhary/dn.UnitsAmounts.git

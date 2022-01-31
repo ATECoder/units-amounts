@@ -16,6 +16,8 @@
   </CadOptions>
   <IgnoredWords>
     <Ignore>formattable</Ignore>
+    <Ignore>Rudi</Ignore>
+    <Ignore>Breedenraedt</Ignore>
   </IgnoredWords>
   <IgnoredFilePatterns>
     <FilePattern>*dix.xml</FilePattern>

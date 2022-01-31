@@ -165,7 +165,7 @@ namespace Arebis.UnitsAmounts
             // Check if unit already registered:
             foreach ( var u in Instance._AllUnits )
             {
-                if ( Object.ReferenceEquals( u, unit ) )
+                if ( Unit.Equals( u, unit ) )
                 {
                     return;
                 }
@@ -407,7 +407,7 @@ namespace Arebis.UnitsAmounts
             try
             {
                 // Performance optimization:
-                if ( Object.ReferenceEquals( amount.Unit, toUnit ) )
+                if ( object.ReferenceEquals( amount.Unit, toUnit ) )
                 {
                     return amount;
                 }

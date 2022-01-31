@@ -1,13 +1,23 @@
+using System;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+
+
 namespace Arebis.UnitsAmounts
 {
-    using System;
-
     /// <summary>   UNit. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFormattable
+    [Serializable]
+    public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFormattable, ISerializable
     {
 
         #region " CONSTRUCTION "
+
+        /// <summary>   Default constructor. Required for serialization. </summary>
+        public Unit( )  : this( Unit.None )
+        {
+        }
 
         /// <summary>   Constructor. </summary>
         /// <remarks>   David, 2021-03-22. </remarks>
@@ -120,7 +130,10 @@ namespace Arebis.UnitsAmounts
         /// <remarks>   David, 2021-03-22. </remarks>
         /// <param name="value">    The value. </param>
         /// <returns>   A Unit. </returns>
-        public Unit Power( int value ) => new( String.Concat( '(', this.Name, '^', value, ')' ), this.Symbol + '^' + value, ( double ) Math.Pow( ( double ) this.Factor, ( double ) value ), this.UnitType.Power( value ), false );
+        public Unit Power( int value ) =>
+            new( String.Concat( '(', this.Name, '^', value, ')' ),
+                     this.Symbol + '^' + value,
+                     ( double ) Math.Pow( this.Factor, value ), this.UnitType.Power( value ), false );
 
         /// <summary>   Tests equality of both objects. </summary>
         /// <remarks>   David, 2021-03-22. </remarks>
@@ -136,10 +149,22 @@ namespace Arebis.UnitsAmounts
         /// <remarks>   David, 2021-03-22. </remarks>
         /// <param name="other">    The unit to compare to this object. </param>
         /// <returns>   <c>true</c> if the objects are considered equal, false if they are not. </returns>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage( "Style", "IDE0075:Simplify conditional expression", Justification = "<Pending>" )]
         public bool Equals( Unit other )
         {
-            return other is null ? false : this.Factor.Equals( other.Factor ) && this.UnitType.Equals( other.UnitType );
+            return other is object && this.Factor.Equals( other.Factor ) && this.UnitType.Equals( other.UnitType );
+        }
+
+        /// <summary>   Tests equality of both objects. </summary>
+        /// <remarks>   David, 2022-01-29. </remarks>
+        /// <param name="left">     The first instance to compare. </param>
+        /// <param name="right">    The second instance to compare. </param>
+        /// <returns>
+        /// <see langword="true" /> if the specified object  is equal to the current object; otherwise,
+        /// <see langword="false" />.
+        /// </returns>
+        public static bool Equals( Unit left, Unit right )
+        {
+            return left is object && right is object && left.Equals( right );
         }
 
         /// <summary>   Returns the hash code of this unit. </summary>
@@ -231,16 +256,14 @@ namespace Arebis.UnitsAmounts
         /// <param name="left">     The first instance to compare. </param>
         /// <param name="right">    The second instance to compare. </param>
         /// <returns>   The result of the operation. </returns>
-        public static bool operator ==( Unit left, Unit right ) =>
-            // return ((object)left == (object)right) || ((object)left != null && (object)right != null && left.Equals(right));
-            object.ReferenceEquals( ( object ) left, ( object ) right ) || (!(left is null) && left.Equals( right ));
+        public static bool operator ==( Unit left, Unit right ) => Unit.Equals( left, right );
 
         /// <summary>   Inequality operator. </summary>
         /// <remarks>   David, 2021-03-22. </remarks>
         /// <param name="left">     The first instance to compare. </param>
         /// <param name="right">    The second instance to compare. </param>
         /// <returns>   The result of the operation. </returns>
-        public static bool operator !=( Unit left, Unit right ) => (( object ) left != ( object ) right) || left is null || right is null || !left.Equals( right );
+        public static bool operator !=( Unit left, Unit right ) => !Unit.Equals( left, right );
 
         /// <summary>   Multiplies. </summary>
         /// <remarks>   David, 2021-03-22. </remarks>
@@ -423,6 +446,64 @@ namespace Arebis.UnitsAmounts
         public static bool operator >=( Unit left, Unit right ) => left is null ? right is null : left.CompareTo( right ) >= 0;
 
         #endregion 
+
+        #region " ISERIALIZABLE MEMBERS "
+
+        /// <summary>   Constructor. </summary>
+        /// <remarks>   David, 2021-03-22. </remarks>
+        /// <param name="info">     The <see cref="T:System.Runtime.Serialization.SerializationInfo" />
+        ///                         to populate with data. </param>
+        /// <param name="context">  A StreamingContext to process. </param>
+        internal Unit( SerializationInfo info, StreamingContext context )
+        {
+            // Retrieve data from serialization:
+            this.Name = info.GetString( nameof(Unit.Name ) );
+            this.Symbol = info.GetString( nameof( Unit.Symbol ) );
+            this.Factor = Convert.ToDouble( info.GetString( nameof( Unit.Factor ) ) );
+            this.IsNamed = Convert.ToBoolean(  info.GetString( nameof( Unit.IsNamed ) ) );
+            this.UnitType = new UnitType( info, context);
+        }
+
+        /// <summary>
+        /// Populates a <see cref="T:System.Runtime.Serialization.SerializationInfo" /> with the data
+        /// needed to serialize the target object.
+        /// </summary>
+        /// <remarks>   David, 2021-03-22. </remarks>
+        /// <param name="info">     The <see cref="T:System.Runtime.Serialization.SerializationInfo" />
+        ///                         to populate with data. </param>
+        /// <param name="context">  The destination (see
+        ///                         <see cref="T:System.Runtime.Serialization.StreamingContext" />) for
+        ///                         this serialization. </param>
+        [System.Security.SecurityCritical()]
+        void ISerializable.GetObjectData( SerializationInfo info, StreamingContext context )
+        {
+            this.AddValues(info, context);
+        }
+
+
+        /// <summary>   Adds the values to 'info'. </summary>
+        /// <remarks>   David, 2022-01-29. </remarks>
+        /// <param name="info">     The <see cref="T:System.Runtime.Serialization.SerializationInfo" />
+        ///                         to populate with data. </param>
+        /// <param name="context">  The destination (see
+        ///                         <see cref="T:System.Runtime.Serialization.StreamingContext" />) for
+        ///                         this serialization. </param>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage( "Style", "IDE0060:Remove unused parameter", Justification = "<Pending>" )]
+        internal void AddValues( SerializationInfo info, StreamingContext context )
+        {
+            if ( info is object )
+            {
+                info.AddValue( nameof( Unit.Name ), this.Name );
+                info.AddValue( nameof( Unit.Symbol ), this.Symbol );
+                info.AddValue( nameof( Unit.Factor ), this.Factor );
+                info.AddValue( nameof( Unit.IsNamed ), this.IsNamed );
+                this.UnitType.AddValues(info, context);
+            }
+        }
+
+
+        #endregion
+
     }
 }
 

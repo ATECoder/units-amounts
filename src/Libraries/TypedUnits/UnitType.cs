@@ -1,24 +1,69 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Security.Permissions;
+using System.Text;
+using System.Threading;
+
+
 namespace Arebis.UnitsAmounts
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Runtime.Serialization;
-    using System.Security.Permissions;
-    using System.Text;
-    using System.Threading;
-
 
     /// <summary>   a unit type. This class cannot be inherited. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage( "Usage", "CA2237:Mark ISerializable types with serializable",
-        Justification = "[Serializable] relates essentially just to BinaryFormatter, which usually isn't a good choice." )]
+    [Serializable]
     public sealed class UnitType : ISerializable
     {
-        #region " BASE UNIT TYPE SUPPORT "
+
+        /// <summary>   The base unit indices. </summary>
+        private readonly sbyte[] _BaseUnitIndices;
+
+        /// <summary>   The cached hash code. </summary>
+        [NonSerialized]
+        private int _CachedHashCode;
+
+        #region " CONSTRUCTION "
+
+        /// <summary>   Default constructor. Required for serialization. </summary>
+        public UnitType() : this( UnitType.None.ToString() )
+        {
+        }
+
+        /// <summary>   Constructor. </summary>
+        /// <remarks>   David, 2021-03-22. </remarks>
+        /// <param name="unitTypeName"> Name of the unit type. </param>
+        public UnitType( string unitTypeName )
+        {
+            var unitIndex = GetBaseUnitIndex( unitTypeName );
+            this._BaseUnitIndices = new sbyte[unitIndex + 1];
+            this._BaseUnitIndices[unitIndex] = 1;
+        }
+
+        /// <summary>   Constructor. </summary>
+        /// <remarks>   David, 2021-03-22. </remarks>
+        /// <param name="indicesLength">    Length of the indices. </param>
+        private UnitType( int indicesLength ) => this._BaseUnitIndices = new sbyte[indicesLength];
+
+        /// <summary>   Constructor. </summary>
+        /// <remarks>   David, 2021-03-22. </remarks>
+        /// <param name="baseUnitIndices">  The base unit indices. </param>
+        private UnitType( sbyte[] baseUnitIndices ) => this._BaseUnitIndices = ( sbyte[] ) baseUnitIndices.Clone();
+
+        /// <summary>   Type of the none unit. </summary>
+        private static readonly UnitType NoneUnitType = new( 0 );
+
+        /// <summary>   Gets the none. </summary>
+        /// <value> The none. </value>
+        public static UnitType None => UnitType.NoneUnitType;
+
+        #endregion
+
+        #region " UNIT TYPE BASE UNITS "
 
         /// <summary>   The base unit type lock. </summary>
         private static readonly ReaderWriterLock BaseUnitTypeLock = new();
+
         /// <summary>   List of names of the base unit types. </summary>
         private static readonly IList<string> BaseUnitTypeNames = new List<string>();
 
@@ -82,75 +127,7 @@ namespace Arebis.UnitsAmounts
             }
         }
 
-        #endregion BaseUnitType support
-
-        /// <summary>   The base unit indices. </summary>
-        private readonly sbyte[] _BaseUnitIndices;
-
-        /// <summary>   The cached hash code. </summary>
-        [NonSerialized]
-        private int _CachedHashCode;
-
-        #region " CONSTRUCTION "
-
-        /// <summary>   Constructor. </summary>
-        /// <remarks>   David, 2021-03-22. </remarks>
-        /// <param name="unitTypeName"> Name of the unit type. </param>
-        public UnitType( string unitTypeName )
-        {
-            var unitIndex = GetBaseUnitIndex( unitTypeName );
-            this._BaseUnitIndices = new sbyte[unitIndex + 1];
-            this._BaseUnitIndices[unitIndex] = 1;
-        }
-
-        /// <summary>   Constructor. </summary>
-        /// <remarks>   David, 2021-03-22. </remarks>
-        /// <param name="indicesLength">    Length of the indices. </param>
-        private UnitType( int indicesLength ) => this._BaseUnitIndices = new sbyte[indicesLength];
-
-        /// <summary>   Constructor. </summary>
-        /// <remarks>   David, 2021-03-22. </remarks>
-        /// <param name="baseUnitIndices">  The base unit indices. </param>
-        private UnitType( sbyte[] baseUnitIndices ) => this._BaseUnitIndices = ( sbyte[] ) baseUnitIndices.Clone();
-
-        /// <summary>   Constructor. </summary>
-        /// <remarks>   David, 2021-03-22. </remarks>
-        /// <param name="info"> The <see cref="T:System.Runtime.Serialization.SerializationInfo" />
-        ///                     to populate with data. </param>
-        /// <param name="c">    A StreamingContext to process. </param>
-        private UnitType( SerializationInfo info, StreamingContext c )
-        {
-            // Retrieve data from serialization:
-            var tstoreexp = info.GetString( "indexes" ).Split( new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries )
-                .Select( x => Convert.ToSByte( x ) )
-                .ToArray();
-            var tstoreind = info.GetString( "names" ).Split( new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries )
-                .Select( x => UnitType.GetBaseUnitIndex( x ) )
-                .ToArray();
-
-            // Construct instance:
-            if ( tstoreexp.Length > 0 )
-            {
-                this._BaseUnitIndices = new sbyte[tstoreind.Max() + 1];
-                for ( var i = 0; i < tstoreexp.Length; i++ )
-                {
-                    this._BaseUnitIndices[tstoreind[i]] = tstoreexp[i];
-                }
-            }
-            else
-            {
-                this._BaseUnitIndices = Array.Empty<sbyte>();
-            }
-        }
-
-        /// <summary>   Type of the none unit. </summary>
-        private static readonly UnitType NoneUnitType = new( 0 );
-
-        /// <summary>   Gets the none. </summary>
-        /// <value> The none. </value>
-        public static UnitType None => UnitType.NoneUnitType;
-
-        #endregion
+        #endregion 
 
         #region " PUBLIC IMPLEMENTATION "
 
@@ -168,6 +145,15 @@ namespace Arebis.UnitsAmounts
 
             return result;
         }
+
+        /// <summary>   Determines whether the specified object is equal to the current object. </summary>
+        /// <remarks>   David, 2022-01-29. </remarks>
+        /// <param name="left">     The first instance to compare. </param>
+        /// <param name="right">    The second instance to compare. </param>
+        /// <returns>
+        /// true if the specified object  is equal to the current object; otherwise, false.
+        /// </returns>
+        public static bool Equals( UnitType left , UnitType right ) => left is object && right is object && left.Equals( right );
 
         /// <summary>   Determines whether the specified object is equal to the current object. </summary>
         /// <remarks>   David, 2021-03-22. </remarks>
@@ -306,22 +292,48 @@ namespace Arebis.UnitsAmounts
         /// <param name="left">     The first instance to compare. </param>
         /// <param name="right">    The second instance to compare. </param>
         /// <returns>   The result of the operation. </returns>
-        public static bool operator ==( UnitType left, UnitType right ) =>
-            // return ((object)left == (object)right) || ((object)left != null && (object)right != null && left.Equals(right));
-            object.ReferenceEquals( ( object ) left, ( object ) right ) || (left is object && left.Equals( right ));
+        public static bool operator ==( UnitType left, UnitType right ) => UnitType.Equals( left , right);
 
         /// <summary>   Inequality operator. </summary>
         /// <remarks>   David, 2021-03-22. </remarks>
         /// <param name="left">     The first instance to compare. </param>
         /// <param name="right">    The second instance to compare. </param>
         /// <returns>   The result of the operation. </returns>
-        public static bool operator !=( UnitType left, UnitType right ) =>
-            // return ((object)left != (object)right) || ((object)left == null || (object)right == null || !left.Equals(right));
-            (!object.ReferenceEquals( ( object ) left, ( object ) right )) && (left is null || !left.Equals( right ));
+        public static bool operator !=( UnitType left, UnitType right ) => !UnitType.Equals( left, right );
 
         #endregion Operator overloads
 
-        #region ISerializable Members
+        #region " ISERIALIZABLE MEMBERS "
+
+        /// <summary>   Constructor. </summary>
+        /// <remarks>   David, 2021-03-22. </remarks>
+        /// <param name="info">     The <see cref="T:System.Runtime.Serialization.SerializationInfo" />
+        ///                         to populate with data. </param>
+        /// <param name="context">  A StreamingContext to process. </param>
+        internal UnitType( SerializationInfo info, StreamingContext context )
+        {
+            // Retrieve data from serialization:
+            var baseUnitIndexes = info.GetString( "names" ).Split( new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries )
+                .Select( x => UnitType.GetBaseUnitIndex( x ) )
+                .ToArray();
+            var exponents = info.GetString( "exponents" ).Split( new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries )
+                .Select( x => Convert.ToSByte( x ) )
+                .ToArray();
+
+            // Construct instance:
+            if ( exponents.Length > 0 )
+            {
+                this._BaseUnitIndices = new sbyte[baseUnitIndexes.Max() + 1];
+                for ( var i = 0; i < exponents.Length; i++ )
+                {
+                    this._BaseUnitIndices[baseUnitIndexes[i]] = exponents[i];
+                }
+            }
+            else
+            {
+                this._BaseUnitIndices = Array.Empty<sbyte>();
+            }
+        }
 
         /// <summary>
         /// Populates a <see cref="T:System.Runtime.Serialization.SerializationInfo" /> with the data
@@ -336,32 +348,49 @@ namespace Arebis.UnitsAmounts
         [System.Security.SecurityCritical()]
         void ISerializable.GetObjectData( SerializationInfo info, StreamingContext context )
         {
-            var first = true;
-            var sbn = new StringBuilder( this._BaseUnitIndices.Length * 8 );
-            var sbx = new StringBuilder( this._BaseUnitIndices.Length * 4 );
-            for ( var i = 0; i < this._BaseUnitIndices.Length; i++ )
-            {
-                if ( this._BaseUnitIndices[i] != 0 )
-                {
-                    if ( !first )
-                    {
-                        _ = sbn.Append( '|' );
-                    }
+            this.AddValues(info, context);
+        }
 
-                    _ = sbn.Append( UnitType.GetBaseUnitName( i ) );
-                    if ( !first )
-                    {
-                        _ = sbx.Append( '|' );
-                    }
 
-                    _ = sbx.Append( this._BaseUnitIndices[i] );
-                    first = false;
-                }
-            }
+        /// <summary>   Adds the values to 'info'. </summary>
+        /// <remarks>   David, 2022-01-29. </remarks>
+        /// <param name="info">     The <see cref="T:System.Runtime.Serialization.SerializationInfo" />
+        ///                         to populate with data. </param>
+        /// <param name="context">  The destination (see
+        ///                         <see cref="T:System.Runtime.Serialization.StreamingContext" />) for
+        ///                         this serialization. </param>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage( "Style", "IDE0060:Remove unused parameter", Justification = "<Pending>" )]
+        internal void AddValues( SerializationInfo info, StreamingContext context )
+        {
             if ( info is object )
             {
-                info.AddValue( "names", sbn.ToString() );
-                info.AddValue( "indexes", sbx.ToString() );
+                var first = true;
+                var unitNames = new StringBuilder( this._BaseUnitIndices.Length * 8 );
+                var unitExponents = new StringBuilder( this._BaseUnitIndices.Length * 4 );
+                for ( var i = 0; i < this._BaseUnitIndices.Length; i++ )
+                {
+                    if ( this._BaseUnitIndices[i] != 0 )
+                    {
+                        if ( !first )
+                        {
+                            _ = unitNames.Append( '|' );
+                        }
+
+                        _ = unitNames.Append( UnitType.GetBaseUnitName( i ) );
+                        if ( !first )
+                        {
+                            _ = unitExponents.Append( '|' );
+                        }
+
+                        _ = unitExponents.Append( this._BaseUnitIndices[i] );
+                        first = false;
+                    }
+                }
+                if ( info is object )
+                {
+                    info.AddValue( "names", unitNames.ToString() );
+                    info.AddValue( "exponents", unitExponents.ToString() );
+                }
             }
         }
 

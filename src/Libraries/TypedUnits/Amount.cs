@@ -1,21 +1,23 @@
+using System;
+using System.Linq;
+using System.Runtime.Serialization;
+
 namespace Arebis.UnitsAmounts
 {
-    using System;
-    using System.Linq;
 
     /// <summary>   Amount. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    public sealed class Amount :
-        ICloneable,
-        IComparable,
-        IComparable<Amount>,
-        IConvertible,
-        IEquatable<Amount>,
-        IFormattable,
-        IUnitConsumer
+    [Serializable]
+    public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConvertible, IEquatable<Amount>, IFormattable, IUnitConsumer, ISerializable
     {
 
         #region" CONSTRUCTION "
+
+        /// <summary>   Default constructor. Required for serialization. </summary>
+        /// <remarks>   David, 2022-01-29. </remarks>
+        public Amount() : this( 0, new Unit() )
+        {
+        }
 
         /// <summary>   Constructor. </summary>
         /// <remarks>   David, 2021-03-22. </remarks>
@@ -191,6 +193,22 @@ namespace Arebis.UnitsAmounts
                 result += amnt;
             }
             return result;
+        }
+
+        /// <summary>
+        /// Determines whether the specified <see cref="T:System.Object" /> is equal to the current
+        /// <see cref="T:System.Object" />.
+        /// </summary>
+        /// <remarks>   David, 2022-01-29. </remarks>
+        /// <param name="left">     The left. </param>
+        /// <param name="right">    The right. </param>
+        /// <returns>
+        /// <c>true</c> if the specified <see cref="T:System.Object" /> is equal to the current
+        /// <see cref="T:System.Object" />; otherwise, false.
+        /// </returns>
+        public static bool Equals( Amount left, Amount right )
+        {
+            return left is object && right is object && left.Equals( right );
         }
 
         /// <summary>
@@ -445,14 +463,14 @@ namespace Arebis.UnitsAmounts
         /// <param name="left">     The left. </param>
         /// <param name="right">    The right. </param>
         /// <returns>   The result of the operation. </returns>
-        public static bool operator ==( Amount left, Amount right ) => object.ReferenceEquals( ( object ) left, ( object ) right ) || (!(left is null) && left.Equals( right ));
+        public static bool operator ==( Amount left, Amount right ) => Amount.Equals( left , right );
 
         /// <summary>   Compares two amounts. </summary>
         /// <remarks>   David, 2021-03-22. </remarks>
         /// <param name="left">     The left. </param>
         /// <param name="right">    The right. </param>
         /// <returns>   The result of the operation. </returns>
-        public static bool operator !=( Amount left, Amount right ) => (!object.ReferenceEquals( ( object ) left, ( object ) right )) && (left is null || !left.Equals( right ));
+        public static bool operator !=( Amount left, Amount right ) => !Amount.Equals( left, right );
 
         /// <summary>   Compares two Amount objects to determine their relative ordering. </summary>
         /// <remarks>   David, 2021-03-22. </remarks>
@@ -536,7 +554,7 @@ namespace Arebis.UnitsAmounts
                 return null;
             }
 
-            left ??= Amount.Zero( (!(right is null)) ? right.Unit : Unit.None );
+            left ??= Amount.Zero( (right is not null) ? right.Unit : Unit.None );
             right ??= Amount.Zero( left.Unit );
             return new Amount( left.Value + right.ConvertedTo( left.Unit ).Value, left.Unit );
         }
@@ -553,7 +571,7 @@ namespace Arebis.UnitsAmounts
                 return null;
             }
 
-            left ??= Zero( (!(right is null)) ? right.Unit : Unit.None );
+            left ??= Zero( (right is not null) ? right.Unit : Unit.None );
             right ??= Zero( left.Unit );
             return new Amount( left.Value + right.ConvertedTo( left.Unit ).Value, left.Unit );
         }
@@ -919,5 +937,42 @@ namespace Arebis.UnitsAmounts
         }
 
         #endregion 
+
+        #region " ISERIALIZABLE MEMBERS "
+
+        /// <summary>   Constructor. </summary>
+        /// <remarks>   David, 2021-03-22. </remarks>
+        /// <param name="info">     The <see cref="T:System.Runtime.Serialization.SerializationInfo" />
+        ///                         to populate with data. </param>
+        /// <param name="context">  A StreamingContext to process. </param>
+        private Amount( SerializationInfo info, StreamingContext context )
+        {
+            // Retrieve data from serialization:
+            this.Value = Convert.ToDouble( info.GetString( nameof( Amount.Value ) ) );
+            this.Unit = new Unit( info, context );
+        }
+
+        /// <summary>
+        /// Populates a <see cref="T:System.Runtime.Serialization.SerializationInfo" /> with the data
+        /// needed to serialize the target object.
+        /// </summary>
+        /// <remarks>   David, 2021-03-22. </remarks>
+        /// <param name="info">     The <see cref="T:System.Runtime.Serialization.SerializationInfo" />
+        ///                         to populate with data. </param>
+        /// <param name="context">  The destination (see
+        ///                         <see cref="T:System.Runtime.Serialization.StreamingContext" />) for
+        ///                         this serialization. </param>
+        [System.Security.SecurityCritical()]
+        void ISerializable.GetObjectData( SerializationInfo info, StreamingContext context )
+        {
+            if ( info is object )
+            {
+                info.AddValue( nameof( Amount.Value ), this.Value );
+                this.Unit.AddValues( info, context);
+            }
+        }
+
+        #endregion
+
     }
 }

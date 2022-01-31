@@ -1,5 +1,5 @@
 
-namespace Arebis.UnitsAmounts.Tests
+namespace Arebis.UnitsAmounts.MSTest
 {
     using System;
     using System.IO;
@@ -12,20 +12,22 @@ namespace Arebis.UnitsAmounts.Tests
     using Arebis.UnitsAmounts;
     using System.Globalization;
     using System.Threading;
+    using System.Xml.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
-    /// <summary>   Contains unit tests for Amounts. </summary>
-    ///
-    /// <license>
-    /// <license> (c) 2013 Rudi Breedenraedt. All rights reserved.<para>
-    /// Licensed under The MIT License.</para><para>
-    /// THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-    /// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-    /// NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-    /// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</para>
-    /// </license>
-    ///
-    /// <history date="2018-01-27" by="David" revision="1.0.5814.0"> Fixed. </history>
+/// <summary>   Contains unit tests for Amounts. </summary>
+///
+/// <license>
+/// <license> (c) 2013 Rudi Breedenraedt. All rights reserved.<para>
+/// Licensed under The MIT License.</para><para>
+/// THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+/// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+/// NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+/// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+/// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</para>
+/// </license>
+///
+/// <history date="2018-01-27" by="David" revision="1.0.5814.0"> Fixed. </history>
     [TestClass()]
     public class AmountTests
     {
@@ -491,64 +493,89 @@ namespace Arebis.UnitsAmounts.Tests
             Assert.AreEqual(s.Unit, (d2.Unit / t.Unit));
         }
 
-        [TestMethod()]
-        public void AmountDataContractSerializerSerializationTest()
+        /// <summary>   Asserts should serialize. </summary>
+        /// <remarks>   David, 2022-01-31. </remarks>
+        /// <param name="stream">       The stream. </param>
+        /// <param name="formatter">    The formatter. </param>
+        private static void AssertShouldSerialize( Stream stream, IFormatter formatter )
         {
-            Amount a = new(3500.12, EnergyUnits.KilowattHour * (365.0 * TimeUnits.Day) / VolumeUnits.CubicMeter);
 
-            // Serialize instance:
-            using MemoryStream stream = new();
-            DataContractSerializer serializer = new( typeof( Amount ) );
-            serializer.WriteObject( stream, a );
+            // Make some amounts:
+            var a1before = new Amount( 12345.6789, LengthUnits.Meter );
+            var a2before = new Amount( -0.45, LengthUnits.Kilometer / TimeUnits.Hour );
 
-            // Deserialize instance:
-            stream.Position = 0;
-            Amount b = ( Amount ) serializer.ReadObject( stream );
+#pragma warning disable SYSLIB0011 // Type or member is obsolete
+            // Serialize the units:
+            formatter.Serialize( stream, a1before );
+            formatter.Serialize( stream, a2before );
 
-            // Show serialization (this closes the stream):
-            stream.Position = 0;
-            Console.WriteLine( stream.ToXmlString() );
-            Console.WriteLine();
+            // Reset stream:
+            _ = stream.Seek( 0, SeekOrigin.Begin );
 
+            // Deserialize units:
+            Amount a1after = ( Amount ) formatter.Deserialize( stream );
+            Amount a2after = ( Amount ) formatter.Deserialize( stream );
+#pragma warning restore SYSLIB0011 // Type or member is obsolete
 
-            // Compare:
-            Console.WriteLine( a );
-            Console.WriteLine( b );
-            Assert.AreEqual( a, b );
+            stream.Close();
+            Console.WriteLine( "{0} => {1}", a1before, a1after );
+            Console.WriteLine( "{0} => {1}", a2before, a2after );
+
+            Assert.AreEqual( a1before, a1after );
+            Assert.AreEqual( a2before, a2after );
+
         }
 
+        /// <summary>   (Unit Test Method) should serialize using binary formatter. </summary>
+        /// <remarks>   David, 2022-01-31. </remarks>
         [TestMethod()]
-        public void AmountArrayDataContractSerializerSerializationTest()
+        public void ShouldSerializeUsingBinaryFormatter()
         {
-            Amount[] aa = new Amount[6];
-            aa[0] = new Amount(32.5, LengthUnits.NauticalMile);
-            aa[1] = new Amount(3500.12, EnergyUnits.KilowattHour * (365.0 * TimeUnits.Day) / VolumeUnits.CubicMeter);
-            aa[2] = 3 * aa[0];
-            aa[3] = 3 * aa[1];
-            aa[4] = aa[1] / aa[3];
-            aa[5] = new Amount(42.3, LengthUnits.Meter / TimeUnits.Second.Power(2));
+            using var memoryStream = new MemoryStream();
+            IFormatter formatter = new BinaryFormatter();
+            AmountTests.AssertShouldSerialize(memoryStream, formatter);
+        }
 
+        /// <summary>   (Unit Test Method) should serialize using fast binary formatter. </summary>
+        /// <remarks>   David, 2022-01-31. </remarks>
+        [TestMethod()]
+        public void ShouldSerializeUsingFastBinaryFormatter()
+        {
+            using var memoryStream = new MemoryStream();
+            IFormatter formatter = new Grammophone.Serialization.FastBinaryFormatter();
+            AmountTests.AssertShouldSerialize( memoryStream, formatter );
+        }
+
+        /// <summary>   (Unit Test Method) should serialize array. </summary>
+        /// <remarks>   David, 2022-01-31. </remarks>
+        [TestMethod()]
+        public void ShouldSerializeArray()
+        {
             // Serialize instance:
             using MemoryStream stream = new();
-            DataContractSerializer serializer = new( typeof( Amount[] ) );
-            serializer.WriteObject( stream, aa );
+            var formatter = new Grammophone.Serialization.FastBinaryFormatter();
+
+            Amount[] amounts = new Amount[6];
+            amounts[0] = new Amount( 32.5, LengthUnits.NauticalMile );
+            amounts[1] = new Amount( 3500.12, EnergyUnits.KilowattHour * (365.0 * TimeUnits.Day) / VolumeUnits.CubicMeter );
+            amounts[2] = 3 * amounts[0];
+            amounts[3] = 3 * amounts[1];
+            amounts[4] = amounts[1] / amounts[3];
+            amounts[5] = new Amount( 42.3, LengthUnits.Meter / TimeUnits.Second.Power( 2 ) );
+
+            formatter.Serialize( stream, amounts );
 
             // Deserialize instance:
             stream.Position = 0;
-            Amount[] ba = ( Amount[] ) serializer.ReadObject( stream );
-
-            // Show serialization (this closes the stream):
-            stream.Position = 0;
-            Console.WriteLine( stream.ToXmlString() );
-            Console.WriteLine();
+            Amount[] ba = ( Amount[] ) formatter.Deserialize( stream );
 
             // Compare:
-            Assert.AreEqual( aa.Length, ba.Length );
-            for ( int i = 0; i < aa.Length; i++ )
+            Assert.AreEqual( amounts.Length, ba.Length );
+            for ( int i = 0; i < amounts.Length; i++ )
             {
-                Console.WriteLine( aa[i] );
+                Console.WriteLine( amounts[i] );
                 Console.WriteLine( ba[i] );
-                Assert.AreEqual( aa[i], ba[i] );
+                Assert.AreEqual( amounts[i], ba[i] );
             }
         }
 
