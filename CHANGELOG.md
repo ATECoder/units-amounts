@@ -2,8 +2,7 @@
 All notable changes to these libraries will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
-
-## [2.0.8066] 2022-01-31
+## [2.0.8067] 2022-02-01
 Targeting Visual Studio 2022, C# 10 and .NET 6.0.
 
 ## [2.0.7750] 2020-10-05
