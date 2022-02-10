@@ -15,28 +15,28 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>..\..\Items\keyPair.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\..\items\keyPair.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\..\Items\ProductKey.cs">
+    <Compile Include="..\..\items\ProductKey.cs">
       <Link>Properties\ProductKey.cs</Link>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Grammophone.Serialization\Grammophone.Serialization.csproj" />
-    <ProjectReference Include="..\..\Libraries\StandardUnits\Arebis.StandardUnits.csproj" />
-    <ProjectReference Include="..\..\Libraries\TypedUnits\Arebis.TypedUnits.csproj" />
+    <ProjectReference Include="..\..\lib\StandardUnits\Arebis.StandardUnits.csproj" />
+    <ProjectReference Include="..\..\lib\UnitsAmounts\Arebis.UnitsAmounts.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <CodeAnalysisDictionary Include="..\..\Items\UnitsDix.xml">
+    <CodeAnalysisDictionary Include="..\..\items\UnitsDix.xml">
       <Link>Properties\UnitsDix.xml</Link>
     </CodeAnalysisDictionary>
   </ItemGroup>
   <ItemGroup>
-    <CodeAnalysisDictionary Include="..\..\Items\Dix.xml" Link="Properties\Dix.xml" />
+    <CodeAnalysisDictionary Include="..\..\items\Dix.xml" Link="Properties\Dix.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Items\keyPair.snk">
+    <None Include="..\..\items\keyPair.snk">
       <Link>Properties\keyPair.snk</Link>
     </None>
   </ItemGroup>

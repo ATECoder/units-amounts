@@ -5,32 +5,32 @@
     <OutputType>Library</OutputType>
     <SignAssembly>true</SignAssembly>
     <NoWarn>1591</NoWarn>
-    <AssemblyOriginatorKeyFile>..\..\Items\keyPair.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\..\items\keyPair.snk</AssemblyOriginatorKeyFile>
     <!-- NuGet -->
     <IsPackable>true</IsPackable>
-    <PackageId>Arebis.Standard.Units</PackageId>
+    <PackageId>Arebis.StandardUnits</PackageId>
     <Description>Unit and Amount Standard Units</Description>
     <PackageTags>Units;Amounts</PackageTags>
     <!-- Documentation -->
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\..\Items\ProductKey.cs">
+    <Compile Include="..\..\items\ProductKey.cs">
       <Link>Properties\ProductKey.cs</Link>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Items\keyPair.snk">
+    <None Include="..\..\items\keyPair.snk">
       <Link>Properties\keyPair.snk</Link>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <CodeAnalysisDictionary Include="..\..\Items\Dix.xml" Link="Properties\Dix.xml" />
-    <CodeAnalysisDictionary Include="..\..\Items\UnitsDix.xml">
+    <CodeAnalysisDictionary Include="..\..\items\Dix.xml" Link="Properties\Dix.xml" />
+    <CodeAnalysisDictionary Include="..\..\items\UnitsDix.xml">
       <Link>Properties\UnitsDix.xml</Link>
     </CodeAnalysisDictionary>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TypedUnits\Arebis.TypedUnits.csproj" />
+    <ProjectReference Include="..\UnitsAmounts\Arebis.UnitsAmounts.csproj" />
   </ItemGroup>
 </Project>

@@ -1,14 +1,14 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     <OutputType>Library</OutputType>
-    <AssemblyOriginatorKeyFile>..\..\Items\keyPair.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\..\items\keyPair.snk</AssemblyOriginatorKeyFile>
     <SignAssembly>true</SignAssembly>
     <DelaySign>false</DelaySign>
     <NoWarn>1591</NoWarn>
     <!-- NuGet -->
     <IsPackable>true</IsPackable>
-    <PackageId>Arebis.Typed.Units</PackageId>
+    <PackageId>Arebis.UnitsAmounts</PackageId>
     <PackageTags>Units;Amounts</PackageTags>
     <!-- Assembly Info -->
     <Description>Strongly Typed Units and Amounts</Description>
@@ -16,12 +16,12 @@
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\..\Items\ProductKey.cs" Link="Properties\ProductKey.cs" />
+    <Compile Include="..\..\items\ProductKey.cs" Link="Properties\ProductKey.cs" />
   </ItemGroup>
   <ItemGroup>
-    <CodeAnalysisDictionary Include="..\..\Items\Dix.xml" Link="Properties\Dix.xml" />
+    <CodeAnalysisDictionary Include="..\..\items\Dix.xml" Link="Properties\Dix.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Items\keyPair.snk" Link="Properties\keyPair.snk" />
+    <None Include="..\..\items\keyPair.snk" Link="Properties\keyPair.snk" />
   </ItemGroup>
 </Project>

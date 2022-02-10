@@ -69,6 +69,7 @@ where %userprofile% is the root user folder.
 * [Rudi Breedenraedt]
 * [Its all a remix]
 * [Stack overflow]
+* [Arebis Units Amounts]
 
 ### Open source  [](#){name=Open-Source}
 Open source used by this software is described and licensed 
@@ -79,7 +80,7 @@ at the following sites:
 None
 
 ### Links
-[Arebis Typed Units]: https://www.codeproject.com/Articles/611731/Working-with-Units-and-Amounts
+[Arebis Units Amounts]: https://www.codeproject.com/Articles/611731/Working-with-Units-and-Amounts
 [Units Amounts Libraries]: https://bitbucket.org/davidhary/dn.UnitsAmounts
 [Rudi Breedenraedt]: https://www.codeproject.com/Articles/611731/Working-with-Units-and-Amounts
 
