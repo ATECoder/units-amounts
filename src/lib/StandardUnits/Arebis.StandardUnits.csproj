@@ -8,9 +8,9 @@
     <AssemblyOriginatorKeyFile>..\..\items\keyPair.snk</AssemblyOriginatorKeyFile>
     <!-- NuGet -->
     <IsPackable>true</IsPackable>
-    <PackageId>Arebis.StandardUnits</PackageId>
-    <Description>Unit and Amount Standard Units</Description>
-    <PackageTags>Units;Amounts</PackageTags>
+    <PackageId>Arebis.UnitsAmounts.Standard.Units</PackageId>
+    <Description>Strongly typed units and amounts and standard units</Description>
+    <PackageTags>strongly typed units amounts</PackageTags>
     <!-- Documentation -->
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
@@ -31,6 +31,7 @@
     </CodeAnalysisDictionary>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UnitsAmounts\Arebis.UnitsAmounts.csproj" />
+    <ProjectReference Include="..\UnitsAmounts\Arebis.UnitsAmounts.csproj" PrivateAssets="compile;build;analyzers" />
+	<PackageReference Include="Arebis.UnitsAmounts" Version="$(Version)" PrivateAssets="compile;build;analyzers" />
   </ItemGroup>
 </Project>

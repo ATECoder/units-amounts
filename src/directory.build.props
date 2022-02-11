@@ -1,7 +1,7 @@
 <Project>
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
-	<Authors>David Hary</Authors>
+	<Authors>Rudi Breedenraedt, David Hary</Authors>
     <Company>Integrated Scientific Resources</Company>
     <Copyright>(c) 2013 Integrated Scientific Resources, Inc. All rights reserved.</Copyright>
     <NeutralLanguage>en-US</NeutralLanguage>
@@ -12,19 +12,21 @@
 	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 	<RepositoryUrl>$(PackageProjectUrl)</RepositoryUrl>
 	<RepositoryType>Git</RepositoryType>
-    <PackageLicenseExpression>The MIT License</PackageLicenseExpression>
-    <PackageIcon>favicon.ico</PackageIcon>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>ms-icon-70x70.png</PackageIcon>
+	<PackageReadmeFile>..\..\items\readme.md</PackageReadmeFile>	
+    <PackageOwners>Integrated Scientific Resources</PackageOwners>
   </PropertyGroup>
   
   <ItemGroup>
-    <None Include="..\..\Items\favicon.ico">
+    <None Include="..\..\items\ms-icon-70x70.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
       <Visible>false</Visible>
     </None>
   </ItemGroup>
   
-  <Import Project="Items\Version.build.props" />
+  <Import Project="items\Version.build.props" />
     
 </Project>
 

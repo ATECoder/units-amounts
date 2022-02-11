@@ -1,4 +1,4 @@
-# Units and Amounts  Libraries
+# Units and Amounts Libraries
 Libraries for implementing strongly typed units and amounts.
 
 * [Source Code](#Source-Code)

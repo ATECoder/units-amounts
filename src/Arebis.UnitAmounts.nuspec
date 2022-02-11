@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+	
+        <!-- Identifier that must be unique within the hosting gallery -->
+        <id>Arebis.UnitsAmounts</id>
+
+        <!-- Package version number that is used when resolving dependencies -->
+        <version>2.0.8076</version>
+
+        <!-- Authors contain text that appears directly on the gallery -->
+        <authors>Rudi Breedenraedt, David Hary</authors>
+
+        <!-- 
+            Owners are typically nuget.org identities that allow gallery
+            users to easily find other packages by the same owners.  
+        -->
+        <owners>isrinc</owners>
+        
+         <!-- Project URL provides a link for the gallery -->
+        <projectUrl>https://bitbucket.org/davidhary/dn.unitsamounts</projectUrl>
+
+         <!-- License information is displayed on the gallery -->
+        <license type="expression">MIT</license>
+
+        <!-- Icon is used in Visual Studio's package manager UI -->
+        <icon>items\ms-icon-70x70.png</icon>
+
+        <!-- 
+            If true, this value prompts the user to accept the license when
+            installing the package. 
+        -->
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+
+        <!-- Any details about this particular release -->
+        <releaseNotes>Initial release</releaseNotes>
+
+        <!-- 
+            The description can be used in package manager UI. Note that the
+            nuget.org gallery uses information you add in the portal. 
+        -->
+        <description>strongly typed units and amounts</description>
+
+        <!-- Copyright information -->
+        <copyright>Copyright ©2013 Integrated Scientific Resources, Inc.</copyright>
+
+        <!-- Tags appear in the gallery and can be used for tag searches -->
+        <tags>strongly typed units amounts</tags>
+
+        <!-- Dependencies are automatically installed when the package is installed -->
+		<!-- 
+        <dependencies>
+            <dependency id="Newtonsoft.Json" version="9.0" />
+        </dependencies>
+		-->
+    </metadata>
+
+    <!-- A readme.txt to display when the package is installed -->
+    <files>
+        <file src="..\nugetReadMe.md" target="items\" />
+        <file src="..\ms-icon-70x70.png" target="items\" />
+    </files>
+</package>

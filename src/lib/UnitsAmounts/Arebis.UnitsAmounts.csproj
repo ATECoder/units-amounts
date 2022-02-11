@@ -9,9 +9,9 @@
     <!-- NuGet -->
     <IsPackable>true</IsPackable>
     <PackageId>Arebis.UnitsAmounts</PackageId>
-    <PackageTags>Units;Amounts</PackageTags>
+    <PackageTags>strongly typed units amounts</PackageTags>
     <!-- Assembly Info -->
-    <Description>Strongly Typed Units and Amounts</Description>
+    <Description>Strongly typed units and amounts</Description>
     <!-- Documentation -->
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
