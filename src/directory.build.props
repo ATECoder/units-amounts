@@ -1,7 +1,10 @@
 <Project>
   <PropertyGroup>
+    <Datestamp>$([System.DateTime]::UtcNow.ToString("yyyy-MM-dd"))</Datestamp>
+    <Timestamp>$([System.DateTime]::UtcNow.ToString("yyyy-MM-ddHHmm"))</Timestamp>
     <LangVersion>latest</LangVersion>
 	<Authors>Rudi Breedenraedt, David Hary</Authors>
+    <Owners>Integrated Scientific Resources</Owners>
     <Company>Integrated Scientific Resources</Company>
     <Copyright>(c) 2013 Integrated Scientific Resources, Inc. All rights reserved.</Copyright>
     <NeutralLanguage>en-US</NeutralLanguage>
@@ -14,7 +17,7 @@
 	<RepositoryType>Git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>ms-icon-70x70.png</PackageIcon>
-	<PackageReadmeFile>..\..\items\readme.md</PackageReadmeFile>	
+    <PackageReadmeFile>..\..\items\readme.md</PackageReadmeFile>
     <PackageOwners>Integrated Scientific Resources</PackageOwners>
   </PropertyGroup>
   
@@ -27,6 +30,6 @@
   </ItemGroup>
   
   <Import Project="items\Version.build.props" />
-    
+
 </Project>
 
