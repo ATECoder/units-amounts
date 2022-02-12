@@ -19,8 +19,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleConsoleApplication", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Arebis.UnitsAmounts.MSTest", "tests\UnitsAmounts\Arebis.UnitsAmounts.MSTest.csproj", "{2A945DC9-6151-425A-A779-D38834A87273}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grammophone.Serialization", "..\..\Grammophone.Serialization\Grammophone.Serialization.csproj", "{B0E855CB-8A43-4623-8184-31CD4B4EBB57}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitsAmountsPackagesDemo", "demo\PackagesDemo\UnitsAmountsPackagesDemo.csproj", "{C6891A31-EF39-4AA9-A735-A407A30619FC}"
 EndProject
 Global
@@ -45,10 +43,6 @@ Global
 		{2A945DC9-6151-425A-A779-D38834A87273}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A945DC9-6151-425A-A779-D38834A87273}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A945DC9-6151-425A-A779-D38834A87273}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B0E855CB-8A43-4623-8184-31CD4B4EBB57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B0E855CB-8A43-4623-8184-31CD4B4EBB57}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B0E855CB-8A43-4623-8184-31CD4B4EBB57}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B0E855CB-8A43-4623-8184-31CD4B4EBB57}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C6891A31-EF39-4AA9-A735-A407A30619FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C6891A31-EF39-4AA9-A735-A407A30619FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6891A31-EF39-4AA9-A735-A407A30619FC}.Release|Any CPU.ActiveCfg = Release|Any CPU

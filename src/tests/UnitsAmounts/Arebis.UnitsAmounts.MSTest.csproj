@@ -23,7 +23,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Grammophone.Serialization\Grammophone.Serialization.csproj" />
     <ProjectReference Include="..\..\lib\StandardUnits\Arebis.StandardUnits.csproj" />
     <ProjectReference Include="..\..\lib\UnitsAmounts\Arebis.UnitsAmounts.csproj" />
   </ItemGroup>
@@ -41,6 +40,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Grammophone.Serialization" Version="1.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.8" />
     <PackageReference Include="MSTest.TestFramework" Version="2.2.8" />
