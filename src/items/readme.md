@@ -2,11 +2,11 @@
 
 Arebis.UnitsAmounts is a .Net library for implementing strongly typed units and amounts.
 
-More information is to bve found in the original contribution at [Arebis Units Amounts].
+More information is to be found in the original contribution at [Arebis Units Amounts].
 
 # How to Use
 
-The cfollowing code comes from a console application demo program.
+The following code comes from a console application demo program.
 
 ```
 namespace SampleConsoleApplication

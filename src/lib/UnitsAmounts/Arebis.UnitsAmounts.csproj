@@ -10,11 +10,18 @@
     <IsPackable>true</IsPackable>
     <PackageId>Arebis.UnitsAmounts</PackageId>
     <PackageTags>strongly typed units amounts</PackageTags>
+    <PackageOutputPath>C:\my\nuget</PackageOutputPath>
     <!-- Assembly Info -->
     <Description>Strongly typed units and amounts</Description>
     <!-- Documentation -->
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+    <PackageReadmeFile>..\..\items\readme.md</PackageReadmeFile>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <None Include="..\..\items\readme.md" Pack="true" PackagePath=""/>
+  </ItemGroup>
+  
   <ItemGroup>
     <Compile Include="..\..\items\ProductKey.cs" Link="Properties\ProductKey.cs" />
   </ItemGroup>

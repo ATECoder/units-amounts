@@ -17,8 +17,9 @@
 	<RepositoryType>Git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>ms-icon-70x70.png</PackageIcon>
+    <PackageOutputDir>c:\my\nuget</PackageOutputDir>
     <PackageReadmeFile>..\..\items\readme.md</PackageReadmeFile>
-    <PackageOwners>Integrated Scientific Resources</PackageOwners>
+    <PackageOwners>Integrated Scientific Resources, Inc.</PackageOwners>
   </PropertyGroup>
   
   <ItemGroup>

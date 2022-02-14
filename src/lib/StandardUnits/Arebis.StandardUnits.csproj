@@ -11,9 +11,16 @@
     <PackageId>Arebis.UnitsAmounts.Standard.Units</PackageId>
     <Description>Strongly typed units and amounts and standard units</Description>
     <PackageTags>strongly typed units amounts</PackageTags>
+    <PackageOutputPath>C:\my\nuget</PackageOutputPath>
     <!-- Documentation -->
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+    <PackageReadmeFile>..\..\items\readme.md</PackageReadmeFile>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <None Include="..\..\items\readme.md" Pack="true" PackagePath=""/>
+  </ItemGroup>
+  
   <ItemGroup>
     <Compile Include="..\..\items\ProductKey.cs">
       <Link>Properties\ProductKey.cs</Link>
