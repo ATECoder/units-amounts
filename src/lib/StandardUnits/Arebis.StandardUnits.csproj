@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
@@ -14,11 +14,11 @@
     <PackageOutputPath>C:\my\nuget</PackageOutputPath>
     <!-- Documentation -->
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
-    <PackageReadmeFile>..\..\items\readme.md</PackageReadmeFile>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
   </PropertyGroup>
   
   <ItemGroup>
-    <None Include="..\..\items\readme.md" Pack="true" PackagePath=""/>
+    <None Include="..\..\items\readme.md" Pack="true" PackagePath="" />
   </ItemGroup>
   
   <ItemGroup>
@@ -38,7 +38,7 @@
     </CodeAnalysisDictionary>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Arebis.UnitsAmounts" Version="2.0.8077" PrivateAssets="compile;build;analyzers" />
     <ProjectReference Include="..\UnitsAmounts\Arebis.UnitsAmounts.csproj" PrivateAssets="compile;build;analyzers" />
+    <PackageReference Include="Arebis.UnitsAmounts" Version="2.0.8077" PrivateAssets="compile;build;analyzers" />
   </ItemGroup>
 </Project>

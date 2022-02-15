@@ -15,7 +15,7 @@
     <Description>Strongly typed units and amounts</Description>
     <!-- Documentation -->
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
-    <PackageReadmeFile>..\..\items\readme.md</PackageReadmeFile>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
   </PropertyGroup>
   
   <ItemGroup>
