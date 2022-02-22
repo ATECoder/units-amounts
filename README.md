@@ -46,6 +46,12 @@ xcopy /Y %vslib%\core\ide\code\.runsettings %userprofile%\.runsettings
 ```
 where %userprofile% is the root user folder.
 
+#### Packages
+ISR packages are consumed from a local folder, e.g., %my%\nuget\packages. 
+The packages are 'packed' using the _Pack_ command from each packable project
+and stored in the %my%\nuget folder and published into the local
+folder.
+
 ## Facilitated By[](#){name=FacilitatedBy}
 * [Visual Studio]
 * [Jarte RTF Editor]
