@@ -47,10 +47,11 @@ xcopy /Y %vslib%\core\ide\code\.runsettings %userprofile%\.runsettings
 where %userprofile% is the root user folder.
 
 #### Packages
-ISR packages are consumed from a local folder, e.g., %my%\nuget\packages. 
-The packages are 'packed' using the _Pack_ command from each packable project
-and stored in the %my%\nuget folder and published into the local
-folder.
+Presently, packages are consumed from a _source feed_ residing in a local folder, e.g., _%my%\nuget\packages_. 
+The packages are 'packed', using the _Pack_ command from each packable project,
+into the _%my%\nuget_ folder as specified in the project file and then
+added to the source feed. Alternatively, the packages can be downloaded from the 
+private [MEGA packages folder].
 
 ## Facilitated By[](#){name=FacilitatedBy}
 * [Visual Studio]
@@ -86,6 +87,7 @@ at the following sites:
 None
 
 ### Links
+[MEGA packages folder]: https://mega.nz/folder/KEcVxC5a#GYnmvMcwP4yI4tsocD31Pg
 [Arebis Units Amounts]: https://www.codeproject.com/Articles/611731/Working-with-Units-and-Amounts
 [Units Amounts Libraries]: https://bitbucket.org/davidhary/dn.UnitsAmounts
 [Rudi Breedenraedt]: https://www.codeproject.com/Articles/611731/Working-with-Units-and-Amounts
