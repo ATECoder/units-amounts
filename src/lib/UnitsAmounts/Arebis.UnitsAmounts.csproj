@@ -16,19 +16,37 @@
     <!-- Documentation -->
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
   </PropertyGroup>
   
   <ItemGroup>
     <None Include="..\..\items\readme.md" Pack="true" PackagePath=""/>
   </ItemGroup>
   
+  <PropertyGroup>
+    <DefineConstants>$(DefineConstants)TRACE;PAC</DefineConstants>
+  </PropertyGroup>
+
+  <Choose>
+    <When Condition="$(DefineConstants.Contains('PACK'))">
+      <PropertyGroup>
+        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+      </PropertyGroup>
+      <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.Bitbucket.Git" Version="1.1.1" PrivateAssets="All" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <!-- Presently, Pack does not build the directory of the package source feed -->
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+ 
   <ItemGroup>
     <Compile Include="..\..\items\ProductKey.cs" Link="Properties\ProductKey.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <CodeAnalysisDictionary Include="..\..\items\Dix.xml" Link="Properties\Dix.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="..\..\items\keyPair.snk" Link="Properties\keyPair.snk" />
   </ItemGroup>
+
 </Project>
