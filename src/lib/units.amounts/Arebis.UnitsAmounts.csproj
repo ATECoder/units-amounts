@@ -24,7 +24,7 @@
   </ItemGroup>
   
   <PropertyGroup>
-    <DefineConstants>$(DefineConstants)TRACE;PAC</DefineConstants>
+    <DefineConstants>$(DefineConstants);TRACE;PAC</DefineConstants>
   </PropertyGroup>
 
   <Choose>
