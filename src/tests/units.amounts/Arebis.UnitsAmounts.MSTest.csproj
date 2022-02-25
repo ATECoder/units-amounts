@@ -23,11 +23,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\lib\StandardUnits\Arebis.StandardUnits.csproj" />
+    <ProjectReference Include="..\..\lib\standard.units\Arebis.StandardUnits.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\lib\UnitsAmounts\Arebis.UnitsAmounts.csproj" />
+    <ProjectReference Include="..\..\lib\units.amounts\Arebis.UnitsAmounts.csproj" />
   </ItemGroup>
   <ItemGroup>
     <CodeAnalysisDictionary Include="..\..\items\UnitsDix.xml">

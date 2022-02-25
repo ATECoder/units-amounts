@@ -11,10 +11,10 @@
     <PackageReference Include="Arebis.UnitsAmounts.Standard.Units" Version="2.0.8077" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\lib\StandardUnits\Arebis.StandardUnits.csproj" />
+    <ProjectReference Include="..\..\lib\standard.units\Arebis.StandardUnits.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\lib\UnitsAmounts\Arebis.UnitsAmounts.csproj" />
+    <ProjectReference Include="..\..\lib\units.amounts\Arebis.UnitsAmounts.csproj" />
   </ItemGroup>
 </Project>

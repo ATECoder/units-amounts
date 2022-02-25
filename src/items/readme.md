@@ -62,7 +62,8 @@ The main types provided by this library are:
 
 # Feedback
 
-Arebis.UnitsAmounts is released as open source under the MIT license. Bug reports and contributions are welcome at the [Units Amounts] repository.
+Arebis.UnitsAmounts is released as open source under the MIT license.
+Bug reports and contributions are welcome at the [Units Amounts] repository.
 
 [Arebis Units Amounts]: https://www.codeproject.com/Articles/611731/Working-with-Units-and-Amounts
 [Units Amounts]: https://bitbucket.org/davidhary/dn.UnitsAmounts
