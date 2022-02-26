@@ -488,7 +488,6 @@ namespace Arebis.UnitsAmounts
         /// <param name="context">  The destination (see
         ///                         <see cref="T:System.Runtime.Serialization.StreamingContext" />) for
         ///                         this serialization. </param>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage( "Style", "IDE0060:Remove unused parameter", Justification = "<Pending>" )]
         internal void AddValues( SerializationInfo info, StreamingContext context )
         {
             if ( info is object )

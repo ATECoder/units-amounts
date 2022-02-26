@@ -9,7 +9,6 @@ namespace Arebis.UnitsAmounts
     /// one unit into another non-compatible unit.
     /// </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage( "Design", "CA1032:Implement standard exception constructors", Justification = "<Pending>" )]
     public class UnitConversionException : InvalidOperationException
     {
         /// <summary>   Default constructor. </summary>
@@ -43,7 +42,6 @@ namespace Arebis.UnitsAmounts
     /// is known (registered to the UnitManager).
     /// </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage( "Design", "CA1032:Implement standard exception constructors", Justification = "<Pending>" )]
     public class UnknownUnitException : Exception
     {
 
