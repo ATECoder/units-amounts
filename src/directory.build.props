@@ -33,14 +33,14 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <DefineConstants>$(DefineConstants);TRACE;PROJREF_;PACK_</DefineConstants>
+    <DefineConstants>$(DefineConstants);TRACE;PROJREF_;PACK_;</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition="$(DefineConstants.Contains('PACK'))" >
+  <PropertyGroup Condition="$(DefineConstants.Contains(';PACK;'))" >
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
 
-  <ItemGroup Condition="$(DefineConstants.Contains('PACK'))" >
+  <ItemGroup Condition="$(DefineConstants.Contains(';PACK;'))" >
     <PackageReference Include="Microsoft.SourceLink.Bitbucket.Git" Version="1.1.1" PrivateAssets="All" />
   </ItemGroup>
 

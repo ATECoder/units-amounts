@@ -23,11 +23,11 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <DefineConstants>$(DefineConstants);MYPROJREF_</DefineConstants>
+    <DefineConstants>$(DefineConstants);MYPROJREF_;</DefineConstants>
   </PropertyGroup>
 
   <Choose>
-    <When Condition="$(DefineConstants.Contains('PROJREF')) OR $(DefineConstants.Contains('MYPROJREF'))">
+    <When Condition="$(DefineConstants.Contains(';PROJREF;')) OR $(DefineConstants.Contains(';MYPROJREF;'))">
       <ItemGroup>
         <ProjectReference Include="..\units.amounts\Arebis.UnitsAmounts.csproj" />
       </ItemGroup>
