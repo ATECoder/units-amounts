@@ -21,33 +21,24 @@
   <ItemGroup>
     <None Include="..\..\items\readme.md" Pack="true" PackagePath="" />
   </ItemGroup>
-  
+
   <PropertyGroup>
-    <DefineConstants>$(DefineConstants);TRACE;PAC</DefineConstants>
+    <DefineConstants>$(DefineConstants);MYPROJREF_</DefineConstants>
   </PropertyGroup>
 
   <Choose>
-    <When Condition="$(DefineConstants.Contains('PACK'))">
-      <PropertyGroup>
-        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-      </PropertyGroup>
+    <When Condition="$(DefineConstants.Contains('PROJREF')) OR $(DefineConstants.Contains('MYPROJREF'))">
       <ItemGroup>
-        <PackageReference Include="Microsoft.SourceLink.Bitbucket.Git" Version="1.1.1" PrivateAssets="All" />
+        <ProjectReference Include="..\units.amounts\Arebis.UnitsAmounts.csproj" />
       </ItemGroup>
     </When>
     <Otherwise>
       <ItemGroup>
-        <!-- Presently, Pack does not build the directory of the package source feed -->
-        <Content Include="$(PkgArebis_UnitsAmounts)\lib\netstandard2.0\Arebis.UnitsAmounts.xml" Link="Arebis.UnitsAmounts.xml">
-          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
-        <Content Include="$(PkgArebis_UnitsAmounts)\lib\netstandard2.0\Arebis.UnitsAmounts.pdb" Link="Arebis.UnitsAmounts.pdb">
-          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
+        <PackageReference Include="Arebis.UnitsAmounts" Version="2.0.8077" PrivateAssets="compile;build;analyzers"  GeneratePathProperty="true"/>
       </ItemGroup>
     </Otherwise>
   </Choose>
-  
+ 
   <ItemGroup>
     <Compile Include="..\..\items\ProductKey.cs">
       <Link>Properties\ProductKey.cs</Link>
@@ -64,8 +55,4 @@
     </CodeAnalysisDictionary>
   </ItemGroup>
   
-  <ItemGroup>
-    <PackageReference Include="Arebis.UnitsAmounts" Version="2.0.8077" PrivateAssets="compile;build;analyzers"  GeneratePathProperty="true"/>
-  </ItemGroup>
-
 </Project>

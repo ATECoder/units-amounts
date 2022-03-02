@@ -11,6 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "`Items", "`Items", "{F46C3C
 	ProjectSection(SolutionItems) = preProject
 		Arebis.UnitsAmounts.sln.vsspell = Arebis.UnitsAmounts.sln.vsspell
 		..\CHANGELOG.md = ..\CHANGELOG.md
+		directory.build.props = directory.build.props
 		..\README.md = ..\README.md
 		Items\version.build.bat = Items\version.build.bat
 	EndProjectSection
