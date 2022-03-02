@@ -18,9 +18,7 @@
     <AssemblyOriginatorKeyFile>..\..\items\keyPair.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\..\items\ProductKey.cs">
-      <Link>Properties\ProductKey.cs</Link>
-    </Compile>
+    <Compile Include="..\..\items\ProductKey.cs" Link="Properties\ProductKey.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\lib\standard.units\Arebis.StandardUnits.csproj" />
@@ -38,9 +36,7 @@
     <CodeAnalysisDictionary Include="..\..\items\Dix.xml" Link="Properties\Dix.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\items\keyPair.snk">
-      <Link>Properties\keyPair.snk</Link>
-    </None>
+    <None Include="..\..\items\keyPair.snk" Link="Properties\KeyPair.snk" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Arebis.UnitsAmounts" Version="2.0.8077" />

@@ -40,12 +40,8 @@
   </Choose>
  
   <ItemGroup>
-    <Compile Include="..\..\items\ProductKey.cs">
-      <Link>Properties\ProductKey.cs</Link>
-    </Compile>
-    <None Include="..\..\items\keyPair.snk">
-      <Link>Properties\keyPair.snk</Link>
-    </None>
+    <Compile Include="..\..\items\ProductKey.cs" Link="Properties\ProductKey.cs" />
+    <None Include="..\..\items\keyPair.snk" Link="Properties\KeyPair.snk" />
   </ItemGroup>
   
   <ItemGroup>
