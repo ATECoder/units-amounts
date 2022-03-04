@@ -1,13 +1,27 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>Exe</OutputType>
     <!-- NuGet -->
     <IsPackable>false</IsPackable>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <DefineConstants>$(DefineConstants);MYPROJREF_;</DefineConstants>
+  </PropertyGroup>
+
+  <Choose>
+    <When Condition="$(DefineConstants.Contains(';PROJREF;')) OR $(DefineConstants.Contains(';MYPROJREF;'))">
+      <ItemGroup>
+        <ProjectReference Include="..\..\lib\standard.units\Arebis.StandardUnits.csproj" />
+        <!-- <ProjectReference Include="..\..\libs\units.amounts\Arebis.UnitsAmounts.csproj" /> -->
+      </ItemGroup>
+    </When>
+    <Otherwise />
+  </Choose>
+
   <ItemGroup>
-    <PackageReference Include="Arebis.UnitsAmounts" Version="2.0.8077" />
     <PackageReference Include="Arebis.UnitsAmounts.Standard.Units" Version="2.0.8077" />
   </ItemGroup>
+
 </Project>

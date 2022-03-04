@@ -2,48 +2,39 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <OutputType>Library</OutputType>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\items\keyPair.snk</AssemblyOriginatorKeyFile>
     <!-- NuGet -->
     <IsPackable>false</IsPackable>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <NoWarn></NoWarn>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
+
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <DefineConstants>$(DefineConstants);MYPROJREF_;</DefineConstants>
   </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>..\..\items\keyPair.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="..\..\items\ProductKey.cs" Link="Properties\ProductKey.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\lib\standard.units\Arebis.StandardUnits.csproj" />
-  </ItemGroup>
+
+  <Choose>
+    <When Condition="$(DefineConstants.Contains(';PROJREF;')) OR $(DefineConstants.Contains(';MYPROJREF;'))">
+      <ItemGroup>
+        <ProjectReference Include="..\..\lib\standard.units\Arebis.StandardUnits.csproj" />
+        <!-- <ProjectReference Include="..\..\libs\units.amounts\Arebis.UnitsAmounts.csproj" /> -->
+      </ItemGroup>
+    </When>
+    <Otherwise />
+  </Choose>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\lib\units.amounts\Arebis.UnitsAmounts.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <CodeAnalysisDictionary Include="..\..\items\UnitsDix.xml">
-      <Link>Properties\UnitsDix.xml</Link>
-    </CodeAnalysisDictionary>
-  </ItemGroup>
-  <ItemGroup>
-    <CodeAnalysisDictionary Include="..\..\items\Dix.xml" Link="Properties\Dix.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\items\keyPair.snk" Link="Properties\KeyPair.snk" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Arebis.UnitsAmounts" Version="2.0.8077" />
     <PackageReference Include="Arebis.UnitsAmounts.Standard.Units" Version="2.0.8077" />
     <PackageReference Include="Grammophone.Serialization" Version="1.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.8" />
     <PackageReference Include="MSTest.TestFramework" Version="2.2.8" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\items\keyPair.snk" Link="Properties\KeyPair.snk" />
+    <Compile Include="..\..\items\ProductKey.cs" Link="Properties\ProductKey.cs" />
+    <CodeAnalysisDictionary Include="..\..\items\UnitsDix.xml" Link="Properties\UnitsDix.xml" />
+    <CodeAnalysisDictionary Include="..\..\items\Dix.xml" Link="Properties\Dix.xml" />
+  </ItemGroup>
+
 </Project>

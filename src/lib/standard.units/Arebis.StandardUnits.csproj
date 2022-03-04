@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
@@ -32,23 +32,18 @@
         <ProjectReference Include="..\units.amounts\Arebis.UnitsAmounts.csproj" />
       </ItemGroup>
     </When>
-    <Otherwise>
-      <ItemGroup>
-        <PackageReference Include="Arebis.UnitsAmounts" Version="2.0.8077" PrivateAssets="compile;build;analyzers"  GeneratePathProperty="true"/>
-      </ItemGroup>
-    </Otherwise>
+    <Otherwise />
   </Choose>
  
   <ItemGroup>
     <Compile Include="..\..\items\ProductKey.cs" Link="Properties\ProductKey.cs" />
     <None Include="..\..\items\keyPair.snk" Link="Properties\KeyPair.snk" />
-  </ItemGroup>
-  
-  <ItemGroup>
     <CodeAnalysisDictionary Include="..\..\items\Dix.xml" Link="Properties\Dix.xml" />
-    <CodeAnalysisDictionary Include="..\..\items\UnitsDix.xml">
-      <Link>Properties\UnitsDix.xml</Link>
-    </CodeAnalysisDictionary>
+    <CodeAnalysisDictionary Include="..\..\items\UnitsDix.xml" Link="Properties\UnitsDix.xml" />
+  </ItemGroup>
+ 
+  <ItemGroup>
+    <PackageReference Include="Arebis.UnitsAmounts" Version="2.0.8077" />
   </ItemGroup>
   
 </Project>
