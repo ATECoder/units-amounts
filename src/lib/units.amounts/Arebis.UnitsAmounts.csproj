@@ -18,11 +18,11 @@
     <PackageReadmeFile>readme.md</PackageReadmeFile>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
   </PropertyGroup>
-  
+
   <ItemGroup>
     <None Include="..\..\items\readme.md" Pack="true" PackagePath=""/>
   </ItemGroup>
-  
+
   <ItemGroup>
     <Compile Include="..\..\items\ProductKey.cs" Link="Properties\ProductKey.cs" />
     <CodeAnalysisDictionary Include="..\..\items\Dix.xml" Link="Properties\Dix.xml" />
