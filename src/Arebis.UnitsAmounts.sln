@@ -14,6 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "`Items", "`Items", "{F46C3C
 		directory.build.props = directory.build.props
 		..\README.md = ..\README.md
 		Items\version.build.bat = Items\version.build.bat
+		items\version.build.props = items\version.build.props
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleConsoleApplication", "demo\sample.console.application\SampleConsoleApplication.csproj", "{ECDA4450-16CA-4BF7-9FBF-7F27AEDF4D66}"

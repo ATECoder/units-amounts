@@ -14,14 +14,13 @@
     <When Condition="$(DefineConstants.Contains(';PROJREF;')) OR $(DefineConstants.Contains(';MYPROJREF;'))">
       <ItemGroup>
         <ProjectReference Include="..\..\libs\standard.units\Arebis.StandardUnits.csproj" />
-        <!-- <ProjectReference Include="..\..\libs\units.amounts\Arebis.UnitsAmounts.csproj" /> -->
       </ItemGroup>
     </When>
-    <Otherwise />
+    <Otherwise>
+      <ItemGroup>
+		<PackageReference Include="Arebis.UnitsAmounts.Standard.Units" Version="2.0.8077" />
+      </ItemGroup>
+    </Otherwise>
   </Choose>
-
-  <ItemGroup>
-    <PackageReference Include="Arebis.UnitsAmounts.Standard.Units" Version="2.0.8077" />
-  </ItemGroup>
 
 </Project>

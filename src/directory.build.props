@@ -33,7 +33,7 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <DefineConstants>$(DefineConstants);TRACE;PROJREF_;PACK_;</DefineConstants>
+    <DefineConstants>$(DefineConstants);TRACE;PROJREF_;PACK;</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="$(DefineConstants.Contains(';PACK;'))" >

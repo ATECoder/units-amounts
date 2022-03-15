@@ -2,6 +2,9 @@
 All notable changes to these libraries will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
+## [2.0.8109] 2022-03-15
+Rename 'lib' to 'libs' folder and rebuild packages.
+
 ## [2.0.8067] 2022-02-01
 Targeting Visual Studio 2022, C# 10 and .NET 6.0.
 
@@ -14,46 +17,46 @@ Convert Amount tests to C#.
 ## [1.0.7371] 2020-03-07
 Amount: Add combine function to add all amounts in an array of amounts. Restore serializable to Unit. Tests: Remove test of nullable comparison to a non-null amount. Apply code analysis changes.
 
-## [1.0.xxxx] 2020-01-29
+## [1.0.7333] 2020-01-29
 Unit: Implement I Comparable. Remove unused code analysis attributes.
 
-## [1.0.xxxx] 2019-12-09
+## [1.0.7282] 2019-12-09
 Uses core Services, Models, and Constructs libraries.
 
-## [1.0.xxxx] 2019-01-22
+## [1.0.6961] 2019-01-22
 Uses new core libraries.
 
-## [1.0.xxxx] 2018-08-23
+## [1.0.6809] 2018-08-23
 Adds micro volt units
 
-## [1.0.xxxx] 2018-05-19
+## [1.0.6713] 2018-05-19
 Changes ratio and count to have their own units.
 
-## [1.0.xxxx] 2018-04-20
+## [1.0.6684] 2018-04-20
 Add resistivity and sheet resistance units.
 
-## [1.0.xxxx] 2018-04-17
+## [1.0.6681] 2018-04-17
 Replaces read only mutable values serving as constants with read only property values returning a new instance thus becoming immutable.
 
-## [1.0.xxxx] 2018-03-06
+## [1.0.6639] 2018-03-06
 Adds Ratio Unitless unit.
 
-## [1.0.xxxx] 2017-08-29
+## [1.0.6450] 2017-08-29
 Units: Adds a cloning constructor.
 
-## [1.0.xxxx] 2017-08-26
+## [1.0.6447] 2017-08-26
 Amount: Simplifies initialization of custom formatter.
 
-## [1.0.xxxx] 2017-08-20
+## [1.0.6441] 2017-08-20
 Add Sigma as a standard unit symbol.
 
-## [1.0.xxxx] 2017-01-31
+## [1.0.6240] 2017-01-31
 Add temperature rate units.
 
-## [1.0.xxxx] 2016-07-22
+## [1.0.6047] 2016-07-22
 Adds an Amount clone constructor
 
-## [1.0.xxxx] 2016-04-04
+## [1.0.5938] 2016-04-04
 Adds MilliAmpere and Millivolt.
 
 ## [1.0.5178] 2014-03-06
@@ -70,7 +73,6 @@ Created
 
 \(C\) 2013 Rudi Breedenraedt.
 
-
 ```
 ## Release template - [version] - [date]
 ## Unreleased
@@ -81,3 +83,4 @@ Created
 ### Fixed
 *<project name>*
 ```
+[2.0.8109]: https://bitbucket.org/davidhary/dn.unitsamounts/src/main/
