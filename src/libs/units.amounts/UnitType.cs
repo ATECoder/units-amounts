@@ -153,7 +153,7 @@ namespace Arebis.UnitsAmounts
         /// <returns>
         /// true if the specified object  is equal to the current object; otherwise, false.
         /// </returns>
-        public static bool Equals( UnitType left , UnitType right ) => left is object && right is object && left.Equals( right );
+        public static bool Equals( UnitType left, UnitType right ) => left is object && right is object && left.Equals( right );
 
         /// <summary>   Determines whether the specified object is equal to the current object. </summary>
         /// <remarks>   David, 2021-03-22. </remarks>
@@ -292,7 +292,7 @@ namespace Arebis.UnitsAmounts
         /// <param name="left">     The first instance to compare. </param>
         /// <param name="right">    The second instance to compare. </param>
         /// <returns>   The result of the operation. </returns>
-        public static bool operator ==( UnitType left, UnitType right ) => UnitType.Equals( left , right);
+        public static bool operator ==( UnitType left, UnitType right ) => UnitType.Equals( left, right );
 
         /// <summary>   Inequality operator. </summary>
         /// <remarks>   David, 2021-03-22. </remarks>
@@ -348,7 +348,7 @@ namespace Arebis.UnitsAmounts
         [System.Security.SecurityCritical()]
         void ISerializable.GetObjectData( SerializationInfo info, StreamingContext context )
         {
-            this.AddValues(info, context);
+            this.AddValues( info, context );
         }
 
 

@@ -463,7 +463,7 @@ namespace Arebis.UnitsAmounts
         /// <param name="left">     The left. </param>
         /// <param name="right">    The right. </param>
         /// <returns>   The result of the operation. </returns>
-        public static bool operator ==( Amount left, Amount right ) => Amount.Equals( left , right );
+        public static bool operator ==( Amount left, Amount right ) => Amount.Equals( left, right );
 
         /// <summary>   Compares two amounts. </summary>
         /// <remarks>   David, 2021-03-22. </remarks>
@@ -968,7 +968,7 @@ namespace Arebis.UnitsAmounts
             if ( info is object )
             {
                 info.AddValue( nameof( Amount.Value ), this.Value );
-                this.Unit.AddValues( info, context);
+                this.Unit.AddValues( info, context );
             }
         }
 

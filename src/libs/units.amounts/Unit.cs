@@ -15,7 +15,7 @@ namespace Arebis.UnitsAmounts
         #region " CONSTRUCTION "
 
         /// <summary>   Default constructor. Required for serialization. </summary>
-        public Unit( )  : this( Unit.None )
+        public Unit() : this( Unit.None )
         {
         }
 
@@ -457,11 +457,11 @@ namespace Arebis.UnitsAmounts
         internal Unit( SerializationInfo info, StreamingContext context )
         {
             // Retrieve data from serialization:
-            this.Name = info.GetString( nameof(Unit.Name ) );
+            this.Name = info.GetString( nameof( Unit.Name ) );
             this.Symbol = info.GetString( nameof( Unit.Symbol ) );
             this.Factor = Convert.ToDouble( info.GetString( nameof( Unit.Factor ) ) );
-            this.IsNamed = Convert.ToBoolean(  info.GetString( nameof( Unit.IsNamed ) ) );
-            this.UnitType = new UnitType( info, context);
+            this.IsNamed = Convert.ToBoolean( info.GetString( nameof( Unit.IsNamed ) ) );
+            this.UnitType = new UnitType( info, context );
         }
 
         /// <summary>
@@ -477,7 +477,7 @@ namespace Arebis.UnitsAmounts
         [System.Security.SecurityCritical()]
         void ISerializable.GetObjectData( SerializationInfo info, StreamingContext context )
         {
-            this.AddValues(info, context);
+            this.AddValues( info, context );
         }
 
 
@@ -496,7 +496,7 @@ namespace Arebis.UnitsAmounts
                 info.AddValue( nameof( Unit.Symbol ), this.Symbol );
                 info.AddValue( nameof( Unit.Factor ), this.Factor );
                 info.AddValue( nameof( Unit.IsNamed ), this.IsNamed );
-                this.UnitType.AddValues(info, context);
+                this.UnitType.AddValues( info, context );
             }
         }
 
