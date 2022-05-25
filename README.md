@@ -11,7 +11,8 @@ Libraries for implementing strongly typed units and amounts.
 * [Open Source](#Open-Source)
 * [Closed Software](#Closed-software)
 
-## Source Code[](#){name=Source-Code}
+<a name="Source-Code"></a>
+## Source Code
 Clone the repository along with its requisite repositories to their respective relative path.
 
 ### Repositories
@@ -53,7 +54,8 @@ into the _%my%\nuget_ folder as specified in the project file and then
 added to the source feed. Alternatively, the packages can be downloaded from the 
 private [MEGA packages folder].
 
-## Facilitated By[](#){name=FacilitatedBy}
+<a name="FacilitatedBy"></a>
+## Facilitated By
 * [Visual Studio]
 * [Jarte RTF Editor]
 * [Wix Toolset]
@@ -62,31 +64,35 @@ private [MEGA packages folder].
 * [Code Converter]
 * [Funduc Search and Replace]
 
-## Repository Owner[](#){name=Repository-Owner}
+<a name="Repository-Owner"></a>
+## Repository Owner
 
 [ATE Coder]
 
-## Authors[](#){name=Authors}
+<a name="Authors"></a>
+## Authors
 
 * [Rudi Breedenraedt]
 * [ATE Coder]
 
-## Acknowledgments[](#){name=Acknowledgments}
+<a name="Acknowledgments"></a>
+## Acknowledgments
 
 * [Rudi Breedenraedt]
 * [Its all a remix]
 * [Stack overflow]
 * [Arebis Units Amounts]
 
-### Open source  [](#){name=Open-Source}
+<a name="Open-Source"></a>
+### Open source
 Open source used by this software is described and licensed 
 at the following sites:  
 [Units Amounts Libraries]
 
-### Closed software  [](#){name=Closed-software}
+<a name="Closed-software"></a>
+### Closed software
 None
 
-### Links
 [MEGA packages folder]: https://mega.nz/folder/KEcVxC5a#GYnmvMcwP4yI4tsocD31Pg
 [Arebis Units Amounts]: https://www.codeproject.com/Articles/611731/Working-with-Units-and-Amounts
 [Units Amounts Libraries]: https://bitbucket.org/davidhary/dn.UnitsAmounts
