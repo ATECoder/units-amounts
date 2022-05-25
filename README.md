@@ -17,10 +17,17 @@ Clone the repository along with its requisite repositories to their respective r
 
 ### Repositories
 The repositories listed in [external repositories](ExternalReposCommits.csv) are required:
-* [Units Amounts Libraries]
+* [Units Amounts Libraries - Bitbucket]
 
 ```
 git clone git@bitbucket.org:davidhary/dn.UnitsAmounts.git
+```
+
+or  
+* [Units Amounts Libraries - GitHub]
+
+```
+git clone https://github.com/AteCoder/units-amounts.git
 ```
 
 Clone the repositories into the following folders (parents of the .git folder):
@@ -87,7 +94,8 @@ private [MEGA packages folder].
 ### Open source
 Open source used by this software is described and licensed 
 at the following sites:  
-[Units Amounts Libraries]
+[Units Amounts Libraries - Bitbucket]
+[Units Amounts Libraries - GitHub]
 
 <a name="Closed-software"></a>
 ### Closed software
@@ -95,7 +103,8 @@ None
 
 [MEGA packages folder]: https://mega.nz/folder/KEcVxC5a#GYnmvMcwP4yI4tsocD31Pg
 [Arebis Units Amounts]: https://www.codeproject.com/Articles/611731/Working-with-Units-and-Amounts
-[Units Amounts Libraries]: https://bitbucket.org/davidhary/dn.UnitsAmounts
+[Units Amounts Libraries - Bitbucket]: https://bitbucket.org/davidhary/dn.UnitsAmounts
+[Units Amounts Libraries - GitHub]: https://github.com/atecoder/units-amounts
 [Rudi Breedenraedt]: https://www.codeproject.com/Articles/611731/Working-with-Units-and-Amounts
 
 [IDE Repository]: https://www.bitbucket.org/davidhary/vs.ide

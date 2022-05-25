@@ -10,7 +10,6 @@
     <IsPackable>true</IsPackable>
     <PackageId>Arebis.UnitsAmounts</PackageId>
     <PackageTags>strongly typed units amounts</PackageTags>
-    <PackageOutputPath>C:\my\nuget</PackageOutputPath>
     <!-- Assembly Info -->
     <Description>Strongly typed units and amounts</Description>
     <!-- Documentation -->
