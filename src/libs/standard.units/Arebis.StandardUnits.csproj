@@ -45,4 +45,22 @@
     <CodeAnalysisDictionary Include="..\..\items\UnitsDix.xml" Link="Properties\UnitsDix.xml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Version.build.props">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>version.build.tt</DependentUpon>
+    </None>
+    <None Update="version.build.tt">
+      <LastGenOutput>version.build.props</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+  </ItemGroup>
+
+  <Import Project="Version.build.props" />
+    
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
 </Project>
