@@ -1,4 +1,33 @@
 <Project>
+
+  <PropertyGroup>
+    <DefineConstants>$(DefineConstants);TRACE;PROJREF_;PACK;GitHub;</DefineConstants>
+  </PropertyGroup>
+ 
+  <PropertyGroup Condition="$(DefineConstants.Contains(';PACK;'))" >
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <ItemGroup Condition="$(DefineConstants.Contains(';PACK;GitHub_;'))" >
+    <PackageReference Include="Microsoft.SourceLink.Bitbucket.Git" Version="1.1.1" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(DefineConstants.Contains(';PACK;GitHub;'))" >
+    <PackageReference Include="Microsoft.SourceLink.GitHub.Git" Version="1.1.1" PrivateAssets="All" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="$(DefineConstants.Contains(';GitHub;'))" >
+    <PackageProjectUrl>https://github.com/atecoder/units_amounts</PackageProjectUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="$(DefineConstants.Contains(';GitHub_;'))" >
+    <PackageProjectUrl>https://bitbucket.org/davidhary/dn.UnitsAmounts</PackageProjectUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Label="BasePath">
+    <!-- This fixed missing property when using from dotnet cli -->
+    <SolutionDir Condition="'$(SolutionDir)'==''">$(MSBuildThisFileDirectory)..\..\</SolutionDir>
+  </PropertyGroup>
   
   <PropertyGroup>
     <Datestamp>$([System.DateTime]::UtcNow.ToString("yyyy-MM-dd"))</Datestamp>
@@ -15,13 +44,12 @@
 
   <PropertyGroup>
     <!-- NuGet -->
-    <PackageProjectUrl>https://bitbucket.org/davidhary/dn.UnitsAmounts</PackageProjectUrl>
 	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 	<RepositoryUrl>$(PackageProjectUrl)</RepositoryUrl>
 	<RepositoryType>Git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>ms-icon-70x70.png</PackageIcon>
-    <PackageOutputDir>c:\my\nuget</PackageOutputDir>
+    <PackageOutputDir>..\..\.nuget\artifacts</PackageOutputDir>
     <PackageOwners>Integrated Scientific Resources, Inc.</PackageOwners>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <IncludeSymbols>true</IncludeSymbols>
@@ -30,18 +58,6 @@
 
   <ItemGroup>
     <PackageReference Include="SourceLink.Copy.PdbFiles" Version="2.8.3" PrivateAssets="All" />
-  </ItemGroup>
-
-  <PropertyGroup>
-    <DefineConstants>$(DefineConstants);TRACE;PROJREF_;PACK_;</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="$(DefineConstants.Contains(';PACK;'))" >
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-  </PropertyGroup>
-
-  <ItemGroup Condition="$(DefineConstants.Contains(';PACK;'))" >
-    <PackageReference Include="Microsoft.SourceLink.Bitbucket.Git" Version="1.1.1" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
