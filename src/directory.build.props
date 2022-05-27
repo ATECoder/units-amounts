@@ -8,19 +8,21 @@
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
 
+  <ItemGroup Condition="$(DefineConstants.Contains(';PACK;GitHub;'))" >
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="$(DefineConstants.Contains(';GitHub;'))" >
+	<GitRepositoryRemoteName>hub</GitRepositoryRemoteName>
+    <PackageProjectUrl>https://github.com/AteCoder/units-amounts</PackageProjectUrl>
+  </PropertyGroup>
+
   <ItemGroup Condition="$(DefineConstants.Contains(';PACK;GitHub_;'))" >
     <PackageReference Include="Microsoft.SourceLink.Bitbucket.Git" Version="1.1.1" PrivateAssets="All" />
   </ItemGroup>
 
-  <ItemGroup Condition="$(DefineConstants.Contains(';PACK;GitHub;'))" >
-    <PackageReference Include="Microsoft.SourceLink.GitHub.Git" Version="1.1.1" PrivateAssets="All" />
-  </ItemGroup>
-
-  <PropertyGroup Condition="$(DefineConstants.Contains(';GitHub;'))" >
-    <PackageProjectUrl>https://github.com/atecoder/units_amounts</PackageProjectUrl>
-  </PropertyGroup>
-
   <PropertyGroup Condition="$(DefineConstants.Contains(';GitHub_;'))" >
+	<GitRepositoryRemoteName>origin</GitRepositoryRemoteName>
     <PackageProjectUrl>https://bitbucket.org/davidhary/dn.UnitsAmounts</PackageProjectUrl>
   </PropertyGroup>
 
