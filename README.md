@@ -1,8 +1,19 @@
-# Units and Amounts Libraries
+# Units and Amounts
+
+[![TBA: Units Amounts](https://github.com/AteCoder/units-amounts/actions/workflows/ci.yaml/badge.svg)](https://github.com/AteCoder/units-amounts/actions/workflows/ci.yaml)
+[![](https://img.shields.io/nuget/dt/arebis.unitsamounts?color=004880&label=downloads&logo=NuGet)](https://www.nuget.org/packages/Arebis.UnitsAmounts/)
+[![](https://img.shields.io/nuget/vpre/arebis.unitsamounts?color=%23004880&label=NuGet&logo=nuget)](https://www.nuget.org/packages/Arebis.UnitsAmounts/)
+[![GitHub](https://img.shields.io/github/license/AteCoder/units-amounts?color=%231281c0)](LICENSE)
+
+[![TBA: Standard Units](https://github.com/AteCoder/units-amounts/actions/workflows/ci.yaml/badge.svg)](https://github.com/AteCoder/units-amounts/actions/workflows/ci.yaml)
+[![](https://img.shields.io/nuget/dt/arebis.unitsamounts.standard.units?color=004880&label=downloads&logo=NuGet)](https://www.nuget.org/packages/Arebis.UnitsAmounts/)
+[![](https://img.shields.io/nuget/vpre/arebis.unitsamounts.standard.units?color=%23004880&label=NuGet&logo=nuget)](https://www.nuget.org/packages/Arebis.UnitsAmounts/)
+[![GitHub](https://img.shields.io/github/license/AteCoder/units-amounts?color=%231281c0)](LICENSE)
+
 Libraries for implementing strongly typed units and amounts.
 
 * [Source Code](#Source-Code)
-* [License](LICENSE.md)
+* [License](LICENSE)
 * [Change Log](CHANGELOG.md)
 * [Facilitated By](#FacilitatedBy)
 * [Repository Owner](#Repository-Owner)
@@ -54,13 +65,6 @@ xcopy /Y %vslib%\core\ide\code\.runsettings %userprofile%\.runsettings
 ```
 where %userprofile% is the root user folder.
 
-#### Packages
-Presently, packages are consumed from a _source feed_ residing in a local folder, e.g., _%my%\nuget\packages_. 
-The packages are 'packed', using the _Pack_ command from each packable project,
-into the _%my%\nuget_ folder as specified in the project file and then
-added to the source feed. Alternatively, the packages can be downloaded from the 
-private [MEGA packages folder].
-
 <a name="FacilitatedBy"></a>
 ## Facilitated By
 * [Visual Studio]
@@ -101,7 +105,6 @@ at the following sites:
 ### Closed software
 None
 
-[MEGA packages folder]: https://mega.nz/folder/KEcVxC5a#GYnmvMcwP4yI4tsocD31Pg
 [Arebis Units Amounts]: https://www.codeproject.com/Articles/611731/Working-with-Units-and-Amounts
 [Units Amounts Libraries - Bitbucket]: https://bitbucket.org/davidhary/dn.UnitsAmounts
 [Units Amounts Libraries - GitHub]: https://github.com/atecoder/units-amounts
