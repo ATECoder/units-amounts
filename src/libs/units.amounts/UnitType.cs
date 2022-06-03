@@ -17,11 +17,11 @@ namespace Arebis.UnitsAmounts
     {
 
         /// <summary>   The base unit indices. </summary>
-        private readonly sbyte[] _BaseUnitIndices;
+        private readonly sbyte[] _baseUnitIndices;
 
         /// <summary>   The cached hash code. </summary>
         [NonSerialized]
-        private int _CachedHashCode;
+        private int _cachedHashCode;
 
         #region " CONSTRUCTION "
 
@@ -36,36 +36,36 @@ namespace Arebis.UnitsAmounts
         public UnitType( string unitTypeName )
         {
             var unitIndex = GetBaseUnitIndex( unitTypeName );
-            this._BaseUnitIndices = new sbyte[unitIndex + 1];
-            this._BaseUnitIndices[unitIndex] = 1;
+            this._baseUnitIndices = new sbyte[unitIndex + 1];
+            this._baseUnitIndices[unitIndex] = 1;
         }
 
         /// <summary>   Constructor. </summary>
         /// <remarks>   David, 2021-03-22. </remarks>
         /// <param name="indicesLength">    Length of the indices. </param>
-        private UnitType( int indicesLength ) => this._BaseUnitIndices = new sbyte[indicesLength];
+        private UnitType( int indicesLength ) => this._baseUnitIndices = new sbyte[indicesLength];
 
         /// <summary>   Constructor. </summary>
         /// <remarks>   David, 2021-03-22. </remarks>
         /// <param name="baseUnitIndices">  The base unit indices. </param>
-        private UnitType( sbyte[] baseUnitIndices ) => this._BaseUnitIndices = ( sbyte[] ) baseUnitIndices.Clone();
+        private UnitType( sbyte[] baseUnitIndices ) => this._baseUnitIndices = ( sbyte[] ) baseUnitIndices.Clone();
 
         /// <summary>   Type of the none unit. </summary>
-        private static readonly UnitType NoneUnitType = new( 0 );
+        private static readonly UnitType _noneUnitType = new( 0 );
 
         /// <summary>   Gets the none. </summary>
         /// <value> The none. </value>
-        public static UnitType None => UnitType.NoneUnitType;
+        public static UnitType None => UnitType._noneUnitType;
 
         #endregion
 
         #region " UNIT TYPE BASE UNITS "
 
         /// <summary>   The base unit type lock. </summary>
-        private static readonly ReaderWriterLock BaseUnitTypeLock = new();
+        private static readonly ReaderWriterLock _baseUnitTypeLock = new();
 
         /// <summary>   List of names of the base unit types. </summary>
-        private static readonly IList<string> BaseUnitTypeNames = new List<string>();
+        private static readonly IList<string> _baseUnitTypeNames = new List<string>();
 
         /// <summary>   Gets base unit name. </summary>
         /// <remarks>   David, 2021-03-22. </remarks>
@@ -74,16 +74,16 @@ namespace Arebis.UnitsAmounts
         private static string GetBaseUnitName( int index )
         {
             // Lock baseUnitTypeNames:
-            BaseUnitTypeLock.AcquireReaderLock( 2000 );
+            _baseUnitTypeLock.AcquireReaderLock( 2000 );
 
             try
             {
-                return BaseUnitTypeNames[index];
+                return _baseUnitTypeNames[index];
             }
             finally
             {
                 // Release lock:
-                BaseUnitTypeLock.ReleaseReaderLock();
+                _baseUnitTypeLock.ReleaseReaderLock();
             }
         }
 
@@ -102,19 +102,19 @@ namespace Arebis.UnitsAmounts
             }
 
             // Lock baseUnitTypeNames:
-            BaseUnitTypeLock.AcquireReaderLock( 2000 );
+            _baseUnitTypeLock.AcquireReaderLock( 2000 );
 
             try
             {
                 // Retrieve index of unitTypeName:
-                var index = BaseUnitTypeNames.IndexOf( unitTypeName );
+                var index = _baseUnitTypeNames.IndexOf( unitTypeName );
 
                 // If not found, register unitTypeName:
                 if ( index == -1 )
                 {
-                    _ = BaseUnitTypeLock.UpgradeToWriterLock( 2000 );
-                    index = BaseUnitTypeNames.Count;
-                    BaseUnitTypeNames.Add( unitTypeName );
+                    _ = _baseUnitTypeLock.UpgradeToWriterLock( 2000 );
+                    index = _baseUnitTypeNames.Count;
+                    _baseUnitTypeNames.Add( unitTypeName );
                 }
 
                 // Return index:
@@ -123,7 +123,7 @@ namespace Arebis.UnitsAmounts
             finally
             {
                 // Release lock:
-                _ = BaseUnitTypeLock.ReleaseLock();
+                _ = _baseUnitTypeLock.ReleaseLock();
             }
         }
 
@@ -137,10 +137,10 @@ namespace Arebis.UnitsAmounts
         /// <returns>   An UnitType. </returns>
         public UnitType Power( int value )
         {
-            var result = new UnitType( this._BaseUnitIndices );
-            for ( var i = 0; i < result._BaseUnitIndices.Length; i++ )
+            var result = new UnitType( this._baseUnitIndices );
+            for ( var i = 0; i < result._baseUnitIndices.Length; i++ )
             {
-                result._BaseUnitIndices[i] = ( sbyte ) (result._BaseUnitIndices[i] * value);
+                result._baseUnitIndices[i] = ( sbyte ) (result._baseUnitIndices[i] * value);
             }
 
             return result;
@@ -177,17 +177,17 @@ namespace Arebis.UnitsAmounts
             }
             // Determine longest and shortest baseUnitUndice arrays:
             sbyte[] longest, shortest;
-            var leftlen = this._BaseUnitIndices.Length;
-            var rightlen = other._BaseUnitIndices.Length;
+            var leftlen = this._baseUnitIndices.Length;
+            var rightlen = other._baseUnitIndices.Length;
             if ( leftlen > rightlen )
             {
-                longest = this._BaseUnitIndices;
-                shortest = other._BaseUnitIndices;
+                longest = this._baseUnitIndices;
+                shortest = other._baseUnitIndices;
             }
             else
             {
-                longest = other._BaseUnitIndices;
-                shortest = this._BaseUnitIndices;
+                longest = other._baseUnitIndices;
+                shortest = this._baseUnitIndices;
             }
 
             // Compare baseUnitIndice array content:
@@ -215,17 +215,17 @@ namespace Arebis.UnitsAmounts
         /// <returns>   A hash code for the current object. </returns>
         public override int GetHashCode()
         {
-            if ( this._CachedHashCode == 0 )
+            if ( this._cachedHashCode == 0 )
             {
                 var hash = 0;
-                for ( var i = 0; i < this._BaseUnitIndices.Length; i++ )
+                for ( var i = 0; i < this._baseUnitIndices.Length; i++ )
                 {
                     var factor = i + i + 1;
-                    hash += factor * factor * this._BaseUnitIndices[i] * this._BaseUnitIndices[i];
+                    hash += factor * factor * this._baseUnitIndices[i] * this._baseUnitIndices[i];
                 }
-                this._CachedHashCode = hash;
+                this._cachedHashCode = hash;
             }
-            return this._CachedHashCode;
+            return this._cachedHashCode;
         }
 
         /// <summary>   Returns a string that represents the current object. </summary>
@@ -235,14 +235,14 @@ namespace Arebis.UnitsAmounts
         {
             var sb = new StringBuilder();
             var sep = "";
-            for ( var i = 0; i < this._BaseUnitIndices.Length; i++ )
+            for ( var i = 0; i < this._baseUnitIndices.Length; i++ )
             {
-                if ( this._BaseUnitIndices[i] != 0 )
+                if ( this._baseUnitIndices[i] != 0 )
                 {
                     _ = sb.Append( sep );
                     _ = sb.Append( GetBaseUnitName( i ) );
                     _ = sb.Append( '^' );
-                    _ = sb.Append( this._BaseUnitIndices[i] );
+                    _ = sb.Append( this._baseUnitIndices[i] );
                     sep = " * ";
                 }
             }
@@ -260,11 +260,11 @@ namespace Arebis.UnitsAmounts
         /// <returns>   The result of the operation. </returns>
         public static UnitType operator *( UnitType left, UnitType right )
         {
-            var result = new UnitType( Math.Max( left._BaseUnitIndices.Length, right._BaseUnitIndices.Length ) );
-            left._BaseUnitIndices.CopyTo( result._BaseUnitIndices, 0 );
-            for ( var i = 0; i < right._BaseUnitIndices.Length; i++ )
+            var result = new UnitType( Math.Max( left._baseUnitIndices.Length, right._baseUnitIndices.Length ) );
+            left._baseUnitIndices.CopyTo( result._baseUnitIndices, 0 );
+            for ( var i = 0; i < right._baseUnitIndices.Length; i++ )
             {
-                result._BaseUnitIndices[i] += right._BaseUnitIndices[i];
+                result._baseUnitIndices[i] += right._baseUnitIndices[i];
             }
 
             return result;
@@ -277,11 +277,11 @@ namespace Arebis.UnitsAmounts
         /// <returns>   The result of the operation. </returns>
         public static UnitType operator /( UnitType left, UnitType right )
         {
-            var result = new UnitType( Math.Max( left._BaseUnitIndices.Length, right._BaseUnitIndices.Length ) );
-            left._BaseUnitIndices.CopyTo( result._BaseUnitIndices, 0 );
-            for ( var i = 0; i < right._BaseUnitIndices.Length; i++ )
+            var result = new UnitType( Math.Max( left._baseUnitIndices.Length, right._baseUnitIndices.Length ) );
+            left._baseUnitIndices.CopyTo( result._baseUnitIndices, 0 );
+            for ( var i = 0; i < right._baseUnitIndices.Length; i++ )
             {
-                result._BaseUnitIndices[i] -= right._BaseUnitIndices[i];
+                result._baseUnitIndices[i] -= right._baseUnitIndices[i];
             }
 
             return result;
@@ -323,15 +323,15 @@ namespace Arebis.UnitsAmounts
             // Construct instance:
             if ( exponents.Length > 0 )
             {
-                this._BaseUnitIndices = new sbyte[baseUnitIndexes.Max() + 1];
+                this._baseUnitIndices = new sbyte[baseUnitIndexes.Max() + 1];
                 for ( var i = 0; i < exponents.Length; i++ )
                 {
-                    this._BaseUnitIndices[baseUnitIndexes[i]] = exponents[i];
+                    this._baseUnitIndices[baseUnitIndexes[i]] = exponents[i];
                 }
             }
             else
             {
-                this._BaseUnitIndices = Array.Empty<sbyte>();
+                this._baseUnitIndices = Array.Empty<sbyte>();
             }
         }
 
@@ -365,11 +365,11 @@ namespace Arebis.UnitsAmounts
             if ( info is object )
             {
                 var first = true;
-                var unitNames = new StringBuilder( this._BaseUnitIndices.Length * 8 );
-                var unitExponents = new StringBuilder( this._BaseUnitIndices.Length * 4 );
-                for ( var i = 0; i < this._BaseUnitIndices.Length; i++ )
+                var unitNames = new StringBuilder( this._baseUnitIndices.Length * 8 );
+                var unitExponents = new StringBuilder( this._baseUnitIndices.Length * 4 );
+                for ( var i = 0; i < this._baseUnitIndices.Length; i++ )
                 {
-                    if ( this._BaseUnitIndices[i] != 0 )
+                    if ( this._baseUnitIndices[i] != 0 )
                     {
                         if ( !first )
                         {
@@ -382,7 +382,7 @@ namespace Arebis.UnitsAmounts
                             _ = unitExponents.Append( '|' );
                         }
 
-                        _ = unitExponents.Append( this._BaseUnitIndices[i] );
+                        _ = unitExponents.Append( this._baseUnitIndices[i] );
                         first = false;
                     }
                 }

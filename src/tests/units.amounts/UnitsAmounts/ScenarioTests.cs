@@ -9,13 +9,13 @@ namespace Arebis.UnitsAmounts.ScenarioTests
     {
         #region " Initialize & cleanup "
 
-        private UnitManager _DefaultUnitManager;
+        private UnitManager _defaultUnitManager;
 
         [TestInitialize()]
         public void MyTestInitialize()
         {
             Console.Write( "Resetting the Unit Manager instance..." );
-            this._DefaultUnitManager = UnitManager.Instance;
+            this._defaultUnitManager = UnitManager.Instance;
             UnitManager.Instance = new UnitManager();
             UnitManager.RegisterByAssembly( typeof( LengthUnits ).Assembly );
             Console.WriteLine( " done." );
@@ -24,7 +24,7 @@ namespace Arebis.UnitsAmounts.ScenarioTests
         [TestCleanup()]
         public void MyTestCleanup()
         {
-            UnitManager.Instance = this._DefaultUnitManager;
+            UnitManager.Instance = this._defaultUnitManager;
         }
 
         #endregion Initialize & cleanup

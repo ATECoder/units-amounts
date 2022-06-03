@@ -80,14 +80,14 @@ namespace Arebis.UnitsAmounts
         #region " PUBLIC IMPLEMENTATION "
 
         /// <summary>   The equality precision. </summary>
-        private static int _EqualityPrecision = 8;
+        private static int _equalityPrecision = 8;
 
         /// <summary>   The precision to which two amounts are considered equal. </summary>
         /// <value> The equality precision. </value>
         public static int EqualityPrecision
         {
-            get => Amount._EqualityPrecision;
-            set => Amount._EqualityPrecision = value;
+            get => Amount._equalityPrecision;
+            set => Amount._equalityPrecision = value;
         }
 
         /// <summary>   Gets or sets the raw value of the amount. </summary>
@@ -238,8 +238,8 @@ namespace Arebis.UnitsAmounts
             // Check value:
             try
             {
-                return Math.Round( this.Value, Amount._EqualityPrecision )
-                    == Math.Round( other.ConvertedTo( this.Unit ).Value, Amount._EqualityPrecision );
+                return Math.Round( this.Value, Amount._equalityPrecision )
+                    == Math.Round( other.ConvertedTo( this.Unit ).Value, Amount._equalityPrecision );
             }
             catch ( UnitConversionException e )
             {
