@@ -28,49 +28,57 @@ namespace Arebis.UnitsAmounts
     /// </remarks>
     public sealed class UnitManager
     {
-        #region Fields
+        #region " Fields "
 
         /// <summary>   The instance. </summary>
-        private static UnitManager _Instance;
+        private static UnitManager _instance;
 
-        /// <summary>   Stores for named units: </summary>
-        private readonly List<Unit> _AllUnits = new();
+        /// <summary>   Holds the named units: </summary>
+        private readonly List<Unit> _allUnits = new();
 
-        /// <summary>   Type of the units by. </summary>
-        private readonly Dictionary<UnitType, List<Unit>> _UnitsByType = new();
+        /// <summary>   Holds the units keyed by type. </summary>
+        private readonly Dictionary<UnitType, List<Unit>> _unitsByType = new();
 
         /// <summary>
-        /// DH: set the dictionary to ignore case on name but not on symbol (e.g., difference between
-        /// Mega Ohm and Milli Ohm)
+        /// Holds the units keyed by unit name (ignored case).
         /// </summary>
-        private readonly Dictionary<string, Unit> _UnitsByName = new( StringComparer.OrdinalIgnoreCase );
-        /// <summary>   The units by symbol. </summary>
-        private readonly Dictionary<string, Unit> _UnitsBySymbol = new();
+        /// <remarks> This dictionary ignores case on the unit name key but not on symbol (e.g., difference between
+        /// Mega Ohm and Milli Ohm)
+        /// </remarks>
+        private readonly Dictionary<string, Unit> _unitsByName = new( StringComparer.OrdinalIgnoreCase );
 
-        /// <summary>   Store for conversion functions: </summary>
-        private readonly Dictionary<UnitConversionKeySlot, UnitConversionValueSlot> _Conversions = new();
+        /// <summary>
+        /// Holds the units keyed by unit symbol.
+        /// </summary>
+        /// <remarks> This dictionary does not ignore on symbol (e.g., difference between
+        /// Mega Ohm and Milli Ohm)
+        /// </remarks>
+        private readonly Dictionary<string, Unit> _unitsBySymbol = new();
+
+        /// <summary>   Holds the conversion keyed by <see cref="UnitConversionKeySlot"/>. </summary>
+        private readonly Dictionary<UnitConversionKeySlot, UnitConversionValueSlot> _conversions = new();
 
         #endregion Fields
 
-        #region Public properties
+        #region " Public properties "
 
         /// <summary>   The instance of the currently used UnitManager. </summary>
         /// <value> The instance. </value>
         public static UnitManager Instance
         {
             get {
-                if ( UnitManager._Instance == null )
+                if ( UnitManager._instance == null )
                 {
-                    UnitManager._Instance = new UnitManager();
+                    UnitManager._instance = new UnitManager();
                 }
-                return UnitManager._Instance;
+                return UnitManager._instance;
             }
-            set => UnitManager._Instance = value;
+            set => UnitManager._instance = value;
         }
 
         #endregion Public properties
 
-        #region Public methods - Registrations
+        #region " Public methods - Registrations "
 
         /// <summary>
         /// Registers both units and conversions based on the assemblies public types marked with
@@ -95,7 +103,7 @@ namespace Arebis.UnitsAmounts
         /// <param name="toUnit">               The unit to which this conversion function allows
         ///                                     conversion to. </param>
         /// <param name="conversionFunction">   The unit conversion function. </param>
-        public static void RegisterConversion( Unit fromUnit, Unit toUnit, ConversionFunction conversionFunction ) => Instance._Conversions[new UnitConversionKeySlot( fromUnit, toUnit )] = new UnitConversionValueSlot( fromUnit, toUnit, conversionFunction );
+        public static void RegisterConversion( Unit fromUnit, Unit toUnit, ConversionFunction conversionFunction ) => Instance._conversions[new UnitConversionKeySlot( fromUnit, toUnit )] = new UnitConversionValueSlot( fromUnit, toUnit, conversionFunction );
 
         /// <summary>
         /// Registers a set of conversion functions by executing all public static void methods of the
@@ -165,7 +173,7 @@ namespace Arebis.UnitsAmounts
             }
 
             // Check if unit already registered:
-            foreach ( var u in Instance._AllUnits )
+            foreach ( var u in Instance._allUnits )
             {
                 if ( Unit.Equals( u, unit ) )
                 {
@@ -174,34 +182,34 @@ namespace Arebis.UnitsAmounts
             }
 
             // Register unit in allUnits:
-            Instance._AllUnits.Add( unit );
+            Instance._allUnits.Add( unit );
 
             // Register unit in unitsByType:
-            if ( Instance._UnitsByType.ContainsKey( unit.UnitType ) )
+            if ( Instance._unitsByType.ContainsKey( unit.UnitType ) )
             {
-                Instance._UnitsByType[unit.UnitType].Add( unit );
+                Instance._unitsByType[unit.UnitType].Add( unit );
             }
             else
             {
-                Instance._UnitsByType.Add( unit.UnitType, new List<Unit>() );
-                Instance._UnitsByType[unit.UnitType] = new List<Unit>
+                Instance._unitsByType.Add( unit.UnitType, new List<Unit>() );
+                Instance._unitsByType[unit.UnitType] = new List<Unit>
                 {
                     unit
                 };
             }
             // Register unit by name and symbol:
-            if ( !Instance._UnitsByName.ContainsKey( unit.Name ) )
+            if ( !Instance._unitsByName.ContainsKey( unit.Name ) )
             {
-                Instance._UnitsByName.Add( unit.Name, unit );
+                Instance._unitsByName.Add( unit.Name, unit );
             }
 
-            if ( !Instance._UnitsBySymbol.ContainsKey( unit.Symbol ) )
+            if ( !Instance._unitsBySymbol.ContainsKey( unit.Symbol ) )
             {
-                Instance._UnitsBySymbol.Add( unit.Symbol, unit );
+                Instance._unitsBySymbol.Add( unit.Symbol, unit );
             }
 
-            Instance._UnitsByName[unit.Name] = unit;
-            Instance._UnitsBySymbol[unit.Symbol] = unit;
+            Instance._unitsByName[unit.Name] = unit;
+            Instance._unitsBySymbol[unit.Symbol] = unit;
         }
 
         /// <summary>   Register all public static fields of type Unit of the given class. </summary>
@@ -251,7 +259,7 @@ namespace Arebis.UnitsAmounts
 
         #endregion Public methods - Registrations
 
-        #region Public methods - Named units
+        #region " Public methods - Named units "
 
         /// <summary>
         /// Retrieves the unit based on its name. If the unit is not found, a UnitResolve event is fired
@@ -265,7 +273,7 @@ namespace Arebis.UnitsAmounts
         public static Unit GetUnitByName( string name )
         {
             // Try resolve unit by unitsByName:
-            _ = Instance._UnitsByName.TryGetValue( name, out var result );
+            _ = Instance._unitsByName.TryGetValue( name, out var result );
 
             // Try resolve unit by UnitResolve event:
             if ( result is null )
@@ -276,7 +284,7 @@ namespace Arebis.UnitsAmounts
 
                     {
                         result = handler( Instance, new ResolveEventArgs( name ) );
-                        if ( !(result is null) )
+                        if ( result is not null )
                         {
                             RegisterUnit( result );
                             break;
@@ -308,7 +316,7 @@ namespace Arebis.UnitsAmounts
         public static Unit GetUnitBySymbol( string symbol )
         {
             // Try resolve unit by unitsBySymbol:
-            _ = Instance._UnitsBySymbol.TryGetValue( symbol, out var result );
+            _ = Instance._unitsBySymbol.TryGetValue( symbol, out var result );
 
             // Throw exception if unit resolution failed:
             if ( result is null )
@@ -324,24 +332,24 @@ namespace Arebis.UnitsAmounts
         /// <summary>   Returns the unit types for which one or more units are registered. </summary>
         /// <remarks>   David, 2021-03-22. </remarks>
         /// <returns>   The unit types. </returns>
-        public static ICollection<UnitType> GetUnitTypes() => Instance._UnitsByType.Keys;
+        public static ICollection<UnitType> GetUnitTypes() => Instance._unitsByType.Keys;
 
         /// <summary>   Returns all registered units. </summary>
         /// <remarks>   David, 2021-03-22. </remarks>
         /// <returns>   The units. </returns>
-        public static IList<Unit> GetUnits() => Instance._AllUnits;
+        public static IList<Unit> GetUnits() => Instance._allUnits;
 
         /// <summary>   Whether the given unit is already registered to the UnitManager. </summary>
         /// <remarks>   David, 2021-03-22. </remarks>
         /// <param name="unit"> The unit for which to find a registered match. </param>
         /// <returns>   True if registered, false if not. </returns>
-        public static bool IsRegistered( Unit unit ) => Instance._AllUnits.Contains( unit );
+        public static bool IsRegistered( Unit unit ) => Instance._allUnits.Contains( unit );
 
         /// <summary>   Returns all registered units of the given type. </summary>
         /// <remarks>   David, 2021-03-22. </remarks>
         /// <param name="unitType"> Type of the unit. </param>
         /// <returns>   The units. </returns>
-        public static IList<Unit> GetUnits( UnitType unitType ) => Instance._UnitsByType[unitType];
+        public static IList<Unit> GetUnits( UnitType unitType ) => Instance._unitsByType[unitType];
 
         /// <summary>   Returns a registered unit that matches the given unit. </summary>
         /// <remarks>
@@ -367,9 +375,9 @@ namespace Arebis.UnitsAmounts
             }
 
             var factor = unit.Factor;
-            if ( Instance._UnitsByType.ContainsKey( unit.UnitType ) )
+            if ( Instance._unitsByType.ContainsKey( unit.UnitType ) )
             {
-                foreach ( var m in Instance._UnitsByType[unit.UnitType] )
+                foreach ( var m in Instance._unitsByType[unit.UnitType] )
                 {
                     if ( m.Factor == factor )
                     {
@@ -382,7 +390,7 @@ namespace Arebis.UnitsAmounts
 
         #endregion Public methods - Named units
 
-        #region Public methods - Unit conversions
+        #region " Public methods - Unit conversions "
 
         /// <summary>   Converts the given amount to the given unit. </summary>
         /// <remarks>   David, 2021-03-22. </remarks>
@@ -423,7 +431,7 @@ namespace Arebis.UnitsAmounts
                 else
                 {
                     var expectedSlot = new UnitConversionKeySlot( amount.Unit, toUnit );
-                    return Instance._Conversions[expectedSlot].Convert( amount ).ConvertedTo( toUnit );
+                    return Instance._conversions[expectedSlot].Convert( amount ).ConvertedTo( toUnit );
                 }
             }
             catch ( KeyNotFoundException )
@@ -434,15 +442,15 @@ namespace Arebis.UnitsAmounts
 
         #endregion Public methods - Unit conversions
 
-        #region Private classes to represent slots in conversion dictionary
+        #region " Private classes to represent slots in conversion dictionary "
 
         /// <summary>   Key slot in the internal conversions dictionary. </summary>
         /// <remarks>   David, 2021-03-22. </remarks>
         private class UnitConversionKeySlot
         {
-            /// <summary>   Gets the type of to. </summary>
+            /// <summary>   Gets the unit types to which or from which to convert. </summary>
             /// <value> The type of to. </value>
-            private readonly UnitType _FromType, _ToType;
+            private readonly UnitType _fromType, _toType;
 
             /// <summary>   Constructor. </summary>
             /// <remarks>   David, 2021-03-22. </remarks>
@@ -450,8 +458,8 @@ namespace Arebis.UnitsAmounts
             /// <param name="to">   to. </param>
             public UnitConversionKeySlot( Unit from, Unit to )
             {
-                this._FromType = from.UnitType;
-                this._ToType = to.UnitType;
+                this._fromType = from.UnitType;
+                this._toType = to.UnitType;
             }
 
             /// <summary>   Determines whether the specified object is equal to the current object. </summary>
@@ -464,13 +472,13 @@ namespace Arebis.UnitsAmounts
             public override bool Equals( object obj )
             {
                 var other = obj as UnitConversionKeySlot;
-                return (this._FromType == other._FromType) && (this._ToType == other._ToType);
+                return (this._fromType == other._fromType) && (this._toType == other._toType);
             }
 
             /// <summary>   Serves as the default hash function. </summary>
             /// <remarks>   David, 2021-03-22. </remarks>
             /// <returns>   A hash code for the current object. </returns>
-            public override int GetHashCode() => new Tuple<UnitType, UnitType>( this._FromType, this._ToType ).GetHashCode();
+            public override int GetHashCode() => ( this._fromType, this._toType ).GetHashCode();
 
         }
 
@@ -478,13 +486,15 @@ namespace Arebis.UnitsAmounts
         /// <remarks>   David, 2021-03-22. </remarks>
         private class UnitConversionValueSlot
         {
-            /// <summary>   Source for the. </summary>
-            private readonly Unit _From;
-            /// <summary>   to. </summary>
+            /// <summary>   The unit from which to convert. </summary>
+            private readonly Unit _from;
+
+            /// <summary>   The unit to which to convert. </summary>
             [System.Diagnostics.CodeAnalysis.SuppressMessage( "Code Quality", "IDE0052:Remove unread private members", Justification = "<Pending>" )]
-            private readonly Unit _To;
+            private readonly Unit _to;
+
             /// <summary>   The conversion function. </summary>
-            private readonly ConversionFunction _ConversionFunction;
+            private readonly ConversionFunction _conversionFunction;
 
             /// <summary>   Constructor. </summary>
             /// <remarks>   David, 2021-03-22. </remarks>
@@ -493,16 +503,16 @@ namespace Arebis.UnitsAmounts
             /// <param name="conversionFunction">   The conversion function. </param>
             public UnitConversionValueSlot( Unit from, Unit to, ConversionFunction conversionFunction )
             {
-                this._From = from;
-                this._To = to;
-                this._ConversionFunction = conversionFunction;
+                this._from = from;
+                this._to = to;
+                this._conversionFunction = conversionFunction;
             }
 
             /// <summary>   Converts the given amount. </summary>
             /// <remarks>   David, 2021-03-22. </remarks>
             /// <param name="amount">   The amount. </param>
             /// <returns>   An Amount. </returns>
-            public Amount Convert( Amount amount ) => this._ConversionFunction( amount.ConvertedTo( this._From ) );
+            public Amount Convert( Amount amount ) => this._conversionFunction( amount.ConvertedTo( this._from ) );
         }
 
         #endregion Private classes to represent slots in conversion dictionary	

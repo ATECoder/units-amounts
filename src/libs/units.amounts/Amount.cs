@@ -257,7 +257,7 @@ namespace Arebis.UnitsAmounts
         /// <summary>   Serves as a hash function for a particular type. </summary>
         /// <remarks>   David, 2021-03-22. </remarks>
         /// <returns>   A hash code for the current <see cref="T:System.Object" />. </returns>
-        public override int GetHashCode() => new Tuple<double, Unit>( this.Value, this.Unit ).GetHashCode();
+        public override int GetHashCode() => ( this.Value, this.Unit ).GetHashCode();
 
         /// <summary>
         /// Shows the default string representation of the amount. (The default format string is "GG").
