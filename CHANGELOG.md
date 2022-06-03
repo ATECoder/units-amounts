@@ -2,6 +2,9 @@
 All notable changes to these libraries will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
+## [2.0.8189] - 2022-06-03
+Use Tuples to implement GetHashCode().
+
 ## [2.0.8109] 2022-03-15
 Rename 'lib' to 'libs' folder and rebuild packages.
 
@@ -83,4 +86,4 @@ Created
 ### Fixed
 *<project name>*
 ```
-[2.0.8109]: https://bitbucket.org/davidhary/dn.unitsamounts/src/main/
+[2.0.8189]: https://github.com/atecoder/units-amounts/src/main/

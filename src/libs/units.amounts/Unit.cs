@@ -170,7 +170,7 @@ namespace Arebis.UnitsAmounts
         /// <summary>   Returns the hash code of this unit. </summary>
         /// <remarks>   David, 2021-03-22. </remarks>
         /// <returns>   A hash code for the current object. </returns>
-        public override int GetHashCode() => this.Factor.GetHashCode() ^ this.UnitType.GetHashCode();
+        public override int GetHashCode() => new Tuple<double, UnitType>( this.Factor, this.UnitType ).GetHashCode();
 
         /// <summary>   Returns a string representation of the unit. </summary>
         /// <remarks>   David, 2021-03-22. </remarks>

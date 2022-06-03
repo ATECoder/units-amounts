@@ -35,8 +35,10 @@ namespace Arebis.UnitsAmounts
 
         /// <summary>   Stores for named units: </summary>
         private readonly List<Unit> _AllUnits = new();
+
         /// <summary>   Type of the units by. </summary>
         private readonly Dictionary<UnitType, List<Unit>> _UnitsByType = new();
+
         /// <summary>
         /// DH: set the dictionary to ignore case on name but not on symbol (e.g., difference between
         /// Mega Ohm and Milli Ohm)
@@ -468,7 +470,8 @@ namespace Arebis.UnitsAmounts
             /// <summary>   Serves as the default hash function. </summary>
             /// <remarks>   David, 2021-03-22. </remarks>
             /// <returns>   A hash code for the current object. </returns>
-            public override int GetHashCode() => this._FromType.GetHashCode() ^ this._ToType.GetHashCode();
+            public override int GetHashCode() => new Tuple<UnitType, UnitType>( this._FromType, this._ToType ).GetHashCode();
+
         }
 
         /// <summary>   Value slot in the internal conversions dictionary. </summary>
