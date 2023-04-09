@@ -1,21 +1,52 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
-    <OutputType>Library</OutputType>
-    <AssemblyOriginatorKeyFile>..\..\items\keyPair.snk</AssemblyOriginatorKeyFile>
+    <LangVersion>latest</LangVersion>
+
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <AssemblyName>cc.isr.UnitsAmounts</AssemblyName>
+    <RootNamespace>cc.isr.UnitsAmounts</RootNamespace>
+
+    <!-- Display name -->
+    <ApplicationTitle>cc.isr.UnitsAmounts</ApplicationTitle>
+
+    <!-- App Identifier -->
+    <ApplicationId>cc.isr.units.amounts</ApplicationId>
+
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+
+    <!-- Coding -->
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>On</OptionStrict>
+    <OptionInfer>Off</OptionInfer>
+
+    <!-- Signature -->
     <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\items\keyPair.snk</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
     <NoWarn>1591</NoWarn>
+
     <!-- NuGet -->
     <IsPackable>true</IsPackable>
-    <PackageId>Arebis.UnitsAmounts</PackageId>
+    <PackageId>cc.isr.UnitsAmounts</PackageId>
     <PackageTags>strongly typed units amounts</PackageTags>
+    <PackageOutputPath>C:\my\nuget</PackageOutputPath>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+
     <!-- Assembly Info -->
     <Description>Strongly typed units and amounts</Description>
+
     <!-- Documentation -->
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
+
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,9 +54,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\..\items\ProductKey.cs" Link="Properties\ProductKey.cs" />
     <CodeAnalysisDictionary Include="..\..\items\Dix.xml" Link="Properties\Dix.xml" />
-    <None Include="..\..\items\keyPair.snk" Link="Properties\keyPair.snk" />
+    <None Include="..\..\items\keyPair.snk" Link="Properties\KeyPair.snk" />
+    <Compile Include="..\..\items\ProductKey.cs" Link="Properties\ProductKey.cs" />
+    <Compile Remove="Standard\*.cs" Condition="'$(TargetFramework)' == 'netstandard2.1'" />
   </ItemGroup>
 
   <ItemGroup>

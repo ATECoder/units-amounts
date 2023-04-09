@@ -79,14 +79,14 @@ The Continuous Integration and Deployment (CI/CD) Process consists of the follow
 ## CI/CD Passes
 
 The CI/CD actions thus consist of the following Passes:	
-* Pass 1: independent projects, e.g., Arebis.UnitAmounts;
+* Pass 1: independent projects, e.g., cc.isr.UnitAmounts;
 	* On Commit:
 		* Build and ran unit tests;
 		* Pack if unit tests passed;
 			* Note that Dependent projects may be pointing to an earlier package;
-* Pass 2: dependent projects, e.g., Arebis.StandardUnits;
+* Pass 2: dependent projects, e.g., cc.isr.UnitsAmounts.StandardUnits;
 	* Update package reference of related projects;
-		* e.g., reference to Arebis.UnitsAmounts in Arebis.StandardUnits;
+		* e.g., reference to cc.isr.UnitsAmounts in cc.isr.UnitsAmounts.StandardUnits;
 	* Commit to main;
 	* On Commit:
 		* Actions will run again on the independent and dependent project;
@@ -94,7 +94,7 @@ The CI/CD actions thus consist of the following Passes:
 		* Pack actions on dependent projects will generate new packages as necessary;
 * Pass 3: Unit test of packages (options):
 	* Update package reference of the duplicate test projects;
-		* e.g., package references in Arebis.UnitsAmounts.MSTest.Packages;
+		* e.g., package references in cc.isr.UnitsAmounts.MSTest.Packages;
 	* Commit to main;
 	* On Commit:
 		* Actions will run again on the test projects;

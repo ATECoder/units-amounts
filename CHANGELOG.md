@@ -2,6 +2,9 @@
 All notable changes to these libraries will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
+## [2.1.8499] - 2023-04-08
+Implement nullable. Change namespace to cc.isr.
+
 ## [2.0.8189] - 2022-06-03
 Use Tuples to implement GetHashCode().
 
@@ -86,4 +89,4 @@ Created
 ### Fixed
 *<project name>*
 ```
-[2.0.8189]: https://github.com/atecoder/units-amounts/src/main/
+[2.1.8499]: https://github.com/atecoder/units-amounts/src/main/

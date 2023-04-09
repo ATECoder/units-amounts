@@ -6,9 +6,9 @@
 <#@ output extension=".props" #>
 <Project>
   <PropertyGroup>
-    <AssemblyVersion>2.0.<#= this.BuildNumber #>.<#= this.RevisionNumber #></AssemblyVersion>
-    <FileVersion>2.0.<#= this.BuildNumber #>.<#= this.RevisionNumber #></FileVersion>
-    <Version>2.0.<#= this.BuildNumber #></Version>
+    <AssemblyVersion>2.1.<#= this.BuildNumber #>.<#= this.RevisionNumber #></AssemblyVersion>
+    <FileVersion>2.1.<#= this.BuildNumber #>.<#= this.RevisionNumber #></FileVersion>
+    <Version>2.1.<#= this.BuildNumber #></Version>
   </PropertyGroup>
 </Project>
 <#+

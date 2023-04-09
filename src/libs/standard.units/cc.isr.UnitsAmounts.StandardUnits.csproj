@@ -1,20 +1,52 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <AssemblyName>cc.isr.UnitsAmounts.StandardUnits</AssemblyName>
+    <RootNamespace>cc.isr.UnitsAmounts.StandardUnits</RootNamespace>
+
+    <!-- Display name -->
+    <ApplicationTitle>cc.isr.UnitsAmounts.StandardUnits</ApplicationTitle>
+
+    <!-- App Identifier -->
+    <ApplicationId>cc.isr.units.amounts.standard.units</ApplicationId>
+
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <OutputType>Library</OutputType>
+    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+
+    <!-- Coding -->
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>On</OptionStrict>
+    <OptionInfer>Off</OptionInfer>
+
+    <!-- Signature -->
     <SignAssembly>true</SignAssembly>
-    <NoWarn>1591</NoWarn>
     <AssemblyOriginatorKeyFile>..\..\items\keyPair.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+    <NoWarn>1591</NoWarn>
+
     <!-- NuGet -->
     <IsPackable>true</IsPackable>
-    <PackageId>Arebis.UnitsAmounts.Standard.Units</PackageId>
-    <Description>Strongly typed units and amounts and standard units</Description>
+    <PackageId>cc.isr.UnitsAmounts.StandardUnits</PackageId>
     <PackageTags>strongly typed units amounts</PackageTags>
+    <PackageOutputPath>C:\my\nuget</PackageOutputPath>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+
+    <!-- Assembly Info -->
+    <Description>Strongly typed units and amounts and standard units</Description>
+
     <!-- Documentation -->
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
+
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,27 +54,28 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <DefineConstants>$(DefineConstants);MYPROJREF_;</DefineConstants>
+    <DefineConstants>$(DefineConstants);MYPROJREF;</DefineConstants>
   </PropertyGroup>
 
   <Choose>
     <When Condition="$(DefineConstants.Contains(';PROJREF;')) OR $(DefineConstants.Contains(';MYPROJREF;'))">
       <ItemGroup>
-        <ProjectReference Include="..\units.amounts\Arebis.UnitsAmounts.csproj" />
+        <ProjectReference Include="..\units.amounts\cc.isr.UnitsAmounts.csproj" />
       </ItemGroup>
     </When>
     <Otherwise>
 	  <ItemGroup>
-		<PackageReference Include="Arebis.UnitsAmounts" Version="2.0.8109" />
+		<PackageReference Include="cc.isr.UnitsAmounts" Version="2.0.8109" />
 	  </ItemGroup>
     </Otherwise>
   </Choose>
  
   <ItemGroup>
-    <Compile Include="..\..\items\ProductKey.cs" Link="Properties\ProductKey.cs" />
-    <None Include="..\..\items\keyPair.snk" Link="Properties\KeyPair.snk" />
     <CodeAnalysisDictionary Include="..\..\items\Dix.xml" Link="Properties\Dix.xml" />
     <CodeAnalysisDictionary Include="..\..\items\UnitsDix.xml" Link="Properties\UnitsDix.xml" />
+    <None Include="..\..\items\keyPair.snk" Link="Properties\KeyPair.snk" />
+    <Compile Include="..\..\items\ProductKey.cs" Link="Properties\ProductKey.cs" />
+    <Compile Remove="Standard\*.cs" Condition="'$(TargetFramework)' == 'netstandard2.1'" />
   </ItemGroup>
 
   <ItemGroup>

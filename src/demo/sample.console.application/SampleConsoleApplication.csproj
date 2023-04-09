@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\libs\standard.units\Arebis.StandardUnits.csproj" />
+    <ProjectReference Include="..\..\libs\standard.units\cc.isr.UnitsAmounts.StandardUnits.csproj" />
   </ItemGroup>
 
 </Project>

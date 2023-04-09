@@ -3,23 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Arebis.UnitsAmounts", "libs\units.amounts\Arebis.UnitsAmounts.csproj", "{CE5F2F79-9828-49EA-8C59-CAE7994E66F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cc.isr.UnitsAmounts", "libs\units.amounts\cc.isr.UnitsAmounts.csproj", "{CE5F2F79-9828-49EA-8C59-CAE7994E66F8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Arebis.StandardUnits", "libs\standard.units\Arebis.StandardUnits.csproj", "{1678E1C3-ED10-426E-94CB-183711D59711}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cc.isr.UnitsAmounts.StandardUnits", "libs\standard.units\cc.isr.UnitsAmounts.StandardUnits.csproj", "{1678E1C3-ED10-426E-94CB-183711D59711}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "`Items", "`Items", "{F46C3C56-DF89-4A70-8C87-3195305A72AB}"
 	ProjectSection(SolutionItems) = preProject
-		Arebis.UnitsAmounts.sln.vsspell = Arebis.UnitsAmounts.sln.vsspell
 		..\CHANGELOG.md = ..\CHANGELOG.md
 		directory.build.props = directory.build.props
 		..\README.md = ..\README.md
 		Items\version.build.bat = Items\version.build.bat
 		items\version.build.props = items\version.build.props
+		items\version.build.tt = items\version.build.tt
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleConsoleApplication", "demo\sample.console.application\SampleConsoleApplication.csproj", "{ECDA4450-16CA-4BF7-9FBF-7F27AEDF4D66}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Arebis.UnitsAmounts.MSTest", "tests\units.amounts\Arebis.UnitsAmounts.MSTest.csproj", "{2A945DC9-6151-425A-A779-D38834A87273}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cc.isr.UnitsAmounts.MSTest", "tests\units.amounts\cc.isr.UnitsAmounts.MSTest.csproj", "{2A945DC9-6151-425A-A779-D38834A87273}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitsAmountsPackagesDemo", "demo\packages.demo\UnitsAmountsPackagesDemo.csproj", "{C6891A31-EF39-4AA9-A735-A407A30619FC}"
 EndProject

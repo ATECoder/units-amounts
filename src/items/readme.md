@@ -1,6 +1,6 @@
 # About
 
-Arebis.UnitsAmounts is a .Net library for implementing strongly typed units and amounts.
+cc.isr.UnitsAmounts is a .Net library for implementing strongly typed units and amounts.
 
 More information is to be found in the original contribution at [Arebis Units Amounts].
 
@@ -12,8 +12,8 @@ The following code comes from a console application demo program.
 namespace SampleConsoleApplication
 {
     using System;
-    using Arebis.StandardUnits;
-    using Arebis.UnitsAmounts;
+    using cc.isr.UnitsAmounts.StandardUnits;
+    using cc.isr.UnitsAmounts;
 
     internal class Program
     {
@@ -25,7 +25,7 @@ namespace SampleConsoleApplication
             // ===================
 
             // To allow using units by name, we'll register all units declared in the "StandardUnits" assembly:
-            UnitManager.RegisterByAssembly(typeof(Arebis.StandardUnits.SIUnitTypes).Assembly);
+            UnitManager.RegisterByAssembly(typeof(cc.isr.UnitsAmounts.StandardUnits.SIUnitTypes).Assembly);
 
             // I'm driving in a car driving at 70 Miles per hour:
             var carSpeed = new Amount(70.0, SpeedUnits.MilePerHour);
@@ -62,7 +62,7 @@ The main types provided by this library are:
 
 # Feedback
 
-Arebis.UnitsAmounts is released as open source under the MIT license.
+cc.isr.UnitsAmounts is released as open source under the MIT license.
 Bug reports and contributions are welcome at the [Units Amounts] repository.
 
 [Arebis Units Amounts]: https://www.codeproject.com/Articles/611731/Working-with-Units-and-Amounts

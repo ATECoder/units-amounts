@@ -61,7 +61,6 @@ internal readonly struct Range : IEquatable<Range>
     /// <summary>   Returns the hash code for this instance. </summary>
     /// <remarks>   David, 2021-04-27. </remarks>
     /// <returns>   A 32-bit signed integer that is the hash code for this instance. </returns>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage( "Style", "IDE0070:Use 'System.HashCode'", Justification = "<Pending>" )]
     public override int GetHashCode()
     {
         return (this.Start, this.End).GetHashCode();  // this.Start.GetHashCode() * 31 + this.End.GetHashCode();
