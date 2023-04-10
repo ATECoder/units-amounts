@@ -6,7 +6,7 @@ namespace cc.isr.UnitsAmounts.MSTest;
 /// <summary>   An amount serialization tests. </summary>
 /// <remarks>   2023-04-08. </remarks>
 [TestClass()]
-public class AmountSerializationTests
+public class SerializationTests
 {
 
     #region " Initialize & cleanup "
@@ -77,22 +77,26 @@ public class AmountSerializationTests
     {
         using var memoryStream = new MemoryStream();
         IFormatter formatter = new BinaryFormatter();
-        AmountSerializationTests.AssertShouldSerialize( memoryStream, formatter );
+        SerializationTests.AssertShouldSerialize( memoryStream, formatter );
     }
 
     [TestMethod()]
     public void AmountBinaryFormatterSerializationTest()
     {
-        Amount a = new Amount( 3500.12, EnergyUnits.KilowattHour * (365.0 * TimeUnits.Day) / VolumeUnits.CubicMeter );
+        Amount a = new( 3500.12, EnergyUnits.KilowattHour * (365.0 * TimeUnits.Day) / VolumeUnits.CubicMeter );
 
         // Serialize instance:
-        using MemoryStream stream = new MemoryStream();
-        BinaryFormatter formatter = new BinaryFormatter();
+        using MemoryStream stream = new();
+        BinaryFormatter formatter = new();
+#pragma warning disable SYSLIB0011 // Type or member is obsolete
         formatter.Serialize( stream, a );
+#pragma warning restore SYSLIB0011 // Type or member is obsolete
 
         // Deserialize instance:
         stream.Position = 0;
+#pragma warning disable SYSLIB0011 // Type or member is obsolete
         Amount b = ( Amount ) formatter.Deserialize( stream );
+#pragma warning restore SYSLIB0011 // Type or member is obsolete
 
         // Compare:
         Console.WriteLine( a );
@@ -104,22 +108,26 @@ public class AmountSerializationTests
     public void SerializeDeserialize01Test()
     {
         // Make some amounts:
-        Amount a1before = new Amount( 12345.6789, LengthUnits.Meter );
-        Amount a2before = new Amount( -0.45, LengthUnits.Kilometer / TimeUnits.Hour );
+        Amount a1before = new( 12345.6789, LengthUnits.Meter );
+        Amount a2before = new( -0.45, LengthUnits.Kilometer / TimeUnits.Hour );
 
-        using MemoryStream buffer = new MemoryStream();
+        using MemoryStream buffer = new();
         // Serialize the units:
-        BinaryFormatter f = new BinaryFormatter();
+        BinaryFormatter f = new();
+#pragma warning disable SYSLIB0011 // Type or member is obsolete
         f.Serialize( buffer, a1before );
         f.Serialize( buffer, a2before );
+#pragma warning restore SYSLIB0011 // Type or member is obsolete
 
         // Reset stream:
         _ = buffer.Seek( 0, SeekOrigin.Begin );
 
         // Deserialize units:
-        BinaryFormatter g = new BinaryFormatter();
+        BinaryFormatter g = new();
+#pragma warning disable SYSLIB0011 // Type or member is obsolete
         Amount a1after = ( Amount ) g.Deserialize( buffer );
         Amount a2after = ( Amount ) g.Deserialize( buffer );
+#pragma warning restore SYSLIB0011 // Type or member is obsolete
 
         Console.WriteLine( "{0} => {1}", a1before, a1after );
         Console.WriteLine( "{0} => {1}", a2before, a2after );
@@ -284,4 +292,32 @@ public class AmountSerializationTests
     #endregion " NetDataContractSerializer "
 
 }
+
+#if NetDataContractSerializer || Soap
+internal static class StreamExtensions
+{
+    /// <summary>   A Stream extension method that converts a stream to an XML string. </summary>
+    /// <remarks>   David, 2020-03-07. </remarks>
+    /// <param name="stream">   The stream to act on. </param>
+    /// <returns>   Stream as a string. </returns>
+    public static string ToXmlString( this Stream stream )
+    {
+        XmlWriterSettings settings = new() {
+            OmitXmlDeclaration = true,
+            Indent = true,
+        };
+
+        using StreamReader reader = new( stream );
+        NameTable nt = new();
+        XmlDocument doc = new();
+        doc.LoadXml( reader.ReadToEnd() );
+        StringBuilder sb = new();
+        using ( XmlWriter xmlWriter = XmlWriter.Create( sb, settings ) )
+        {
+            doc.WriteTo( xmlWriter );
+        }
+        return sb.ToString();
+    }
+}
+#endif
 

@@ -209,7 +209,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <c>true</c> if the specified <see cref="T:System.Object" /> is equal to the current
     /// <see cref="T:System.Object" />; otherwise, false.
     /// </returns>
-    public static bool Equals( Amount left, Amount right )
+    public static bool Equals( Amount? left, Amount? right )
     {
         return left is object && right is object && left.Equals( right );
     }
@@ -473,14 +473,14 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="left">     The left. </param>
     /// <param name="right">    The right. </param>
     /// <returns>   The result of the operation. </returns>
-    public static bool operator ==( Amount left, Amount right ) => Amount.Equals( left, right );
+    public static bool operator ==( Amount? left, Amount? right ) => Amount.Equals( left, right );
 
     /// <summary>   Compares two amounts. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="left">     The left. </param>
     /// <param name="right">    The right. </param>
     /// <returns>   The result of the operation. </returns>
-    public static bool operator !=( Amount left, Amount right ) => !Amount.Equals( left, right );
+    public static bool operator !=( Amount? left, Amount? right ) => !Amount.Equals( left, right );
 
     /// <summary>   Compares two Amount objects to determine their relative ordering. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
@@ -491,22 +491,16 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <returns>
     /// Negative if 'left' is less than 'right', 0 if they are equal, or positive if it is greater.
     /// </returns>
-    public static int Compare( Amount left, Amount right )
+    public static int Compare( Amount? left, Amount? right )
     {
         if ( (left is null) && (right is null) )
-        {
             return 0;
-        }
 
         if ( left is null )
-        {
             throw new ArgumentNullException( nameof( left ) );
-        }
 
         if ( right is null )
-        {
             throw new ArgumentNullException( nameof( right ) );
-        }
 
         var rightConverted = right.ConvertedTo( left.Unit );
         return left == rightConverted ? 0 : left.Value < rightConverted.Value ? -1 : 1;
@@ -517,40 +511,40 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="left">     The left. </param>
     /// <param name="right">    The right. </param>
     /// <returns>   The result of the operation. </returns>
-    public static bool operator <( Amount left, Amount right ) => Amount.Compare( left, right ) < 0;
+    public static bool operator <( Amount? left, Amount? right ) => Amount.Compare( left, right ) < 0;
 
     /// <summary>   Compares two amounts of compatible units. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="left">     The left. </param>
     /// <param name="right">    The right. </param>
     /// <returns>   The result of the operation. </returns>
-    public static bool operator <=( Amount left, Amount right ) => Amount.Compare( left, right ) <= 0;
+    public static bool operator <=( Amount? left, Amount? right ) => Amount.Compare( left, right ) <= 0;
 
     /// <summary>   Compares two amounts of compatible units. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="left">     The left. </param>
     /// <param name="right">    The right. </param>
     /// <returns>   The result of the operation. </returns>
-    public static bool operator >( Amount left, Amount right ) => Amount.Compare( left, right ) > 0;
+    public static bool operator >( Amount? left, Amount? right ) => Amount.Compare( left, right ) > 0;
 
     /// <summary>   Compares two amounts of compatible units. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="left">     The left. </param>
     /// <param name="right">    The right. </param>
     /// <returns>   The result of the operation. </returns>
-    public static bool operator >=( Amount left, Amount right ) => Amount.Compare( left, right ) >= 0;
+    public static bool operator >=( Amount? left, Amount? right ) => Amount.Compare( left, right ) >= 0;
 
     /// <summary>   Unary '+' operator. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="right">    The right. </param>
     /// <returns>   The result of the operation. </returns>
-    public static Amount operator +( Amount right ) => right;
+    public static Amount? operator +( Amount? right ) => right;
 
     /// <summary>   Plus. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="right">    The right. </param>
     /// <returns>   An Amount. </returns>
-    public static Amount Plus( Amount right ) => right;
+    public static Amount? Plus( Amount? right ) => right;
 
     /// <summary>   Plus. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
@@ -560,9 +554,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     public static Amount? Plus( Amount left, Amount right )
     {
         if ( (left is null) || (right is null) )
-        {
             return null;
-        }
 
         left ??= Amount.Zero( (right is not null) ? right.Unit : Unit.None );
         right ??= Amount.Zero( left.Unit );
@@ -574,12 +566,10 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="left">     The left. </param>
     /// <param name="right">    The right. </param>
     /// <returns>   The result of the operation. </returns>
-    public static Amount? operator +( Amount left, Amount right )
+    public static Amount? operator +( Amount? left, Amount? right )
     {
         if ( (left is null) || (right is null) )
-        {
             return null;
-        }
 
         left ??= Zero( (right is not null) ? right.Unit : Unit.None );
         right ??= Zero( left.Unit );
@@ -590,7 +580,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="right">    The right. </param>
     /// <returns>   The result of the operation. </returns>
-    public static Amount? operator -( Amount right )
+    public static Amount? operator -( Amount? right )
     {
         return right is null ? null : right is null ? null : new Amount( -right.Value, right.Unit );
     }
@@ -600,7 +590,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="left">     The left. </param>
     /// <param name="right">    The right. </param>
     /// <returns>   An Amount. </returns>
-    public static Amount? Subtract( Amount left, Amount right )
+    public static Amount? Subtract( Amount? left, Amount? right )
     {
         return ( left is null || right is null ) ? null : left + (-right)!;
     }
@@ -610,7 +600,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="left">     The left. </param>
     /// <param name="right">    The right. </param>
     /// <returns>   The result of the operation. </returns>
-    public static Amount? operator -( Amount left, Amount right )
+    public static Amount? operator -( Amount? left, Amount? right )
     {
         return (left is null || right is null) ? null : left + (-right)!;
     }
@@ -644,14 +634,14 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="left">     The left. </param>
     /// <param name="right">    The right. </param>
     /// <returns>   The result of the operation. </returns>
-    public static Amount? operator /( Amount left, Amount right ) => Amount.Divide( left, right );
+    public static Amount? operator /( Amount? left, Amount? right ) => Amount.Divide( left, right );
 
     /// <summary>   Multiplies an amount with a double value. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="left">     The left. </param>
     /// <param name="right">    The right. </param>
     /// <returns>   The result of the operation. </returns>
-    public static Amount? operator *( Amount left, double right )
+    public static Amount? operator *( Amount? left, double right )
     {
         return left is null ? null : left is null ? null : new Amount( left.Value * right, left.Unit );
     }
@@ -661,7 +651,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="left">     The left. </param>
     /// <param name="right">    The right. </param>
     /// <returns>   The result of the operation. </returns>
-    public static Amount? operator /( Amount left, double right )
+    public static Amount? operator /( Amount? left, double right )
     {
         return left is null ? null : left is null ? null : new Amount( left.Value / right, left.Unit );
     }
@@ -671,7 +661,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="left">     The left. </param>
     /// <param name="right">    The right. </param>
     /// <returns>   The result of the operation. </returns>
-    public static Amount? operator *( double left, Amount right )
+    public static Amount? operator *( double left, Amount? right )
     {
         return right is null ? null : right is null ? null : new Amount( left * right.Value, right.Unit );
     }
@@ -681,7 +671,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="left">     The left. </param>
     /// <param name="right">    The right. </param>
     /// <returns>   The result of the operation. </returns>
-    public static Amount? operator /( double left, Amount right )
+    public static Amount? operator /( double left, Amount? right )
     {
         return right is null ? null : right is null ? null : new Amount( left / right.Value, 1.0 / right.Unit );
     }
@@ -698,7 +688,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     ///                                         type. </exception>
     /// <param name="amount">   The amount. </param>
     /// <returns>   The result of the operation. </returns>
-    public static explicit operator double?( Amount amount )
+    public static explicit operator double?( Amount? amount )
     {
         try
         {

@@ -322,7 +322,7 @@ public class AmountTests
     {
         Amount? a = null;
         Amount b = ( Amount ) 100.0;
-        _ = a! < b;
+        _ = a < b;
     }
 
     [TestMethod()]
@@ -350,7 +350,7 @@ public class AmountTests
         // Test right not null:
         a = new Amount( 100.0, LengthUnits.Meter );
         b = null;
-        sum = a + b!;
+        sum = a + b;
         // not consistent with .NET treatment of Nullable: 
         // Assert.AreEqual(new Amount(100.0, LengthUnits.Meter), sum);
         Assert.IsNull( sum );
@@ -358,7 +358,7 @@ public class AmountTests
         // Test left not null:
         a = null;
         b = new Amount( 25.0, LengthUnits.Meter );
-        sum = a! + b;
+        sum = a + b;
         // not consistent with .NET treatment of Nullable: 
         // Assert.AreEqual(new Amount(25.0, LengthUnits.Meter), sum);
         Assert.IsNull( sum );
@@ -366,7 +366,7 @@ public class AmountTests
         // Test both null:
         a = null;
         b = null;
-        sum = a! + b!;
+        sum = a + b;
         Assert.AreEqual( null, sum );
     }
 
@@ -378,13 +378,13 @@ public class AmountTests
         // Test both not null:
         a = new Amount( 100.0, LengthUnits.Meter );
         b = new Amount( 25.0, LengthUnits.Meter );
-        subs = a! - b!;
+        subs = a - b;
         Assert.AreEqual( new Amount( 75.0, LengthUnits.Meter ), subs );
 
         // Test right not null:
         a = new Amount( 100.0, LengthUnits.Meter );
         b = null;
-        subs = a - b!;
+        subs = a - b;
         // not consistent with .NET treatment of Nullable: 
         // Assert.AreEqual(new Amount(100.0, LengthUnits.Meter), subs);
         Assert.IsNull( subs );
@@ -392,7 +392,7 @@ public class AmountTests
         // Test left not null:
         a = null;
         b = new Amount( 25.0, LengthUnits.Meter );
-        subs = a! - b;
+        subs = a - b;
         // not consistent with .NET treatment of Nullable: 
         // Assert.AreEqual(new Amount(-25.0, LengthUnits.Meter), subs);
         Assert.IsNull( subs );
@@ -400,7 +400,7 @@ public class AmountTests
         // Test both null:
         a = null;
         b = null;
-        subs = a! - b!;
+        subs = a - b;
         Assert.AreEqual( null, subs );
     }
 
@@ -535,28 +535,3 @@ public class AmountTests
     }
 }
 
-internal static class StreamExtensions
-{
-    /// <summary>   A Stream extension method that converts a stream to an XML string. </summary>
-    /// <remarks>   David, 2020-03-07. </remarks>
-    /// <param name="stream">   The stream to act on. </param>
-    /// <returns>   Stream as a string. </returns>
-    public static string ToXmlString( this Stream stream )
-    {
-        XmlWriterSettings settings = new() {
-            OmitXmlDeclaration = true,
-            Indent = true,
-        };
-
-        using StreamReader reader = new( stream );
-        NameTable nt = new();
-        XmlDocument doc = new();
-        doc.LoadXml( reader.ReadToEnd() );
-        StringBuilder sb = new();
-        using ( XmlWriter xmlWriter = XmlWriter.Create( sb, settings ) )
-        {
-            doc.WriteTo( xmlWriter );
-        }
-        return sb.ToString();
-    }
-}

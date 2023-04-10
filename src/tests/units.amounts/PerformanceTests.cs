@@ -1,10 +1,10 @@
-namespace cc.isr.UnitsAmounts.ScenarioTests;
+namespace cc.isr.UnitsAmounts.MSTest;
 
 /// <summary>
 /// Summary description for PerformanceTests
 /// </summary>
 [TestClass]
-public class UnitPerformanceTests
+public class PerformanceTests
 {
     private const double _maxAcceptanceVariance = +0.25;
     private const double _minAcceptanceVariance = -2.0;
@@ -39,9 +39,7 @@ public class UnitPerformanceTests
 
         long t = Environment.TickCount;
         for ( int n = 0; n < 100000; n++ )
-        {
-            sum = ( sum + a )!;
-        }
+            sum = (sum + a)!;
         double time = (Environment.TickCount - t) / 1000.0;
         double expectedTime = 0.5 * 0.031;
         double var = (time - expectedTime) / expectedTime;
@@ -53,9 +51,7 @@ public class UnitPerformanceTests
 
         Assert.IsTrue( var < _maxAcceptanceVariance, $"Performance {var} > {_maxAcceptanceVariance} lost detected!" );
         if ( var < _minAcceptanceVariance )
-        {
             Assert.Inconclusive( $"Performance {var} was much better than expected {_minAcceptanceVariance}." );
-        }
     }
 
     [TestMethod]
@@ -66,9 +62,7 @@ public class UnitPerformanceTests
 
         long t = Environment.TickCount;
         for ( int n = 0; n < 100000; n++ )
-        {
-            sum = ( sum + new Amount( 15.0, LengthUnits.Meter ) )!;
-        }
+            sum = (sum + new Amount( 15.0, LengthUnits.Meter ))!;
         double time = (Environment.TickCount - t) / 1000.0;
         double expectedTime = 0.3 * 0.219;
         double var = (time - expectedTime) / expectedTime;
@@ -81,9 +75,7 @@ public class UnitPerformanceTests
 
         Assert.IsTrue( var < _maxAcceptanceVariance, $"Performance {var} > {_maxAcceptanceVariance} lost detected!" );
         if ( var < _minAcceptanceVariance )
-        {
             Assert.Inconclusive( $"Performance {var} was much better than expected {_minAcceptanceVariance}." );
-        }
     }
 
     [TestMethod]
@@ -95,9 +87,7 @@ public class UnitPerformanceTests
 
         long t = Environment.TickCount;
         for ( int n = 0; n < 100000; n++ )
-        {
             q = a / b;
-        }
         double time = (Environment.TickCount - t) / 1000.0;
         double var = (time - 0.4 * 0.11) / 0.11;
 
@@ -109,9 +99,7 @@ public class UnitPerformanceTests
 
         Assert.IsTrue( var < _maxAcceptanceVariance, $"Performance {var} > {_maxAcceptanceVariance} lost detected!" );
         if ( var < _minAcceptanceVariance )
-        {
             Assert.Inconclusive( $"Performance {var} was much better than expected {_minAcceptanceVariance}." );
-        }
     }
 
     [TestMethod]
@@ -123,9 +111,7 @@ public class UnitPerformanceTests
 
         long t = Environment.TickCount;
         for ( int n = 0; n < 100000; n++ )
-        {
             q = a / b;
-        }
         double time = (Environment.TickCount - t) / 1000.0;
         double var = (time - 0.061) / 0.061;
 
@@ -138,9 +124,7 @@ public class UnitPerformanceTests
 
         Assert.IsTrue( var < _maxAcceptanceVariance, $"Performance {var} > {_maxAcceptanceVariance} lost detected!" );
         if ( var < _minAcceptanceVariance )
-        {
             Assert.Inconclusive( $"Performance {var} was much better than expected {_minAcceptanceVariance}." );
-        }
     }
 
     [TestMethod]
@@ -155,7 +139,7 @@ public class UnitPerformanceTests
         {
             distance = new Amount( 50.0, new Unit( $"my{"foot"}", $"my{LengthUnits.Foot.Symbol}", 44.0 * LengthUnits.Centimeter ) );
             speed = new Amount( n, LengthUnits.Kilometer / TimeUnits.Hour );
-            duration = duration! + ( distance / speed )!;
+            duration = duration! + (distance / speed)!;
         }
         double time = (Environment.TickCount - t) / 1000.0;
         double var = (time - 0.4 * 0.234) / (0.4 * 0.234);
@@ -170,9 +154,7 @@ public class UnitPerformanceTests
 
         Assert.IsTrue( var < _maxAcceptanceVariance, $"Performance {var} > {_maxAcceptanceVariance} lost detected!" );
         if ( var < _minAcceptanceVariance )
-        {
             Assert.Inconclusive( $"Performance {var} was much better than expected {_minAcceptanceVariance}." );
-        }
     }
 
     [TestMethod]
@@ -183,9 +165,7 @@ public class UnitPerformanceTests
 
         long t = Environment.TickCount;
         for ( int n = 0; n < 100000; n++ )
-        {
             b = a.ConvertedTo( LengthUnits.Meter, 8 );
-        }
         double time = (Environment.TickCount - t) / 1000.0;
         double var = (time - 0.45 * 0.172) / (0.45 * 0.172);
 
@@ -197,24 +177,20 @@ public class UnitPerformanceTests
 
         Assert.IsTrue( var < _maxAcceptanceVariance, $"Performance {var} > {_maxAcceptanceVariance} lost detected!" );
         if ( var < _minAcceptanceVariance )
-        {
             Assert.Inconclusive( $"Performance {var} was much better than expected {_minAcceptanceVariance}." );
-        }
     }
 
     [TestMethod]
     public void AmountComplexConvertPerformanceTest()
     {
-        Amount a = new( 15.0, (LengthUnits.Kilometer * LengthUnits.Meter / LengthUnits.Millimeter /
-                                           (TimeUnits.Hour * TimeUnits.Minute / TimeUnits.Millisecond)) );
+        Amount a = new( 15.0, LengthUnits.Kilometer * LengthUnits.Meter / LengthUnits.Millimeter /
+                                           (TimeUnits.Hour * TimeUnits.Minute / TimeUnits.Millisecond) );
         Amount? b = null;
         Unit targetUnit = LengthUnits.Meter / TimeUnits.Second;
 
         long t = Environment.TickCount;
         for ( int n = 0; n < 100000; n++ )
-        {
             b = a.ConvertedTo( targetUnit, 8 );
-        }
         double time = (Environment.TickCount - t) / 1000.0;
         double var = (time - 0.0403) / 0.0403;
 
@@ -227,9 +203,7 @@ public class UnitPerformanceTests
 
         Assert.IsTrue( var < _maxAcceptanceVariance, $"Performance {var} > {_maxAcceptanceVariance} lost detected!" );
         if ( var < _minAcceptanceVariance )
-        {
             Assert.Inconclusive( $"Performance {var} was much better than expected {_minAcceptanceVariance}." );
-        }
     }
 
     [TestMethod]
@@ -242,9 +216,7 @@ public class UnitPerformanceTests
 
         long t = Environment.TickCount;
         for ( int n = 0; n < 100000; n++ )
-        {
             v = UnitManager.ResolveToNamedUnit( u, true );
-        }
         double time = (Environment.TickCount - t) / 1000.0;
         double var = (time - 0.4 * 0.015) / (4 * 0.015);
 
@@ -258,9 +230,7 @@ public class UnitPerformanceTests
 
         Assert.IsTrue( var < _maxAcceptanceVariance, $"Performance {var} > {_maxAcceptanceVariance} lost detected!" );
         if ( var < _minAcceptanceVariance )
-        {
             Assert.Inconclusive( $"Performance {var} was much better than expected {_minAcceptanceVariance}." );
-        }
     }
 
     [TestMethod]
@@ -273,9 +243,7 @@ public class UnitPerformanceTests
 
         long t = Environment.TickCount;
         for ( int n = 0; n < 100000; n++ )
-        {
             v = UnitManager.ResolveToNamedUnit( u, true );
-        }
         double time = (Environment.TickCount - t) / 1000.0;
         double var = (time - 0.3 * 0.219) / 0.219;
 
@@ -289,9 +257,7 @@ public class UnitPerformanceTests
 
         Assert.IsTrue( var < _maxAcceptanceVariance, $"Performance {var} > {_maxAcceptanceVariance} lost detected!" );
         if ( var < _minAcceptanceVariance )
-        {
             Assert.Inconclusive( $"Performance {var} was much better than expected {_minAcceptanceVariance}." );
-        }
     }
 
     [TestMethod]
@@ -304,9 +270,7 @@ public class UnitPerformanceTests
 
         long t = Environment.TickCount;
         for ( int n = 0; n < 100000; n++ )
-        {
             v = UnitManager.ResolveToNamedUnit( u, true );
-        }
         double time = (Environment.TickCount - t) / 1000.0;
         double var = (time - 0.3 * 0.297) / 0.297;
 
@@ -319,9 +283,7 @@ public class UnitPerformanceTests
 
         Assert.IsTrue( var < _maxAcceptanceVariance, $"Performance {var} > {_maxAcceptanceVariance} lost detected!" );
         if ( var < _minAcceptanceVariance )
-        {
             Assert.Inconclusive( $"Performance {var} was much better than expected {_minAcceptanceVariance}." );
-        }
     }
 
     [TestMethod]
@@ -334,9 +296,7 @@ public class UnitPerformanceTests
 
         long t = Environment.TickCount;
         for ( int n = 0; n < 100000; n++ )
-        {
             v = UnitManager.ResolveToNamedUnit( u, true );
-        }
         double time = (Environment.TickCount - t) / 1000.0;
         double var = (time - 0.5 * 0.032) / 0.032;
 
@@ -349,8 +309,6 @@ public class UnitPerformanceTests
 
         Assert.IsTrue( var < _maxAcceptanceVariance, $"Performance {var} > {_maxAcceptanceVariance} lost detected!" );
         if ( var < _minAcceptanceVariance )
-        {
             Assert.Inconclusive( $"Performance {var} was much better than expected {_minAcceptanceVariance}." );
-        }
     }
 }

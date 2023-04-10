@@ -1,6 +1,6 @@
 @echo off
 :: Syntax:  %0 Name Version
-:: Example: %0 Arebis.UnitsAmounts 2.0.8109
+:: Example: %0 cc.isr.UnitsAmounts 2.0.8109
 if not exist "..\.nuget\artifacts\%1.%2.nupkg" (
 	@echo not found: ..\.nuget\artifacts\%1.%2.nupkg
 	@echo the ..\.nuget\artifacts\%1.%2.nupkg must be packed before deleting 

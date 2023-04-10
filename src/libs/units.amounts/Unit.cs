@@ -108,9 +108,7 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
     public void AssertCompatibility( Unit compatibleUnit )
     {
         if ( !this.IsCompatibleTo( compatibleUnit ) )
-        {
             throw new UnitConversionException( this, compatibleUnit );
-        }
     }
 
     /// <summary>   Checks whether the passed unit is compatible with this one. </summary>
@@ -158,7 +156,7 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
     /// <see langword="true" /> if the specified object  is equal to the current object; otherwise,
     /// <see langword="false" />.
     /// </returns>
-    public static bool Equals( Unit left, Unit right )
+    public static bool Equals( Unit? left, Unit? right )
     {
         return left is object && right is object && left.Equals( right );
     }
@@ -249,21 +247,21 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
     /// <param name="left">     The first instance to compare. </param>
     /// <param name="right">    The second instance to compare. </param>
     /// <returns>   The result of the operation. </returns>
-    public static bool operator ==( Unit left, Unit right ) => Unit.Equals( left, right );
+    public static bool operator ==( Unit? left, Unit? right ) => Unit.Equals( left, right );
 
     /// <summary>   Inequality operator. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="left">     The first instance to compare. </param>
     /// <param name="right">    The second instance to compare. </param>
     /// <returns>   The result of the operation. </returns>
-    public static bool operator !=( Unit left, Unit right ) => !Unit.Equals( left, right );
+    public static bool operator !=( Unit? left, Unit? right ) => !Unit.Equals( left, right );
 
     /// <summary>   Multiplies. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="left">     The first instance to compare. </param>
     /// <param name="right">    The second instance to compare. </param>
     /// <returns>   A Unit. </returns>
-    public static Unit Multiply( Unit left, Unit right )
+    public static Unit Multiply( Unit? left, Unit? right )
     {
         left ??= Unit.None;
         right ??= Unit.None;
@@ -275,7 +273,7 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
     /// <param name="left">     The first value to multiply. </param>
     /// <param name="right">    The second value to multiply. </param>
     /// <returns>   The result of the operation. </returns>
-    public static Unit operator *( Unit left, Unit right )
+    public static Unit operator *( Unit? left, Unit? right )
     {
         left ??= Unit.None;
         right ??= Unit.None;
@@ -287,14 +285,14 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
     /// <param name="left">     The first value to multiply. </param>
     /// <param name="right">    The second value to multiply. </param>
     /// <returns>   The result of the operation. </returns>
-    public static Unit operator *( Unit left, double right ) => right * left;
+    public static Unit operator *( Unit? left, double right ) => right * left;
 
     /// <summary>   Multiplication operator. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="left">     The first value to multiply. </param>
     /// <param name="right">    The second value to multiply. </param>
     /// <returns>   The result of the operation. </returns>
-    public static Unit operator *( double left, Unit right )
+    public static Unit operator *( double left, Unit? right )
     {
         right ??= Unit.None;
         return new Unit( String.Concat( '(', left.ToString(), '*', right.Name, ')' ), left.ToString() + '*' + right.Symbol, left * right.Factor, right.UnitType, false );
@@ -305,7 +303,7 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
     /// <param name="left">     The numerator. </param>
     /// <param name="right">    The denominator. </param>
     /// <returns>   The result of the operation. </returns>
-    public static Unit operator /( Unit left, Unit right )
+    public static Unit operator /( Unit? left, Unit? right )
     {
         left ??= Unit.None;
         right ??= Unit.None;
@@ -317,7 +315,7 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
     /// <param name="left">     The numerator. </param>
     /// <param name="right">    The denominator. </param>
     /// <returns>   The result of the operation. </returns>
-    public static Unit operator /( double left, Unit right )
+    public static Unit operator /( double left, Unit? right )
     {
         right ??= Unit.None;
         return new Unit( String.Concat( '(', left.ToString(), '*', right.Name, ')' ), left.ToString() + '*' + right.Symbol, left / right.Factor, right.UnitType.Power( -1 ), false );
@@ -328,7 +326,7 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
     /// <param name="left">     The numerator. </param>
     /// <param name="right">    The denominator. </param>
     /// <returns>   The result of the operation. </returns>
-    public static Unit operator /( Unit left, double right )
+    public static Unit operator /( Unit? left, double right )
     {
         left ??= Unit.None;
         return new Unit( String.Concat( '(', left.Name, '/', right.ToString(), ')' ), left.Symbol + '/' + right.ToString(), left.Factor / right, left.UnitType, false );
@@ -361,8 +359,6 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
     /// Compares the passed unit to the current one. Allows sorting units of the same type.
     /// </summary>
     /// <remarks>   Only compatible units can be compared. </remarks>
-    /// <exception cref="ArgumentNullException">    Thrown when one or more required arguments are
-    ///                                             null. </exception>
     /// <param name="other">    An object to compare with this instance. </param>
     /// <returns>
     /// A value that indicates the relative order of the objects being compared. The return value has
@@ -377,13 +373,9 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
     ///  zero</term><description> This instance follows <paramref name="other" /> in the sort
     ///  order.</description></item></list>
     /// </returns>
-    int IComparable<Unit>.CompareTo( Unit other )
+    int IComparable<Unit>.CompareTo( Unit? other )
     {
-        if ( other is null )
-        {
-            throw new ArgumentNullException( nameof( other ) );
-        }
-
+        other ??= Unit.None;
         this.AssertCompatibility( other );
         return this.Factor < other.Factor ? -1 : this.Factor > other.Factor ? +1 : 0;
     }
@@ -393,7 +385,7 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
     /// <param name="left">     The first instance to compare. </param>
     /// <param name="right">    The second instance to compare. </param>
     /// <returns>   The result of the operation. </returns>
-    public static bool operator <( Unit left, Unit right ) => left is null ? right is object : left.CompareTo( right ) < 0;
+    public static bool operator <( Unit? left, Unit? right ) => left is null ? right is object : left.CompareTo( right ) < 0;
 
     /// <summary>
     /// Compares the current instance with another object of the same type and returns an integer
@@ -415,28 +407,28 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
     ///  zero</term><description> This instance follows <paramref name="other" /> in the sort
     ///  order.</description></item></list>
     /// </returns>
-    private int CompareTo( Unit other ) => this.CompareTo( other );
+    private int CompareTo( Unit? other ) => this.CompareTo( other );
 
     /// <summary>   Less-than-or-equal comparison operator. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="left">     The first instance to compare. </param>
     /// <param name="right">    The second instance to compare. </param>
     /// <returns>   The result of the operation. </returns>
-    public static bool operator <=( Unit left, Unit right ) => left is null || left.CompareTo( right ) <= 0;
+    public static bool operator <=( Unit? left, Unit? right ) => left is null || left.CompareTo( right ) <= 0;
 
     /// <summary>   Greater-than comparison operator. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="left">     The first instance to compare. </param>
     /// <param name="right">    The second instance to compare. </param>
     /// <returns>   The result of the operation. </returns>
-    public static bool operator >( Unit left, Unit right ) => left is object && left.CompareTo( right ) > 0;
+    public static bool operator >( Unit? left, Unit? right ) => left is object && left.CompareTo( right ) > 0;
 
     /// <summary>   Greater-than-or-equal comparison operator. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="left">     The first instance to compare. </param>
     /// <param name="right">    The second instance to compare. </param>
     /// <returns>   The result of the operation. </returns>
-    public static bool operator >=( Unit left, Unit right ) => left is null ? right is null : left.CompareTo( right ) >= 0;
+    public static bool operator >=( Unit? left, Unit? right ) => left is null ? right is null : left.CompareTo( right ) >= 0;
 
     #endregion 
 

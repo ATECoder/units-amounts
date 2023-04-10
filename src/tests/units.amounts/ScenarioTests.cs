@@ -1,4 +1,4 @@
-namespace cc.isr.UnitsAmounts.ScenarioTests;
+namespace cc.isr.UnitsAmounts.MSTest;
 
 [TestClass]
 public class ScenarioTests
@@ -33,7 +33,7 @@ public class ScenarioTests
         Amount volume = new( 36.0, "liter" );
         Amount? area = new Amount( 45.0, "centimeter" ) * new Amount( 2.0, "meter" );
 
-        Amount? height = volume / area!;
+        Amount? height = volume / area;
 
         Console.WriteLine( "Volume : {0}", volume );
         Console.WriteLine( "Area : {0}", area );
@@ -104,7 +104,7 @@ public class ScenarioTests
 
         // Formula:
         Amount? distance;
-        distance = (speed * reactionTime)! + ( speed.Power( 2 )! / (2 * deceleration)!) !;
+        distance = (speed * reactionTime)! + (speed.Power( 2 )! / (2 * deceleration)!)!;
 
         Console.WriteLine( "Distance : {0}", distance );
         Console.WriteLine( "Distance : {0}", distance!.ConvertedTo( LengthUnits.Meter, 1 ) );
@@ -123,7 +123,7 @@ public class ScenarioTests
         Amount bottlePressure = new( 80.0, "bar" );
         Amount outerPressure = new( 1.0, "atmosphere" );
 
-        Amount? outerVolume = ( bottleVolume * bottlePressure )! / outerPressure;
+        Amount? outerVolume = (bottleVolume * bottlePressure)! / outerPressure;
 
         Console.WriteLine( "Volume : {0}", outerVolume );
         Console.WriteLine( "Volume : {0}", outerVolume!.ConvertedTo( "Meter" + UnitSymbols.Cubed, 2 ) );
