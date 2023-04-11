@@ -2,7 +2,7 @@
 
 cc.isr.UnitsAmounts is a .Net library for implementing strongly typed units and amounts.
 
-More information is to be found in the original contribution at [Arebis Units Amounts].
+More information is to be found in the original contribution at [Working with units and amounts].
 
 # How to Use
 
@@ -63,8 +63,9 @@ The main types provided by this library are:
 # Feedback
 
 cc.isr.UnitsAmounts is released as open source under the MIT license.
-Bug reports and contributions are welcome at the [Units Amounts] repository.
+Bug reports and contributions are welcome at the [Units Amounts Libraries - GitHub] repository.
 
-[Arebis Units Amounts]: https://www.codeproject.com/Articles/611731/Working-with-Units-and-Amounts
-[Units Amounts]: https://bitbucket.org/davidhary/dn.UnitsAmounts
+[Working with units and amounts]: https://www.codeproject.com/Articles/611731/Working-with-Units-and-Amounts
+[Units Amounts Libraries - GitHub]: https://github.com/atecoder/units-amounts
+
 
