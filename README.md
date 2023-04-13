@@ -6,9 +6,12 @@
 [![GitHub](https://img.shields.io/github/license/AteCoder/units-amounts?color=%231281c0)](LICENSE)
 
 [![TBA: Standard Units](https://github.com/AteCoder/units-amounts/actions/workflows/ci.yaml/badge.svg)](https://github.com/AteCoder/units-amounts/actions/workflows/ci.yaml)
-[![](https://img.shields.io/nuget/dt/cc.isr.UnitsAmounts.standard.units?color=004880&label=downloads&logo=NuGet)](https://www.nuget.org/packages/cc.isr.UnitsAmounts/)
-[![](https://img.shields.io/nuget/vpre/cc.isr.UnitsAmounts.standard.units?color=%23004880&label=NuGet&logo=nuget)](https://www.nuget.org/packages/cc.isr.UnitsAmounts/)
+[![](https://img.shields.io/nuget/dt/cc.isr.UnitsAmounts.StandardUnits?color=004880&label=downloads&logo=NuGet)](https://www.nuget.org/packages/cc.isr.UnitsAmounts/)
+[![](https://img.shields.io/nuget/vpre/cc.isr.UnitsAmounts.StandardUnits?color=%23004880&label=NuGet&logo=nuget)](https://www.nuget.org/packages/cc.isr.UnitsAmounts/)
 [![GitHub](https://img.shields.io/github/license/AteCoder/units-amounts?color=%231281c0)](LICENSE)
+
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
+
 
 Libraries for implementing strongly typed units and amounts.
 
