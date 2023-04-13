@@ -1,14 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>Exe</OutputType>
     <!-- NuGet -->
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\libs\standard.units\cc.isr.UnitsAmounts.StandardUnits.csproj" />
+    <ProjectReference Include="..\..\units.amounts\standard.units\cc.isr.UnitsAmounts.StandardUnits.csproj" />
   </ItemGroup>
 
 </Project>

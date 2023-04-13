@@ -1,11 +1,13 @@
 namespace cc.isr.UnitsAmounts.StandardUnits;
 
 /// <summary>   A unit symbols. </summary>
-/// <remarks>   2023-04-08. </remarks>
+/// <remarks>   2023-04-08. <para>
+/// <see href="http://UnicodeLookup.com/#Greek"/>
+/// <see href="http://UnicodeLookup.com/#math"/>
+/// </para>
+/// </remarks>
 public static class UnitSymbols
 {
-    // http://UnicodeLookup.com/#Greek
-    // http://UnicodeLookup.com/#math
     public static string MU => $"{Convert.ToChar( 0x3BC )}";
     public static string Eta => $"{Convert.ToChar( 0x3BC )}";
     public static string Omega => $"{Convert.ToChar( 0x3A9 )}";

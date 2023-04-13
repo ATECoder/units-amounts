@@ -1,9 +1,9 @@
 using System;
-
 using cc.isr.UnitsAmounts;
 using cc.isr.UnitsAmounts.StandardUnits;
 
-namespace UnitsAmountsPackagesDemo;
+namespace StandardUnitsDemo;
+
 internal class Program
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "<Pending>")]
@@ -28,7 +28,7 @@ internal class Program
         // Display the result in km/h:
         Console.WriteLine( "Car speed: {0:#,##0.00 US|mile/hour}", carSpeed );
         Console.WriteLine( "Relative apple speed: {0:#,##0.00 US|meter/second}", relativeAppleSpeed );
-        Console.WriteLine( "Absolute speed of the apple: {0:#,##0.00 US|kilometer/hour}", absoluteAppleSpeed );
+        Console.WriteLine("Absolute speed of the apple: {0:#,##0.00 US|kilometer/hour}", absoluteAppleSpeed);
 
         Console.WriteLine();
         Console.WriteLine("Press ENTER to end.");

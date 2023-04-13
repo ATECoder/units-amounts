@@ -46,7 +46,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\libs\standard.units\cc.isr.UnitsAmounts.StandardUnits.csproj" />
+    <ProjectReference Include="..\..\units.amounts\standard.units\cc.isr.UnitsAmounts.StandardUnits.csproj" />
   </ItemGroup>
 
 </Project>

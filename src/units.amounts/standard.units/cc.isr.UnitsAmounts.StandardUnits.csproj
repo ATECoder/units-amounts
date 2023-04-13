@@ -6,14 +6,14 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
-    <AssemblyName>cc.isr.UnitsAmounts</AssemblyName>
+    <AssemblyName>cc.isr.UnitsAmounts.StandardUnits</AssemblyName>
     <RootNamespace>cc.isr.UnitsAmounts</RootNamespace>
 
     <!-- Display name -->
-    <ApplicationTitle>cc.isr.UnitsAmounts</ApplicationTitle>
+    <ApplicationTitle>cc.isr.UnitsAmounts.StandardUnits</ApplicationTitle>
 
     <!-- App Identifier -->
-    <ApplicationId>cc.isr.units.amounts</ApplicationId>
+    <ApplicationId>cc.isr.units.amounts.standard.units</ApplicationId>
 
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
@@ -33,14 +33,14 @@
 
     <!-- NuGet -->
     <IsPackable>true</IsPackable>
-    <PackageId>cc.isr.UnitsAmounts</PackageId>
+    <PackageId>cc.isr.UnitsAmounts.StandardUnits</PackageId>
     <PackageTags>strongly typed units amounts</PackageTags>
     <PackageOutputPath>C:\my\nuget</PackageOutputPath>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
 
     <!-- Assembly Info -->
-    <Description>Strongly typed units and amounts</Description>
+    <Description>Strongly typed units and amounts and standard units</Description>
 
     <!-- Documentation -->
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
@@ -50,11 +50,29 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\items\readme.md" Pack="true" PackagePath=""/>
+    <None Include="..\..\items\readme.md" Pack="true" PackagePath="" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <DefineConstants>$(DefineConstants);MYPROJREF;</DefineConstants>
+  </PropertyGroup>
+
+  <Choose>
+    <When Condition="$(DefineConstants.Contains(';PROJREF;')) OR $(DefineConstants.Contains(';MYPROJREF;'))">
+      <ItemGroup>
+        <ProjectReference Include="..\units.amounts\cc.isr.UnitsAmounts.csproj" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+	  <ItemGroup>
+		<PackageReference Include="cc.isr.UnitsAmounts" Version="2.0.8109" />
+	  </ItemGroup>
+    </Otherwise>
+  </Choose>
+ 
   <ItemGroup>
     <CodeAnalysisDictionary Include="..\..\items\Dix.xml" Link="Properties\Dix.xml" />
+    <CodeAnalysisDictionary Include="..\..\items\UnitsDix.xml" Link="Properties\UnitsDix.xml" />
     <None Include="..\..\items\keyPair.snk" Link="Properties\KeyPair.snk" />
     <Compile Include="..\..\items\ProductKey.cs" Link="Properties\ProductKey.cs" />
     <Compile Remove="Standard\*.cs" Condition="'$(TargetFramework)' == 'netstandard2.1'" />
