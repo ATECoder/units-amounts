@@ -15,7 +15,7 @@ Rename 'lib' to 'libs' folder and rebuild packages.
 Targeting Visual Studio 2022, C# 10 and .NET 6.0.
 
 ## [2.0.7750] 2020-10-05
-Conversion of isr.Core to .NET 5.0.
+Conversion of cc.isr.Core to .NET 5.0.
 
 ## [1.0.7583] 2020-10-05
 Convert Amount tests to C#.
