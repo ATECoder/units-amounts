@@ -1,4 +1,5 @@
-// https://GitHub.com/dotnet/runtime/blob/main/src/libraries/System.Private.CoreLib/src/System/Index.cs
+// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
 
 using System.Runtime.CompilerServices;
 
@@ -13,6 +14,7 @@ namespace System;
 /// int[] someArray = new int[5] { 1, 2, 3, 4, 5 } ;
 /// int lastElement = someArray[^1]; // lastElement = 5
 /// </code>
+/// <see href="https://GitHub.com/dotnet/runtime/blob/main/src/libraries/System.Private.CoreLib/src/System/Index.cs"/>
 /// </remarks>
 internal readonly struct Index : IEquatable<Index>
 {

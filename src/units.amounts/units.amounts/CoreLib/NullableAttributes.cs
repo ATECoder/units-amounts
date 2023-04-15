@@ -4,6 +4,9 @@
 namespace System.Diagnostics.CodeAnalysis;
 
 /// <summary>Specifies that the method or property will ensure that the listed field and property members have not-null values.</summary>
+/// <remarks> 
+/// <see href="https://GitHub.com/dotnet/runtime/blob/main/src/libraries/System.Private.CoreLib/src/System/Diagnostics/CodeAnalysis/NullableAttributes.cs"/>
+/// </remarks>
 [AttributeUsage( AttributeTargets.Method | AttributeTargets.Property, Inherited = false, AllowMultiple = true )]
 internal sealed class MemberNotNullAttribute : Attribute
 {

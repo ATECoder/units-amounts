@@ -1,4 +1,5 @@
-// https://GitHub.com/dotnet/runtime/blob/main/src/libraries/System.Private.CoreLib/src/System/Range.cs
+// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
 
 using System.Runtime.CompilerServices;
 
@@ -12,6 +13,7 @@ namespace System;
 /// int[] subArray1 = someArray[0..2]; // { 1, 2 }
 /// int[] subArray2 = someArray[1..^0]; // { 2, 3, 4, 5 }
 /// </code>
+/// <see href="https://GitHub.com/dotnet/runtime/blob/main/src/libraries/System.Private.CoreLib/src/System/Range.cs"/>
 /// </remarks>
 internal readonly struct Range : IEquatable<Range>
 {

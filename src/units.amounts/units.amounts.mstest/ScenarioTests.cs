@@ -8,7 +8,7 @@ public class ScenarioTests
     private UnitManager? _defaultUnitManager;
 
     [TestInitialize()]
-    public void MyTestInitialize()
+    public void InitializeBeforeEachTest()
     {
         Console.Write( "Resetting the Unit Manager instance..." );
         this._defaultUnitManager = UnitManager.Instance;
@@ -18,7 +18,7 @@ public class ScenarioTests
     }
 
     [TestCleanup()]
-    public void MyTestCleanup()
+    public void CleanupAfterEachTest()
     {
         UnitManager.Instance = this._defaultUnitManager!;
     }
