@@ -1,3 +1,4 @@
 RemoteRepoName,LocalRepoName,RemoteRepoURL,TargetDirectory
+vs.ide,ide,https://git@bitbucket.org/davidhary/vs.ide.git,libraries\vs\core
 dn.UnitsAmounts,Units.Amounts,https://git@bitbucket.org/davidhary/dn.UnitsAmounts.git,lib\vs\core
 units_amounts,Units.Amounts,https://github.com/AteCoder/units-amounts.git,lib\vs\core
