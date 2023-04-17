@@ -49,4 +49,23 @@
     <ProjectReference Include="..\..\units.amounts\standard.units\cc.isr.UnitsAmounts.StandardUnits.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="ExceptionExtensionsTests.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ExceptionExtensionsTests.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="ExceptionExtensionsTests.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ExceptionExtensionsTests.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
 </Project>

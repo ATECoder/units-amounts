@@ -275,18 +275,18 @@ public sealed class UnitManager
                         break;
                     }
                 }
-
             }
         }
 
         // Throw exception if unit resolution failed:
+
         if ( result is null )
         {
-            throw new UnknownUnitException( $"No unit found named '{name}'." );
+            throw new UnknownUnitException( $"No unit found which name is '{name}'.", name );
         }
 
-
         // Return result:
+
         return result;
     }
 
@@ -301,16 +301,16 @@ public sealed class UnitManager
     public static Unit GetUnitBySymbol( string symbol )
     {
         // Try resolve unit by unitsBySymbol:
+
         _ = Instance._unitsBySymbol.TryGetValue( symbol, out var result );
 
         // Throw exception if unit resolution failed:
-        if ( result is null )
-        {
-            throw new UnknownUnitException( $"No unit found with symbol '{symbol}'." );
 
-        }
+        if ( result is null )
+            throw new UnknownUnitException( $"No unit found with symbol '{symbol}'.", symbol );
 
         // Return result:
+
         return result;
     }
 
