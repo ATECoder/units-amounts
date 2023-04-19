@@ -24,6 +24,7 @@ Libraries for implementing strongly typed units and amounts.
 * [Acknowledgments](#Acknowledgments)
 * [Open Source](#Open-Source)
 * [Closed Software](#Closed-software)
+* [Legal Notices](#legal-notices)
 
 <a name="Source-Code"></a>
 ## Source Code
@@ -98,15 +99,27 @@ where %userprofile% is the root user folder.
 * [Working with units and amounts]
 
 <a name="Open-Source"></a>
-### Open source
+## Open source
 Open source used by this software is described and licensed 
 at the following sites:  
 [Units Amounts Libraries - Bitbucket]
 [Units Amounts Libraries - GitHub]
 
 <a name="Closed-software"></a>
-### Closed software
+## Closed software
 None
+
+<a name="legal-notices"></a>
+## Legal Notices
+
+Integrated Scientific Resources, Inc., and any contributors grant you a license to the documentation and other content in this repository under the [Creative Commons Attribution 4.0 International Public License], see the [LICENSE](./LICENSE) file, and grant you a license to any code in the repository under the [MIT License], see the [LICENSE-CODE](./LICENSE-CODE) file.
+
+Integrated Scientific Resources, Inc., and/or other Integrated Scientific Resources, Inc., products and services referenced in the documentation may be either trademarks or registered trademarks of Integrated Scientific Resources, Inc., in the United States and/or other countries. The licenses for this project do not grant you rights to use any Integrated Scientific Resources, Inc., names, logos, or trademarks.
+
+Integrated Scientific Resources, Inc., and any contributors reserve all other rights, whether under their respective copyrights, patents, or trademarks, whether by implication, estoppel or otherwise.
+
+[Creative Commons Attribution 4.0 International Public License]:(https://creativecommons.org/licenses/by/4.0/legalcode)
+[MIT License]:(https://opensource.org/licenses/MIT)
 
 [Working with units and amounts]: https://www.codeproject.com/Articles/611731/Working-with-Units-and-Amounts
 [Units Amounts Libraries - Bitbucket]: https://bitbucket.org/davidhary/dn.UnitsAmounts
