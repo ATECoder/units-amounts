@@ -1,4 +1,4 @@
-# Units and Amounts
+### Units and Amounts
 
 Libraries for implementing strongly typed units and amounts.
 
@@ -30,7 +30,7 @@ Libraries for implementing strongly typed units and amounts.
 * [Security](security.md)
 
 <a name="Repository-Owner"></a>
-## Repository Owner
+#### Repository Owner
 [ATE Coder]
 
 <a name="Authors"></a>
@@ -40,7 +40,7 @@ Libraries for implementing strongly typed units and amounts.
 * [ATE Coder]
 
 <a name="legal-notices"></a>
-## Legal Notices
+#### Legal Notices
 
 Integrated Scientific Resources, Inc., and any contributors grant you a license to the documentation and other content in this repository under the [Creative Commons Attribution 4.0 International Public License], see the [LICENSE](./LICENSE) file, and grant you a license to any code in the repository under the [MIT License], see the [LICENSE-CODE](./LICENSE-CODE) file.
 

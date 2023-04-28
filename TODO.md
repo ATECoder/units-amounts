@@ -1,6 +1,6 @@
-# TODO
+### TODO
 
-## Updates
+#### Updates
 
 * Update packages.
 * Reorganize folders. 
@@ -9,7 +9,7 @@
 * Use simplified test settings and test logging.
 * Update revisions
 
-## Package
+#### Package
 
 * Split README.MD to: cloning, attributions, open source, REAME.MD and point to individual project README.MD files.
 * Add contribution and security documents.

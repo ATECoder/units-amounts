@@ -1,10 +1,10 @@
-# Attributions
+### Attributions
 
 * [Facilitated By](#FacilitatedBy)
 * [Acknowledgments](#Acknowledgments)
 
 <a name="FacilitatedBy"></a>
-## Facilitated By
+#### Facilitated By
 * [Visual Studio]
 * [Jarte RTF Editor]
 * [Wix Toolset]
@@ -14,7 +14,7 @@
 * [Funduc Search and Replace]
 
 <a name="Acknowledgments"></a>
-## Acknowledgments
+#### Acknowledgments
 
 * [Rudi Breedenraedt]
 * [Its all a remix]
@@ -22,18 +22,18 @@
 * [Working with units and amounts]
 
 <a name="Open-Source"></a>
-## Open source
+#### Open Source
 Open source used by this software is described and licensed 
 at the following sites:  
 [Units Amounts Libraries - Bitbucket]
 [Units Amounts Libraries - GitHub]
 
 <a name="Closed-software"></a>
-## Closed software
+###### Closed software
 None
 
 <a name="legal-notices"></a>
-## Legal Notices
+#### Legal Notices
 
 Integrated Scientific Resources, Inc., and any contributors grant you a license to the documentation and other content in this repository under the [Creative Commons Attribution 4.0 International Public License], see the [LICENSE](./LICENSE) file, and grant you a license to any code in the repository under the [MIT License], see the [LICENSE-CODE](./LICENSE-CODE) file.
 

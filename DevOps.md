@@ -1,4 +1,4 @@
-# Developer Operations ([DevOps]) for the Units and Amounts Solution
+### Developer Operations ([DevOps]) for the Units and Amounts Solution
 
 * [General Notes](#General-Notes)
 * [Continuous Integration Bootstrap](#Continuous-Integration-Bootstrap)
