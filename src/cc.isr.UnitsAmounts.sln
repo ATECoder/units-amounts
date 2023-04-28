@@ -5,9 +5,7 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "`Items", "`Items", "{F46C3C56-DF89-4A70-8C87-3195305A72AB}"
 	ProjectSection(SolutionItems) = preProject
-		..\CHANGELOG.md = ..\CHANGELOG.md
 		directory.build.props = directory.build.props
-		..\README.md = ..\README.md
 		Items\version.build.bat = Items\version.build.bat
 		items\version.build.props = items\version.build.props
 		items\version.build.tt = items\version.build.tt
@@ -22,6 +20,19 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StandardUnitsDemo", "units.amounts\standard.units.demo\StandardUnitsDemo.csproj", "{7D3D0753-A722-4EC1-8CA9-0C131C4D92DB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StandardUnitsPackageDemo", "units.amounts\standard.units.package.demo\StandardUnitsPackageDemo.csproj", "{584A404E-0FB8-49B7-B47F-459064CD5983}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "`docs", "`docs", "{8374E7EF-0BED-4642-8C97-BAAD168AC307}"
+	ProjectSection(SolutionItems) = preProject
+		..\Attributions.md = ..\Attributions.md
+		..\CHANGELOG.md = ..\CHANGELOG.md
+		..\Cloning.md = ..\Cloning.md
+		..\CODE_OF_CONDUCT.md = ..\CODE_OF_CONDUCT.md
+		..\CONTRIBUTING.md = ..\CONTRIBUTING.md
+		..\Open-Source.md = ..\Open-Source.md
+		..\README.md = ..\README.md
+		..\SECURITY.md = ..\SECURITY.md
+		..\TODO.md = ..\TODO.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
