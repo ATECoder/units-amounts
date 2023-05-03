@@ -1,6 +1,6 @@
 ### About
 
-cc.isr.UnitsAmounts is a .Net library for implementing strongly typed units and amounts.
+[cc.isr.Units.Amounts] is a .Net library for implementing strongly typed units and amounts.
 
 More information is to be found in the original contribution at [Working with units and amounts].
 
@@ -62,10 +62,10 @@ The main types provided by this library are:
 
 ### Feedback
 
-cc.isr.UnitsAmounts is released as open source under the MIT license.
-Bug reports and contributions are welcome at the [Units Amounts Libraries - GitHub] repository.
+[cc.isr.Units.Amounts] is released as open source under the MIT license.
+Bug reports and contributions are welcome at the [cc.isr.Units.Amounts] repository.
 
 [Working with units and amounts]: https://www.codeproject.com/Articles/611731/Working-with-Units-and-Amounts
-[Units Amounts Libraries - GitHub]: https://github.com/atecoder/units-amounts
+[cc.isr.Units.Amounts]: https://github.com/atecoder/units-amounts
 
 

@@ -2,7 +2,7 @@
 All notable changes to these libraries will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
-##### [2.1.8518] - 2023-04-28 Preview 202304
+##### [2.1.8523] - 2023-05-02 Preview 202304
 * Split README.MD to attribution, cloning, open-source and read me files.
 * Add code of conduct, contribution and security documents.
 
@@ -81,6 +81,6 @@ Make units selection by name case sensitive.
 ##### [1.0.5054] 2013-11-01
 Created
 
-\(C\) 2013 Rudi Breedenraedt.
+&copy;  2013 Rudi Breedenraedt.
 
-[2.1.8518]: https://github.com/atecoder/units-amounts/src/main/
+[2.1.8523]: https://github.com/atecoder/units-amounts/src/main/
