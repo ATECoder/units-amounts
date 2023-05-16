@@ -24,7 +24,9 @@ public class UnitConversionException : InvalidOperationException
     /// <summary>   Specialized constructor for use only by derived class. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="info">     The information. </param>
-    /// <param name="context">  The context. </param>
+    /// <param name="context"> The <see cref="T:System.Runtime.Serialization.StreamingContext" />
+    /// that contains contextual information about the source or destination.
+    /// </param>
     protected UnitConversionException( SerializationInfo info, StreamingContext context )
         : base( info, context )
     {
