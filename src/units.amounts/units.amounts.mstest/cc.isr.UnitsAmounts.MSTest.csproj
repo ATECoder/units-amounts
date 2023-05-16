@@ -33,7 +33,7 @@
     <!-- Required for the amount serialization tests. 
     <PackageReference Include="Grammophone.Serialization" Version="1.0.0" />
     -->
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="3.0.2" />
     <PackageReference Include="MSTest.TestFramework" Version="3.0.2" />
   </ItemGroup>
