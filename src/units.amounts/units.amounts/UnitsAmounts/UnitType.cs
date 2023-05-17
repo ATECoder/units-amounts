@@ -16,7 +16,7 @@ public sealed class UnitType : ISerializable
     [NonSerialized]
     private int _cachedHashCode;
 
-    #region " CONSTRUCTION "
+    #region " construction "
 
     /// <summary>   Default constructor. Required for serialization. </summary>
     public UnitType() : this( UnitType.None.ToString() )

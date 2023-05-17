@@ -8,7 +8,7 @@ namespace cc.isr.UnitsAmounts;
 public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFormattable, ISerializable
 {
 
-    #region " CONSTRUCTION "
+    #region " construction "
 
     /// <summary>   Default constructor. Required for serialization. </summary>
     public Unit() : this( Unit.None )
