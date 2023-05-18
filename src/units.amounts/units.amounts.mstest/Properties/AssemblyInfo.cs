@@ -1,6 +1,3 @@
-using System.Reflection;
-using System.Runtime.InteropServices;
-
-[assembly: AssemblyDescription( "Unit tests of Units Amounts" )]
-[assembly: ComVisible( false )]
+[assembly: System.Reflection.AssemblyDescription( "Unit tests of Units Amounts" )]
+[assembly: System.Runtime.InteropServices.ComVisible( false )]
 [assembly: System.CLSCompliant( true )]
