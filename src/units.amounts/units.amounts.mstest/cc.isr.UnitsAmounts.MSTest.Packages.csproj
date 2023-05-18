@@ -4,8 +4,10 @@
     <OutputType>Library</OutputType>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\..\items\keyPair.snk</AssemblyOriginatorKeyFile>
+
     <!-- NuGet -->
     <IsPackable>false</IsPackable>
+
   </PropertyGroup>
 
   <ItemGroup>
