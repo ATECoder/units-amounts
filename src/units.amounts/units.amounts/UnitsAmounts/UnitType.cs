@@ -20,9 +20,7 @@ public sealed class UnitType : ISerializable
 
     /// <summary>   Default constructor. Required for serialization. </summary>
     public UnitType() : this( UnitType.None.ToString() )
-    {
-    }
-
+    { }
     /// <summary>   Constructor. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="unitTypeName"> Name of the unit type. </param>

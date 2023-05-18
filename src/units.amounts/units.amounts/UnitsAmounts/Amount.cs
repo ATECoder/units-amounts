@@ -14,9 +14,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <summary>   Default constructor. Required for serialization. </summary>
     /// <remarks>   David, 2022-01-29. </remarks>
     public Amount() : this( 0, new Unit() )
-    {
-    }
-
+    { }
     /// <summary>   Constructor. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <exception cref="ArgumentNullException">    Thrown when one or more required arguments are
