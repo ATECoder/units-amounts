@@ -10,7 +10,7 @@ namespace cc.isr.UnitsAmounts;
 /// <param name="sender">   Source of the event. </param>
 /// <param name="args">     Resolve event information. </param>
 /// <returns>   A Unit. </returns>
-public delegate Unit UnitResolveEventHandler( object sender, ResolveEventArgs args );
+public delegate Unit UnitResolveEventHandler( object? sender, ResolveEventArgs args );
 
 /// <summary>   Delegate representing a unidirectional unit conversion function. </summary>
 /// <remarks>   David, 2021-03-22. </remarks>
