@@ -7,6 +7,7 @@
     <Nullable>enable</Nullable>
 
     <AssemblyName>cc.isr.UnitsAmounts.StandardUnits</AssemblyName>
+    <!-- Assembly Info -->
     <RootNamespace>cc.isr.UnitsAmounts</RootNamespace>
 
     <!-- Display name -->
@@ -44,8 +45,6 @@
 
     <!-- Documentation -->
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
-    <PackageReadmeFile>readme.md</PackageReadmeFile>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
 
   </PropertyGroup>
 
