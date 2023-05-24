@@ -3,7 +3,7 @@ namespace cc.isr.UnitsAmounts.MSTest;
 [TestClass]
 public class ScenarioTests
 {
-    #region " Initialize & cleanup "
+    #region " initialize & cleanup "
 
     private UnitManager? _defaultUnitManager;
 

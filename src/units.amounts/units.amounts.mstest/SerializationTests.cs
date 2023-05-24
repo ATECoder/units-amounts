@@ -9,7 +9,7 @@ namespace cc.isr.UnitsAmounts.MSTest;
 public class SerializationTests
 {
 
-    #region " Initialize & cleanup "
+    #region " initialize & cleanup "
 
     private UnitManager? _defaultUnitManager;
 
@@ -31,7 +31,7 @@ public class SerializationTests
 
     #endregion " Initialize & cleanup "
 
-    #region " IFORMATTER "
+    #region " iformatter "
 
     /// <summary>   Asserts should serialize. </summary>
     /// <remarks>   David, 2022-01-31. </remarks>
@@ -68,7 +68,7 @@ public class SerializationTests
 
     #endregion " IFORMATTER "
 
-    #region " Binary Formatter "
+    #region " binary formatter "
 
     /// <summary>   (Unit Test Method) should serialize using binary formatter. </summary>
     /// <remarks>   David, 2022-01-31. </remarks>
@@ -139,7 +139,7 @@ public class SerializationTests
 
     #endregion " Binary Formatter "
 
-    #region " Grammophone Formatter "
+    #region " grammophone formatter "
 
 #if Grammophone
     /// <summary>   (Unit Test Method) should serialize using fast binary formatter. </summary>
@@ -189,7 +189,7 @@ public class SerializationTests
 
     #endregion " Grammophone Formatter "
 
-    #region " SOAP Formatter "
+    #region " soap formatter "
 
 #if Soap
 
@@ -223,7 +223,7 @@ public class SerializationTests
 
     #endregion " SOAP Formatter  "
 
-    #region " NetDataContractSerializer"
+    #region " netdatacontractserializer"
 
 #if NetDataContractSerializer
 

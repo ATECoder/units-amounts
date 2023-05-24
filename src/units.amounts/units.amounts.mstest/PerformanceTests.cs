@@ -9,7 +9,7 @@ public class PerformanceTests
     private const double _maxAcceptanceVariance = +0.25;
     private const double _minAcceptanceVariance = -2.0;
 
-    #region " Initialize & cleanup "
+    #region " initialize & cleanup "
 
     private UnitManager? _defaultUnitManager;
 

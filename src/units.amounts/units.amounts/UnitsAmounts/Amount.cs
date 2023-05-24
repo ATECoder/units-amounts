@@ -73,7 +73,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
 
     #endregion Constructor methods
 
-    #region " PUBLIC IMPLEMENTATION "
+    #region " public implementation "
 
     /// <summary>   The equality precision. </summary>
     private static int _equalityPrecision = 8;
@@ -414,7 +414,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
 
     #endregion Public implementation
 
-    #region " MATHEMATICAL OPERATIONS "
+    #region " mathematical operations "
 
     /// <summary>   Adds this with the amount (= this + amount). </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
@@ -464,7 +464,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
 
     #endregion Mathematical operations
 
-    #region " OPERATOR OVERLOADS "
+    #region " operator overloads "
 
     /// <summary>   Compares two amounts. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
@@ -700,7 +700,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
 
     #endregion Operator overloads
 
-    #region " ICONVERTIBLE IMPLEMENTATION "
+    #region " iconvertible implementation "
 
     /// <summary>   Returns the <see cref="T:System.TypeCode" /> for this instance. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
@@ -908,7 +908,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
 
     #endregion IConvertible implementation
 
-    #region " ICOMPARABLE IMPLEMENTATION "
+    #region " icomparable implementation "
 
     /// <summary>   Compares two amounts of compatible units. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
@@ -936,7 +936,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
 
     #endregion 
 
-    #region " ISERIALIZABLE MEMBERS "
+    #region " iserializable members "
 
     /// <summary>   Constructor. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>

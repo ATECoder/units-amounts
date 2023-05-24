@@ -68,7 +68,7 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
 
     #endregion Constructor methods
 
-    #region " PUBLIC IMPLEMENTATION "
+    #region " public implementation "
 
     /// <summary>   Gets the name of the unit. </summary>
     /// <value> The name. </value>
@@ -232,7 +232,7 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
 
     #endregion Public implementation
 
-    #region " OPERATOR OVERLOADS "
+    #region " operator overloads "
 
     /// <summary>   Equality operator. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
@@ -326,7 +326,7 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
 
     #endregion Operator overloads
 
-    #region " ICOMPARABLE IMPLEMENTATION "
+    #region " icomparable implementation "
 
     /// <summary>
     /// Compares the passed unit to the current one. Allows sorting units of the same type.
@@ -424,7 +424,7 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
 
     #endregion 
 
-    #region " ISERIALIZABLE MEMBERS "
+    #region " iserializable members "
 
     /// <summary>   Constructor. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>

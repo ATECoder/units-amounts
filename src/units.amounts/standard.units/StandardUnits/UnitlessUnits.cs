@@ -21,7 +21,7 @@ public static class UnitlessUnits
 
     public static Unit Status => new( "Status", "Ox", SIUnitTypes.Hex );
 
-    #region " Conversion functions "
+    #region " conversion functions "
     public static void RegisterConversions()
     {
         // Register conversion functions:

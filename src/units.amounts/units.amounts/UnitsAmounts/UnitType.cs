@@ -50,7 +50,7 @@ public sealed class UnitType : ISerializable
 
     #endregion
 
-    #region " UNIT TYPE BASE UNITS "
+    #region " unit type base units "
 
     /// <summary>   The base unit type lock. </summary>
     private static readonly ReaderWriterLock _baseUnitTypeLock = new();
@@ -120,7 +120,7 @@ public sealed class UnitType : ISerializable
 
     #endregion 
 
-    #region " PUBLIC IMPLEMENTATION "
+    #region " public implementation "
 
     /// <summary>   Returns the unit type raised to the specified power. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
@@ -242,7 +242,7 @@ public sealed class UnitType : ISerializable
 
     #endregion 
 
-    #region " OPERATOR OVERLOADS "
+    #region " operator overloads "
 
     /// <summary>   Multiplication operator. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
@@ -294,7 +294,7 @@ public sealed class UnitType : ISerializable
 
     #endregion Operator overloads
 
-    #region " ISERIALIZABLE MEMBERS "
+    #region " iserializable members "
 
     /// <summary>   Constructor. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>

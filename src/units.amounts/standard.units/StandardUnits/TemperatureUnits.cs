@@ -15,7 +15,7 @@ public static class TemperatureUnits
 
     public static Unit DegreesCelsiusPerMinute => new( "Deg C/Minute", UnitSymbols.Degrees + "C/m", TemperatureUnits.DegreeCelsius / TimeUnits.Minute );
 
-    #region " Conversion functions "
+    #region " conversion functions "
 
     public static void RegisterConversions()
     {

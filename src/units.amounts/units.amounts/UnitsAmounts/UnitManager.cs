@@ -26,7 +26,7 @@ public delegate Amount ConversionFunction( Amount originalAmount );
 /// </remarks>
 public sealed class UnitManager
 {
-    #region " Fields "
+    #region " fields "
 
     /// <summary>   Holds the named units: </summary>
     private readonly List<Unit> _allUnits = new();
@@ -55,7 +55,7 @@ public sealed class UnitManager
 
     #endregion Fields
 
-    #region " Public properties "
+    #region " public properties "
 
     /// <summary>   The instance of the currently used UnitManager. </summary>
     /// <value> The instance. </value>
@@ -63,7 +63,7 @@ public sealed class UnitManager
 
     #endregion Public properties
 
-    #region " Public methods - Registrations "
+    #region " public methods - registrations "
 
     /// <summary>
     /// Registers both units and conversions based on the assemblies public types marked with
@@ -244,7 +244,7 @@ public sealed class UnitManager
 
     #endregion Public methods - Registrations
 
-    #region " Public methods - Named units "
+    #region " public methods - named units "
 
     /// <summary>
     /// Retrieves the unit based on its name. If the unit is not found, a UnitResolve event is fired
@@ -375,7 +375,7 @@ public sealed class UnitManager
 
     #endregion Public methods - Named units
 
-    #region " Public methods - Unit conversions "
+    #region " public methods - unit conversions "
 
     /// <summary>   Converts the given amount to the given unit. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
@@ -427,7 +427,7 @@ public sealed class UnitManager
 
     #endregion Public methods - Unit conversions
 
-    #region " Private classes to represent slots in conversion dictionary "
+    #region " private classes to represent slots in conversion dictionary "
 
     /// <summary>   Key slot in the internal conversions dictionary. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
