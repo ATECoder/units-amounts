@@ -6,9 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
-    <AssemblyName>cc.isr.UnitsAmounts</AssemblyName>
     <!-- Assembly Info -->
     <RootNamespace>cc.isr</RootNamespace>
+    <AssemblyName>cc.isr.UnitsAmounts</AssemblyName>
 
     <!-- Display name -->
     <ApplicationTitle>cc.isr.UnitsAmounts</ApplicationTitle>
@@ -35,13 +35,11 @@
     <!-- NuGet -->
     <IsPackable>true</IsPackable>
     <PackageId>cc.isr.UnitsAmounts</PackageId>
+    <Description>Strongly typed units and amounts</Description>
     <PackageTags>strongly typed units amounts</PackageTags>
     <PackageOutputPath>C:\my\nuget</PackageOutputPath>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
-
-    <!-- Assembly Info -->
-    <Description>Strongly typed units and amounts</Description>
 
     <!-- Documentation -->
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
