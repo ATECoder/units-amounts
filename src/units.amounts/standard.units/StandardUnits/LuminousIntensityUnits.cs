@@ -5,6 +5,8 @@ namespace cc.isr.UnitsAmounts.StandardUnits;
 [UnitDefinitionClass]
 public static class LuminousIntensityUnits
 {
+    /// <summary>   Gets the candela. </summary>
+    /// <value> The candela. </value>
     public static Unit Candela => new( "Candela", "cd", SIUnitTypes.LuminousIntensity );
 }
 

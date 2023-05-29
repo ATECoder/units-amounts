@@ -9,11 +9,7 @@
     <!-- Assembly Info -->
     <RootNamespace>cc.isr.UnitsAmounts</RootNamespace>
     <AssemblyName>cc.isr.UnitsAmounts.StandardUnits</AssemblyName>
-
-    <!-- Display name -->
     <ApplicationTitle>cc.isr.UnitsAmounts.StandardUnits</ApplicationTitle>
-
-    <!-- App Identifier -->
     <ApplicationId>cc.isr.units.amounts.standard.units</ApplicationId>
 
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
@@ -30,7 +26,6 @@
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\..\items\keyPair.snk</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
-    <NoWarn>1591</NoWarn>
 
     <!-- NuGet -->
     <IsPackable>true</IsPackable>

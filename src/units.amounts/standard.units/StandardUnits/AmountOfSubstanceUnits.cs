@@ -5,6 +5,8 @@ namespace cc.isr.UnitsAmounts.StandardUnits;
 [UnitDefinitionClass]
 public static class AmountOfSubstanceUnits
 {
+    /// <summary>   Gets the mole. </summary>
+    /// <value> The mole. </value>
     public static Unit Mole => new( "Mole", "mole", SIUnitTypes.AmountOfSubstance );
 }
 

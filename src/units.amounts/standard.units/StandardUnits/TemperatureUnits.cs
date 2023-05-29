@@ -5,18 +5,30 @@ namespace cc.isr.UnitsAmounts.StandardUnits;
 [UnitDefinitionClass, UnitConversionClass]
 public static class TemperatureUnits
 {
+    /// <summary>   Gets the kelvin. </summary>
+    /// <value> The kelvin. </value>
     public static Unit Kelvin => new( "Kelvin", "K", SIUnitTypes.ThermodynamicTemperature );
 
+    /// <summary>   Gets the degree Celsius. </summary>
+    /// <value> The degree Celsius. </value>
     public static Unit DegreeCelsius => new( "Degree Celsius", UnitSymbols.Degrees + "C", new UnitType( "Celsius Temperature" ) );
 
+    /// <summary>   Gets the degree Fahrenheit. </summary>
+    /// <value> The degree Fahrenheit. </value>
     public static Unit DegreeFahrenheit => new( "Degree Fahrenheit", UnitSymbols.Degrees + "F", new UnitType( "Fahrenheit Temperature" ) );
 
+    /// <summary>   Gets the degrees Celsius per second. </summary>
+    /// <value> The degrees Celsius per second. </value>
     public static Unit DegreesCelsiusPerSecond => new( "Deg C/Second", UnitSymbols.Degrees + "C/s", TemperatureUnits.DegreeCelsius / TimeUnits.Second );
 
+    /// <summary>   Gets the degrees Celsius per minute. </summary>
+    /// <value> The degrees Celsius per minute. </value>
     public static Unit DegreesCelsiusPerMinute => new( "Deg C/Minute", UnitSymbols.Degrees + "C/m", TemperatureUnits.DegreeCelsius / TimeUnits.Minute );
 
     #region " conversion functions "
 
+    /// <summary>   Registers the conversions. </summary>
+    /// <remarks>   2023-05-28. </remarks>
     public static void RegisterConversions()
     {
         // Register conversion functions:
