@@ -6,12 +6,16 @@
 <#@ output extension=".props" #>
 <Project>
   <PropertyGroup>
-    <AssemblyVersion>2.1.<#= this.BuildNumber #>.<#= this.RevisionNumber #></AssemblyVersion>
-    <FileVersion>2.1.<#= this.BuildNumber #>.<#= this.RevisionNumber #></FileVersion>
-    <Version>2.1.<#= this.BuildNumber #></Version>
+    <AssemblyVersion><#= this.Major #>.<#= this.Minor #>.<#= this.BuildNumber #>.<#= this.RevisionNumber #></AssemblyVersion>
+    <FileVersion><#= this.Major #>.<#= this.Minor #>.<#= this.BuildNumber #>.<#= this.RevisionNumber #></FileVersion>
+    <Version><#= this.Major #>.<#= this.Minor #>.<#= this.BuildNumber #></Version>
+    <ApplicationDisplayVersion><#= this.Major #>.<#= this.Minor #>.<#= this.BuildNumber #></ApplicationDisplayVersion>
+    <ApplicationVersion><#= this.Major #></ApplicationVersion>
   </PropertyGroup>
 </Project>
 <#+
+    int Major = 2;
+    int Minor = 1;
     int BuildNumber = (int)Math.Floor((DateTime.UtcNow - new DateTime(2000,1,1)).TotalDays);
     int RevisionNumber = (int)((DateTime.UtcNow - DateTime.UtcNow.Date).TotalSeconds / 2);
 #>

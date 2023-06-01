@@ -5,7 +5,7 @@ namespace cc.isr.UnitsAmounts;
 /// (c) 2018 Integrated Scientific Resources, Inc. All rights reserved.<para>
 /// Licensed under The MIT License.</para>
 /// </remarks>
-internal static class SolutionInfo
+internal static partial class SolutionInfo
 {
 
     /// <summary>   The public key. </summary>
