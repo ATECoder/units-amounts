@@ -13,12 +13,14 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
     /// <summary>   Default constructor. Required for serialization. </summary>
     public Unit() : this( Unit.None )
     { }
+
     /// <summary>   Constructor. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="unit"> The unit. </param>
     public Unit( Unit unit )
         : this( Valid( unit ).Name, Valid( unit ).Symbol, Valid( unit ).Factor, Valid( unit ).UnitType, Valid( unit ).IsNamed )
     { }
+
     /// <summary>   Validates the given unit. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <exception cref="ArgumentNullException">    Thrown when one or more required arguments are
@@ -38,6 +40,7 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
     public Unit( string name, string symbol, UnitType unitType )
         : this( name, symbol, 1.0, unitType, true )
     { }
+
     /// <summary>   Constructor. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="name">     Gets the name of the unit. </param>
@@ -46,6 +49,7 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
     public Unit( string name, string symbol, Unit baseUnit )
         : this( name, symbol, baseUnit.Factor, baseUnit.UnitType, true )
     { }
+
     /// <summary>   Constructor. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="name">     Gets the name of the unit. </param>
