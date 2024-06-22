@@ -27,7 +27,7 @@ public sealed class UnitType : ISerializable
     /// <param name="unitTypeName"> Name of the unit type. </param>
     public UnitType( string unitTypeName )
     {
-        var unitIndex = GetBaseUnitIndex( unitTypeName );
+        int unitIndex = GetBaseUnitIndex( unitTypeName );
         this._baseUnitIndices = new sbyte[unitIndex + 1];
         this._baseUnitIndices[unitIndex] = 1;
     }
@@ -57,7 +57,7 @@ public sealed class UnitType : ISerializable
     private static readonly ReaderWriterLock _baseUnitTypeLock = new();
 
     /// <summary>   List of names of the base unit types. </summary>
-    private static readonly IList<string> _baseUnitTypeNames = new List<string>();
+    private static readonly IList<string> _baseUnitTypeNames = [];
 
     /// <summary>   Gets base unit name. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
@@ -99,7 +99,7 @@ public sealed class UnitType : ISerializable
         try
         {
             // Retrieve index of unitTypeName:
-            var index = _baseUnitTypeNames.IndexOf( unitTypeName );
+            int index = _baseUnitTypeNames.IndexOf( unitTypeName );
 
             // If not found, register unitTypeName:
             if ( index == -1 )
@@ -129,8 +129,8 @@ public sealed class UnitType : ISerializable
     /// <returns>   An UnitType. </returns>
     public UnitType Power( int value )
     {
-        var result = new UnitType( this._baseUnitIndices );
-        for ( var i = 0; i < result._baseUnitIndices.Length; i++ )
+        UnitType result = new( this._baseUnitIndices );
+        for ( int i = 0; i < result._baseUnitIndices.Length; i++ )
         {
             result._baseUnitIndices[i] = ( sbyte ) (result._baseUnitIndices[i] * value);
         }
@@ -145,7 +145,10 @@ public sealed class UnitType : ISerializable
     /// <returns>
     /// true if the specified object  is equal to the current object; otherwise, false.
     /// </returns>
-    public static bool Equals( UnitType left, UnitType right ) => left is object && right is object && left.Equals( right );
+    public static bool Equals( UnitType left, UnitType right )
+    {
+        return left is not null && right is not null && left.Equals( right );
+    }
 
     /// <summary>   Determines whether the specified object is equal to the current object. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
@@ -153,7 +156,10 @@ public sealed class UnitType : ISerializable
     /// <returns>
     /// true if the specified object  is equal to the current object; otherwise, false.
     /// </returns>
-    public override bool Equals( object obj ) => this.Equals( obj as UnitType );
+    public override bool Equals( object obj )
+    {
+        return this.Equals( obj as UnitType );
+    }
 
     /// <summary>   Determines whether the specified object is equal to the current object. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
@@ -169,8 +175,8 @@ public sealed class UnitType : ISerializable
         }
         // Determine longest and shortest base Unit Index arrays:
         sbyte[] longest, shortest;
-        var leftLength = this._baseUnitIndices.Length;
-        var rightLength = other._baseUnitIndices.Length;
+        int leftLength = this._baseUnitIndices.Length;
+        int rightLength = other._baseUnitIndices.Length;
         if ( leftLength > rightLength )
         {
             longest = this._baseUnitIndices;
@@ -183,7 +189,7 @@ public sealed class UnitType : ISerializable
         }
 
         // Compare base Unit Indices array content:
-        for ( var i = 0; i < shortest.Length; i++ )
+        for ( int i = 0; i < shortest.Length; i++ )
         {
             if ( shortest[i] != longest[i] )
             {
@@ -191,7 +197,7 @@ public sealed class UnitType : ISerializable
             }
         }
 
-        for ( var i = shortest.Length; i < longest.Length; i++ )
+        for ( int i = shortest.Length; i < longest.Length; i++ )
         {
             if ( longest[i] != 0 )
             {
@@ -209,10 +215,10 @@ public sealed class UnitType : ISerializable
     {
         if ( this._cachedHashCode == 0 )
         {
-            var hash = 0;
-            for ( var i = 0; i < this._baseUnitIndices.Length; i++ )
+            int hash = 0;
+            for ( int i = 0; i < this._baseUnitIndices.Length; i++ )
             {
-                var factor = i + i + 1;
+                int factor = i + i + 1;
                 hash += factor * factor * this._baseUnitIndices[i] * this._baseUnitIndices[i];
             }
             this._cachedHashCode = hash;
@@ -225,9 +231,9 @@ public sealed class UnitType : ISerializable
     /// <returns>   A string that represents the current object. </returns>
     public override string ToString()
     {
-        var sb = new StringBuilder();
-        var sep = "";
-        for ( var i = 0; i < this._baseUnitIndices.Length; i++ )
+        StringBuilder sb = new();
+        string sep = "";
+        for ( int i = 0; i < this._baseUnitIndices.Length; i++ )
         {
             if ( this._baseUnitIndices[i] != 0 )
             {
@@ -252,9 +258,9 @@ public sealed class UnitType : ISerializable
     /// <returns>   The result of the operation. </returns>
     public static UnitType operator *( UnitType left, UnitType right )
     {
-        var result = new UnitType( Math.Max( left._baseUnitIndices.Length, right._baseUnitIndices.Length ) );
+        UnitType result = new( Math.Max( left._baseUnitIndices.Length, right._baseUnitIndices.Length ) );
         left._baseUnitIndices.CopyTo( result._baseUnitIndices, 0 );
-        for ( var i = 0; i < right._baseUnitIndices.Length; i++ )
+        for ( int i = 0; i < right._baseUnitIndices.Length; i++ )
         {
             result._baseUnitIndices[i] += right._baseUnitIndices[i];
         }
@@ -269,9 +275,9 @@ public sealed class UnitType : ISerializable
     /// <returns>   The result of the operation. </returns>
     public static UnitType operator /( UnitType left, UnitType right )
     {
-        var result = new UnitType( Math.Max( left._baseUnitIndices.Length, right._baseUnitIndices.Length ) );
+        UnitType result = new( Math.Max( left._baseUnitIndices.Length, right._baseUnitIndices.Length ) );
         left._baseUnitIndices.CopyTo( result._baseUnitIndices, 0 );
-        for ( var i = 0; i < right._baseUnitIndices.Length; i++ )
+        for ( int i = 0; i < right._baseUnitIndices.Length; i++ )
         {
             result._baseUnitIndices[i] -= right._baseUnitIndices[i];
         }
@@ -284,14 +290,20 @@ public sealed class UnitType : ISerializable
     /// <param name="left">     The first instance to compare. </param>
     /// <param name="right">    The second instance to compare. </param>
     /// <returns>   The result of the operation. </returns>
-    public static bool operator ==( UnitType left, UnitType right ) => UnitType.Equals( left, right );
+    public static bool operator ==( UnitType left, UnitType right )
+    {
+        return UnitType.Equals( left, right );
+    }
 
     /// <summary>   Inequality operator. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="left">     The first instance to compare. </param>
     /// <param name="right">    The second instance to compare. </param>
     /// <returns>   The result of the operation. </returns>
-    public static bool operator !=( UnitType left, UnitType right ) => !UnitType.Equals( left, right );
+    public static bool operator !=( UnitType left, UnitType right )
+    {
+        return !UnitType.Equals( left, right );
+    }
 
     #endregion Operator overloads
 
@@ -305,10 +317,10 @@ public sealed class UnitType : ISerializable
     internal UnitType( SerializationInfo info, StreamingContext context )
     {
         // Retrieve data from serialization:
-        var baseUnitIndexes = info.GetString( "names" ).Split( new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries )
-            .Select( x => UnitType.GetBaseUnitIndex( x ) )
+        int[] baseUnitIndexes = info.GetString( "names" ).Split( new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries )
+            .Select( UnitType.GetBaseUnitIndex )
             .ToArray();
-        var exponents = info.GetString( "exponents" ).Split( new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries )
+        sbyte[] exponents = info.GetString( "exponents" ).Split( new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries )
             .Select( x => Convert.ToSByte( x ) )
             .ToArray();
 
@@ -316,14 +328,14 @@ public sealed class UnitType : ISerializable
         if ( exponents.Length > 0 )
         {
             this._baseUnitIndices = new sbyte[baseUnitIndexes.Max() + 1];
-            for ( var i = 0; i < exponents.Length; i++ )
+            for ( int i = 0; i < exponents.Length; i++ )
             {
                 this._baseUnitIndices[baseUnitIndexes[i]] = exponents[i];
             }
         }
         else
         {
-            this._baseUnitIndices = Array.Empty<sbyte>();
+            this._baseUnitIndices = [];
         }
     }
 
@@ -354,12 +366,12 @@ public sealed class UnitType : ISerializable
     [System.Diagnostics.CodeAnalysis.SuppressMessage( "Style", "IDE0060:Remove unused parameter", Justification = "<Pending>" )]
     internal void AddValues( SerializationInfo info, StreamingContext context )
     {
-        if ( info is object )
+        if ( info is not null )
         {
-            var first = true;
-            var unitNames = new StringBuilder( this._baseUnitIndices.Length * 8 );
-            var unitExponents = new StringBuilder( this._baseUnitIndices.Length * 4 );
-            for ( var i = 0; i < this._baseUnitIndices.Length; i++ )
+            bool first = true;
+            StringBuilder unitNames = new( this._baseUnitIndices.Length * 8 );
+            StringBuilder unitExponents = new( this._baseUnitIndices.Length * 4 );
+            for ( int i = 0; i < this._baseUnitIndices.Length; i++ )
             {
                 if ( this._baseUnitIndices[i] != 0 )
                 {
@@ -378,7 +390,7 @@ public sealed class UnitType : ISerializable
                     first = false;
                 }
             }
-            if ( info is object )
+            if ( info is not null )
             {
                 info.AddValue( "names", unitNames.ToString() );
                 info.AddValue( "exponents", unitExponents.ToString() );

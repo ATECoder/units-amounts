@@ -45,25 +45,29 @@ public static class UnitlessUnits
         // Register conversion functions:
 
         // Convert Volts to Decibels:
-        UnitManager.RegisterConversion( ElectricUnits.Volt, UnitlessUnits.Decibel, delegate ( Amount amount ) {
+        UnitManager.RegisterConversion( ElectricUnits.Volt, UnitlessUnits.Decibel, delegate ( Amount amount )
+        {
             return new Amount( 20 * Math.Log10( amount.Value ), UnitlessUnits.Decibel );
         }
         );
 
         // Convert Watts to Decibels:
-        UnitManager.RegisterConversion( EnergyUnits.Watt, UnitlessUnits.Decibel, delegate ( Amount amount ) {
+        UnitManager.RegisterConversion( EnergyUnits.Watt, UnitlessUnits.Decibel, delegate ( Amount amount )
+        {
             return new Amount( 10 * Math.Log10( amount.Value ), UnitlessUnits.Decibel );
         }
         );
 
         // Convert Neper to Decibels:
-        UnitManager.RegisterConversion( UnitlessUnits.Neper, UnitlessUnits.Decibel, delegate ( Amount amount ) {
+        UnitManager.RegisterConversion( UnitlessUnits.Neper, UnitlessUnits.Decibel, delegate ( Amount amount )
+        {
             return new Amount( 0.05 * Math.Log( amount.Value ), UnitlessUnits.Decibel );
         }
         );
 
         // Convert Decibels to Neper:
-        UnitManager.RegisterConversion( UnitlessUnits.Decibel, UnitlessUnits.Neper, delegate ( Amount amount ) {
+        UnitManager.RegisterConversion( UnitlessUnits.Decibel, UnitlessUnits.Neper, delegate ( Amount amount )
+        {
             return new Amount( 20 * Math.Log10( Math.E ) * amount.Value, UnitlessUnits.Neper );
         }
         );

@@ -22,12 +22,12 @@ internal static class ExceptionDataMethods
     /// </returns>
     public static bool AddExceptionData( Exception value, System.Runtime.InteropServices.ExternalException? exception )
     {
-        if ( value is object && exception is object )
+        if ( value is not null && exception is not null )
         {
             value.Data.Add( $"{value.Data.Count}-External.Error.Code", $"{exception.ErrorCode}" );
         }
 
-        return exception is object;
+        return exception is not null;
     }
 
     /// <summary>
@@ -41,12 +41,12 @@ internal static class ExceptionDataMethods
     /// </returns>
     public static bool AddExceptionData( Exception value, ArgumentOutOfRangeException? exception )
     {
-        if ( value is object && exception is object )
+        if ( value is not null && exception is not null )
         {
             value.Data.Add( $"{value.Data.Count}-Name+Value", $"{exception.ParamName}={exception.ActualValue}" );
         }
 
-        return exception is object;
+        return exception is not null;
     }
 
     /// <summary>
@@ -60,12 +60,12 @@ internal static class ExceptionDataMethods
     /// </returns>
     public static bool AddExceptionData( Exception value, ArgumentException? exception )
     {
-        if ( value is object && exception is object )
+        if ( value is not null && exception is not null )
         {
             value.Data.Add( $"{value.Data.Count}-Name", exception.ParamName );
         }
 
-        return exception is object;
+        return exception is not null;
     }
 
     /// <summary>
@@ -78,13 +78,13 @@ internal static class ExceptionDataMethods
     /// </returns>
     public static bool AddExceptionData( Exception value, UnitConversionException? exception )
     {
-        if ( value is object && exception is object )
+        if ( value is not null && exception is not null )
         {
-            value.Data.Add( $"{value.Data.Count}-{nameof(UnitConversionException.FromUnit)}", exception.FromUnit );
+            value.Data.Add( $"{value.Data.Count}-{nameof( UnitConversionException.FromUnit )}", exception.FromUnit );
             value.Data.Add( $"{value.Data.Count}-{nameof( UnitConversionException.ToUnit )}", exception.ToUnit );
         }
 
-        return exception is object;
+        return exception is not null;
     }
 
     /// <summary>
@@ -97,12 +97,12 @@ internal static class ExceptionDataMethods
     /// </returns>
     public static bool AddExceptionData( Exception value, UnknownUnitException? exception )
     {
-        if ( value is object && exception is object )
+        if ( value is not null && exception is not null )
         {
             value.Data.Add( $"{value.Data.Count}-{nameof( UnknownUnitException.Name )}", exception.Name );
         }
 
-        return exception is object;
+        return exception is not null;
     }
 
 
@@ -112,11 +112,11 @@ internal static class ExceptionDataMethods
     /// <returns> <c>true</c> if exception was added; otherwise <c>false</c> </returns>
     public static bool AddExceptionData( Exception? exception )
     {
-        return exception is not null && ( AddExceptionData( exception, exception as ArgumentOutOfRangeException ) ||
+        return exception is not null && (AddExceptionData( exception, exception as ArgumentOutOfRangeException ) ||
                AddExceptionData( exception, exception as ArgumentException ) ||
                AddExceptionData( exception, exception as UnitConversionException ) ||
                AddExceptionData( exception, exception as UnknownUnitException ) ||
-               AddExceptionData( exception, exception as System.Runtime.InteropServices.ExternalException ) );
+               AddExceptionData( exception, exception as System.Runtime.InteropServices.ExternalException ));
     }
 
 }

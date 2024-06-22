@@ -18,6 +18,8 @@ public class AmountTests
     #region " initialize & cleanup "
 
     private UnitManager? _defaultUnitManager;
+    private static readonly double[] _oneFifthWeekZeroSecondsArray = [1.0, 9.0, 36.0, 0.0];
+    private static readonly double[] _oneFifthWeekSixtySecondsArray = [1.0, 9.0, 35.0, 60.0];
 
     [TestInitialize()]
     public void InitializeBeforeEachTest()
@@ -93,7 +95,7 @@ public class AmountTests
         Amount c = new( 500.0, LengthUnits.Meter / LengthUnits.Kilometer );
         Assert.AreEqual( 0.5, ( double ) c! );
 
-        Assert.AreEqual( "15.3", (( Amount ) 15.3).ToString().Replace( ",", "." ) );
+        Assert.AreEqual( "15.3", (( Amount ) 15.3).ToString( CultureInfo.CurrentCulture ).Replace( ",", "." ) );
     }
 
     [TestMethod()]
@@ -104,7 +106,7 @@ public class AmountTests
         Amount a = new( 15.0, percent );
         Amount b = new( 300.0, TimeUnits.Minute );
 
-        Assert.AreEqual( "15 %", a.ToString( "0 US" ) );
+        Assert.AreEqual( "15 %", a.ToString( "0 US", CultureInfo.CurrentCulture ) );
         Assert.AreEqual( 0.15, ( double ) a! );
         Console.WriteLine( a * b );
         Assert.AreEqual( 45.0, (a * b)!.ConvertedTo( TimeUnits.Minute ).Value );
@@ -144,7 +146,7 @@ public class AmountTests
     public void Split01Test()
     {
         Amount a = new( 146.0, TimeUnits.Second );
-        Amount[] values = a.Split( new Unit[] { TimeUnits.Hour, TimeUnits.Minute, TimeUnits.Second }, 0 );
+        Amount[] values = a.Split( [TimeUnits.Hour, TimeUnits.Minute, TimeUnits.Second], 0 );
 
         string separator = "";
         foreach ( Amount v in values )
@@ -165,7 +167,7 @@ public class AmountTests
     public void Split02Test()
     {
         Amount a = new( 10.5, LengthUnits.Meter );
-        Amount[] values = a.Split( new Unit[] { LengthUnits.Yard, LengthUnits.Foot, LengthUnits.Inch }, 1 );
+        Amount[] values = a.Split( [LengthUnits.Yard, LengthUnits.Foot, LengthUnits.Inch], 1 );
 
         string separator = "";
         foreach ( Amount v in values )
@@ -186,7 +188,7 @@ public class AmountTests
     public void Split03Test()
     {
         Amount a = new( global::System.Math.Sqrt( 13 ), LengthUnits.Meter );
-        Amount[] values = a.Split( new Unit[] { LengthUnits.Meter, LengthUnits.Decimeter, LengthUnits.Centimeter, LengthUnits.Millimeter }, 0 );
+        Amount[] values = a.Split( [LengthUnits.Meter, LengthUnits.Decimeter, LengthUnits.Centimeter, LengthUnits.Millimeter], 0 );
 
         string separator = "";
         foreach ( Amount v in values )
@@ -211,32 +213,32 @@ public class AmountTests
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
 
-            CultureInfo DutchBelgium = CultureInfo.GetCultureInfo( "nl-BE" );
-            CultureInfo EnglishUs = CultureInfo.GetCultureInfo( "en-US" );
+            CultureInfo dutchBelgium = CultureInfo.GetCultureInfo( "nl-BE" );
+            CultureInfo englishUs = CultureInfo.GetCultureInfo( "en-US" );
 
             Amount a = new( 12.3456789, LengthUnits.Kilometer );
             Amount b = new( 12345.6789, LengthUnits.Meter );
             Amount c = new( -0.45, LengthUnits.Kilometer / TimeUnits.Hour );
             Amount d = new( 25.678, LengthUnits.Meter * LengthUnits.Meter );
 
-            Assert.AreEqual( "12.3456789 km", a.ToString() );
-            Assert.AreEqual( "12,3456789 Kilometer", a.ToString( "GN", DutchBelgium ) );
-            Assert.AreEqual( "12.346 km", a.ToString( "0.000 US", EnglishUs ) );
-            Assert.AreEqual( "12.346 km", a.ToString( "0.000 US", CultureInfo.CurrentUICulture ) );
-            Assert.AreEqual( "12.346", a.ToString( "0.000", CultureInfo.CurrentUICulture ) );
-            Assert.AreEqual( "12,346 km", a.ToString( "NS", DutchBelgium ) );
-            Assert.AreEqual( "12.346 km", a.ToString( "NS", EnglishUs ) );
-            Assert.AreEqual( "12.345,679 m", b.ToString( "NS", DutchBelgium ) );
-            Assert.AreEqual( "12,345.679 m", b.ToString( "NS", EnglishUs ) );
-            Assert.AreEqual( "-0.450 km/h", c.ToString( "NS", EnglishUs ) );
-            Assert.AreEqual( "-0.450 (Kilometer/Hour)", c.ToString( "NN", EnglishUs ) );
-            Assert.AreEqual( "-0,450 km/h", c.ToString( "0.000 US", DutchBelgium ) );
-            Assert.AreEqual( "[0,450] km/h", c.ToString( "0.000 US;[0.000] US", DutchBelgium ) );
-            Assert.AreEqual( "12.35 Kilometer", b.ToString( "NN|kilometer" ) );
-            Assert.AreEqual( "12.346 km", b.ToString( "#,##0.000 US|kilometer" ) );
-            Assert.AreEqual( "+12.346 km", b.ToString( "+#,##0.000 US|kilometer" ) );
-            Assert.AreEqual( "12.346 km neg", (-b)!.ToString( "#,##0.000 US pos;#,##0.000 US neg|kilometer" ) );
-            Assert.AreEqual( "25.68 m*m", d.ToString( "NS" ) );
+            Assert.AreEqual( "12.3456789 km", a.ToString( CultureInfo.CurrentCulture ) );
+            Assert.AreEqual( "12,3456789 Kilometer", a.ToString( "GN", dutchBelgium ) );
+            Assert.AreEqual( "12.346 km", a.ToString( "0.000 US", englishUs ) );
+            Assert.AreEqual( "12.346 km", a.ToString( "0.000 US", CultureInfo.CurrentCulture ) );
+            Assert.AreEqual( "12.346", a.ToString( "0.000", CultureInfo.CurrentCulture ) );
+            Assert.AreEqual( "12,346 km", a.ToString( "NS", dutchBelgium ) );
+            Assert.AreEqual( "12.346 km", a.ToString( "NS", englishUs ) );
+            Assert.AreEqual( "12.345,679 m", b.ToString( "NS", dutchBelgium ) );
+            Assert.AreEqual( "12,345.679 m", b.ToString( "NS", englishUs ) );
+            Assert.AreEqual( "-0.450 km/h", c.ToString( "NS", englishUs ) );
+            Assert.AreEqual( "-0.450 (Kilometer/Hour)", c.ToString( "NN", englishUs ) );
+            Assert.AreEqual( "-0,450 km/h", c.ToString( "0.000 US", dutchBelgium ) );
+            Assert.AreEqual( "[0,450] km/h", c.ToString( "0.000 US;[0.000] US", dutchBelgium ) );
+            Assert.AreEqual( "12.35 Kilometer", b.ToString( "NN|kilometer", CultureInfo.CurrentCulture ) );
+            Assert.AreEqual( "12.346 km", b.ToString( "#,##0.000 US|kilometer", CultureInfo.CurrentCulture ) );
+            Assert.AreEqual( "+12.346 km", b.ToString( "+#,##0.000 US|kilometer", CultureInfo.CurrentCulture ) );
+            Assert.AreEqual( "12.346 km neg", (-b)!.ToString( "#,##0.000 US pos;#,##0.000 US neg|kilometer", CultureInfo.CurrentCulture ) );
+            Assert.AreEqual( "25.68 m*m", d.ToString( "NS", CultureInfo.CurrentCulture ) );
         }
         finally
         {
@@ -252,8 +254,8 @@ public class AmountTests
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
             Amount a = new( 12.3456789, LengthUnits.Kilometer );
-            Assert.AreEqual( "12.346 km", a.ToString( "{0:G5} {1}", CultureInfo.CurrentUICulture ) );
-            Assert.AreEqual( "12.346", a.ToString( "{0:G5}", CultureInfo.CurrentUICulture ) );
+            Assert.AreEqual( "12.346 km", a.ToString( "{0:G5} {1}", CultureInfo.CurrentCulture ) );
+            Assert.AreEqual( "12.346", a.ToString( "{0:G5}", CultureInfo.CurrentCulture ) );
         }
         finally
         {
@@ -275,15 +277,16 @@ public class AmountTests
         Amount d = new( 278.9, LengthUnits.Mile );
         Amount t = new( 2.5, TimeUnits.Hour );
 
-        var s = d / t;
+        Amount? s = d / t;
 
         Assert.AreEqual(
             "Taking 2.5 h to travel 449 km means your speed was 179.54 km/h",
-            String.Format( "Taking {1:GG|hour} to travel {0:#,##0 US|kilometer} means your speed was {2:#,##0.00 US|kilometer/hour}", d, t, s ) );
+            string.Format( CultureInfo.CurrentCulture,
+            "Taking {1:GG|hour} to travel {0:#,##0 US|kilometer} means your speed was {2:#,##0.00 US|kilometer/hour}", d, t, s ) );
 
         Amount? a = null;
 
-        Assert.AreEqual( "a = ", String.Format( "a = {0:#,##0.0 US}", a ) );
+        Assert.AreEqual( "a = ", string.Format( CultureInfo.CurrentCulture, "a = {0:#,##0.0 US}", a ) );
     }
 
     [TestMethod()]
@@ -292,37 +295,36 @@ public class AmountTests
         Amount a = new( 1234.5678, LengthUnits.Meter );
         Amount? b = null;
 
-        CultureInfo EnglishUs = CultureInfo.GetCultureInfo( "en-US" );
-        CultureInfo DutchBelgium = CultureInfo.GetCultureInfo( "nl-BE" );
+        CultureInfo englishUs = CultureInfo.GetCultureInfo( "en-US" );
+        CultureInfo dutchBelgium = CultureInfo.GetCultureInfo( "nl-BE" );
 
-        Assert.AreEqual( "1234.5678 m", Amount.ToString( a ).Replace( ",", "." ) );
-        Assert.AreEqual( "1234.5678 m", Amount.ToString( a, EnglishUs ) );
-        Assert.AreEqual( "1234,5678 m", Amount.ToString( a, DutchBelgium ) );
-        Assert.AreEqual( "1.234.57 m", Amount.ToString( a, "#,##0.00 US" ).Replace( ",", "." ) );
-        Assert.AreEqual( "1,234.57 m", Amount.ToString( a, "#,##0.00 US", EnglishUs ) );
-        Assert.AreEqual( "1.234,57 m", Amount.ToString( a, "#,##0.00 US", DutchBelgium ) );
+        Assert.AreEqual( "1234.5678 m", Amount.ToString( a, CultureInfo.CurrentCulture ).Replace( ",", "." ) );
+        Assert.AreEqual( "1234.5678 m", Amount.ToString( a, englishUs ) );
+        Assert.AreEqual( "1234,5678 m", Amount.ToString( a, dutchBelgium ) );
+        Assert.AreEqual( "1.234.57 m", Amount.ToString( a, "#,##0.00 US", CultureInfo.CurrentCulture ).Replace( ",", "." ) );
+        Assert.AreEqual( "1,234.57 m", Amount.ToString( a, "#,##0.00 US", englishUs ) );
+        Assert.AreEqual( "1.234,57 m", Amount.ToString( a, "#,##0.00 US", dutchBelgium ) );
 
         string emptyValue = "";
-        Assert.AreEqual( emptyValue, Amount.ToString( b ).Replace( ",", "." ) );
-        Assert.AreEqual( emptyValue, Amount.ToString( b, EnglishUs ) );
-        Assert.AreEqual( emptyValue, Amount.ToString( b, DutchBelgium ) );
-        Assert.AreEqual( emptyValue, Amount.ToString( b, "#,##0.00 US" ).Replace( ",", "." ) );
-        Assert.AreEqual( emptyValue, Amount.ToString( b, "#,##0.00 US", EnglishUs ) );
-        Assert.AreEqual( emptyValue, Amount.ToString( b, "#,##0.00 US", DutchBelgium ) );
+        Assert.AreEqual( emptyValue, Amount.ToString( b, CultureInfo.CurrentCulture ).Replace( ",", "." ) );
+        Assert.AreEqual( emptyValue, Amount.ToString( b, englishUs ) );
+        Assert.AreEqual( emptyValue, Amount.ToString( b, dutchBelgium ) );
+        Assert.AreEqual( emptyValue, Amount.ToString( b, "#,##0.00 US", CultureInfo.CurrentCulture ).Replace( ",", "." ) );
+        Assert.AreEqual( emptyValue, Amount.ToString( b, "#,##0.00 US", englishUs ) );
+        Assert.AreEqual( emptyValue, Amount.ToString( b, "#,##0.00 US", dutchBelgium ) );
 
         Amount? x = null;
         string s = string.Empty;
-        Assert.AreEqual( "", s + Amount.ToString( x, "#,##0.00 US|meter" ) );
+        Assert.AreEqual( "", s + Amount.ToString( x, "#,##0.00 US|meter", CultureInfo.CurrentCulture ) );
 
     }
 
     [TestMethod()]
-    [ExpectedException( typeof( ArgumentNullException ) )]
     public void NullAmountIsNotLessThanTest()
     {
         Amount? a = null;
         Amount b = ( Amount ) 100.0;
-        _ = a < b;
+        _ = Assert.ThrowsException<ArgumentNullException>( () => a < b );
     }
 
     [TestMethod()]
@@ -466,14 +468,14 @@ public class AmountTests
 
         s = d1 / t;
 
-        Assert.IsTrue( Double.IsInfinity( s!.Value ) );
-        Assert.IsTrue( Double.IsPositiveInfinity( s.Value ) );
-        Assert.AreEqual( s.Unit, (d1.Unit / t.Unit) );
+        Assert.IsTrue( double.IsInfinity( s!.Value ) );
+        Assert.IsTrue( double.IsPositiveInfinity( s.Value ) );
+        Assert.AreEqual( s.Unit, d1.Unit / t.Unit );
 
         s = d2 / t;
 
-        Assert.IsTrue( Double.IsNaN( s!.Value ) );
-        Assert.AreEqual( s.Unit, (d2.Unit / t.Unit) );
+        Assert.IsTrue( double.IsNaN( s!.Value ) );
+        Assert.AreEqual( s.Unit, d2.Unit / t.Unit );
     }
 
     [TestMethod()]
@@ -493,15 +495,15 @@ public class AmountTests
         // One fifth of a week:
         Amount a = new( 1.0 / 5.0, TimeUnits.Day * 7.0 );
 
-        Amount[] result = a.Split( new Unit[] { TimeUnits.Day, TimeUnits.Hour, TimeUnits.Minute, TimeUnits.Second }, 3 );
+        Amount[] result = a.Split( [TimeUnits.Day, TimeUnits.Hour, TimeUnits.Minute, TimeUnits.Second], 3 );
 
-        foreach ( var item in result )
+        foreach ( Amount item in result )
         {
             Console.WriteLine( item );
         }
 
         Assert.AreEqual( 4, result.Length );
-        CollectionAssert.AreEqual( new double[] { 1.0, 9.0, 36.0, 0.0 }.ToList(), result.Select( x => x.Value ).ToList() );
+        CollectionAssert.AreEqual( _oneFifthWeekZeroSecondsArray.ToList(), result.Select( x => x.Value ).ToList() );
     }
 
     [TestMethod()]
@@ -510,9 +512,9 @@ public class AmountTests
         // One fifth of a week:
         Amount a = new( 7.0 / 5.0, TimeUnits.Day );
 
-        Amount[] result = a.Split( new Unit[] { TimeUnits.Day, TimeUnits.Hour, TimeUnits.Minute, TimeUnits.Second }, 3 );
+        Amount[] result = a.Split( [TimeUnits.Day, TimeUnits.Hour, TimeUnits.Minute, TimeUnits.Second], 3 );
 
-        foreach ( var item in result )
+        foreach ( Amount item in result )
         {
             Console.WriteLine( item );
         }
@@ -522,16 +524,15 @@ public class AmountTests
         // which once rounded, end up to be 60 seconds...
 
         Assert.AreEqual( 4, result.Length );
-        CollectionAssert.AreEqual( new double[] { 1.0, 9.0, 35.0, 60.0 }.ToList(), result.Select( x => x.Value ).ToList() );
+        CollectionAssert.AreEqual( _oneFifthWeekSixtySecondsArray.ToList(), result.Select( x => x.Value ).ToList() );
     }
 
     [TestMethod()]
-    [ExpectedException( typeof( UnitConversionException ) )]
     public void AmountSplitIncompatibleTest()
     {
         // One fifth of a week:
         Amount a = new( 7.0 / 5.0, TimeUnits.Day );
-        _ = a.Split( new Unit[] { TimeUnits.Day, TimeUnits.Hour, LengthUnits.Meter, TimeUnits.Second }, 3 );
+        _ = Assert.ThrowsException<UnitConversionException>( () => a.Split( [TimeUnits.Day, TimeUnits.Hour, LengthUnits.Meter, TimeUnits.Second], 3 ) );
     }
 }
 

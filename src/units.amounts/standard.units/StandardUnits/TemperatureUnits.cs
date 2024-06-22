@@ -34,37 +34,43 @@ public static class TemperatureUnits
         // Register conversion functions:
 
         // Convert Celsius to Fahrenheit:
-        UnitManager.RegisterConversion( DegreeCelsius, DegreeFahrenheit, delegate ( Amount amount ) {
-            return new Amount( amount.Value * 1.8 + 32.0, DegreeFahrenheit );
+        UnitManager.RegisterConversion( DegreeCelsius, DegreeFahrenheit, delegate ( Amount amount )
+        {
+            return new Amount( (amount.Value * 1.8) + 32.0, DegreeFahrenheit );
         }
         );
 
         // Convert Fahrenheit to Celsius:
-        UnitManager.RegisterConversion( DegreeFahrenheit, DegreeCelsius, delegate ( Amount amount ) {
+        UnitManager.RegisterConversion( DegreeFahrenheit, DegreeCelsius, delegate ( Amount amount )
+        {
             return new Amount( (amount.Value - 32.0) / 1.8, DegreeCelsius );
         }
         );
 
         // Convert Celsius to Kelvin:
-        UnitManager.RegisterConversion( DegreeCelsius, Kelvin, delegate ( Amount amount ) {
+        UnitManager.RegisterConversion( DegreeCelsius, Kelvin, delegate ( Amount amount )
+        {
             return new Amount( amount.Value + 273.15, Kelvin );
         }
         );
 
         // Convert Kelvin to Celsius:
-        UnitManager.RegisterConversion( Kelvin, DegreeCelsius, delegate ( Amount amount ) {
+        UnitManager.RegisterConversion( Kelvin, DegreeCelsius, delegate ( Amount amount )
+        {
             return new Amount( amount.Value - 273.15, DegreeCelsius );
         }
         );
 
         // Convert Fahrenheit to Kelvin:
-        UnitManager.RegisterConversion( DegreeFahrenheit, Kelvin, delegate ( Amount amount ) {
+        UnitManager.RegisterConversion( DegreeFahrenheit, Kelvin, delegate ( Amount amount )
+        {
             return amount.ConvertedTo( DegreeCelsius ).ConvertedTo( Kelvin );
         }
         );
 
         // Convert Kelvin to Fahrenheit:
-        UnitManager.RegisterConversion( Kelvin, DegreeFahrenheit, delegate ( Amount amount ) {
+        UnitManager.RegisterConversion( Kelvin, DegreeFahrenheit, delegate ( Amount amount )
+        {
             return amount.ConvertedTo( DegreeCelsius ).ConvertedTo( DegreeFahrenheit );
         }
         );

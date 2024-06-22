@@ -25,9 +25,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     public Amount( double value, Unit unit )
     {
         if ( unit is null )
-        {
             throw new ArgumentNullException( nameof( unit ) );
-        }
 
         this.Value = value;
         this.Unit = unit;
@@ -41,9 +39,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     public Amount( Amount value )
     {
         if ( value is null )
-        {
             throw new ArgumentNullException( nameof( value ) );
-        }
 
         this.Value = value.Value;
         this.Unit = value.Unit;
@@ -64,13 +60,19 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="unit"> The unit of the amount. </param>
     /// <returns>   An Amount. </returns>
-    public static Amount Zero( Unit unit ) => new( 0.0, unit );
+    public static Amount Zero( Unit unit )
+    {
+        return new( 0.0, unit );
+    }
 
     /// <summary>   Zeros. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="unitName"> Name of the unit. </param>
     /// <returns>   An Amount. </returns>
-    public static Amount Zero( string unitName ) => new( 0.0, unitName );
+    public static Amount Zero( string unitName )
+    {
+        return new( 0.0, unitName );
+    }
 
     #endregion Constructor methods
 
@@ -99,14 +101,19 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <summary>   Returns a unit that matches this amount. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <returns>   A Unit. </returns>
-    public Unit AsUnit() => new( this.Value + "*" + this.Unit.Name, this.Value + "*" + this.Unit.Symbol, this.Value * this.Unit );
+    public Unit AsUnit()
+    {
+        return new( this.Value + "*" + this.Unit.Name, this.Value + "*" + this.Unit.Symbol, this.Value * this.Unit );
+    }
 
     /// <summary>   Returns a clone of the Amount object. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <returns>   A copy of this object. </returns>
-    public object Clone() =>
+    public object Clone()
+    {
         // Actually, as Amount is immutable, it can safely return itself:
-        this;
+        return this;
+    }
 
     /// <summary>
     /// Returns a matching amount converted to the given unit and rounded up to the given number of
@@ -116,7 +123,10 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="unitName"> Name of the unit. </param>
     /// <param name="decimals"> The decimals. </param>
     /// <returns>   An Amount. </returns>
-    public Amount ConvertedTo( string unitName, int decimals ) => this.ConvertedTo( UnitManager.GetUnitByName( unitName ), decimals );
+    public Amount ConvertedTo( string unitName, int decimals )
+    {
+        return this.ConvertedTo( UnitManager.GetUnitByName( unitName ), decimals );
+    }
 
     /// <summary>
     /// Returns a matching amount converted to the given unit and rounded up to the given number of
@@ -126,21 +136,29 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="unit">     The unit of the amount. </param>
     /// <param name="decimals"> The decimals. </param>
     /// <returns>   An Amount. </returns>
-    public Amount ConvertedTo( Unit unit, int decimals ) => new( Math.Round( UnitManager.ConvertTo( this, unit ).Value, decimals ), unit );
+    public Amount ConvertedTo( Unit unit, int decimals )
+    {
+        return new( Math.Round( UnitManager.ConvertTo( this, unit ).Value, decimals ), unit );
+    }
 
     /// <summary>   Returns a matching amount converted to the given unit. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="unitName"> Name of the unit. </param>
     /// <returns>   An Amount. </returns>
-    public Amount ConvertedTo( string unitName ) => this.ConvertedTo( UnitManager.GetUnitByName( unitName ) );
+    public Amount ConvertedTo( string unitName )
+    {
+        return this.ConvertedTo( UnitManager.GetUnitByName( unitName ) );
+    }
 
     /// <summary>   Returns a matching amount converted to the given unit. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="unit"> The unit of the amount. </param>
     /// <returns>   An Amount. </returns>
-    public Amount ConvertedTo( Unit unit ) =>
+    public Amount ConvertedTo( Unit unit )
+    {
         // Let UnitManager perform conversion:
-        UnitManager.ConvertTo( this, unit );
+        return UnitManager.ConvertTo( this, unit );
+    }
 
     /// <summary>
     /// Splits this amount into integral values of the given units except for the last amount which
@@ -155,19 +173,17 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     public Amount[] Split( Unit[] units, int decimals )
     {
         if ( units == null )
-        {
             throw new ArgumentNullException( nameof( units ) );
-        }
 
-        var amounts = new Amount[units.Length];
+        Amount[] amounts = new Amount[units.Length];
 
         // this is unlikely to be null here
         if ( this is null ) return amounts;
 
-        var rest = this;
+        Amount? rest = this;
 
         // Truncate for all but the last unit:
-        for ( var i = 0; i < (units.Length - 1); i++ )
+        for ( int i = 0; i < (units.Length - 1); i++ )
         {
             amounts[i] = ( Amount ) rest!.ConvertedTo( units[i] ).MemberwiseClone();
             amounts[i].Value = Math.Truncate( amounts[i].Value );
@@ -192,7 +208,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
         foreach ( Amount amount in amounts )
         {
             if ( amount is not null )
-                result = ( result + amount )! ;
+                result = (result + amount)!;
         }
         return result;
     }
@@ -210,7 +226,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// </returns>
     public static bool Equals( Amount? left, Amount? right )
     {
-        return left is object && right is object && left.Equals( right );
+        return left is not null && right is not null && left.Equals( right );
     }
 
     /// <summary>
@@ -223,7 +239,10 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <c>true</c> if the specified <see cref="T:System.Object" /> is equal to the current
     /// <see cref="T:System.Object" />; otherwise, false.
     /// </returns>
-    public override bool Equals( object obj ) => this.Equals( obj as Amount );
+    public override bool Equals( object obj )
+    {
+        return this.Equals( obj as Amount );
+    }
 
     /// <summary>   Tests if this Amount is considered equal to another. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
@@ -259,14 +278,24 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <summary>   Serves as a hash function for a particular type. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <returns>   A hash code for the current <see cref="T:System.Object" />. </returns>
-    public override int GetHashCode() => ( this.Value, this.Unit ).GetHashCode();
+    public override int GetHashCode()
+    {
+#if NETSTANDARD2_1_OR_GREATER
+        return HashCode.Combine( this.Value, this.Unit );
+#else
+        return (this.Value, this.Unit).GetHashCode();
+#endif
+    }
 
     /// <summary>
     /// Shows the default string representation of the amount. (The default format string is "GG").
     /// </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <returns>   A string that represents this object. </returns>
-    public override string ToString() => this.ToString( null, null );
+    public override string ToString()
+    {
+        return this.ToString( null, null );
+    }
 
     /// <summary>
     /// Shows a string representation of the amount, formatted according to the passed format string.
@@ -276,7 +305,10 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     ///                         to use the default format defined for the type of the
     ///                         <see cref="T:System.IFormattable" />implementation. </param>
     /// <returns>   A string that represents this object. </returns>
-    public string ToString( string format ) => this.ToString( format, null );
+    public string ToString( string format )
+    {
+        return this.ToString( format, null );
+    }
 
     /// <summary>
     /// Shows the default string representation of the amount using the given format provider.
@@ -286,7 +318,10 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     ///                                 implementation that supplies culture-specific formatting
     ///                                 information. </param>
     /// <returns>   A string that represents this object. </returns>
-    public string ToString( IFormatProvider formatProvider ) => this.ToString( null, formatProvider );
+    public string ToString( IFormatProvider formatProvider )
+    {
+        return this.ToString( null, formatProvider );
+    }
 
     /// <summary>
     /// Shows a string representation of the amount, formatted according to the passed format string,
@@ -323,14 +358,14 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
             }
         }
 
-        var formats = format.Split( '|' );
+        string[] formats = format.Split( '|' );
 
-        var amount = this;
+        Amount amount = this;
         if ( formats.Length >= 2 )
         {
-            if ( formats[1] == "?"  )
+            if ( formats[1] == "?" )
             {
-                var unit = UnitManager.ResolveToNamedUnit( amount.Unit, true );
+                Unit? unit = UnitManager.ResolveToNamedUnit( amount.Unit, true );
                 if ( unit is not null )
                     amount = amount.ConvertedTo( unit );
             }
@@ -342,25 +377,25 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
         if ( format.StartsWith( "{", StringComparison.OrdinalIgnoreCase ) )
         {
             return format.Split( ' ' ).Length == 2
-                ? String.Format( formatProvider, format, amount.Value, amount.Unit ).TrimEnd( null )
-                : String.Format( formatProvider, format, amount.Value ).TrimEnd( null );
+                ? string.Format( formatProvider, format, amount.Value, amount.Unit ).TrimEnd( null )
+                : string.Format( formatProvider, format, amount.Value ).TrimEnd( null );
         }
         else
         {
             switch ( format )
             {
                 case "GG":
-                    return String.Format( formatProvider, "{0:G} {1}", amount.Value, amount.Unit ).TrimEnd( null );
+                    return string.Format( formatProvider, "{0:G} {1}", amount.Value, amount.Unit ).TrimEnd( null );
                 case "GN":
-                    return String.Format( formatProvider, "{0:G} {1:UN}", amount.Value, amount.Unit ).TrimEnd( null );
+                    return string.Format( formatProvider, "{0:G} {1:UN}", amount.Value, amount.Unit ).TrimEnd( null );
                 case "GS":
-                    return String.Format( formatProvider, "{0:G} {1:US}", amount.Value, amount.Unit ).TrimEnd( null );
+                    return string.Format( formatProvider, "{0:G} {1:US}", amount.Value, amount.Unit ).TrimEnd( null );
                 case "NG":
-                    return String.Format( formatProvider, "{0:N} {1}", amount.Value, amount.Unit ).TrimEnd( null );
+                    return string.Format( formatProvider, "{0:N} {1}", amount.Value, amount.Unit ).TrimEnd( null );
                 case "NN":
-                    return String.Format( formatProvider, "{0:N} {1:UN}", amount.Value, amount.Unit ).TrimEnd( null );
+                    return string.Format( formatProvider, "{0:N} {1:UN}", amount.Value, amount.Unit ).TrimEnd( null );
                 case "NS":
-                    return String.Format( formatProvider, "{0:N} {1:US}", amount.Value, amount.Unit ).TrimEnd( null );
+                    return string.Format( formatProvider, "{0:N} {1:US}", amount.Value, amount.Unit ).TrimEnd( null );
                 default:
                     formats[0] = formats[0].Replace( "UG", "\"" + amount.Unit.ToString( "", formatProvider ) + "\"" );
                     formats[0] = formats[0].Replace( "UN", "\"" + amount.Unit.ToString( "UN", formatProvider ) + "\"" );
@@ -377,7 +412,10 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="amount">   The amount. </param>
     /// <returns>   A string that represents this object. </returns>
-    public static string ToString( Amount? amount ) => ToString( amount, null, null );
+    public static string ToString( Amount? amount )
+    {
+        return ToString( amount, null, null );
+    }
 
     /// <summary>
     /// Static convenience ToString method, returns ToString of the amount, or empty string if amount
@@ -387,7 +425,10 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="amount">   The amount. </param>
     /// <param name="format">   Describes the format to use. </param>
     /// <returns>   A string that represents this object. </returns>
-    public static string ToString( Amount? amount, string format ) => ToString( amount, format, null );
+    public static string ToString( Amount? amount, string format )
+    {
+        return ToString( amount, format, null );
+    }
 
     /// <summary>
     /// Static convenience ToString method, returns ToString of the amount, or empty string if amount
@@ -397,8 +438,11 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="amount">           The amount. </param>
     /// <param name="formatProvider">   The format provider. </param>
     /// <returns>   A string that represents this object. </returns>
-    public static string ToString( Amount? amount, IFormatProvider formatProvider ) => ToString( amount, null, formatProvider );
-    
+    public static string ToString( Amount? amount, IFormatProvider formatProvider )
+    {
+        return ToString( amount, null, formatProvider );
+    }
+
     /// <summary>
     /// Static convenience ToString method, returns ToString of the amount, or empty string if amount
     /// is null.
@@ -410,10 +454,10 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <returns>   A string that represents this object. </returns>
     public static string ToString( Amount? amount, string? format, IFormatProvider? formatProvider )
     {
-        return amount is null ? String.Empty : amount.ToString( format, formatProvider );
+        return amount is null ? string.Empty : amount.ToString( format, formatProvider );
     }
 
-    #endregion Public implementation
+    #endregion 
 
     #region " mathematical operations "
 
@@ -421,47 +465,71 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="amount">   The amount. </param>
     /// <returns>   An Amount. </returns>
-    public Amount? Add( Amount amount ) => this + amount;
+    public Amount? Add( Amount amount )
+    {
+        return this + amount;
+    }
 
     /// <summary>   Negates this (= -this). </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <returns>   An Amount. </returns>
-    public Amount? Negate() => -this;
+    public Amount? Negate()
+    {
+        return -this;
+    }
 
     /// <summary>   Multiply this with amount (= this * amount). </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="amount">   The amount. </param>
     /// <returns>   An Amount. </returns>
-    public Amount? Multiply( Amount amount ) => this * amount;
+    public Amount? Multiply( Amount amount )
+    {
+        return this * amount;
+    }
 
     /// <summary>   Multiply this with value (= this * value). </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="value">    The raw value of the amount. </param>
     /// <returns>   An Amount. </returns>
-    public Amount? Multiply( double value ) => this * value;
+    public Amount? Multiply( double value )
+    {
+        return this * value;
+    }
 
     /// <summary>   Divides this by amount (= this / amount). </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="amount">   The amount. </param>
     /// <returns>   An Amount. </returns>
-    public Amount? DivideBy( Amount amount ) => this / amount;
+    public Amount? DivideBy( Amount amount )
+    {
+        return this / amount;
+    }
 
     /// <summary>   Divides this by value (= this / value). </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="value">    The raw value of the amount. </param>
     /// <returns>   An Amount. </returns>
-    public Amount? DivideBy( double value ) => this / value;
+    public Amount? DivideBy( double value )
+    {
+        return this / value;
+    }
 
     /// <summary>   Returns 1 over this amount (= 1 / this). </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <returns>   An Amount. </returns>
-    public Amount? Inverse() => 1.0 / this;
+    public Amount? Inverse()
+    {
+        return 1.0 / this;
+    }
 
     /// <summary>   Raises this amount to the given power. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="value">    The raw value of the amount. </param>
     /// <returns>   An Amount. </returns>
-    public Amount? Power( int value ) => new( Math.Pow( this.Value, value ), this.Unit.Power( value ) );
+    public Amount? Power( int value )
+    {
+        return new( Math.Pow( this.Value, value ), this.Unit.Power( value ) );
+    }
 
     #endregion Mathematical operations
 
@@ -472,14 +540,20 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="left">     The left. </param>
     /// <param name="right">    The right. </param>
     /// <returns>   The result of the operation. </returns>
-    public static bool operator ==( Amount? left, Amount? right ) => Amount.Equals( left, right );
+    public static bool operator ==( Amount? left, Amount? right )
+    {
+        return Amount.Equals( left, right );
+    }
 
     /// <summary>   Compares two amounts. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="left">     The left. </param>
     /// <param name="right">    The right. </param>
     /// <returns>   The result of the operation. </returns>
-    public static bool operator !=( Amount? left, Amount? right ) => !Amount.Equals( left, right );
+    public static bool operator !=( Amount? left, Amount? right )
+    {
+        return !Amount.Equals( left, right );
+    }
 
     /// <summary>   Compares two Amount objects to determine their relative ordering. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
@@ -501,7 +575,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
         if ( right is null )
             throw new ArgumentNullException( nameof( right ) );
 
-        var rightConverted = right.ConvertedTo( left.Unit );
+        Amount rightConverted = right.ConvertedTo( left.Unit );
         return left == rightConverted ? 0 : left.Value < rightConverted.Value ? -1 : 1;
     }
 
@@ -510,40 +584,58 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="left">     The left. </param>
     /// <param name="right">    The right. </param>
     /// <returns>   The result of the operation. </returns>
-    public static bool operator <( Amount? left, Amount? right ) => Amount.Compare( left, right ) < 0;
+    public static bool operator <( Amount? left, Amount? right )
+    {
+        return Amount.Compare( left, right ) < 0;
+    }
 
     /// <summary>   Compares two amounts of compatible units. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="left">     The left. </param>
     /// <param name="right">    The right. </param>
     /// <returns>   The result of the operation. </returns>
-    public static bool operator <=( Amount? left, Amount? right ) => Amount.Compare( left, right ) <= 0;
+    public static bool operator <=( Amount? left, Amount? right )
+    {
+        return Amount.Compare( left, right ) <= 0;
+    }
 
     /// <summary>   Compares two amounts of compatible units. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="left">     The left. </param>
     /// <param name="right">    The right. </param>
     /// <returns>   The result of the operation. </returns>
-    public static bool operator >( Amount? left, Amount? right ) => Amount.Compare( left, right ) > 0;
+    public static bool operator >( Amount? left, Amount? right )
+    {
+        return Amount.Compare( left, right ) > 0;
+    }
 
     /// <summary>   Compares two amounts of compatible units. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="left">     The left. </param>
     /// <param name="right">    The right. </param>
     /// <returns>   The result of the operation. </returns>
-    public static bool operator >=( Amount? left, Amount? right ) => Amount.Compare( left, right ) >= 0;
+    public static bool operator >=( Amount? left, Amount? right )
+    {
+        return Amount.Compare( left, right ) >= 0;
+    }
 
     /// <summary>   Unary '+' operator. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="right">    The right. </param>
     /// <returns>   The result of the operation. </returns>
-    public static Amount? operator +( Amount? right ) => right;
+    public static Amount? operator +( Amount? right )
+    {
+        return right;
+    }
 
     /// <summary>   Plus. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="right">    The right. </param>
     /// <returns>   An Amount. </returns>
-    public static Amount? Plus( Amount? right ) => right;
+    public static Amount? Plus( Amount? right )
+    {
+        return right;
+    }
 
     /// <summary>   Plus. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
@@ -591,7 +683,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <returns>   An Amount. </returns>
     public static Amount? Subtract( Amount? left, Amount? right )
     {
-        return ( left is null || right is null ) ? null : left + (-right)!;
+        return (left is null || right is null) ? null : left + (-right)!;
     }
 
     /// <summary>   Subtracts two amounts of compatible units. </summary>
@@ -633,7 +725,10 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="left">     The left. </param>
     /// <param name="right">    The right. </param>
     /// <returns>   The result of the operation. </returns>
-    public static Amount? operator /( Amount? left, Amount? right ) => Amount.Divide( left, right );
+    public static Amount? operator /( Amount? left, Amount? right )
+    {
+        return Amount.Divide( left, right );
+    }
 
     /// <summary>   Multiplies an amount with a double value. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
@@ -679,7 +774,10 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="value">    The raw value of the amount. </param>
     /// <returns>   The result of the operation. </returns>
-    public static explicit operator Amount( double value ) => new( value, Unit.None );
+    public static explicit operator Amount( double value )
+    {
+        return new( value, Unit.None );
+    }
 
     /// <summary>   Casts an amount expressed in the None unit to a double. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
@@ -691,7 +789,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     {
         try
         {
-            return amount is null ? null : ( double? ) amount.ConvertedTo( Unit.None ).Value;
+            return amount?.ConvertedTo( Unit.None ).Value;
         }
         catch ( UnitConversionException )
         {
@@ -709,7 +807,10 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// The enumerated constant that is the <see cref="T:System.TypeCode" /> of the class or value
     /// type that implements this interface.
     /// </returns>
-    TypeCode IConvertible.GetTypeCode() => TypeCode.Object;
+    TypeCode IConvertible.GetTypeCode()
+    {
+        return TypeCode.Object;
+    }
 
     /// <summary>
     /// Converts the value of this instance to an equivalent Boolean value using the specified
@@ -719,7 +820,10 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="provider"> An <see cref="T:System.IFormatProvider" /> interface implementation
     ///                         that supplies culture-specific formatting information. </param>
     /// <returns>   A Boolean value equivalent to the value of this instance. </returns>
-    bool IConvertible.ToBoolean( IFormatProvider provider ) => throw new InvalidCastException( "An Amount cannot be converted to Boolean." );
+    bool IConvertible.ToBoolean( IFormatProvider provider )
+    {
+        throw new InvalidCastException( "An Amount cannot be converted to Boolean." );
+    }
 
     /// <summary>
     /// Converts the value of this instance to an equivalent 8-bit unsigned integer using the
@@ -729,7 +833,10 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="provider"> An <see cref="T:System.IFormatProvider" /> interface implementation
     ///                         that supplies culture-specific formatting information. </param>
     /// <returns>   An 8-bit unsigned integer equivalent to the value of this instance. </returns>
-    byte IConvertible.ToByte( IFormatProvider provider ) => throw new InvalidCastException( "An Amount cannot be converted to byte." );
+    byte IConvertible.ToByte( IFormatProvider provider )
+    {
+        throw new InvalidCastException( "An Amount cannot be converted to byte." );
+    }
 
     /// <summary>
     /// Converts the value of this instance to an equivalent Unicode character using the specified
@@ -739,7 +846,10 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="provider"> An <see cref="T:System.IFormatProvider" /> interface implementation
     ///                         that supplies culture-specific formatting information. </param>
     /// <returns>   A Unicode character equivalent to the value of this instance. </returns>
-    char IConvertible.ToChar( IFormatProvider provider ) => throw new InvalidCastException( "An Amount cannot be converted to Char." );
+    char IConvertible.ToChar( IFormatProvider provider )
+    {
+        throw new InvalidCastException( "An Amount cannot be converted to Char." );
+    }
 
     /// <summary>
     /// Converts the value of this instance to an equivalent <see cref="T:System.DateTime" />
@@ -751,7 +861,10 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <returns>
     /// A <see cref="T:System.DateTime" /> instance equivalent to the value of this instance.
     /// </returns>
-    DateTime IConvertible.ToDateTime( IFormatProvider provider ) => throw new InvalidCastException( "An Amount cannot be converted to Date Time." );
+    DateTime IConvertible.ToDateTime( IFormatProvider provider )
+    {
+        throw new InvalidCastException( "An Amount cannot be converted to Date Time." );
+    }
 
     /// <summary>
     /// Converts the value of this instance to an equivalent <see cref="T:System.Decimal" />
@@ -763,7 +876,10 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <returns>
     /// A <see cref="T:System.Decimal" /> number equivalent to the value of this instance.
     /// </returns>
-    decimal IConvertible.ToDecimal( IFormatProvider provider ) => ( decimal ) ( this is null ? double.NaN : ( double ) this! );
+    decimal IConvertible.ToDecimal( IFormatProvider provider )
+    {
+        return ( decimal ) (this is null ? double.NaN : ( double ) this!);
+    }
 
     /// <summary>
     /// Converts the value of this instance to an equivalent double-precision floating-point number
@@ -775,7 +891,10 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <returns>
     /// A double-precision floating-point number equivalent to the value of this instance.
     /// </returns>
-    double IConvertible.ToDouble( IFormatProvider provider ) => (this is null ? double.NaN : ( double ) this!);
+    double IConvertible.ToDouble( IFormatProvider provider )
+    {
+        return this is null ? double.NaN : ( double ) this!;
+    }
 
     /// <summary>
     /// Converts the value of this instance to an equivalent 16-bit signed integer using the
@@ -785,7 +904,10 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="provider"> An <see cref="T:System.IFormatProvider" /> interface implementation
     ///                         that supplies culture-specific formatting information. </param>
     /// <returns>   An 16-bit signed integer equivalent to the value of this instance. </returns>
-    short IConvertible.ToInt16( IFormatProvider provider ) => ( Int16 ) ( double ) (this is null ? double.NaN : ( double ) this!);
+    short IConvertible.ToInt16( IFormatProvider provider )
+    {
+        return ( short ) ( double ) (this is null ? double.NaN : ( double ) this!);
+    }
 
     /// <summary>
     /// Converts the value of this instance to an equivalent 32-bit signed integer using the
@@ -795,7 +917,10 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="provider"> An <see cref="T:System.IFormatProvider" /> interface implementation
     ///                         that supplies culture-specific formatting information. </param>
     /// <returns>   An 32-bit signed integer equivalent to the value of this instance. </returns>
-    int IConvertible.ToInt32( IFormatProvider provider ) => ( Int32 ) ( double ) (this is null ? double.NaN : ( double ) this!);
+    int IConvertible.ToInt32( IFormatProvider provider )
+    {
+        return ( int ) ( double ) (this is null ? double.NaN : ( double ) this!);
+    }
 
     /// <summary>
     /// Converts the value of this instance to an equivalent 64-bit signed integer using the
@@ -805,7 +930,10 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="provider"> An <see cref="T:System.IFormatProvider" /> interface implementation
     ///                         that supplies culture-specific formatting information. </param>
     /// <returns>   An 64-bit signed integer equivalent to the value of this instance. </returns>
-    long IConvertible.ToInt64( IFormatProvider provider ) => ( Int64 ) ( double ) (this is null ? double.NaN : ( double ) this!);
+    long IConvertible.ToInt64( IFormatProvider provider )
+    {
+        return ( long ) ( double ) (this is null ? double.NaN : ( double ) this!);
+    }
 
     /// <summary>
     /// Converts the value of this instance to an equivalent 8-bit signed integer using the specified
@@ -815,7 +943,10 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="provider"> An <see cref="T:System.IFormatProvider" /> interface implementation
     ///                         that supplies culture-specific formatting information. </param>
     /// <returns>   An 8-bit signed integer equivalent to the value of this instance. </returns>
-    sbyte IConvertible.ToSByte( IFormatProvider provider ) => throw new InvalidCastException( "An Amount cannot be converted to signed byte." );
+    sbyte IConvertible.ToSByte( IFormatProvider provider )
+    {
+        throw new InvalidCastException( "An Amount cannot be converted to signed byte." );
+    }
 
     /// <summary>
     /// Converts the value of this instance to an equivalent single-precision floating-point number
@@ -827,7 +958,10 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <returns>
     /// A single-precision floating-point number equivalent to the value of this instance.
     /// </returns>
-    float IConvertible.ToSingle( IFormatProvider provider ) => ( float ) ( double ) (this is null ? double.NaN : ( double ) this!);
+    float IConvertible.ToSingle( IFormatProvider provider )
+    {
+        return ( float ) ( double ) (this is null ? double.NaN : ( double ) this!);
+    }
 
     /// <summary>
     /// Converts the value of this instance to an equivalent <see cref="T:System.String" />
@@ -839,7 +973,10 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <returns>
     /// A <see cref="T:System.String" /> instance equivalent to the value of this instance.
     /// </returns>
-    string IConvertible.ToString( IFormatProvider provider ) => this.ToString( provider );
+    string IConvertible.ToString( IFormatProvider provider )
+    {
+        return this.ToString( provider );
+    }
 
     /// <summary>
     /// Converts the value of this instance to an <see cref="T:System.Object" /> of the specified
@@ -860,21 +997,21 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// </returns>
     object IConvertible.ToType( Type conversionType, IFormatProvider provider )
     {
-        return conversionType == typeof( Double )
+        return conversionType == typeof( double )
             ? Convert.ToDouble( this )
-            : conversionType == typeof( Single )
+            : conversionType == typeof( float )
                 ? Convert.ToSingle( this )
-                : conversionType == typeof( Decimal )
+                : conversionType == typeof( decimal )
                     ? Convert.ToDecimal( this )
-                    : conversionType == typeof( Int16 )
+                    : conversionType == typeof( short )
                         ? Convert.ToInt16( this )
-                        : conversionType == typeof( Int32 )
+                        : conversionType == typeof( int )
                             ? Convert.ToInt32( this )
-                            : conversionType == typeof( Int64 )
+                            : conversionType == typeof( long )
                                 ? Convert.ToInt64( this )
-                                : ( object ) (conversionType == typeof( String )
+                                : conversionType == typeof( string )
                                     ? Convert.ToString( this, provider )
-                                    : throw new InvalidCastException( $"An Amount cannot be converted to the requested type {conversionType}." ));
+                                    : throw new InvalidCastException( $"An Amount cannot be converted to the requested type {conversionType}." );
     }
 
     /// <summary>
@@ -885,7 +1022,10 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="provider"> An <see cref="T:System.IFormatProvider" /> interface implementation
     ///                         that supplies culture-specific formatting information. </param>
     /// <returns>   An 16-bit unsigned integer equivalent to the value of this instance. </returns>
-    ushort IConvertible.ToUInt16( IFormatProvider provider ) => throw new InvalidCastException( "An Amount cannot be converted to unsigned Int16." );
+    ushort IConvertible.ToUInt16( IFormatProvider provider )
+    {
+        throw new InvalidCastException( "An Amount cannot be converted to unsigned Int16." );
+    }
 
     /// <summary>
     /// Converts the value of this instance to an equivalent 32-bit unsigned integer using the
@@ -895,7 +1035,10 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="provider"> An <see cref="T:System.IFormatProvider" /> interface implementation
     ///                         that supplies culture-specific formatting information. </param>
     /// <returns>   An 32-bit unsigned integer equivalent to the value of this instance. </returns>
-    uint IConvertible.ToUInt32( IFormatProvider provider ) => throw new InvalidCastException( "An Amount cannot be converted to unsigned Int32." );
+    uint IConvertible.ToUInt32( IFormatProvider provider )
+    {
+        throw new InvalidCastException( "An Amount cannot be converted to unsigned Int32." );
+    }
 
     /// <summary>
     /// Converts the value of this instance to an equivalent 64-bit unsigned integer using the
@@ -905,7 +1048,10 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="provider"> An <see cref="T:System.IFormatProvider" /> interface implementation
     ///                         that supplies culture-specific formatting information. </param>
     /// <returns>   An 64-bit unsigned integer equivalent to the value of this instance. </returns>
-    ulong IConvertible.ToUInt64( IFormatProvider provider ) => throw new InvalidCastException( "An Amount cannot be converted to unsigned Int64." );
+    ulong IConvertible.ToUInt64( IFormatProvider provider )
+    {
+        throw new InvalidCastException( "An Amount cannot be converted to unsigned Int64." );
+    }
 
     #endregion IConvertible implementation
 
@@ -935,7 +1081,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
         return this < other ? -1 : this > other ? +1 : 0;
     }
 
-    #endregion 
+    #endregion
 
     #region " iserializable members "
 
@@ -964,7 +1110,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     [System.Security.SecurityCritical()]
     void ISerializable.GetObjectData( SerializationInfo info, StreamingContext context )
     {
-        if ( info is object )
+        if ( info is not null )
         {
             info.AddValue( nameof( Amount.Value ), this.Value );
             this.Unit.AddValues( info, context );

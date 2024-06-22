@@ -37,7 +37,7 @@ public class UnitConversionException : InvalidOperationException
     /// <summary>   Gets or sets from unit. </summary>
     /// <value> from unit. </value>
     public Unit FromUnit { get; set; }
-       
+
     /// <summary>   Gets or sets to unit. </summary>
     /// <value> to unit. </value>
     public Unit ToUnit { get; set; }
@@ -53,7 +53,7 @@ public class UnitConversionException : InvalidOperationException
     ///                         thrown. </param>
     /// <param name="context">  The <see cref="T:System.Runtime.Serialization.StreamingContext"></see>
     ///                         that contains contextual information about the source or destination. </param>
-    public override void GetObjectData( System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context )
+    public override void GetObjectData( SerializationInfo info, StreamingContext context )
     {
         if ( info is not null )
         {

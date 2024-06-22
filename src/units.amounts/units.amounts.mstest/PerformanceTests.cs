@@ -6,8 +6,8 @@ namespace cc.isr.UnitsAmounts.MSTest;
 [TestClass]
 public class PerformanceTests
 {
-    private const double _maxAcceptanceVariance = +0.25;
-    private const double _minAcceptanceVariance = -2.0;
+    private const double MAX_ACCEPTANCE_VARIANCE = +0.25;
+    private const double MIN_ACCEPTANCE_VARIANCE = -2.0;
 
     #region " initialize & cleanup "
 
@@ -49,9 +49,9 @@ public class PerformanceTests
 
         Assert.AreEqual( 1500000.0, sum.Value );
 
-        Assert.IsTrue( var < _maxAcceptanceVariance, $"Performance {var} > {_maxAcceptanceVariance} lost detected!" );
-        if ( var < _minAcceptanceVariance )
-            Assert.Inconclusive( $"Performance {var} was much better than expected {_minAcceptanceVariance}." );
+        Assert.IsTrue( var < MAX_ACCEPTANCE_VARIANCE, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
+        if ( var < MIN_ACCEPTANCE_VARIANCE )
+            Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
 
     [TestMethod]
@@ -73,9 +73,9 @@ public class PerformanceTests
 
         Assert.AreEqual( 1500.0, Math.Round( sum.Value, 8 ) );
 
-        Assert.IsTrue( var < _maxAcceptanceVariance, $"Performance {var} > {_maxAcceptanceVariance} lost detected!" );
-        if ( var < _minAcceptanceVariance )
-            Assert.Inconclusive( $"Performance {var} was much better than expected {_minAcceptanceVariance}." );
+        Assert.IsTrue( var < MAX_ACCEPTANCE_VARIANCE, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
+        if ( var < MIN_ACCEPTANCE_VARIANCE )
+            Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
 
     [TestMethod]
@@ -89,7 +89,7 @@ public class PerformanceTests
         for ( int n = 0; n < 100000; n++ )
             q = a / b;
         double time = (Environment.TickCount - t) / 1000.0;
-        double var = (time - 0.4 * 0.11) / 0.11;
+        double var = (time - (0.4 * 0.11)) / 0.11;
 
         Console.WriteLine( "Time to perform 100K simple divisions: {0} sec.", time );
         Console.WriteLine( "Variation: {0:0}%.", var * 100 );
@@ -97,9 +97,9 @@ public class PerformanceTests
         Assert.AreEqual( 5.0, q!.Value );
         Assert.IsTrue( q.Unit.IsCompatibleTo( LengthUnits.Meter / TimeUnits.Second ) );
 
-        Assert.IsTrue( var < _maxAcceptanceVariance, $"Performance {var} > {_maxAcceptanceVariance} lost detected!" );
-        if ( var < _minAcceptanceVariance )
-            Assert.Inconclusive( $"Performance {var} was much better than expected {_minAcceptanceVariance}." );
+        Assert.IsTrue( var < MAX_ACCEPTANCE_VARIANCE, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
+        if ( var < MIN_ACCEPTANCE_VARIANCE )
+            Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
 
     [TestMethod]
@@ -122,9 +122,9 @@ public class PerformanceTests
         Assert.AreEqual( 5.0, q.ConvertedTo( LengthUnits.Kilometer / TimeUnits.Hour, 8 ).Value );
         Assert.IsTrue( q.Unit.IsCompatibleTo( LengthUnits.Meter / TimeUnits.Second ) );
 
-        Assert.IsTrue( var < _maxAcceptanceVariance, $"Performance {var} > {_maxAcceptanceVariance} lost detected!" );
-        if ( var < _minAcceptanceVariance )
-            Assert.Inconclusive( $"Performance {var} was much better than expected {_minAcceptanceVariance}." );
+        Assert.IsTrue( var < MAX_ACCEPTANCE_VARIANCE, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
+        if ( var < MIN_ACCEPTANCE_VARIANCE )
+            Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
 
     [TestMethod]
@@ -142,7 +142,7 @@ public class PerformanceTests
             duration = duration! + (distance / speed)!;
         }
         double time = (Environment.TickCount - t) / 1000.0;
-        double var = (time - 0.4 * 0.234) / (0.4 * 0.234);
+        double var = (time - (0.4 * 0.234)) / (0.4 * 0.234);
 
         duration = duration!.ConvertedTo( TimeUnits.Minute, 1 );
 
@@ -152,9 +152,9 @@ public class PerformanceTests
         Assert.AreEqual( 12.9, duration.Value );
         Assert.IsTrue( duration.Unit.IsCompatibleTo( TimeUnits.Second ) );
 
-        Assert.IsTrue( var < _maxAcceptanceVariance, $"Performance {var} > {_maxAcceptanceVariance} lost detected!" );
-        if ( var < _minAcceptanceVariance )
-            Assert.Inconclusive( $"Performance {var} was much better than expected {_minAcceptanceVariance}." );
+        Assert.IsTrue( var < MAX_ACCEPTANCE_VARIANCE, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
+        if ( var < MIN_ACCEPTANCE_VARIANCE )
+            Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
 
     [TestMethod]
@@ -167,7 +167,7 @@ public class PerformanceTests
         for ( int n = 0; n < 100000; n++ )
             b = a.ConvertedTo( LengthUnits.Meter, 8 );
         double time = (Environment.TickCount - t) / 1000.0;
-        double var = (time - 0.45 * 0.172) / (0.45 * 0.172);
+        double var = (time - (0.45 * 0.172)) / (0.45 * 0.172);
 
         Console.WriteLine( "Result = {0}", b );
         Console.WriteLine( "Time to perform 100K conversions: {0} sec.", time );
@@ -175,9 +175,9 @@ public class PerformanceTests
 
         Assert.AreEqual( 15000, b!.Value );
 
-        Assert.IsTrue( var < _maxAcceptanceVariance, $"Performance {var} > {_maxAcceptanceVariance} lost detected!" );
-        if ( var < _minAcceptanceVariance )
-            Assert.Inconclusive( $"Performance {var} was much better than expected {_minAcceptanceVariance}." );
+        Assert.IsTrue( var < MAX_ACCEPTANCE_VARIANCE, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
+        if ( var < MIN_ACCEPTANCE_VARIANCE )
+            Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
 
     [TestMethod]
@@ -201,9 +201,9 @@ public class PerformanceTests
 
         Assert.AreEqual( 0.06944444, b!.Value );
 
-        Assert.IsTrue( var < _maxAcceptanceVariance, $"Performance {var} > {_maxAcceptanceVariance} lost detected!" );
-        if ( var < _minAcceptanceVariance )
-            Assert.Inconclusive( $"Performance {var} was much better than expected {_minAcceptanceVariance}." );
+        Assert.IsTrue( var < MAX_ACCEPTANCE_VARIANCE, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
+        if ( var < MIN_ACCEPTANCE_VARIANCE )
+            Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
 
     [TestMethod]
@@ -218,7 +218,7 @@ public class PerformanceTests
         for ( int n = 0; n < 100000; n++ )
             v = UnitManager.ResolveToNamedUnit( u, true );
         double time = (Environment.TickCount - t) / 1000.0;
-        double var = (time - 0.4 * 0.015) / (4 * 0.015);
+        double var = (time - (0.4 * 0.015)) / (4 * 0.015);
 
         Console.WriteLine( "Original = {0}", u.Name );
         Console.WriteLine( "Result = {0}", v!.Name );
@@ -228,9 +228,9 @@ public class PerformanceTests
         Assert.IsTrue( v.IsNamed );
         Assert.AreEqual( "Kilometer", v.Name );
 
-        Assert.IsTrue( var < _maxAcceptanceVariance, $"Performance {var} > {_maxAcceptanceVariance} lost detected!" );
-        if ( var < _minAcceptanceVariance )
-            Assert.Inconclusive( $"Performance {var} was much better than expected {_minAcceptanceVariance}." );
+        Assert.IsTrue( var < MAX_ACCEPTANCE_VARIANCE, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
+        if ( var < MIN_ACCEPTANCE_VARIANCE )
+            Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
 
     [TestMethod]
@@ -245,7 +245,7 @@ public class PerformanceTests
         for ( int n = 0; n < 100000; n++ )
             v = UnitManager.ResolveToNamedUnit( u, true );
         double time = (Environment.TickCount - t) / 1000.0;
-        double var = (time - 0.3 * 0.219) / 0.219;
+        double var = (time - (0.3 * 0.219)) / 0.219;
 
         Console.WriteLine( "Original = {0}", u.Name );
         Console.WriteLine( "Result = {0}", v!.Name );
@@ -255,9 +255,9 @@ public class PerformanceTests
         Assert.IsTrue( v.IsNamed );
         Assert.AreEqual( "Meter/Second", v.Name );
 
-        Assert.IsTrue( var < _maxAcceptanceVariance, $"Performance {var} > {_maxAcceptanceVariance} lost detected!" );
-        if ( var < _minAcceptanceVariance )
-            Assert.Inconclusive( $"Performance {var} was much better than expected {_minAcceptanceVariance}." );
+        Assert.IsTrue( var < MAX_ACCEPTANCE_VARIANCE, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
+        if ( var < MIN_ACCEPTANCE_VARIANCE )
+            Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
 
     [TestMethod]
@@ -272,7 +272,7 @@ public class PerformanceTests
         for ( int n = 0; n < 100000; n++ )
             v = UnitManager.ResolveToNamedUnit( u, true );
         double time = (Environment.TickCount - t) / 1000.0;
-        double var = (time - 0.3 * 0.297) / 0.297;
+        double var = (time - (0.3 * 0.297)) / 0.297;
 
         Console.WriteLine( "Original = {0}", u.Name );
         Console.WriteLine( "Result = {0}", v!.Name );
@@ -281,9 +281,9 @@ public class PerformanceTests
 
         Assert.IsFalse( v.IsNamed );
 
-        Assert.IsTrue( var < _maxAcceptanceVariance, $"Performance {var} > {_maxAcceptanceVariance} lost detected!" );
-        if ( var < _minAcceptanceVariance )
-            Assert.Inconclusive( $"Performance {var} was much better than expected {_minAcceptanceVariance}." );
+        Assert.IsTrue( var < MAX_ACCEPTANCE_VARIANCE, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
+        if ( var < MIN_ACCEPTANCE_VARIANCE )
+            Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
 
     [TestMethod]
@@ -298,7 +298,7 @@ public class PerformanceTests
         for ( int n = 0; n < 100000; n++ )
             v = UnitManager.ResolveToNamedUnit( u, true );
         double time = (Environment.TickCount - t) / 1000.0;
-        double var = (time - 0.5 * 0.032) / 0.032;
+        double var = (time - (0.5 * 0.032)) / 0.032;
 
         Console.WriteLine( "Original = {0}", u.Name );
         Console.WriteLine( "Result = {0}", v!.Name );
@@ -307,8 +307,8 @@ public class PerformanceTests
 
         Assert.IsFalse( v.IsNamed );
 
-        Assert.IsTrue( var < _maxAcceptanceVariance, $"Performance {var} > {_maxAcceptanceVariance} lost detected!" );
-        if ( var < _minAcceptanceVariance )
-            Assert.Inconclusive( $"Performance {var} was much better than expected {_minAcceptanceVariance}." );
+        Assert.IsTrue( var < MAX_ACCEPTANCE_VARIANCE, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
+        if ( var < MIN_ACCEPTANCE_VARIANCE )
+            Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
 }

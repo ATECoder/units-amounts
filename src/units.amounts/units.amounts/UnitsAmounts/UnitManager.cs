@@ -29,10 +29,10 @@ public sealed class UnitManager
     #region " fields "
 
     /// <summary>   Holds the named units: </summary>
-    private readonly List<Unit> _allUnits = new();
+    private readonly List<Unit> _allUnits = [];
 
     /// <summary>   Holds the units keyed by type. </summary>
-    private readonly Dictionary<UnitType, List<Unit>> _unitsByType = new();
+    private readonly Dictionary<UnitType, List<Unit>> _unitsByType = [];
 
     /// <summary>
     /// Holds the units keyed by unit name (ignored case).
@@ -48,10 +48,10 @@ public sealed class UnitManager
     /// <remarks> This dictionary does not ignore on symbol (e.g., difference between
     /// Mega Ohm and Milli Ohm)
     /// </remarks>
-    private readonly Dictionary<string, Unit> _unitsBySymbol = new();
+    private readonly Dictionary<string, Unit> _unitsBySymbol = [];
 
     /// <summary>   Holds the conversion keyed by <see cref="UnitConversionKeySlot"/>. </summary>
-    private readonly Dictionary<UnitConversionKeySlot, UnitConversionValueSlot> _conversions = new();
+    private readonly Dictionary<UnitConversionKeySlot, UnitConversionValueSlot> _conversions = [];
 
     #endregion Fields
 
@@ -88,7 +88,10 @@ public sealed class UnitManager
     /// <param name="toUnit">               The unit to which this conversion function allows
     ///                                     conversion to. </param>
     /// <param name="conversionFunction">   The unit conversion function. </param>
-    public static void RegisterConversion( Unit fromUnit, Unit toUnit, ConversionFunction conversionFunction ) => Instance._conversions[new UnitConversionKeySlot( fromUnit, toUnit )] = new UnitConversionValueSlot( fromUnit, toUnit, conversionFunction );
+    public static void RegisterConversion( Unit fromUnit, Unit toUnit, ConversionFunction conversionFunction )
+    {
+        Instance._conversions[new UnitConversionKeySlot( fromUnit, toUnit )] = new UnitConversionValueSlot( fromUnit, toUnit, conversionFunction );
+    }
 
     /// <summary>
     /// Registers a set of conversion functions by executing all public static void methods of the
@@ -106,8 +109,8 @@ public sealed class UnitManager
             throw new ArgumentNullException( nameof( unitConversionsClass ) );
         }
 
-        var none = Array.Empty<object>();
-        foreach ( var method in unitConversionsClass.GetMethods( BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Static ) )
+        object[] none = [];
+        foreach ( MethodInfo? method in unitConversionsClass.GetMethods( BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Static ) )
         {
             if ( (method.ReturnType == typeof( void )) && (method.GetParameters().Length == 0) )
             {
@@ -132,7 +135,7 @@ public sealed class UnitManager
             throw new ArgumentNullException( nameof( assembly ) );
         }
 
-        foreach ( var t in assembly.GetExportedTypes() )
+        foreach ( Type? t in assembly.GetExportedTypes() )
         {
             if ( t.GetCustomAttributes( typeof( UnitConversionClassAttribute ), false ).Length > 0 )
             {
@@ -158,7 +161,7 @@ public sealed class UnitManager
         }
 
         // Check if unit already registered:
-        foreach ( var u in Instance._allUnits )
+        foreach ( Unit u in Instance._allUnits )
         {
             if ( Unit.Equals( u, unit ) )
             {
@@ -176,11 +179,11 @@ public sealed class UnitManager
         }
         else
         {
-            Instance._unitsByType.Add( unit.UnitType, new List<Unit>() );
-            Instance._unitsByType[unit.UnitType] = new List<Unit>
-            {
+            Instance._unitsByType.Add( unit.UnitType, [] );
+            Instance._unitsByType[unit.UnitType] =
+            [
                 unit
-            };
+            ];
         }
         // Register unit by name and symbol:
         if ( !Instance._unitsByName.ContainsKey( unit.Name ) )
@@ -209,14 +212,14 @@ public sealed class UnitManager
             throw new ArgumentNullException( nameof( unitDefinitionClass ) );
         }
 
-        foreach ( var member in unitDefinitionClass.GetFields( BindingFlags.GetField | BindingFlags.Public | BindingFlags.Static ) )
+        foreach ( FieldInfo? member in unitDefinitionClass.GetFields( BindingFlags.GetField | BindingFlags.Public | BindingFlags.Static ) )
         {
             if ( member.FieldType == typeof( Unit ) )
             {
                 RegisterUnit( ( Unit ) member.GetValue( null ) );
             }
         }
-        foreach ( var member in unitDefinitionClass.GetProperties( BindingFlags.GetProperty | BindingFlags.Public | BindingFlags.Static ) )
+        foreach ( PropertyInfo? member in unitDefinitionClass.GetProperties( BindingFlags.GetProperty | BindingFlags.Public | BindingFlags.Static ) )
         {
             if ( member.PropertyType == typeof( Unit ) )
             {
@@ -233,7 +236,7 @@ public sealed class UnitManager
     /// <param name="assembly"> The assembly. </param>
     public static void RegisterUnits( Assembly assembly )
     {
-        foreach ( var t in assembly.GetExportedTypes() )
+        foreach ( Type? t in assembly.GetExportedTypes() )
         {
             if ( t.GetCustomAttributes( typeof( UnitDefinitionClassAttribute ), false ).Length > 0 )
             {
@@ -258,7 +261,7 @@ public sealed class UnitManager
     public static Unit GetUnitByName( string name )
     {
         // Try resolve unit by unitsByName:
-        _ = Instance._unitsByName.TryGetValue( name, out var result );
+        _ = Instance._unitsByName.TryGetValue( name, out Unit? result );
 
         // Try resolve unit by UnitResolve event:
         if ( result is null )
@@ -268,7 +271,7 @@ public sealed class UnitManager
                 foreach ( Delegate handler in Instance.UnitResolve.GetInvocationList() )
 
                 {
-                    result = ( ( UnitResolveEventHandler ) handler)( Instance, new ResolveEventArgs( name ) );
+                    result = (( UnitResolveEventHandler ) handler)( Instance, new ResolveEventArgs( name ) );
                     if ( result is not null )
                     {
                         RegisterUnit( result );
@@ -302,7 +305,7 @@ public sealed class UnitManager
     {
         // Try resolve unit by unitsBySymbol:
 
-        _ = Instance._unitsBySymbol.TryGetValue( symbol, out var result );
+        _ = Instance._unitsBySymbol.TryGetValue( symbol, out Unit? result );
 
         // Throw exception if unit resolution failed:
 
@@ -317,24 +320,36 @@ public sealed class UnitManager
     /// <summary>   Returns the unit types for which one or more units are registered. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <returns>   The unit types. </returns>
-    public static ICollection<UnitType> GetUnitTypes() => Instance._unitsByType.Keys;
+    public static ICollection<UnitType> GetUnitTypes()
+    {
+        return Instance._unitsByType.Keys;
+    }
 
     /// <summary>   Returns all registered units. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <returns>   The units. </returns>
-    public static IList<Unit> GetUnits() => Instance._allUnits;
+    public static IList<Unit> GetUnits()
+    {
+        return Instance._allUnits;
+    }
 
     /// <summary>   Whether the given unit is already registered to the UnitManager. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="unit"> The unit for which to find a registered match. </param>
     /// <returns>   True if registered, false if not. </returns>
-    public static bool IsRegistered( Unit unit ) => Instance._allUnits.Contains( unit );
+    public static bool IsRegistered( Unit unit )
+    {
+        return Instance._allUnits.Contains( unit );
+    }
 
     /// <summary>   Returns all registered units of the given type. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="unitType"> Type of the unit. </param>
     /// <returns>   The units. </returns>
-    public static IList<Unit> GetUnits( UnitType unitType ) => Instance._unitsByType[unitType];
+    public static IList<Unit> GetUnits( UnitType unitType )
+    {
+        return Instance._unitsByType[unitType];
+    }
 
     /// <summary>   Returns a registered unit that matches the given unit. </summary>
     /// <remarks>
@@ -359,10 +374,10 @@ public sealed class UnitManager
             return unit;
         }
 
-        var factor = unit.Factor;
+        double factor = unit.Factor;
         if ( Instance._unitsByType.ContainsKey( unit.UnitType ) )
         {
-            foreach ( var m in Instance._unitsByType[unit.UnitType] )
+            foreach ( Unit m in Instance._unitsByType[unit.UnitType] )
             {
                 if ( m.Factor == factor )
                 {
@@ -415,7 +430,7 @@ public sealed class UnitManager
             }
             else
             {
-                var expectedSlot = new UnitConversionKeySlot( amount.Unit, toUnit );
+                UnitConversionKeySlot expectedSlot = new( amount.Unit, toUnit );
                 return Instance._conversions[expectedSlot].Convert( amount ).ConvertedTo( toUnit );
             }
         }
@@ -431,21 +446,15 @@ public sealed class UnitManager
 
     /// <summary>   Key slot in the internal conversions dictionary. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    private class UnitConversionKeySlot
+    /// <remarks>   Constructor. </remarks>
+    /// <remarks>   David, 2021-03-22. </remarks>
+    /// <param name="from"> Source for the. </param>
+    /// <param name="to">   to. </param>
+    private class UnitConversionKeySlot( Unit from, Unit to )
     {
         /// <summary>   Gets the unit types to which or from which to convert. </summary>
         /// <value> The type of to. </value>
-        private readonly UnitType _fromType, _toType;
-
-        /// <summary>   Constructor. </summary>
-        /// <remarks>   David, 2021-03-22. </remarks>
-        /// <param name="from"> Source for the. </param>
-        /// <param name="to">   to. </param>
-        public UnitConversionKeySlot( Unit from, Unit to )
-        {
-            this._fromType = from.UnitType;
-            this._toType = to.UnitType;
-        }
+        private readonly UnitType _fromType = from.UnitType, _toType = to.UnitType;
 
         /// <summary>   Determines whether the specified object is equal to the current object. </summary>
         /// <remarks>   David, 2021-03-22. </remarks>
@@ -456,48 +465,50 @@ public sealed class UnitManager
         /// </returns>
         public override bool Equals( object obj )
         {
-            var other = obj as UnitConversionKeySlot;
+            UnitConversionKeySlot? other = obj as UnitConversionKeySlot;
             return other is not null && (this._fromType == other._fromType) && (this._toType == other._toType);
         }
 
         /// <summary>   Serves as the default hash function. </summary>
         /// <remarks>   David, 2021-03-22. </remarks>
         /// <returns>   A hash code for the current object. </returns>
-        public override int GetHashCode() => ( this._fromType, this._toType ).GetHashCode();
-
+        public override int GetHashCode()
+        {
+#if NETSTANDARD2_1_OR_GREATER
+            return HashCode.Combine( this._fromType, this._toType );
+#else
+            return (this._fromType, this._toType).GetHashCode();
+#endif
+        }
     }
 
     /// <summary>   Value slot in the internal conversions dictionary. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    private class UnitConversionValueSlot
+    /// <remarks>   Constructor. </remarks>
+    /// <remarks>   David, 2021-03-22. </remarks>
+    /// <param name="from">                 Source for the. </param>
+    /// <param name="to">                   to. </param>
+    /// <param name="conversionFunction">   The conversion function. </param>
+    private class UnitConversionValueSlot( Unit from, Unit to, ConversionFunction conversionFunction )
     {
         /// <summary>   The unit from which to convert. </summary>
-        private readonly Unit _from;
+        private readonly Unit _from = from;
 
         /// <summary>   The unit to which to convert. </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage( "Code Quality", "IDE0052:Remove unread private members", Justification = "<Pending>" )]
-        private readonly Unit _to;
+        private readonly Unit _to = to;
 
         /// <summary>   The conversion function. </summary>
-        private readonly ConversionFunction _conversionFunction;
-
-        /// <summary>   Constructor. </summary>
-        /// <remarks>   David, 2021-03-22. </remarks>
-        /// <param name="from">                 Source for the. </param>
-        /// <param name="to">                   to. </param>
-        /// <param name="conversionFunction">   The conversion function. </param>
-        public UnitConversionValueSlot( Unit from, Unit to, ConversionFunction conversionFunction )
-        {
-            this._from = from;
-            this._to = to;
-            this._conversionFunction = conversionFunction;
-        }
+        private readonly ConversionFunction _conversionFunction = conversionFunction;
 
         /// <summary>   Converts the given amount. </summary>
         /// <remarks>   David, 2021-03-22. </remarks>
         /// <param name="amount">   The amount. </param>
         /// <returns>   An Amount. </returns>
-        public Amount Convert( Amount amount ) => this._conversionFunction( amount.ConvertedTo( this._from ) );
+        public Amount Convert( Amount amount )
+        {
+            return this._conversionFunction( amount.ConvertedTo( this._from ) );
+        }
     }
 
     #endregion Private classes to represent slots in conversion dictionary	
