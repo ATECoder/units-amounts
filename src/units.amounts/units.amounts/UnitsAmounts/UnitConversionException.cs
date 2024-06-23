@@ -24,7 +24,7 @@ public class UnitConversionException : InvalidOperationException
     /// <summary>   Specialized constructor for use only by derived class. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="info">     The information. </param>
-    /// <param name="context"> The <see cref="T:System.Runtime.Serialization.StreamingContext" />
+    /// <param name="context"> The <see cref="System.Runtime.Serialization.StreamingContext" />
     /// that contains contextual information about the source or destination.
     /// </param>
     protected UnitConversionException( SerializationInfo info, StreamingContext context )
@@ -44,14 +44,14 @@ public class UnitConversionException : InvalidOperationException
 
 
     /// <summary>
-    /// When overridden in a derived class, sets the <see cref="T:System.Runtime.Serialization.SerializationInfo">
+    /// When overridden in a derived class, sets the <see cref="System.Runtime.Serialization.SerializationInfo">
     /// </see> with information about the exception.
     /// </summary>
     /// <remarks>   2023-04-17. </remarks>
-    /// <param name="info">     The <see cref="T:System.Runtime.Serialization.SerializationInfo"></see>
+    /// <param name="info">     The <see cref="System.Runtime.Serialization.SerializationInfo"></see>
     ///                         that holds the serialized object data about the exception being
     ///                         thrown. </param>
-    /// <param name="context">  The <see cref="T:System.Runtime.Serialization.StreamingContext"></see>
+    /// <param name="context">  The <see cref="System.Runtime.Serialization.StreamingContext"></see>
     ///                         that contains contextual information about the source or destination. </param>
     public override void GetObjectData( SerializationInfo info, StreamingContext context )
     {
