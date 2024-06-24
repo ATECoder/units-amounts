@@ -291,7 +291,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// Shows the default string representation of the amount. (The default format string is "GG").
     /// </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    /// <returns>   A string that represents this object. </returns>
+    /// <returns>   A <see cref="string" /> that represents this object. </returns>
     public override string ToString()
     {
         return this.ToString( null, null );
@@ -304,7 +304,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="format">   The format to use.-or- A null reference (Nothing in Visual Basic)
     ///                         to use the default format defined for the type of the
     ///                         <see cref="IFormattable" />implementation. </param>
-    /// <returns>   A string that represents this object. </returns>
+    /// <returns>   A <see cref="string" /> that represents this object. </returns>
     public string ToString( string format )
     {
         return this.ToString( format, null );
@@ -317,7 +317,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="formatProvider">   An <see cref="IFormatProvider" /> interface
     ///                                 implementation that supplies culture-specific formatting
     ///                                 information. </param>
-    /// <returns>   A string that represents this object. </returns>
+    /// <returns>   A <see cref="string" /> that represents this object. </returns>
     public string ToString( IFormatProvider formatProvider )
     {
         return this.ToString( null, formatProvider );
@@ -343,7 +343,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     ///                                 (Nothing in Visual Basic) to obtain the numeric format
     ///                                 information from the current locale setting of the operating
     ///                                 system. </param>
-    /// <returns>   A string that represents this object. </returns>
+    /// <returns>   A <see cref="string" /> that represents this object. </returns>
     public string ToString( string? format, IFormatProvider? formatProvider )
     {
         if ( this is null ) return string.Empty;
@@ -411,7 +411,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="amount">   The amount. </param>
-    /// <returns>   A string that represents this object. </returns>
+    /// <returns>   A <see cref="string" /> that represents this object. </returns>
     public static string ToString( Amount? amount )
     {
         return ToString( amount, null, null );
@@ -424,7 +424,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="amount">   The amount. </param>
     /// <param name="format">   Describes the format to use. </param>
-    /// <returns>   A string that represents this object. </returns>
+    /// <returns>   A <see cref="string" /> that represents this object. </returns>
     public static string ToString( Amount? amount, string format )
     {
         return ToString( amount, format, null );
@@ -437,7 +437,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="amount">           The amount. </param>
     /// <param name="formatProvider">   The format provider. </param>
-    /// <returns>   A string that represents this object. </returns>
+    /// <returns>   A <see cref="string" /> that represents this object. </returns>
     public static string ToString( Amount? amount, IFormatProvider formatProvider )
     {
         return ToString( amount, null, formatProvider );
@@ -451,7 +451,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="amount">           The amount. </param>
     /// <param name="format">           Describes the format to use. </param>
     /// <param name="formatProvider">   The format provider. </param>
-    /// <returns>   A string that represents this object. </returns>
+    /// <returns>   A <see cref="string" /> that represents this object. </returns>
     public static string ToString( Amount? amount, string? format, IFormatProvider? formatProvider )
     {
         return amount is null ? string.Empty : amount.ToString( format, formatProvider );

@@ -228,7 +228,7 @@ public sealed class UnitType : ISerializable
 
     /// <summary>   Returns a string that represents the current object. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    /// <returns>   A string that represents the current object. </returns>
+    /// <returns>   A <see cref="string" /> that represents the current object. </returns>
     public override string ToString()
     {
         StringBuilder sb = new();

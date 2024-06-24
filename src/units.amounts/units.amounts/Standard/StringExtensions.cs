@@ -2,12 +2,12 @@
 
 namespace System;
 
-/// <summary>   A string extensions. </summary>
+/// <summary>   A <see cref="string" /> extensions. </summary>
 /// <remarks>   2023-04-01. </remarks>
 public static class StringExtensions
 {
     /// <summary>
-    /// A String extension method that query if this String contains the given str.
+    /// A <see cref="string" /> extension method that query if this String contains the given str.
     /// </summary>
     /// <remarks>   2023-04-01. </remarks>
     /// <exception cref="ArgumentNullException">    Thrown when one or more required arguments are
