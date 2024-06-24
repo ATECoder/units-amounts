@@ -195,7 +195,7 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
     ///                                                          (<see langword="Nothing" /> in
     ///                                                          Visual Basic) to use the default
     ///                                                          format defined for the type of the
-    ///                                                          <see cref="System.IFormattable" />
+    ///                                                          <see cref="IFormattable" />
     ///                                                          implementation. </param>
     /// <returns>   A string that represents this object. </returns>
     public string ToString( string format )
@@ -230,7 +230,7 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
     ///                                 
     ///                                  A null reference (<see langword="Nothing" /> in Visual
     ///                                  Basic) to use the default format defined for the type of the
-    ///                                  <see cref="System.IFormattable" /> implementation. </param>
+    ///                                  <see cref="IFormattable" /> implementation. </param>
     /// <param name="formatProvider">   The provider to use to format the value.  
     ///                                 
     ///                                  -or-  
@@ -484,7 +484,7 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
 
     /// <summary>   Constructor. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    /// <param name="info">     The <see cref="System.Runtime.Serialization.SerializationInfo" />
+    /// <param name="info">     The <see cref="SerializationInfo" />
     ///                         to populate with data. </param>
     /// <param name="context">  A StreamingContext to process. </param>
     internal Unit( SerializationInfo info, StreamingContext context )
@@ -498,14 +498,14 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
     }
 
     /// <summary>
-    /// Populates a <see cref="System.Runtime.Serialization.SerializationInfo" /> with the data
+    /// Populates a <see cref="SerializationInfo" /> with the data
     /// needed to serialize the target object.
     /// </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    /// <param name="info">     The <see cref="System.Runtime.Serialization.SerializationInfo" />
+    /// <param name="info">     The <see cref="SerializationInfo" />
     ///                         to populate with data. </param>
     /// <param name="context">  The destination (see
-    ///                         <see cref="System.Runtime.Serialization.StreamingContext" />) for
+    ///                         <see cref="StreamingContext" />) for
     ///                         this serialization. </param>
     [System.Security.SecurityCritical()]
     void ISerializable.GetObjectData( SerializationInfo info, StreamingContext context )
@@ -516,10 +516,10 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
 
     /// <summary>   Adds the values to 'info'. </summary>
     /// <remarks>   David, 2022-01-29. </remarks>
-    /// <param name="info">     The <see cref="System.Runtime.Serialization.SerializationInfo" />
+    /// <param name="info">     The <see cref="SerializationInfo" />
     ///                         to populate with data. </param>
     /// <param name="context">  The destination (see
-    ///                         <see cref="System.Runtime.Serialization.StreamingContext" />) for
+    ///                         <see cref="StreamingContext" />) for
     ///                         this serialization. </param>
     internal void AddValues( SerializationInfo info, StreamingContext context )
     {

@@ -214,15 +214,15 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     }
 
     /// <summary>
-    /// Determines whether the specified <see cref="System.Object" /> is equal to the current
-    /// <see cref="System.Object" />.
+    /// Determines whether the specified <see cref="object" /> is equal to the current
+    /// <see cref="object" />.
     /// </summary>
     /// <remarks>   David, 2022-01-29. </remarks>
     /// <param name="left">     The left. </param>
     /// <param name="right">    The right. </param>
     /// <returns>
-    /// <c>true</c> if the specified <see cref="System.Object" /> is equal to the current
-    /// <see cref="System.Object" />; otherwise, false.
+    /// <c>true</c> if the specified <see cref="object" /> is equal to the current
+    /// <see cref="object" />; otherwise, false.
     /// </returns>
     public static bool Equals( Amount? left, Amount? right )
     {
@@ -230,14 +230,14 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     }
 
     /// <summary>
-    /// Determines whether the specified <see cref="System.Object" /> is equal to the current
-    /// <see cref="System.Object" />.
+    /// Determines whether the specified <see cref="object" /> is equal to the current
+    /// <see cref="object" />.
     /// </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="obj">  The object to compare with the current object. </param>
     /// <returns>
-    /// <c>true</c> if the specified <see cref="System.Object" /> is equal to the current
-    /// <see cref="System.Object" />; otherwise, false.
+    /// <c>true</c> if the specified <see cref="object" /> is equal to the current
+    /// <see cref="object" />; otherwise, false.
     /// </returns>
     public override bool Equals( object obj )
     {
@@ -277,7 +277,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
 
     /// <summary>   Serves as a hash function for a particular type. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    /// <returns>   A hash code for the current <see cref="System.Object" />. </returns>
+    /// <returns>   A hash code for the current <see cref="object" />. </returns>
     public override int GetHashCode()
     {
 #if NETSTANDARD2_1_OR_GREATER
@@ -303,7 +303,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="format">   The format to use.-or- A null reference (Nothing in Visual Basic)
     ///                         to use the default format defined for the type of the
-    ///                         <see cref="System.IFormattable" />implementation. </param>
+    ///                         <see cref="IFormattable" />implementation. </param>
     /// <returns>   A string that represents this object. </returns>
     public string ToString( string format )
     {
@@ -314,7 +314,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// Shows the default string representation of the amount using the given format provider.
     /// </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    /// <param name="formatProvider">   An <see cref="System.IFormatProvider" /> interface
+    /// <param name="formatProvider">   An <see cref="IFormatProvider" /> interface
     ///                                 implementation that supplies culture-specific formatting
     ///                                 information. </param>
     /// <returns>   A string that represents this object. </returns>
@@ -337,7 +337,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="format">           The format to use.-or- A null reference (Nothing in Visual
     ///                                 Basic)
     ///                                 to use the default format defined for the type of the
-    ///                                 <see cref="System.IFormattable" />
+    ///                                 <see cref="IFormattable" />
     ///                                 implementation. </param>
     /// <param name="formatProvider">   The provider to use to format the value.-or- A null reference
     ///                                 (Nothing in Visual Basic) to obtain the numeric format
@@ -801,10 +801,10 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
 
     #region " iconvertible implementation "
 
-    /// <summary>   Returns the <see cref="System.TypeCode" /> for this instance. </summary>
+    /// <summary>   Returns the <see cref="TypeCode" /> for this instance. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <returns>
-    /// The enumerated constant that is the <see cref="System.TypeCode" /> of the class or value
+    /// The enumerated constant that is the <see cref="TypeCode" /> of the class or value
     /// type that implements this interface.
     /// </returns>
     TypeCode IConvertible.GetTypeCode()
@@ -817,7 +817,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// culture-specific formatting information.
     /// </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    /// <param name="provider"> An <see cref="System.IFormatProvider" /> interface implementation
+    /// <param name="provider"> An <see cref="IFormatProvider" /> interface implementation
     ///                         that supplies culture-specific formatting information. </param>
     /// <returns>   A Boolean value equivalent to the value of this instance. </returns>
     bool IConvertible.ToBoolean( IFormatProvider provider )
@@ -830,7 +830,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// specified culture-specific formatting information.
     /// </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    /// <param name="provider"> An <see cref="System.IFormatProvider" /> interface implementation
+    /// <param name="provider"> An <see cref="IFormatProvider" /> interface implementation
     ///                         that supplies culture-specific formatting information. </param>
     /// <returns>   An 8-bit unsigned integer equivalent to the value of this instance. </returns>
     byte IConvertible.ToByte( IFormatProvider provider )
@@ -843,7 +843,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// culture-specific formatting information.
     /// </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    /// <param name="provider"> An <see cref="System.IFormatProvider" /> interface implementation
+    /// <param name="provider"> An <see cref="IFormatProvider" /> interface implementation
     ///                         that supplies culture-specific formatting information. </param>
     /// <returns>   A Unicode character equivalent to the value of this instance. </returns>
     char IConvertible.ToChar( IFormatProvider provider )
@@ -852,14 +852,14 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     }
 
     /// <summary>
-    /// Converts the value of this instance to an equivalent <see cref="System.DateTime" />
+    /// Converts the value of this instance to an equivalent <see cref="DateTime" />
     /// using the specified culture-specific formatting information.
     /// </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    /// <param name="provider"> An <see cref="System.IFormatProvider" /> interface implementation
+    /// <param name="provider"> An <see cref="IFormatProvider" /> interface implementation
     ///                         that supplies culture-specific formatting information. </param>
     /// <returns>
-    /// A <see cref="System.DateTime" /> instance equivalent to the value of this instance.
+    /// A <see cref="DateTime" /> instance equivalent to the value of this instance.
     /// </returns>
     DateTime IConvertible.ToDateTime( IFormatProvider provider )
     {
@@ -867,14 +867,14 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     }
 
     /// <summary>
-    /// Converts the value of this instance to an equivalent <see cref="System.Decimal" />
+    /// Converts the value of this instance to an equivalent <see cref="decimal" />
     /// number using the specified culture-specific formatting information.
     /// </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    /// <param name="provider"> An <see cref="System.IFormatProvider" /> interface implementation
+    /// <param name="provider"> An <see cref="IFormatProvider" /> interface implementation
     ///                         that supplies culture-specific formatting information. </param>
     /// <returns>
-    /// A <see cref="System.Decimal" /> number equivalent to the value of this instance.
+    /// A <see cref="decimal" /> number equivalent to the value of this instance.
     /// </returns>
     decimal IConvertible.ToDecimal( IFormatProvider provider )
     {
@@ -886,7 +886,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// using the specified culture-specific formatting information.
     /// </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    /// <param name="provider"> An <see cref="System.IFormatProvider" /> interface implementation
+    /// <param name="provider"> An <see cref="IFormatProvider" /> interface implementation
     ///                         that supplies culture-specific formatting information. </param>
     /// <returns>
     /// A double-precision floating-point number equivalent to the value of this instance.
@@ -901,7 +901,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// specified culture-specific formatting information.
     /// </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    /// <param name="provider"> An <see cref="System.IFormatProvider" /> interface implementation
+    /// <param name="provider"> An <see cref="IFormatProvider" /> interface implementation
     ///                         that supplies culture-specific formatting information. </param>
     /// <returns>   An 16-bit signed integer equivalent to the value of this instance. </returns>
     short IConvertible.ToInt16( IFormatProvider provider )
@@ -914,7 +914,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// specified culture-specific formatting information.
     /// </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    /// <param name="provider"> An <see cref="System.IFormatProvider" /> interface implementation
+    /// <param name="provider"> An <see cref="IFormatProvider" /> interface implementation
     ///                         that supplies culture-specific formatting information. </param>
     /// <returns>   An 32-bit signed integer equivalent to the value of this instance. </returns>
     int IConvertible.ToInt32( IFormatProvider provider )
@@ -927,7 +927,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// specified culture-specific formatting information.
     /// </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    /// <param name="provider"> An <see cref="System.IFormatProvider" /> interface implementation
+    /// <param name="provider"> An <see cref="IFormatProvider" /> interface implementation
     ///                         that supplies culture-specific formatting information. </param>
     /// <returns>   An 64-bit signed integer equivalent to the value of this instance. </returns>
     long IConvertible.ToInt64( IFormatProvider provider )
@@ -940,7 +940,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// culture-specific formatting information.
     /// </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    /// <param name="provider"> An <see cref="System.IFormatProvider" /> interface implementation
+    /// <param name="provider"> An <see cref="IFormatProvider" /> interface implementation
     ///                         that supplies culture-specific formatting information. </param>
     /// <returns>   An 8-bit signed integer equivalent to the value of this instance. </returns>
     sbyte IConvertible.ToSByte( IFormatProvider provider )
@@ -953,7 +953,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// using the specified culture-specific formatting information.
     /// </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    /// <param name="provider"> An <see cref="System.IFormatProvider" /> interface implementation
+    /// <param name="provider"> An <see cref="IFormatProvider" /> interface implementation
     ///                         that supplies culture-specific formatting information. </param>
     /// <returns>
     /// A single-precision floating-point number equivalent to the value of this instance.
@@ -964,14 +964,14 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     }
 
     /// <summary>
-    /// Converts the value of this instance to an equivalent <see cref="System.String" />
+    /// Converts the value of this instance to an equivalent <see cref="string" />
     /// using the specified culture-specific formatting information.
     /// </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    /// <param name="provider"> An <see cref="System.IFormatProvider" /> interface implementation
+    /// <param name="provider"> An <see cref="IFormatProvider" /> interface implementation
     ///                         that supplies culture-specific formatting information. </param>
     /// <returns>
-    /// A <see cref="System.String" /> instance equivalent to the value of this instance.
+    /// A <see cref="string" /> instance equivalent to the value of this instance.
     /// </returns>
     string IConvertible.ToString( IFormatProvider provider )
     {
@@ -979,20 +979,20 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     }
 
     /// <summary>
-    /// Converts the value of this instance to an <see cref="System.Object" /> of the specified
-    /// <see cref="System.Type" /> that has an equivalent value, using the specified culture-
+    /// Converts the value of this instance to an <see cref="object" /> of the specified
+    /// <see cref="Type" /> that has an equivalent value, using the specified culture-
     /// specific formatting information.
     /// </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <exception cref="InvalidCastException"> Thrown when an object cannot be cast to a required
     ///                                         type. </exception>
-    /// <param name="conversionType">   The <see cref="System.Type" /> to which the value of this
+    /// <param name="conversionType">   The <see cref="Type" /> to which the value of this
     ///                                 instance is converted. </param>
-    /// <param name="provider">         An <see cref="System.IFormatProvider" /> interface
+    /// <param name="provider">         An <see cref="IFormatProvider" /> interface
     ///                                 implementation that supplies culture-specific formatting
     ///                                 information. </param>
     /// <returns>
-    /// An <see cref="System.Object" /> instance of type <paramref name="conversionType" />
+    /// An <see cref="object" /> instance of type <paramref name="conversionType" />
     /// whose value is equivalent to the value of this instance.
     /// </returns>
     object IConvertible.ToType( Type conversionType, IFormatProvider provider )
@@ -1019,7 +1019,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// specified culture-specific formatting information.
     /// </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    /// <param name="provider"> An <see cref="System.IFormatProvider" /> interface implementation
+    /// <param name="provider"> An <see cref="IFormatProvider" /> interface implementation
     ///                         that supplies culture-specific formatting information. </param>
     /// <returns>   An 16-bit unsigned integer equivalent to the value of this instance. </returns>
     ushort IConvertible.ToUInt16( IFormatProvider provider )
@@ -1032,7 +1032,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// specified culture-specific formatting information.
     /// </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    /// <param name="provider"> An <see cref="System.IFormatProvider" /> interface implementation
+    /// <param name="provider"> An <see cref="IFormatProvider" /> interface implementation
     ///                         that supplies culture-specific formatting information. </param>
     /// <returns>   An 32-bit unsigned integer equivalent to the value of this instance. </returns>
     uint IConvertible.ToUInt32( IFormatProvider provider )
@@ -1045,7 +1045,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// specified culture-specific formatting information.
     /// </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    /// <param name="provider"> An <see cref="System.IFormatProvider" /> interface implementation
+    /// <param name="provider"> An <see cref="IFormatProvider" /> interface implementation
     ///                         that supplies culture-specific formatting information. </param>
     /// <returns>   An 64-bit unsigned integer equivalent to the value of this instance. </returns>
     ulong IConvertible.ToUInt64( IFormatProvider provider )
@@ -1087,7 +1087,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
 
     /// <summary>   Constructor. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    /// <param name="info">     The <see cref="System.Runtime.Serialization.SerializationInfo" />
+    /// <param name="info">     The <see cref="SerializationInfo" />
     ///                         to populate with data. </param>
     /// <param name="context">  A StreamingContext to process. </param>
     private Amount( SerializationInfo info, StreamingContext context )
@@ -1098,14 +1098,14 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     }
 
     /// <summary>
-    /// Populates a <see cref="System.Runtime.Serialization.SerializationInfo" /> with the data
+    /// Populates a <see cref="SerializationInfo" /> with the data
     /// needed to serialize the target object.
     /// </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    /// <param name="info">     The <see cref="System.Runtime.Serialization.SerializationInfo" />
+    /// <param name="info">     The <see cref="SerializationInfo" />
     ///                         to populate with data. </param>
     /// <param name="context">  The destination (see
-    ///                         <see cref="System.Runtime.Serialization.StreamingContext" />) for
+    ///                         <see cref="StreamingContext" />) for
     ///                         this serialization. </param>
     [System.Security.SecurityCritical()]
     void ISerializable.GetObjectData( SerializationInfo info, StreamingContext context )

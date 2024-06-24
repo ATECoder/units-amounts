@@ -311,7 +311,7 @@ public sealed class UnitType : ISerializable
 
     /// <summary>   Constructor. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    /// <param name="info">     The <see cref="System.Runtime.Serialization.SerializationInfo" />
+    /// <param name="info">     The <see cref="SerializationInfo" />
     ///                         to populate with data. </param>
     /// <param name="context">  A StreamingContext to process. </param>
     internal UnitType( SerializationInfo info, StreamingContext context )
@@ -340,14 +340,14 @@ public sealed class UnitType : ISerializable
     }
 
     /// <summary>
-    /// Populates a <see cref="System.Runtime.Serialization.SerializationInfo" /> with the data
+    /// Populates a <see cref="SerializationInfo" /> with the data
     /// needed to serialize the target object.
     /// </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    /// <param name="info">     The <see cref="System.Runtime.Serialization.SerializationInfo" />
+    /// <param name="info">     The <see cref="SerializationInfo" />
     ///                         to populate with data. </param>
     /// <param name="context">  The destination (see
-    ///                         <see cref="System.Runtime.Serialization.StreamingContext" />) for
+    ///                         <see cref="StreamingContext" />) for
     ///                         this serialization. </param>
     [System.Security.SecurityCritical()]
     void ISerializable.GetObjectData( SerializationInfo info, StreamingContext context )
@@ -358,10 +358,10 @@ public sealed class UnitType : ISerializable
 
     /// <summary>   Adds the values to 'info'. </summary>
     /// <remarks>   David, 2022-01-29. </remarks>
-    /// <param name="info">     The <see cref="System.Runtime.Serialization.SerializationInfo" />
+    /// <param name="info">     The <see cref="SerializationInfo" />
     ///                         to populate with data. </param>
     /// <param name="context">  The destination (see
-    ///                         <see cref="System.Runtime.Serialization.StreamingContext" />) for
+    ///                         <see cref="StreamingContext" />) for
     ///                         this serialization. </param>
     [System.Diagnostics.CodeAnalysis.SuppressMessage( "Style", "IDE0060:Remove unused parameter", Justification = "<Pending>" )]
     internal void AddValues( SerializationInfo info, StreamingContext context )
