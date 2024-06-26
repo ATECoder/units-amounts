@@ -16,8 +16,7 @@ internal static class ArrayExtensions
     /// <returns>   An array of T. </returns>
     public static T[] GetSubArray<T>( this T[] array, Range range )
     {
-        if ( array == null )
-            throw new ArgumentNullException( nameof( array ) );
+        if ( array == null ) throw new ArgumentNullException( nameof( array ) );
 
         (int offset, int length) = range.GetOffsetAndLength( array.Length );
 

@@ -38,9 +38,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="value">    The amount. </param>
     public Amount( Amount value )
     {
-        if ( value is null )
-            throw new ArgumentNullException( nameof( value ) );
-
+        if ( value is null ) throw new ArgumentNullException( nameof( value ) );
         this.Value = value.Value;
         this.Unit = value.Unit;
     }

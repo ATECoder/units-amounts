@@ -1,9 +1,9 @@
 <Project>
   <PropertyGroup>
-    <AssemblyVersion>2.1.8941.35892</AssemblyVersion>
-    <FileVersion>2.1.8941.35892</FileVersion>
-    <Version>2.1.8941</Version>
-    <ApplicationDisplayVersion>2.1.8941</ApplicationDisplayVersion>
+    <AssemblyVersion>2.1.8943.525</AssemblyVersion>
+    <FileVersion>2.1.8943.525</FileVersion>
+    <Version>2.1.8943</Version>
+    <ApplicationDisplayVersion>2.1.8943</ApplicationDisplayVersion>
     <ApplicationVersion>2</ApplicationVersion>
   </PropertyGroup>
 </Project>
