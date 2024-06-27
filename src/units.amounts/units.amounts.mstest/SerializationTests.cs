@@ -2,7 +2,7 @@ namespace cc.isr.UnitsAmounts.MSTest;
 
 /// <summary>   An amount serialization tests. </summary>
 /// <remarks>   2023-04-08. </remarks>
-[TestClass()]
+[TestClass]
 public class SerializationTests
 {
 

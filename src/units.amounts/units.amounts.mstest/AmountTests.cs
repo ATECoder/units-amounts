@@ -11,7 +11,7 @@ namespace cc.isr.UnitsAmounts.MSTest;
 /// </license>
 ///
 /// <history date="2018-01-27" by="David" revision="1.0.5814.0"> Fixed. </history>
-[TestClass()]
+[TestClass]
 public class AmountTests
 {
 

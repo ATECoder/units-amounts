@@ -3,8 +3,6 @@ namespace cc.isr.UnitsAmounts.ExceptionExtensions;
 /// <summary>
 /// Exception methods for adding exception data and building a detailed exception message.
 /// </summary>
-/// <remarks> (c) 2017 Integrated Scientific Resources, Inc. All rights reserved.<para>
-/// Licensed under The MIT License.</para> </remarks>
 internal static class ExceptionDataMethods
 {
 
