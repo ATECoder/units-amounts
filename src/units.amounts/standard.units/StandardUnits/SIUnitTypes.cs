@@ -8,7 +8,6 @@ namespace cc.isr.UnitsAmounts.StandardUnits;
 /// </remarks>
 public static class SIUnitTypes
 {
-
     /// <summary>   Gets the length. </summary>
     /// <value> The length. </value>
     public static UnitType Length => new( "Meter" );

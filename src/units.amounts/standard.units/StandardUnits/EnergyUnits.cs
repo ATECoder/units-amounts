@@ -5,7 +5,6 @@ namespace cc.isr.UnitsAmounts.StandardUnits;
 [UnitDefinitionClass]
 public static class EnergyUnits
 {
-
     /// <summary>   Gets the joule. </summary>
     /// <value> The joule. </value>
     public static Unit Joule => new( "Joule", "J", LengthUnits.Meter.Power( 2 ) * MassUnits.Kilogram * TimeUnits.Second.Power( -2 ) );

@@ -13,6 +13,7 @@ namespace cc.isr.UnitsAmounts.MSTest;
 [TestClass]
 public class ExceptionExtensionsTests
 {
+    #region " construction and cleanup "
 
     /// <summary>   <see cref"ExternalException"/> data should add. </summary>
     /// <remarks>   2023-04-17. </remarks>
