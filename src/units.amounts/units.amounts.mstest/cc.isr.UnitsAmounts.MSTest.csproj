@@ -39,9 +39,6 @@
     -->
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Include="..\..\items\ProductKey.cs" Link="Properties\ProductKey.cs" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\units.amounts\standard.units\cc.isr.UnitsAmounts.StandardUnits.csproj" />

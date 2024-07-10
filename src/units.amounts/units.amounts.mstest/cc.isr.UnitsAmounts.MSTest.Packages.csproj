@@ -21,8 +21,5 @@
     <PackageReference Include="coverlet.collector" Version="6.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Include="..\..\items\ProductKey.cs" Link="Properties\ProductKey.cs" />
-  </ItemGroup>
 
 </Project>
