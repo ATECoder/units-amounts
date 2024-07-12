@@ -13,7 +13,6 @@ namespace cc.isr.UnitsAmounts.MSTest;
 [TestClass]
 public class ExceptionExtensionsTests
 {
-    #region " construction and cleanup "
 
     /// <summary>   <see cref"ExternalException"/> data should add. </summary>
     /// <remarks>   2023-04-17. </remarks>
@@ -64,5 +63,6 @@ public class ExceptionExtensionsTests
         Assert.IsTrue( ExceptionDataMethods.AddExceptionData( exception, exception as UnknownUnitException ),
                        $"{nameof(UnknownUnitException)} exception data should be added");
     }
+
 }
 

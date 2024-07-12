@@ -266,7 +266,7 @@ public sealed class UnitManager
         // Try resolve unit by UnitResolve event:
         if ( result is null )
         {
-            if ( Instance.UnitResolve != null )
+            if ( Instance.UnitResolve is not null )
             {
                 foreach ( Delegate handler in Instance.UnitResolve.GetInvocationList() )
 

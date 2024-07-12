@@ -348,7 +348,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
 
         format ??= "GG";
 
-        if ( formatProvider != null )
+        if ( formatProvider is not null )
         {
             if ( formatProvider.GetFormat( this.GetType() ) is ICustomFormatter formatter )
             {

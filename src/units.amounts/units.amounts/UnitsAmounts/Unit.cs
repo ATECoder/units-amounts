@@ -243,7 +243,7 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
     {
         format ??= "US";
 
-        if ( formatProvider != null )
+        if ( formatProvider is not null )
         {
             // ICustomFormatter formatter = formatProvider.GetFormat(GetType()) as ICustomFormatter;
             if ( formatProvider.GetFormat( this.GetType() ) is ICustomFormatter formatter )
