@@ -8,7 +8,6 @@ namespace cc.isr.UnitsAmounts;
 [Serializable]
 public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConvertible, IEquatable<Amount>, IFormattable, IUnitConsumer, ISerializable
 {
-
     #region" CONSTRUCTION "
 
     /// <summary>   Default constructor. Required for serialization. </summary>
@@ -1116,5 +1115,4 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     }
 
     #endregion
-
 }

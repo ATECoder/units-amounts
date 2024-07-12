@@ -1,5 +1,4 @@
 using System;
-
 using cc.isr.UnitsAmounts;
 using cc.isr.UnitsAmounts.StandardUnits;
 

@@ -5,7 +5,6 @@ namespace cc.isr.UnitsAmounts.MSTest;
 [TestClass]
 public class SerializationTests
 {
-
     #region " initialize & cleanup "
 
     private UnitManager? _defaultUnitManager;
@@ -75,7 +74,6 @@ public class SerializationTests
         Console.WriteLine( b );
         Assert.AreEqual( a, b );
     }
-
 
     #endregion " json serializer "
 

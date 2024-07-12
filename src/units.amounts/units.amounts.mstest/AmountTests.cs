@@ -14,7 +14,6 @@ namespace cc.isr.UnitsAmounts.MSTest;
 [TestClass]
 public class AmountTests
 {
-
     #region " initialize & cleanup "
 
     private UnitManager? _defaultUnitManager;

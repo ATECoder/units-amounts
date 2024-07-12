@@ -398,8 +398,6 @@ public sealed class UnitType : ISerializable
         }
     }
 
-
     #endregion
 }
-
 

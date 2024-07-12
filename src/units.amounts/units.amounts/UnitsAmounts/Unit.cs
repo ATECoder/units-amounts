@@ -7,7 +7,6 @@ namespace cc.isr.UnitsAmounts;
 [Serializable]
 public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFormattable, ISerializable
 {
-
     #region " construction "
 
     /// <summary>   Default constructor. Required for serialization. </summary>
@@ -533,8 +532,6 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
         }
     }
 
-
     #endregion
-
 }
 
