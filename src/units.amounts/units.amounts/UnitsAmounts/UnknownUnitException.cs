@@ -1,7 +1,6 @@
 using System.Runtime.Serialization;
 
 namespace cc.isr.UnitsAmounts;
-
 /// <summary>
 /// Exception thrown whenever an exception is referenced by name, but no unit with the given name
 /// is known (registered to the UnitManager).
@@ -9,7 +8,6 @@ namespace cc.isr.UnitsAmounts;
 /// <remarks>   David, 2021-03-22. </remarks>
 public class UnknownUnitException : Exception
 {
-
     /// <summary>   Specialized constructor for use only by derived class. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="message">  The message. </param>

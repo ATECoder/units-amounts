@@ -6,14 +6,12 @@ using System.Runtime.InteropServices;
 using cc.isr.UnitsAmounts.ExceptionExtensions;
 
 namespace cc.isr.UnitsAmounts.MSTest;
-
 /// <summary>
 /// Tests internal exception extension methods for adding exception data.
 /// </summary>
 [TestClass]
 public class ExceptionExtensionsTests
 {
-
     /// <summary>   <see cref"ExternalException"/> data should add. </summary>
     /// <remarks>   2023-04-17. </remarks>
     [TestMethod]

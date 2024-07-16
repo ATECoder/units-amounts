@@ -8,7 +8,6 @@ namespace cc.isr.UnitsAmounts;
 [Serializable]
 public sealed class UnitType : ISerializable
 {
-
     /// <summary>   The base unit indices. </summary>
     private readonly sbyte[] _baseUnitIndices;
 

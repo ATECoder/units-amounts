@@ -1,5 +1,4 @@
 namespace cc.isr.UnitsAmounts;
-
 /// <summary>
 /// Attribute to mark classes having static unit fields to be registered by the UnitManager's
 /// RegisterUnits method.
@@ -9,7 +8,6 @@ namespace cc.isr.UnitsAmounts;
 public sealed class UnitDefinitionClassAttribute : Attribute
 {
 }
-
 /// <summary>
 /// Attribute to mark classes having static methods that register conversion functions. The
 /// UnitConvert class uses this attribute to identify classes with unit conversion methods in its

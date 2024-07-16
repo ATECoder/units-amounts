@@ -1,5 +1,4 @@
 namespace cc.isr.UnitsAmounts.MSTest;
-
 /// <summary>
 /// Summary description for PerformanceTests
 /// </summary>

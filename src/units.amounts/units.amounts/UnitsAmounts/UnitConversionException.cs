@@ -1,7 +1,6 @@
 using System.Runtime.Serialization;
 
 namespace cc.isr.UnitsAmounts;
-
 /// <summary>
 /// Exception thrown when a unit conversion failed, i.e. because you are converting amounts from
 /// one unit into another non-compatible unit.
@@ -9,7 +8,6 @@ namespace cc.isr.UnitsAmounts;
 /// <remarks>   David, 2021-03-22. </remarks>
 public class UnitConversionException : InvalidOperationException
 {
-
     /// <summary>   Specialized constructor for use only by derived class. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="fromUnit"> from unit. </param>

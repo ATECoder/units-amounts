@@ -1,5 +1,4 @@
 namespace cc.isr.UnitsAmounts.StandardUnits;
-
 /// <summary>
 /// Based on:
 /// <see href="https://physics.NIST.gov/cgi-bin/cuu/Value?u|search_for=ABBR_in!"/>.

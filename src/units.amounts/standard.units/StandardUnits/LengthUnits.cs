@@ -39,7 +39,6 @@ public static class LengthUnits
     /// <value> The kilometer. </value>
     public static Unit Kilometer => new( "Kilometer", "km", 1000.0 * Meter );
 
-
     /// <summary>   Gets the inch. </summary>
     /// <value> The inch. </value>
     public static Unit Inch => new( "Inch", "in", 0.0254 * Meter );
@@ -59,7 +58,6 @@ public static class LengthUnits
     /// <summary>   Gets the nautical mile. </summary>
     /// <value> The nautical mile. </value>
     public static Unit NauticalMile => new( "Nautical Mile", "nmi", 1852.0 * Meter );
-
 
     /// <summary>   Gets the lightyear. </summary>
     /// <value> The lightyear. </value>

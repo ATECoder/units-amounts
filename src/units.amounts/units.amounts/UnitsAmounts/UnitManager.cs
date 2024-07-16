@@ -1,7 +1,6 @@
 using System.Reflection;
 
 namespace cc.isr.UnitsAmounts;
-
 /// <summary>
 /// An event handler called whenever unit names cannot be resolved. Provides a last chance to
 /// resolve units.
@@ -17,7 +16,6 @@ public delegate Unit UnitResolveEventHandler( object? sender, ResolveEventArgs a
 /// <param name="originalAmount">   The amount to be converted. </param>
 /// <returns>   The resulting amount. </returns>
 public delegate Amount ConversionFunction( Amount originalAmount );
-
 /// <summary>
 /// The UnitManager class provides services around unit naming and identification.
 /// </summary>
