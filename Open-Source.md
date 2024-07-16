@@ -12,7 +12,7 @@ at the following sites:
 [Working with units and amounts]
 
 <a name="Closed-software"></a>
-###### Closed software
+##### Closed software
 None
 
 [Working with units and amounts]: https://www.codeproject.com/Articles/611731/Working-with-Units-and-Amounts

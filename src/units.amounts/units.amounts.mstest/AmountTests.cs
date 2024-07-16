@@ -1,7 +1,7 @@
 namespace cc.isr.UnitsAmounts.MSTest;
 
 /// <summary>   Contains unit tests for Amounts. </summary>
-/// <license> (c) 2013 Rudi Breedenraedt. All rights reserved.<para>
+/// <license> (c) 2013 Integrated Scientific Resources, Inc. All rights reserved.<para>
 /// Licensed under The MIT License.</para><para>
 /// THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
 /// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -212,8 +212,8 @@ public class AmountTests
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
 
-            CultureInfo dutchBelgium = CultureInfo.GetCultureInfo( "nl-BE" );
-            CultureInfo englishUs = CultureInfo.GetCultureInfo( "en-US" );
+            CultureInfo cultureDutchBelgium = CultureInfo.GetCultureInfo( "nl-BE" );
+            CultureInfo cultureEnglishUs = CultureInfo.GetCultureInfo( "en-US" );
 
             Amount a = new( 12.3456789, LengthUnits.Kilometer );
             Amount b = new( 12345.6789, LengthUnits.Meter );
@@ -221,18 +221,18 @@ public class AmountTests
             Amount d = new( 25.678, LengthUnits.Meter * LengthUnits.Meter );
 
             Assert.AreEqual( "12.3456789 km", a.ToString( CultureInfo.CurrentCulture ) );
-            Assert.AreEqual( "12,3456789 Kilometer", a.ToString( "GN", dutchBelgium ) );
-            Assert.AreEqual( "12.346 km", a.ToString( "0.000 US", englishUs ) );
+            Assert.AreEqual( "12,3456789 Kilometer", a.ToString( "GN", cultureDutchBelgium ) );
+            Assert.AreEqual( "12.346 km", a.ToString( "0.000 US", cultureEnglishUs ) );
             Assert.AreEqual( "12.346 km", a.ToString( "0.000 US", CultureInfo.CurrentCulture ) );
             Assert.AreEqual( "12.346", a.ToString( "0.000", CultureInfo.CurrentCulture ) );
-            Assert.AreEqual( "12,346 km", a.ToString( "NS", dutchBelgium ) );
-            Assert.AreEqual( "12.346 km", a.ToString( "NS", englishUs ) );
-            Assert.AreEqual( "12.345,679 m", b.ToString( "NS", dutchBelgium ) );
-            Assert.AreEqual( "12,345.679 m", b.ToString( "NS", englishUs ) );
-            Assert.AreEqual( "-0.450 km/h", c.ToString( "NS", englishUs ) );
-            Assert.AreEqual( "-0.450 (Kilometer/Hour)", c.ToString( "NN", englishUs ) );
-            Assert.AreEqual( "-0,450 km/h", c.ToString( "0.000 US", dutchBelgium ) );
-            Assert.AreEqual( "[0,450] km/h", c.ToString( "0.000 US;[0.000] US", dutchBelgium ) );
+            Assert.AreEqual( "12,346 km", a.ToString( "NS", cultureDutchBelgium ) );
+            Assert.AreEqual( "12.346 km", a.ToString( "NS", cultureEnglishUs ) );
+            Assert.AreEqual( "12.345,679 m", b.ToString( "NS", cultureDutchBelgium ) );
+            Assert.AreEqual( "12,345.679 m", b.ToString( "NS", cultureEnglishUs ) );
+            Assert.AreEqual( "-0.450 km/h", c.ToString( "NS", cultureEnglishUs ) );
+            Assert.AreEqual( "-0.450 (Kilometer/Hour)", c.ToString( "NN", cultureEnglishUs ) );
+            Assert.AreEqual( "-0,450 km/h", c.ToString( "0.000 US", cultureDutchBelgium ) );
+            Assert.AreEqual( "[0,450] km/h", c.ToString( "0.000 US;[0.000] US", cultureDutchBelgium ) );
             Assert.AreEqual( "12.35 Kilometer", b.ToString( "NN|kilometer", CultureInfo.CurrentCulture ) );
             Assert.AreEqual( "12.346 km", b.ToString( "#,##0.000 US|kilometer", CultureInfo.CurrentCulture ) );
             Assert.AreEqual( "+12.346 km", b.ToString( "+#,##0.000 US|kilometer", CultureInfo.CurrentCulture ) );
@@ -294,23 +294,23 @@ public class AmountTests
         Amount a = new( 1234.5678, LengthUnits.Meter );
         Amount? b = null;
 
-        CultureInfo englishUs = CultureInfo.GetCultureInfo( "en-US" );
-        CultureInfo dutchBelgium = CultureInfo.GetCultureInfo( "nl-BE" );
+        CultureInfo cultureEnglishUs = CultureInfo.GetCultureInfo( "en-US" );
+        CultureInfo cultureDutchBelgium = CultureInfo.GetCultureInfo( "nl-BE" );
 
         Assert.AreEqual( "1234.5678 m", Amount.ToString( a, CultureInfo.CurrentCulture ).Replace( ",", "." ) );
-        Assert.AreEqual( "1234.5678 m", Amount.ToString( a, englishUs ) );
-        Assert.AreEqual( "1234,5678 m", Amount.ToString( a, dutchBelgium ) );
+        Assert.AreEqual( "1234.5678 m", Amount.ToString( a, cultureEnglishUs ) );
+        Assert.AreEqual( "1234,5678 m", Amount.ToString( a, cultureDutchBelgium ) );
         Assert.AreEqual( "1.234.57 m", Amount.ToString( a, "#,##0.00 US", CultureInfo.CurrentCulture ).Replace( ",", "." ) );
-        Assert.AreEqual( "1,234.57 m", Amount.ToString( a, "#,##0.00 US", englishUs ) );
-        Assert.AreEqual( "1.234,57 m", Amount.ToString( a, "#,##0.00 US", dutchBelgium ) );
+        Assert.AreEqual( "1,234.57 m", Amount.ToString( a, "#,##0.00 US", cultureEnglishUs ) );
+        Assert.AreEqual( "1.234,57 m", Amount.ToString( a, "#,##0.00 US", cultureDutchBelgium ) );
 
         string emptyValue = "";
         Assert.AreEqual( emptyValue, Amount.ToString( b, CultureInfo.CurrentCulture ).Replace( ",", "." ) );
-        Assert.AreEqual( emptyValue, Amount.ToString( b, englishUs ) );
-        Assert.AreEqual( emptyValue, Amount.ToString( b, dutchBelgium ) );
+        Assert.AreEqual( emptyValue, Amount.ToString( b, cultureEnglishUs ) );
+        Assert.AreEqual( emptyValue, Amount.ToString( b, cultureDutchBelgium ) );
         Assert.AreEqual( emptyValue, Amount.ToString( b, "#,##0.00 US", CultureInfo.CurrentCulture ).Replace( ",", "." ) );
-        Assert.AreEqual( emptyValue, Amount.ToString( b, "#,##0.00 US", englishUs ) );
-        Assert.AreEqual( emptyValue, Amount.ToString( b, "#,##0.00 US", dutchBelgium ) );
+        Assert.AreEqual( emptyValue, Amount.ToString( b, "#,##0.00 US", cultureEnglishUs ) );
+        Assert.AreEqual( emptyValue, Amount.ToString( b, "#,##0.00 US", cultureDutchBelgium ) );
 
         Amount? x = null;
         string s = string.Empty;

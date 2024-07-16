@@ -34,7 +34,7 @@ Libraries for implementing strongly typed units and amounts.
 [ATE Coder]
 
 <a name="Authors"></a>
-## Authors
+#### Authors
 
 * [Rudi Breedenraedt]
 * [ATE Coder]
@@ -48,8 +48,8 @@ Integrated Scientific Resources, Inc., and/or other Integrated Scientific Resour
 
 Integrated Scientific Resources, Inc., and any contributors reserve all other rights, whether under their respective copyrights, patents, or trademarks, whether by implication, estoppel or otherwise.
 
-[Creative Commons Attribution 4.0 International Public License]:(https://creativecommons.org/licenses/by/4.0/legalcode)
-[MIT License]:(https://opensource.org/licenses/MIT)
+[Creative Commons Attribution 4.0 International Public License]: https://creativecommons.org/licenses/by/4.0/legalcode
+[MIT License]: https://opensource.org/licenses/MIT
  
 [ATE Coder]: https://www.IntegratedScientificResources.com
 [Rudi Breedenraedt]: https://www.codeproject.com/Articles/611731/Working-with-Units-and-Amounts
