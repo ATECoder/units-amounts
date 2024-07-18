@@ -6,6 +6,7 @@
  
   <PropertyGroup Condition="$(DefineConstants.Contains(';PACK;'))" >
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 
   <ItemGroup Condition="$(DefineConstants.Contains(';PACK;GitHub;'))" >

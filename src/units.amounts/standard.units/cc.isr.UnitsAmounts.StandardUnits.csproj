@@ -12,7 +12,6 @@
     <ApplicationTitle>cc.isr.UnitsAmounts.StandardUnits</ApplicationTitle>
     <ApplicationId>cc.isr.units.amounts.standard.units</ApplicationId>
 
-    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <GenerateAssemblyVersionAttribute>true</GenerateAssemblyVersionAttribute>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 
