@@ -225,12 +225,21 @@ public class AmountTests
             Assert.AreEqual( "12.346 km", a.ToString( "0.000 US", cultureEnglishUs ) );
             Assert.AreEqual( "12.346 km", a.ToString( "0.000 US", CultureInfo.CurrentCulture ) );
             Assert.AreEqual( "12.346", a.ToString( "0.000", CultureInfo.CurrentCulture ) );
+#if NET5_0_OR_GREATER
             Assert.AreEqual( "12,346 km", a.ToString( "NS", cultureDutchBelgium ) );
             Assert.AreEqual( "12.346 km", a.ToString( "NS", cultureEnglishUs ) );
             Assert.AreEqual( "12.345,679 m", b.ToString( "NS", cultureDutchBelgium ) );
             Assert.AreEqual( "12,345.679 m", b.ToString( "NS", cultureEnglishUs ) );
             Assert.AreEqual( "-0.450 km/h", c.ToString( "NS", cultureEnglishUs ) );
             Assert.AreEqual( "-0.450 (Kilometer/Hour)", c.ToString( "NN", cultureEnglishUs ) );
+#else
+            Assert.AreEqual( "12,35 km", a.ToString( "NS", cultureDutchBelgium ) );
+            Assert.AreEqual( "12.35 km", a.ToString( "NS", cultureEnglishUs ) );
+            Assert.AreEqual( "12.345,68 m", b.ToString( "NS", cultureDutchBelgium ) );
+            Assert.AreEqual( "12,345.68 m", b.ToString( "NS", cultureEnglishUs ) );
+            Assert.AreEqual( "-0.45 km/h", c.ToString( "NS", cultureEnglishUs ) );
+            Assert.AreEqual( "-0.45 (Kilometer/Hour)", c.ToString( "NN", cultureEnglishUs ) );
+#endif
             Assert.AreEqual( "-0,450 km/h", c.ToString( "0.000 US", cultureDutchBelgium ) );
             Assert.AreEqual( "[0,450] km/h", c.ToString( "0.000 US;[0.000] US", cultureDutchBelgium ) );
             Assert.AreEqual( "12.35 Kilometer", b.ToString( "NN|kilometer", CultureInfo.CurrentCulture ) );

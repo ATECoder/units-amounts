@@ -6,14 +6,16 @@ using System.Runtime.InteropServices;
 using cc.isr.UnitsAmounts.ExceptionExtensions;
 
 namespace cc.isr.UnitsAmounts.MSTest;
+
 /// <summary>
 /// Tests internal exception extension methods for adding exception data.
 /// </summary>
 [TestClass]
 public class ExceptionExtensionsTests
 {
+
     /// <summary>   <see cref"ExternalException"/> data should add. </summary>
-    /// <remarks>   2023-04-17. </remarks>
+    /// <remarks>   2024-07-27. </remarks>
     [TestMethod]
     public void ExternalExceptionDataShouldAdd()
     {
@@ -23,7 +25,7 @@ public class ExceptionExtensionsTests
     }
 
     /// <summary>   <see cref"ArgumentOutOfRangeException"/> data should add. </summary>
-    /// <remarks>   2023-04-17. </remarks>
+    /// <remarks>   2024-07-27. </remarks>
     [TestMethod]
     public void ArgumentOutOfRangeExceptionDataShouldAdd()
     {
@@ -33,7 +35,7 @@ public class ExceptionExtensionsTests
     }
 
     /// <summary>   <see cref"ArgumentException"/> data should add. </summary>
-    /// <remarks>   2023-04-17. </remarks>
+    /// <remarks>   2024-07-27. </remarks>
     [TestMethod]
     public void ArgumentExceptionDataShouldAdd()
     {
@@ -43,7 +45,7 @@ public class ExceptionExtensionsTests
     }
 
     /// <summary>   <see cref"UnitConversionException"/> data should add. </summary>
-    /// <remarks>   2023-04-17. </remarks>
+    /// <remarks>   2024-07-27. </remarks>
     [TestMethod]
     public void UnitConversionExceptionDataShouldAdd()
     {
@@ -53,7 +55,7 @@ public class ExceptionExtensionsTests
     }
 
     /// <summary>   <see cref"UnknownUnitException"/> data should add. </summary>
-    /// <remarks>   2023-04-17. </remarks>
+    /// <remarks>   2024-07-27. </remarks>
     [TestMethod]
     public void UnknownUnitExceptionDataShouldAdd()
     {
@@ -61,6 +63,5 @@ public class ExceptionExtensionsTests
         Assert.IsTrue( ExceptionDataMethods.AddExceptionData( exception, exception as UnknownUnitException ),
                        $"{nameof(UnknownUnitException)} exception data should be added");
     }
-
 }
 
