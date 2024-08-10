@@ -354,7 +354,6 @@ public sealed class UnitType : ISerializable
         this.AddValues( info, context );
     }
 
-
     /// <summary>   Adds the values to 'info'. </summary>
     /// <remarks>   David, 2022-01-29. </remarks>
     /// <param name="info">     The <see cref="SerializationInfo" />

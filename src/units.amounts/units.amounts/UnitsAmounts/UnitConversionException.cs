@@ -40,7 +40,6 @@ public class UnitConversionException : InvalidOperationException
     /// <value> to unit. </value>
     public Unit ToUnit { get; set; }
 
-
     /// <summary>
     /// When overridden in a derived class, sets the <see cref="SerializationInfo">
     /// </see> with information about the exception.

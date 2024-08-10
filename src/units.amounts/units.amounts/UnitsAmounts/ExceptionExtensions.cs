@@ -101,7 +101,6 @@ internal static class ExceptionDataMethods
         return exception is not null;
     }
 
-
     /// <summary> Adds exception data from the specified exception. </summary>
     /// <remarks> David, 2020-09-16. </remarks>
     /// <param name="exception"> The exception. </param>

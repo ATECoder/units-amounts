@@ -141,7 +141,6 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
         return this.Equals( obj as Unit );
     }
 
-
     /// <summary>   Tests equality of both objects. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="other">    The unit to compare to this object. </param>
@@ -511,7 +510,6 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
     {
         this.AddValues( info, context );
     }
-
 
     /// <summary>   Adds the values to 'info'. </summary>
     /// <remarks>   David, 2022-01-29. </remarks>

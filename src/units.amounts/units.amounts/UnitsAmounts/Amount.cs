@@ -42,7 +42,6 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
         this.Unit = value.Unit;
     }
 
-
     /// <summary>   Constructor. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="value">    The raw value of the amount. </param>
@@ -89,7 +88,6 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <summary>   Gets or sets the raw value of the amount. </summary>
     /// <value> The value. </value>
     public double Value { get; private set; }
-
 
     /// <summary>   Gets the unit of the amount. </summary>
     /// <value> The unit. </value>
@@ -192,7 +190,6 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
 
         return amounts;
     }
-
 
     /// <summary>   Combines the given amounts to an outcome amount of the specified unit. </summary>
     /// <remarks>   David, 2020-03-07. </remarks>
