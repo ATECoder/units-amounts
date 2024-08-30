@@ -401,7 +401,6 @@ public sealed class UnitManager
     /// <returns>   to converted. </returns>
     public static Amount ConvertTo( Amount amount, Unit toUnit )
     {
-
         if ( amount is null )
         {
             throw new ArgumentNullException( nameof( amount ) );

@@ -13,7 +13,6 @@ namespace cc.isr.UnitsAmounts.MSTest;
 [TestClass]
 public class ExceptionExtensionsTests
 {
-
     /// <summary>   <see cref"ExternalException"/> data should add. </summary>
     /// <remarks>   2024-07-27. </remarks>
     [TestMethod]
