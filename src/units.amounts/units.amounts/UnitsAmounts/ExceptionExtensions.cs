@@ -19,9 +19,7 @@ internal static class ExceptionDataMethods
     public static bool AddExceptionData( Exception value, System.Runtime.InteropServices.ExternalException? exception )
     {
         if ( value is not null && exception is not null )
-        {
             value.Data.Add( $"{value.Data.Count}-External.Error.Code", $"{exception.ErrorCode}" );
-        }
 
         return exception is not null;
     }
@@ -38,9 +36,7 @@ internal static class ExceptionDataMethods
     public static bool AddExceptionData( Exception value, ArgumentOutOfRangeException? exception )
     {
         if ( value is not null && exception is not null )
-        {
             value.Data.Add( $"{value.Data.Count}-Name+Value", $"{exception.ParamName}={exception.ActualValue}" );
-        }
 
         return exception is not null;
     }
@@ -57,9 +53,7 @@ internal static class ExceptionDataMethods
     public static bool AddExceptionData( Exception value, ArgumentException? exception )
     {
         if ( value is not null && exception is not null )
-        {
             value.Data.Add( $"{value.Data.Count}-Name", exception.ParamName );
-        }
 
         return exception is not null;
     }
@@ -94,9 +88,7 @@ internal static class ExceptionDataMethods
     public static bool AddExceptionData( Exception value, UnknownUnitException? exception )
     {
         if ( value is not null && exception is not null )
-        {
             value.Data.Add( $"{value.Data.Count}-{nameof( UnknownUnitException.Name )}", exception.Name );
-        }
 
         return exception is not null;
     }
