@@ -23,8 +23,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="unit">     The unit of the amount. </param>
     public Amount( double value, Unit unit )
     {
-        if ( unit is null )
-            throw new ArgumentNullException( nameof( unit ) );
+        if ( unit is null ) throw new ArgumentNullException( nameof( unit ) );
 
         this.Value = value;
         this.Unit = unit;
@@ -167,8 +166,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <returns>   An Amount[]. </returns>
     public Amount[] Split( Unit[] units, int decimals )
     {
-        if ( units == null )
-            throw new ArgumentNullException( nameof( units ) );
+        if ( units == null ) throw new ArgumentNullException( nameof( units ) );
 
         Amount[] amounts = new Amount[units.Length];
 
@@ -563,11 +561,9 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
         if ( (left is null) && (right is null) )
             return 0;
 
-        if ( left is null )
-            throw new ArgumentNullException( nameof( left ) );
+        if ( left is null ) throw new ArgumentNullException( nameof( left ) );
 
-        if ( right is null )
-            throw new ArgumentNullException( nameof( right ) );
+        if ( right is null ) throw new ArgumentNullException( nameof( right ) );
 
         Amount rightConverted = right.ConvertedTo( left.Unit );
         return left == rightConverted ? 0 : left.Value < rightConverted.Value ? -1 : 1;
