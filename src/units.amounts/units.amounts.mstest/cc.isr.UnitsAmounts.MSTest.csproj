@@ -68,7 +68,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Update="Microsoft.Testing.Extensions.CodeCoverage" Version="17.12.4" />
+    <PackageReference Update="Microsoft.Testing.Extensions.CodeCoverage" Version="17.12.6" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net472' or '$(TargetFramework)'=='net48'">
