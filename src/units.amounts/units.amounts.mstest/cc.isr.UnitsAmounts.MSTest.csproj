@@ -1,6 +1,6 @@
 <Project Sdk="MSTest.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net472;net48;net8.0</TargetFrameworks>
+    <TargetFrameworks>net472;net48;net9.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
 
     <ImplicitUsings>enable</ImplicitUsings>
@@ -68,6 +68,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <!-- Suppress warning about newton soft 9.0.1 which is part of the .net fx testing extensions code coverage. -->
+    <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-5crp-9r3c-p9vr" />
     <PackageReference Update="Microsoft.Testing.Extensions.CodeCoverage" Version="17.12.6" />
   </ItemGroup>
 

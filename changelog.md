@@ -2,6 +2,11 @@
 All notable changes to these libraries will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
+#### [2.1.9083] - 2024-11-13 Preview 202304
+* Update packages.
+* Upgrade Test and Demo apps to .Net 9.0.
+* Increment version to 9083.
+
 #### [2.1.8956] - 2024-07-09 Preview 202304
 * Set projects to target .NET Standard 2.0 alone.
 * Update .NET standard 2.0 enhanced methods and attributes.
@@ -96,4 +101,4 @@ Created
 
 &copy;  2013 Rudi Breedenraedt.
 
-[2.1.8956]: https://github.com/atecoder/units-amounts/src/main/
+[2.1.9083]: https://github.com/atecoder/units-amounts/src/main/

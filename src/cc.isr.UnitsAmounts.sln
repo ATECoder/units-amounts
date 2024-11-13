@@ -24,15 +24,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StandardUnitsPackageDemo", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "`docs", "`docs", "{8374E7EF-0BED-4642-8C97-BAAD168AC307}"
 	ProjectSection(SolutionItems) = preProject
-		..\Attributions.md = ..\Attributions.md
-		..\CHANGELOG.md = ..\CHANGELOG.md
-		..\Cloning.md = ..\Cloning.md
-		..\CODE_OF_CONDUCT.md = ..\CODE_OF_CONDUCT.md
-		..\CONTRIBUTING.md = ..\CONTRIBUTING.md
-		..\Open-Source.md = ..\Open-Source.md
-		..\README.md = ..\README.md
-		..\SECURITY.md = ..\SECURITY.md
-		..\TODO.md = ..\TODO.md
+		..\attributions.md = ..\attributions.md
+		..\changelog.md = ..\changelog.md
+		..\cloning.md = ..\cloning.md
+		..\code_of_conduct.md = ..\code_of_conduct.md
+		..\contributing.md = ..\contributing.md
+		..\open-source.md = ..\open-source.md
+		..\readme.md = ..\readme.md
+		..\security.md = ..\security.md
+		..\todo.md = ..\todo.md
 	EndProjectSection
 EndProject
 Global
