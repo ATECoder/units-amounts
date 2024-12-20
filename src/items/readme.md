@@ -1,10 +1,10 @@
-### About
+# About
 
 [cc.isr.Units.Amounts] is a .Net library for implementing strongly typed units and amounts.
 
 More information is to be found in the original contribution at [Working with units and amounts].
 
-### How to Use
+# How to Use
 
 The following code comes from a console application demo program.
 
@@ -47,20 +47,20 @@ namespace SampleConsoleApplication
 }
 ```
 
-### Key Features
+# Key Features
 
 * Full typed units and amounts;
 * Numerical operations between the typed units;
 * Formatting of typed units values;
 
-### Main Types
+# Main Types
 
 The main types provided by this library are:
 
 * _Unit_ Defines a physical units such as meter, kilogram, second, newton, etc.
 * _Amount_ Consists of a numerical (double precision type) value and a _Unit_.
 
-### Feedback
+# Feedback
 
 [cc.isr.Units.Amounts] is released as open source under the MIT license.
 Bug reports and contributions are welcome at the [cc.isr.Units.Amounts] repository.

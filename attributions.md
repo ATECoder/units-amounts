@@ -1,10 +1,10 @@
-### Attributions
+# Attributions
 
 * [Facilitated By](#FacilitatedBy)
 * [Acknowledgments](#Acknowledgments)
 
-<a name="FacilitatedBy"></a>
-#### Facilitated By
+<a name="Facilitated-By"></a>
+## Facilitated By
 * [Visual Studio]
 * [Jarte RTF Editor]
 * [Wix Toolset]
@@ -14,7 +14,7 @@
 * [Funduc Search and Replace]
 
 <a name="Acknowledgments"></a>
-#### Acknowledgments
+## Acknowledgments
 
 * [Rudi Breedenraedt]
 * [Its all a remix]
