@@ -46,7 +46,7 @@
 
   <ItemGroup>
     <Compile Include="..\..\items\ProductKey.cs" Link="Properties\ProductKey.cs" />
-    <Compile Remove="Standard\*.cs" Condition="'$(TargetFramework)' == 'netstandard2.1'" />
+    <Compile Remove="standard\*.cs" Condition="'$(TargetFramework)' == 'netstandard2.1'" />
   </ItemGroup>
 
   <ItemGroup>
