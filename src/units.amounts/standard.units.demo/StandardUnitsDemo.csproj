@@ -9,8 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\units.amounts\standard.units\cc.isr.UnitsAmounts.StandardUnits.csproj" />
+    <ProjectReference Include="..\standard.units\cc.isr.UnitsAmounts.StandardUnits.csproj" />
   </ItemGroup>
+
+  <Import Project="..\standard.units\version.build.props" />
+
 
   <ItemGroup>
     <PackageReference Update="Microsoft.SourceLink.GitHub" Version="8.0.0" />

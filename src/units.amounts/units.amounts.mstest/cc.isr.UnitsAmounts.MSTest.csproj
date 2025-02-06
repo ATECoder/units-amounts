@@ -24,8 +24,14 @@
     <DefineConstants>$(DefineConstants);MYPROJREF;</DefineConstants>
   </PropertyGroup>
 
+  <Import Project="..\standard.units\version.build.props" />
+
   <Choose>
-    <When Condition="$(DefineConstants.Contains(';PROJREF;')) OR $(DefineConstants.Contains(';MYPROJREF;'))" />
+    <When Condition="$(DefineConstants.Contains(';PROJREF;')) OR $(DefineConstants.Contains(';MYPROJREF;'))">
+      <ItemGroup>
+        <ProjectReference Include="..\standard.units\cc.isr.UnitsAmounts.StandardUnits.csproj" />
+      </ItemGroup>
+    </When>
     <Otherwise>
       <ItemGroup>
         <PackageReference Include="cc.isr.UnitsAmounts.StandardUnits" Version="2.0.8109" />
@@ -37,11 +43,6 @@
     <!-- Required for the amount serialization tests. 
     <PackageReference Include="Grammophone.Serialization" Version="1.0.0" />
     -->
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\units.amounts\standard.units\cc.isr.UnitsAmounts.StandardUnits.csproj" />
   </ItemGroup>
 
   <ItemGroup>
