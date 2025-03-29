@@ -118,7 +118,7 @@ public sealed class UnitType : ISerializable
         }
     }
 
-    #endregion 
+    #endregion
 
     #region " public implementation "
 
@@ -246,7 +246,7 @@ public sealed class UnitType : ISerializable
         return sb.ToString();
     }
 
-    #endregion 
+    #endregion
 
     #region " operator overloads "
 

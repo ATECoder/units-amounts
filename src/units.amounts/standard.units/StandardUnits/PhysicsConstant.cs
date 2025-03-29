@@ -28,7 +28,7 @@ public static class PhysicsConstant
 
     /// <summary>
     /// 9.109 382 91 x 10-31 kg
-    /// </summary>        
+    /// </summary>
     public static Amount ElectronMass => new( 9.10938291 * Math.Pow( 10, -31 ), MassUnits.Kilogram );
 
     /// <summary>

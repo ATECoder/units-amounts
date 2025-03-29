@@ -449,7 +449,7 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
         return amount is null ? string.Empty : amount.ToString( format, formatProvider );
     }
 
-    #endregion 
+    #endregion
 
     #region " mathematical operations "
 

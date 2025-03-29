@@ -2,7 +2,7 @@ namespace cc.isr.UnitsAmounts;
 
 /// <summary>   Information about this and related projects in this solution. </summary>
 /// <remarks>
-/// 
+///
 /// </remarks>
 internal static partial class SolutionInfo
 {

@@ -24,8 +24,6 @@
     <DefineConstants>$(DefineConstants);MYPROJREF;</DefineConstants>
   </PropertyGroup>
 
-  <Import Project="..\standard.units\version.build.props" />
-
   <Choose>
     <When Condition="$(DefineConstants.Contains(';PROJREF;')) OR $(DefineConstants.Contains(';MYPROJREF;'))">
       <ItemGroup>
@@ -78,5 +76,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
   </PropertyGroup>
+
+  <Import Project="..\standard.units\version.build.props" />
 
 </Project>

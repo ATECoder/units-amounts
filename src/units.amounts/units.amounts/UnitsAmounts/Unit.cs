@@ -185,10 +185,10 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
 
     /// <summary>   Returns a string representation of the unit. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    /// <param name="format">   The format to use.  
-    ///                         
-    ///                                                          -or-  
-    ///                         
+    /// <param name="format">   The format to use.
+    ///
+    ///                                                          -or-
+    ///
     ///                                                          A null reference
     ///                                                          (<see langword="Nothing" /> in
     ///                                                          Visual Basic) to use the default
@@ -203,10 +203,10 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
 
     /// <summary>   Returns a string representation of the unit. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
-    /// <param name="formatProvider">   The provider to use to format the value.  
-    ///                                 
-    ///                                                                  -or-  
-    ///                                 
+    /// <param name="formatProvider">   The provider to use to format the value.
+    ///
+    ///                                                                  -or-
+    ///
     ///                                                                  A null reference
     ///                                                                  (<see langword="Nothing" />
     ///                                                                  in Visual Basic) to obtain
@@ -222,17 +222,17 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
 
     /// <summary>   Returns a string representation of the unit. </summary>
     /// <remarks>   The format string can be either 'UN' (Unit Name) or 'US' (Unit Symbol). </remarks>
-    /// <param name="format">           The format to use.  
-    ///                                 
-    ///                                  -or-  
-    ///                                 
+    /// <param name="format">           The format to use.
+    ///
+    ///                                  -or-
+    ///
     ///                                  A null reference (<see langword="Nothing" /> in Visual
     ///                                  Basic) to use the default format defined for the type of the
     ///                                  <see cref="IFormattable" /> implementation. </param>
-    /// <param name="formatProvider">   The provider to use to format the value.  
-    ///                                 
-    ///                                  -or-  
-    ///                                 
+    /// <param name="formatProvider">   The provider to use to format the value.
+    ///
+    ///                                  -or-
+    ///
     ///                                  A null reference (<see langword="Nothing" /> in Visual
     ///                                  Basic) to obtain the numeric format information from the
     ///                                  current locale setting of the operating system. </param>
@@ -371,8 +371,8 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
     /// <param name="obj">  An object to compare with this instance. </param>
     /// <returns>
     /// A value that indicates the relative order of the objects being compared. The return value has
-    /// these meanings:  
-    /// 
+    /// these meanings:
+    ///
     ///  <list type="table"><listheader><term> Value</term><description>
     ///  Meaning</description></listheader><item><term> Less than zero</term><description> This
     ///  instance precedes <paramref name="obj" /> in the sort
@@ -393,8 +393,8 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
     /// <param name="other">    An object to compare with this instance. </param>
     /// <returns>
     /// A value that indicates the relative order of the objects being compared. The return value has
-    /// these meanings:  
-    /// 
+    /// these meanings:
+    ///
     ///  <list type="table"><listheader><term> Value</term><description>
     ///  Meaning</description></listheader><item><term> Less than zero</term><description> This
     ///  instance precedes <paramref name="other" /> in the sort
@@ -430,8 +430,8 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
     /// <param name="other">    An object to compare with this instance. </param>
     /// <returns>
     /// A value that indicates the relative order of the objects being compared. The return value has
-    /// these meanings:  
-    /// 
+    /// these meanings:
+    ///
     ///  <list type="table"><listheader><term> Value</term><description>
     ///  Meaning</description></listheader><item><term> Less than zero</term><description> This
     ///  instance precedes <paramref name="other" /> in the sort

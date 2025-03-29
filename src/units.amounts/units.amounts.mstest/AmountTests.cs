@@ -361,7 +361,7 @@ public class AmountTests
         a = new Amount( 100.0, LengthUnits.Meter );
         b = null;
         sum = a + b;
-        // not consistent with .NET treatment of Nullable: 
+        // not consistent with .NET treatment of Nullable:
         // Assert.AreEqual(new Amount(100.0, LengthUnits.Meter), sum);
         Assert.IsNull( sum );
 
@@ -369,7 +369,7 @@ public class AmountTests
         a = null;
         b = new Amount( 25.0, LengthUnits.Meter );
         sum = a + b;
-        // not consistent with .NET treatment of Nullable: 
+        // not consistent with .NET treatment of Nullable:
         // Assert.AreEqual(new Amount(25.0, LengthUnits.Meter), sum);
         Assert.IsNull( sum );
 
@@ -395,7 +395,7 @@ public class AmountTests
         a = new Amount( 100.0, LengthUnits.Meter );
         b = null;
         subs = a - b;
-        // not consistent with .NET treatment of Nullable: 
+        // not consistent with .NET treatment of Nullable:
         // Assert.AreEqual(new Amount(100.0, LengthUnits.Meter), subs);
         Assert.IsNull( subs );
 
@@ -403,7 +403,7 @@ public class AmountTests
         a = null;
         b = new Amount( 25.0, LengthUnits.Meter );
         subs = a - b;
-        // not consistent with .NET treatment of Nullable: 
+        // not consistent with .NET treatment of Nullable:
         // Assert.AreEqual(new Amount(-25.0, LengthUnits.Meter), subs);
         Assert.IsNull( subs );
 

@@ -508,5 +508,5 @@ public sealed class UnitManager
         }
     }
 
-    #endregion Private classes to represent slots in conversion dictionary	
+    #endregion Private classes to represent slots in conversion dictionary
 }

@@ -2,6 +2,15 @@
 All notable changes to these libraries will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
+## [2.1.9219] - 2025-03-29
+- Replace tabs with spaces.
+- Remove trailing spaces 
+- Reference main project revision in test and demo projects.
+- Update packages for visual studio 17.13.5.
+
+## [2.1.9119] - 2024-12-19
+- Merge into main.
+
 ## [2.1.9083] - 2024-11-13 Preview 202304
 * Update packages.
 * Upgrade Test and Demo apps to .Net 9.0.
@@ -101,4 +110,4 @@ Created
 
 &copy;  2013 Rudi Breedenraedt.
 
-[2.1.9083]: https://github.com/atecoder/units-amounts/src/main/
+[2.1.9219]: https://github.com/atecoder/units-amounts/src/main/
