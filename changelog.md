@@ -1,6 +1,8 @@
 # Changelog
-All notable changes to these libraries will be documented in this file.
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
+Notable changes to this solution are documented in this file using the 
+[Keep a Changelog] style. The dates specified are in coordinated universal time (UTC).
+
+[2.1.9219]: https://github.com/atecoder/units-amounts/src/main/
 
 ## [2.1.9219] - 2025-03-29
 - Replace tabs with spaces.
@@ -110,4 +112,4 @@ Created
 
 &copy;  2013 Rudi Breedenraedt.
 
-[2.1.9219]: https://github.com/atecoder/units-amounts/src/main/
+[Keep a Changelog]: https://keepachangelog.com/en/1.0.0/
