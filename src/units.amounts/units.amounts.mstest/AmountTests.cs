@@ -332,7 +332,7 @@ public class AmountTests
     {
         Amount? a = null;
         Amount b = ( Amount ) 100.0;
-        _ = Assert.ThrowsException<ArgumentNullException>( () => a < b );
+        _ = Assert.ThrowsExactly<ArgumentNullException>( () => a < b );
     }
 
     [TestMethod()]
@@ -540,7 +540,7 @@ public class AmountTests
     {
         // One fifth of a week:
         Amount a = new( 7.0 / 5.0, TimeUnits.Day );
-        _ = Assert.ThrowsException<UnitConversionException>( () => a.Split( [TimeUnits.Day, TimeUnits.Hour, LengthUnits.Meter, TimeUnits.Second], 3 ) );
+        _ = Assert.ThrowsExactly<UnitConversionException>( () => a.Split( [TimeUnits.Day, TimeUnits.Hour, LengthUnits.Meter, TimeUnits.Second], 3 ) );
     }
 }
 
