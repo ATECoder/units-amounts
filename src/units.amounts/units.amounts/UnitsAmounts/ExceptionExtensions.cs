@@ -1,4 +1,5 @@
 namespace cc.isr.UnitsAmounts.ExceptionExtensions;
+
 /// <summary>
 /// Exception methods for adding exception data and building a detailed exception message.
 /// </summary>

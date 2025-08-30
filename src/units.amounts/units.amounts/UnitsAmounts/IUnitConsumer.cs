@@ -6,5 +6,5 @@ public interface IUnitConsumer
 {
     /// <summary>   The unit of the consumer. </summary>
     /// <value> The unit. </value>
-    Unit Unit { get; }
+    public Unit Unit { get; }
 }

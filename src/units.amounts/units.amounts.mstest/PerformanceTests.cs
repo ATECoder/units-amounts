@@ -48,7 +48,7 @@ public class PerformanceTests
 
         Assert.AreEqual( 1500000.0, sum.Value );
 
-        Assert.IsTrue( var < MAX_ACCEPTANCE_VARIANCE, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
+        Assert.IsLessThan( MAX_ACCEPTANCE_VARIANCE, var, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
         if ( var < MIN_ACCEPTANCE_VARIANCE )
             Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
@@ -72,7 +72,7 @@ public class PerformanceTests
 
         Assert.AreEqual( 1500.0, Math.Round( sum.Value, 8 ) );
 
-        Assert.IsTrue( var < MAX_ACCEPTANCE_VARIANCE, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
+        Assert.IsLessThan( MAX_ACCEPTANCE_VARIANCE, var, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
         if ( var < MIN_ACCEPTANCE_VARIANCE )
             Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
@@ -96,7 +96,7 @@ public class PerformanceTests
         Assert.AreEqual( 5.0, q!.Value );
         Assert.IsTrue( q.Unit.IsCompatibleTo( LengthUnits.Meter / TimeUnits.Second ) );
 
-        Assert.IsTrue( var < MAX_ACCEPTANCE_VARIANCE, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
+        Assert.IsLessThan( MAX_ACCEPTANCE_VARIANCE, var, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
         if ( var < MIN_ACCEPTANCE_VARIANCE )
             Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
@@ -121,7 +121,7 @@ public class PerformanceTests
         Assert.AreEqual( 5.0, q.ConvertedTo( LengthUnits.Kilometer / TimeUnits.Hour, 8 ).Value );
         Assert.IsTrue( q.Unit.IsCompatibleTo( LengthUnits.Meter / TimeUnits.Second ) );
 
-        Assert.IsTrue( var < MAX_ACCEPTANCE_VARIANCE, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
+        Assert.IsLessThan( MAX_ACCEPTANCE_VARIANCE, var, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
         if ( var < MIN_ACCEPTANCE_VARIANCE )
             Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
@@ -151,7 +151,7 @@ public class PerformanceTests
         Assert.AreEqual( 12.9, duration.Value );
         Assert.IsTrue( duration.Unit.IsCompatibleTo( TimeUnits.Second ) );
 
-        Assert.IsTrue( var < MAX_ACCEPTANCE_VARIANCE, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
+        Assert.IsLessThan( MAX_ACCEPTANCE_VARIANCE, var, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
         if ( var < MIN_ACCEPTANCE_VARIANCE )
             Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
@@ -174,7 +174,7 @@ public class PerformanceTests
 
         Assert.AreEqual( 15000, b!.Value );
 
-        Assert.IsTrue( var < MAX_ACCEPTANCE_VARIANCE, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
+        Assert.IsLessThan( MAX_ACCEPTANCE_VARIANCE, var, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
         if ( var < MIN_ACCEPTANCE_VARIANCE )
             Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
@@ -200,7 +200,7 @@ public class PerformanceTests
 
         Assert.AreEqual( 0.06944444, b!.Value );
 
-        Assert.IsTrue( var < MAX_ACCEPTANCE_VARIANCE, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
+        Assert.IsLessThan( MAX_ACCEPTANCE_VARIANCE, var, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
         if ( var < MIN_ACCEPTANCE_VARIANCE )
             Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
@@ -227,7 +227,7 @@ public class PerformanceTests
         Assert.IsTrue( v.IsNamed );
         Assert.AreEqual( "Kilometer", v.Name );
 
-        Assert.IsTrue( var < MAX_ACCEPTANCE_VARIANCE, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
+        Assert.IsLessThan( MAX_ACCEPTANCE_VARIANCE, var, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
         if ( var < MIN_ACCEPTANCE_VARIANCE )
             Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
@@ -254,7 +254,7 @@ public class PerformanceTests
         Assert.IsTrue( v.IsNamed );
         Assert.AreEqual( "Meter/Second", v.Name );
 
-        Assert.IsTrue( var < MAX_ACCEPTANCE_VARIANCE, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
+        Assert.IsLessThan( MAX_ACCEPTANCE_VARIANCE, var, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
         if ( var < MIN_ACCEPTANCE_VARIANCE )
             Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
@@ -280,7 +280,7 @@ public class PerformanceTests
 
         Assert.IsFalse( v.IsNamed );
 
-        Assert.IsTrue( var < MAX_ACCEPTANCE_VARIANCE, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
+        Assert.IsLessThan( MAX_ACCEPTANCE_VARIANCE, var, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
         if ( var < MIN_ACCEPTANCE_VARIANCE )
             Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
@@ -306,7 +306,7 @@ public class PerformanceTests
 
         Assert.IsFalse( v.IsNamed );
 
-        Assert.IsTrue( var < MAX_ACCEPTANCE_VARIANCE, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
+        Assert.IsLessThan( MAX_ACCEPTANCE_VARIANCE, var, $"Performance {var} > {MAX_ACCEPTANCE_VARIANCE} lost detected!" );
         if ( var < MIN_ACCEPTANCE_VARIANCE )
             Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }

@@ -37,9 +37,26 @@ public class SerializationTests
     /// <returns>   An Amount. </returns>
     public static Amount JsonSerializeDeserialize( Amount a )
     {
+#if true
         string jsonData = Newtonsoft.Json.JsonConvert.SerializeObject( a );
-        Amount b = Newtonsoft.Json.JsonConvert.DeserializeObject<Amount>( jsonData )!;
-        return b;
+        return Newtonsoft.Json.JsonConvert.DeserializeObject<Amount>( jsonData ) ?? throw new InvalidDataException();
+#else
+        // JsonSerializer fails because it does not support ISerializable. While the Amount and Unit classes can
+        // be serialized once the relevant constructors are decorated with the JsonConstructor attribute,
+        // a JsonConverter<UnitType> is needed to serialize the UnitType class. The Json attributes require adding 
+        // the Json package to the Units Amounts project which is not desirable. 
+        // Possibly, JsonConverters can be written for the Amount and Unit classes by emitting the ISerializable data.
+        // Microsoft logic for dropping support for ISerializable that 'this interface is a legacy mechanism for binary 
+        // and XML serialization' is clearly unfortunate.
+        System.Text.Json.JsonSerializerOptions options = new()
+        {
+            PropertyNameCaseInsensitive = true,
+            Encoder = JavaScriptEncoder.Default,
+            WriteIndented = true
+        };
+        string jsonData = System.Text.Json.JsonSerializer.Serialize<Amount>( a, options );
+        return System.Text.Json.JsonSerializer.Deserialize<Amount>( jsonData, options ) ?? throw new InvalidDataException();
+#endif
     }
 
     /// <summary>   (Unit Test Method) tests serialize deserialize using JSON. </summary>

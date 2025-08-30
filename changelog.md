@@ -2,7 +2,17 @@
 Notable changes to this solution are documented in this file using the 
 [Keep a Changelog] style. The dates specified are in coordinated universal time (UTC).
 
-[2.1.9371]: https://github.com/atecoder/units-amounts/src/main/
+[2.1.9373]: https://github.com/atecoder/units-amounts/src/main/
+
+## [2.1.9373] - 2025-08-30
+- Use language preview in windows and net standard projects so as to enable auto properties.
+- Implement code analysis recommendations.
+- Unify project file structure.
+- Remove legacy leftover Visual Basic project file entries.
+- Remove unused core lib and net standard code.
+- Remove UnitTesting using from Test project files.
+- Move assembly information such as CLS Compliance and COM visibility to the project file.
+- Document how the ISerialiazable could be used for implemwentating support for JsonConverter.
 
 ## [2.1.9371] - 2025-08-28
 - Update MSTest SDK to 3.10.3

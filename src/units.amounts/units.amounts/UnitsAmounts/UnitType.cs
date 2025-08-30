@@ -316,12 +316,8 @@ public sealed class UnitType : ISerializable
     internal UnitType( SerializationInfo info, StreamingContext context )
     {
         // Retrieve data from serialization:
-        int[] baseUnitIndexes = info.GetString( "names" ).Split( new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries )
-            .Select( UnitType.GetBaseUnitIndex )
-            .ToArray();
-        sbyte[] exponents = info.GetString( "exponents" ).Split( new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries )
-            .Select( x => Convert.ToSByte( x ) )
-            .ToArray();
+        int[] baseUnitIndexes = [.. info.GetString( "names" ).Split( ['|'], StringSplitOptions.RemoveEmptyEntries ).Select( UnitType.GetBaseUnitIndex )];
+        sbyte[] exponents = [.. info.GetString( "exponents" ).Split( ['|'], StringSplitOptions.RemoveEmptyEntries ).Select( x => Convert.ToSByte( x ) )];
 
         // Construct instance:
         if ( exponents.Length > 0 )

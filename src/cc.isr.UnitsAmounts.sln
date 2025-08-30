@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "`build", "`build", "{F46C3C56-DF89-4A70-8C87-3195305A72AB}"
 	ProjectSection(SolutionItems) = preProject
 		directory.build.props = directory.build.props
+		exclusion.dic = exclusion.dic
 		global.json = global.json
 		Items\version.build.bat = Items\version.build.bat
 		items\version.build.props = items\version.build.props

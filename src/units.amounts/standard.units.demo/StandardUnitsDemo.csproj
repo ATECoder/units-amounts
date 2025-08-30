@@ -5,8 +5,16 @@
 
     <!-- NuGet -->
     <IsPackable>false</IsPackable>
+    <Description>Demo of strongly typed standard Units amounts</Description>
 
   </PropertyGroup>
+
+  <!-- Assembly attributes -->
+  <ItemGroup>
+    <AssemblyAttribute Include="System.CLSCompliantAttribute">
+      <_Parameter1>true</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\standard.units\cc.isr.UnitsAmounts.StandardUnits.csproj" />

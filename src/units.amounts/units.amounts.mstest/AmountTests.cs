@@ -343,7 +343,7 @@ public class AmountTests
 
         int result = (( IComparable ) b).CompareTo( a );
 
-        Assert.IsTrue( result > 0 );
+        Assert.IsGreaterThan( 0, result );
     }
 
     [TestMethod()]
@@ -377,7 +377,7 @@ public class AmountTests
         a = null;
         b = null;
         sum = a + b;
-        Assert.AreEqual( null, sum );
+        Assert.IsNull( sum );
     }
 
     [TestMethod()]
@@ -411,7 +411,7 @@ public class AmountTests
         a = null;
         b = null;
         subs = a - b;
-        Assert.AreEqual( null, subs );
+        Assert.IsNull( subs );
     }
 
     [TestMethod()]
@@ -421,9 +421,9 @@ public class AmountTests
         Amount b = new( 0.0450000000001, LengthUnits.Meter );
         Amount c = new( 0.0450000000002, LengthUnits.Meter );
         Amount d = new( 0.046, LengthUnits.Meter );
-        Assert.IsFalse( a.Value == b.Value );
-        Assert.IsFalse( b.Value == c.Value );
-        Assert.IsFalse( a.Value == c.Value );
+        Assert.AreNotEqual( b.Value, a.Value );
+        Assert.AreNotEqual( c.Value, b.Value );
+        Assert.AreNotEqual( c.Value, a.Value );
         Assert.IsTrue( a == b );
         Assert.IsTrue( b == c );
         Assert.IsTrue( a == c );

@@ -1,3 +1,4 @@
-[assembly: System.Reflection.AssemblyDescription( "Unit tests of Units Amounts" )]
-[assembly: System.Runtime.InteropServices.ComVisible( false )]
-[assembly: CLSCompliant( true )]
+// in project file:
+// [assembly: CLSCompliant( true )]
+// [assembly: System.Runtime.InteropServices.ComVisible( false )]
+// [assembly: System.Reflection.AssemblyDescription( "Unit tests of Units Amounts" )]
