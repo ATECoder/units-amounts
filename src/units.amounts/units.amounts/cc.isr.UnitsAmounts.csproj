@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>preview</LangVersion>
@@ -55,7 +55,17 @@
 
   <ItemGroup>
     <Compile Include="..\..\items\ProductKey.cs" Link="Properties\ProductKey.cs" />
-    <Compile Remove="standard\*.cs" Condition="'$(TargetFramework)' == 'netstandard2.1'" />
+    <Compile Remove="corelib\**" />
+    <Compile Remove="standard\**" />
+    <EmbeddedResource Remove="corelib\**" />
+    <EmbeddedResource Remove="standard\**" />
+    <None Remove="corelib\**" />
+    <None Remove="standard\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="standard\Index.cs" />
+    <Compile Include="standard\NullableAttributes.cs" />
   </ItemGroup>
 
   <ItemGroup>

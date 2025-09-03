@@ -2,7 +2,10 @@
 Notable changes to this solution are documented in this file using the 
 [Keep a Changelog] style. The dates specified are in coordinated universal time (UTC).
 
-[2.1.9373]: https://github.com/atecoder/units-amounts/src/main/
+[2.1.9377]: https://github.com/atecoder/units-amounts/src/main/
+
+## [2.1.9377] - 2025-09-03
+- Remove unused .NET foundation code.
 
 ## [2.1.9373] - 2025-08-30
 - Use language preview in windows and net standard projects so as to enable auto properties.

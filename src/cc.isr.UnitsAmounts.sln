@@ -8,9 +8,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "`build", "`build", "{F46C3C
 		directory.build.props = directory.build.props
 		exclusion.dic = exclusion.dic
 		global.json = global.json
-		Items\version.build.bat = Items\version.build.bat
-		items\version.build.props = items\version.build.props
-		items\version.build.tt = items\version.build.tt
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "cc.isr.UnitsAmounts", "units.amounts\units.amounts\cc.isr.UnitsAmounts.csproj", "{E046160A-6066-4B92-BEA4-78D483B0920B}"
