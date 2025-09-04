@@ -55,12 +55,6 @@
 
   <ItemGroup>
     <Compile Include="..\..\items\ProductKey.cs" Link="Properties\ProductKey.cs" />
-    <Compile Remove="corelib\**" />
-    <Compile Remove="standard\**" />
-    <EmbeddedResource Remove="corelib\**" />
-    <EmbeddedResource Remove="standard\**" />
-    <None Remove="corelib\**" />
-    <None Remove="standard\**" />
   </ItemGroup>
 
   <ItemGroup>

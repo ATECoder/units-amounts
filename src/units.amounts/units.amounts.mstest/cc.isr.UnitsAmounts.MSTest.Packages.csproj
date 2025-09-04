@@ -17,5 +17,4 @@
     <PackageReference Include="cc.isr.UnitsAmounts.StandardUnits" Version="2.0.8109" />
   </ItemGroup>
 
-
 </Project>
