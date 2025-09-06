@@ -5,7 +5,9 @@
 using System.Runtime.InteropServices;
 using cc.isr.UnitsAmounts.ExceptionExtensions;
 
-namespace cc.isr.UnitsAmounts.MSTest;
+#nullable enable
+
+namespace cc.isr.UnitsAmounts.Tests;
 
 /// <summary>
 /// Tests internal exception extension methods for adding exception data.
@@ -13,8 +15,24 @@ namespace cc.isr.UnitsAmounts.MSTest;
 [TestClass]
 public class ExceptionExtensionsTests
 {
+    /// <summary> Initializes the test class instance before each test runs. </summary>
+    /// <remarks> David, 2020-09-18. </remarks>
+    [TestInitialize()]
+    public void InitializeBeforeEachTest()
+    {
+        Console.WriteLine( $"{this.TestContext?.FullyQualifiedTestClassName}: {DateTime.Now} {System.TimeZoneInfo.Local}" );
+    }
+
+    /// <summary>
+    /// Gets or sets the test context which provides information about and functionality for the
+    /// current test run.
+    /// </summary>
+    /// <value> The test context. </value>
+    public TestContext? TestContext { get; set; }
+
+
     /// <summary>   <see cref"ExternalException"/> data should add. </summary>
-    /// <remarks>   2024-07-27. </remarks>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod]
     public void ExternalExceptionDataShouldAdd()
     {
@@ -24,7 +42,7 @@ public class ExceptionExtensionsTests
     }
 
     /// <summary>   <see cref"ArgumentOutOfRangeException"/> data should add. </summary>
-    /// <remarks>   2024-07-27. </remarks>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod]
     public void ArgumentOutOfRangeExceptionDataShouldAdd()
     {
@@ -34,7 +52,7 @@ public class ExceptionExtensionsTests
     }
 
     /// <summary>   <see cref"ArgumentException"/> data should add. </summary>
-    /// <remarks>   2024-07-27. </remarks>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod]
     public void ArgumentExceptionDataShouldAdd()
     {
@@ -44,7 +62,7 @@ public class ExceptionExtensionsTests
     }
 
     /// <summary>   <see cref"UnitConversionException"/> data should add. </summary>
-    /// <remarks>   2024-07-27. </remarks>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod]
     public void UnitConversionExceptionDataShouldAdd()
     {
@@ -54,7 +72,7 @@ public class ExceptionExtensionsTests
     }
 
     /// <summary>   <see cref"UnknownUnitException"/> data should add. </summary>
-    /// <remarks>   2024-07-27. </remarks>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod]
     public void UnknownUnitExceptionDataShouldAdd()
     {

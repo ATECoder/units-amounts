@@ -1,10 +1,13 @@
 ﻿<Project Sdk="MSTest.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net472;net48;net9.0</TargetFrameworks>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>preview</LangVersion>
 
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
+    <!-- Assembly Info -->
+    <RootNamespace>cc.isr.UnitsAmounts</RootNamespace>
 
     <!-- Signature -->
     <SignAssembly>true</SignAssembly>
@@ -49,11 +52,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="ExceptionExtensionsTests.tt">
+    <None Update="Tests\ExceptionExtensionsTests.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ExceptionExtensionsTests.cs</LastGenOutput>
     </None>
-    <Compile Update="ExceptionExtensionsTests.cs">
+    <Compile Update="Tests\ExceptionExtensionsTests.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>ExceptionExtensionsTests.tt</DependentUpon>

@@ -1,16 +1,7 @@
-namespace cc.isr.UnitsAmounts.MSTest;
+namespace cc.isr.UnitsAmounts.Tests;
 
 /// <summary>   Contains unit tests for Amounts. </summary>
-/// <license> (c) 2013 Integrated Scientific Resources, Inc. All rights reserved.<para>
-/// Licensed under The MIT License.</para><para>
-/// THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
-/// BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-/// NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-/// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-/// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</para>
-/// </license>
-///
-/// <history date="2018-01-27" by="David" revision="1.0.5814.0"> Fixed. </history>
+/// <remarks>   2025-09-06. </remarks>
 [TestClass]
 public class AmountTests
 {
@@ -20,6 +11,8 @@ public class AmountTests
     private static readonly double[] _oneFifthWeekZeroSecondsArray = [1.0, 9.0, 36.0, 0.0];
     private static readonly double[] _oneFifthWeekSixtySecondsArray = [1.0, 9.0, 35.0, 60.0];
 
+    /// <summary>   Sets up this unit test class prior to execution. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestInitialize()]
     public void InitializeBeforeEachTest()
     {
@@ -30,6 +23,8 @@ public class AmountTests
         Console.WriteLine( " done." );
     }
 
+    /// <summary>   Cleans up after this unit test class has executed its tests. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestCleanup()]
     public void CleanupAfterEachTest()
     {
@@ -38,14 +33,18 @@ public class AmountTests
 
     #endregion Initialize & cleanup
 
+    /// <summary>   (Unit Test Method) tests construction 01. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod()]
     public void Construction01Test()
     {
-        Amount a = new( 100, nameof( cc.isr.UnitsAmounts.StandardUnits.VolumeUnits.Liter ) );
+        Amount a = new( 100, nameof( VolumeUnits.Liter ) );
         Assert.AreEqual( 100.0, a.Value );
-        Assert.AreEqual( nameof( cc.isr.UnitsAmounts.StandardUnits.VolumeUnits.Liter ), a.Unit.Name );
+        Assert.AreEqual( nameof( VolumeUnits.Liter ), a.Unit.Name );
     }
 
+    /// <summary>   (Unit Test Method) tests addition. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod]
     public void AdditionTest()
     {
@@ -59,6 +58,8 @@ public class AmountTests
         Assert.AreEqual( expected, sum );
     }
 
+    /// <summary>   (Unit Test Method) tests addition derived. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod]
     public void AdditionDerivedTest()
     {
@@ -72,6 +73,8 @@ public class AmountTests
         Assert.AreEqual( expected, sum );
     }
 
+    /// <summary>   (Unit Test Method) tests conversion 01. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod()]
     public void Conversion01Test()
     {
@@ -82,6 +85,8 @@ public class AmountTests
         Assert.AreEqual( LengthUnits.Kilometer.Name, distance.Unit.Name );
     }
 
+    /// <summary>   (Unit Test Method) tests casting 01. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod()]
     public void Casting01Test()
     {
@@ -97,6 +102,8 @@ public class AmountTests
         Assert.AreEqual( "15.3", (( Amount ) 15.3).ToString( CultureInfo.CurrentCulture ).Replace( ",", "." ) );
     }
 
+    /// <summary>   (Unit Test Method) tests percentage 01. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod()]
     public void Percentage01Test()
     {
@@ -111,6 +118,8 @@ public class AmountTests
         Assert.AreEqual( 45.0, (a * b)!.ConvertedTo( TimeUnits.Minute ).Value );
     }
 
+    /// <summary>   (Unit Test Method) tests percentage 02. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod()]
     public void Percentage02Test()
     {
@@ -125,6 +134,8 @@ public class AmountTests
         Assert.AreEqual( 0.085, ( double ) p! );
     }
 
+    /// <summary>   (Unit Test Method) tests power 01. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod()]
     public void Power01Test()
     {
@@ -141,6 +152,8 @@ public class AmountTests
         Assert.AreEqual( new Amount( 1.0 / 1728.0, Unit.None / VolumeUnits.CubicMeter ), a.Power( -3 ) );
     }
 
+    /// <summary>   (Unit Test Method) tests split 01. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod()]
     public void Split01Test()
     {
@@ -162,6 +175,8 @@ public class AmountTests
         Assert.AreEqual( new Amount( 26.0, TimeUnits.Second ), values[2] );
     }
 
+    /// <summary>   (Unit Test Method) tests split 02. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod()]
     public void Split02Test()
     {
@@ -183,10 +198,12 @@ public class AmountTests
         Assert.AreEqual( new Amount( 5.4, LengthUnits.Inch ), values[2] );
     }
 
+    /// <summary>   (Unit Test Method) tests split 03. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod()]
     public void Split03Test()
     {
-        Amount a = new( global::System.Math.Sqrt( 13 ), LengthUnits.Meter );
+        Amount a = new( Math.Sqrt( 13 ), LengthUnits.Meter );
         Amount[] values = a.Split( [LengthUnits.Meter, LengthUnits.Decimeter, LengthUnits.Centimeter, LengthUnits.Millimeter], 0 );
 
         string separator = "";
@@ -204,6 +221,8 @@ public class AmountTests
         Assert.AreEqual( new Amount( 6.0, LengthUnits.Millimeter ), values[3] );
     }
 
+    /// <summary>   (Unit Test Method) tests formatting 01. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod()]
     public void Formatting01Test()
     {
@@ -254,6 +273,8 @@ public class AmountTests
         }
     }
 
+    /// <summary>   (Unit Test Method) tests formatting 08. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod()]
     public void Formatting08Test()
     {
@@ -271,6 +292,8 @@ public class AmountTests
         }
     }
 
+    /// <summary>   (Unit Test Method) tests formatting 02. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod()]
     public void Formatting02Test()
     {
@@ -279,6 +302,8 @@ public class AmountTests
         Assert.AreEqual( "1,234.568 Meter", Amount.ToString( b, "#,##0.000 UN", CultureInfo.InvariantCulture ) );
     }
 
+    /// <summary>   (Unit Test Method) tests formatting 03. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod()]
     public void Formatting03Test()
     {
@@ -297,6 +322,8 @@ public class AmountTests
         Assert.AreEqual( "a = ", string.Format( CultureInfo.CurrentCulture, "a = {0:#,##0.0 US}", a ) );
     }
 
+    /// <summary>   (Unit Test Method) tests static formatting. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod()]
     public void StaticFormattingTest()
     {
@@ -327,6 +354,8 @@ public class AmountTests
 
     }
 
+    /// <summary>   (Unit Test Method) tests null amount is not less than. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod()]
     public void NullAmountIsNotLessThanTest()
     {
@@ -335,6 +364,8 @@ public class AmountTests
         _ = Assert.ThrowsExactly<ArgumentNullException>( () => a < b );
     }
 
+    /// <summary>   (Unit Test Method) tests null comparison. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod()]
     public void NullComparisonTest()
     {
@@ -346,6 +377,8 @@ public class AmountTests
         Assert.IsGreaterThan( 0, result );
     }
 
+    /// <summary>   (Unit Test Method) tests addition with null. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod()]
     public void AdditionWithNullTest()
     {
@@ -380,6 +413,8 @@ public class AmountTests
         Assert.IsNull( sum );
     }
 
+    /// <summary>   (Unit Test Method) tests subtract with null. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod()]
     public void SubtractWithNullTest()
     {
@@ -414,6 +449,8 @@ public class AmountTests
         Assert.IsNull( subs );
     }
 
+    /// <summary>   (Unit Test Method) tests rounded comparison. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod()]
     public void RoundedComparisonTest()
     {
@@ -434,6 +471,8 @@ public class AmountTests
         Assert.IsFalse( c.Equals( d ) );
     }
 
+    /// <summary>   (Unit Test Method) tests comparison 01. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod]
     public void Comparison01Test()
     {
@@ -451,6 +490,8 @@ public class AmountTests
         Assert.IsFalse( ar < br );
     }
 
+    /// <summary>   (Unit Test Method) tests comparison 02. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod]
     public void Comparison02Test()
     {
@@ -465,6 +506,8 @@ public class AmountTests
         Assert.IsFalse( a != b );
     }
 
+    /// <summary>   (Unit Test Method) tests division by zero. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod]
     public void DivisionByZeroTest()
     {
@@ -486,6 +529,8 @@ public class AmountTests
         Assert.AreEqual( s.Unit, d2.Unit / t.Unit );
     }
 
+    /// <summary>   (Unit Test Method) tests amount compatibility. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod()]
     public void AmountCompatibilityTest()
     {
@@ -497,6 +542,8 @@ public class AmountTests
         Console.WriteLine( a.Unit.UnitType.ToString() );
     }
 
+    /// <summary>   (Unit Test Method) tests amount split. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod()]
     public void AmountSplitTest()
     {
@@ -506,14 +553,14 @@ public class AmountTests
         Amount[] result = a.Split( [TimeUnits.Day, TimeUnits.Hour, TimeUnits.Minute, TimeUnits.Second], 3 );
 
         foreach ( Amount item in result )
-        {
             Console.WriteLine( item );
-        }
 
         Assert.AreEqual( 4, result.Length );
         CollectionAssert.AreEqual( _oneFifthWeekZeroSecondsArray.ToList(), result.Select( x => x.Value ).ToList() );
     }
 
+    /// <summary>   (Unit Test Method) tests amount split 2. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod()]
     public void AmountSplit2Test()
     {
@@ -523,9 +570,7 @@ public class AmountTests
         Amount[] result = a.Split( [TimeUnits.Day, TimeUnits.Hour, TimeUnits.Minute, TimeUnits.Second], 3 );
 
         foreach ( Amount item in result )
-        {
             Console.WriteLine( item );
-        }
 
         // In this case, the split results in 1 day, 9 hours, 35 minutes and 60 SECONDS!
         // This is due to rounding; it results in ..., 35 minutes and 59.99999 seconds,
@@ -535,6 +580,8 @@ public class AmountTests
         CollectionAssert.AreEqual( _oneFifthWeekSixtySecondsArray.ToList(), result.Select( x => x.Value ).ToList() );
     }
 
+    /// <summary>   (Unit Test Method) tests amount split incompatible. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod()]
     public void AmountSplitIncompatibleTest()
     {

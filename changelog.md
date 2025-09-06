@@ -2,7 +2,11 @@
 Notable changes to this solution are documented in this file using the 
 [Keep a Changelog] style. The dates specified are in coordinated universal time (UTC).
 
-[2.1.9377]: https://github.com/atecoder/units-amounts/src/main/
+[2.1.9380]: https://github.com/atecoder/units-amounts/src/main/
+
+## [2.1.9380] - 2025-09-06
+- Use language preview on windows forms and MSTest projects.
+- Implement code analysis recommendations.
 
 ## [2.1.9377] - 2025-09-03
 - Remove unused .NET foundation code.

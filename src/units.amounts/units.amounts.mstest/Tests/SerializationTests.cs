@@ -1,7 +1,7 @@
-namespace cc.isr.UnitsAmounts.MSTest;
+namespace cc.isr.UnitsAmounts.Tests;
 
-/// <summary>   An amount serialization tests. </summary>
-/// <remarks>   2023-04-08. </remarks>
+/// <summary>   (Unit Test Class) a serialization tests. </summary>
+/// <remarks>   2025-09-06. </remarks>
 [TestClass]
 public class SerializationTests
 {
@@ -9,6 +9,8 @@ public class SerializationTests
 
     private UnitManager? _defaultUnitManager;
 
+    /// <summary>   Sets up this unit test class prior to execution. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestInitialize()]
     public void InitializeBeforeEachTest()
     {
@@ -19,6 +21,8 @@ public class SerializationTests
         Console.WriteLine( " done." );
     }
 
+    /// <summary>   Cleans up after this unit test class has executed its tests. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestCleanup()]
     public void CleanupAfterEachTest()
     {
@@ -31,10 +35,12 @@ public class SerializationTests
 
     /// <summary>   JSON serialize deserialize. </summary>
     /// <remarks>   2024-06-21. </remarks>
-    /// <exception cref="InvalidOperationException">    Thrown when the requested operation is
-    ///                                                 invalid. </exception>
+    /// <exception cref="InvalidDataException"> Thrown when an Invalid Data error condition occurs. </exception>
     /// <param name="a">    An Amount to process. </param>
     /// <returns>   An Amount. </returns>
+    ///
+    /// ### <exception cref="InvalidOperationException">    Thrown when the requested operation is
+    ///                                                     invalid. </exception>
     public static Amount JsonSerializeDeserialize( Amount a )
     {
 #if true
@@ -69,8 +75,8 @@ public class SerializationTests
         Amount a2before = new( -0.45, LengthUnits.Kilometer / TimeUnits.Hour );
 
         // Deserialize units:
-        Amount a1after = SerializationTests.JsonSerializeDeserialize( a1before );
-        Amount a2after = SerializationTests.JsonSerializeDeserialize( a2before );
+        Amount a1after = JsonSerializeDeserialize( a1before );
+        Amount a2after = JsonSerializeDeserialize( a2before );
 
         Console.WriteLine( "{0} => {1}", a1before, a1after );
         Console.WriteLine( "{0} => {1}", a2before, a2after );
@@ -80,11 +86,13 @@ public class SerializationTests
 
     }
 
+    /// <summary>   (Unit Test Method) tests amount JSON serialization. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod()]
     public void AmountJsonSerializationTest()
     {
         Amount a = new( 3500.12, EnergyUnits.KilowattHour * (365.0 * TimeUnits.Day) / VolumeUnits.CubicMeter );
-        Amount b = SerializationTests.JsonSerializeDeserialize( a );
+        Amount b = JsonSerializeDeserialize( a );
 
         // Compare:
         Console.WriteLine( a );
@@ -93,5 +101,4 @@ public class SerializationTests
     }
 
     #endregion " json serializer "
-
 }

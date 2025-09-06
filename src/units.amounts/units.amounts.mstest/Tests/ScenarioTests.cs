@@ -1,5 +1,7 @@
-namespace cc.isr.UnitsAmounts.MSTest;
+namespace cc.isr.UnitsAmounts.Tests;
 
+/// <summary>   (Unit Test Class) a scenario tests. </summary>
+/// <remarks>   2025-09-06. </remarks>
 [TestClass]
 public class ScenarioTests
 {
@@ -7,6 +9,8 @@ public class ScenarioTests
 
     private UnitManager? _defaultUnitManager;
 
+    /// <summary>   Sets up this unit test class prior to execution. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestInitialize()]
     public void InitializeBeforeEachTest()
     {
@@ -17,6 +21,8 @@ public class ScenarioTests
         Console.WriteLine( " done." );
     }
 
+    /// <summary>   Cleans up after this unit test class has executed its tests. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestCleanup()]
     public void CleanupAfterEachTest()
     {
@@ -25,6 +31,8 @@ public class ScenarioTests
 
     #endregion Initialize & cleanup
 
+    /// <summary>   (Unit Test Method) tests scenario 01. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod]
     public void Scenario01Test()
     {
@@ -43,6 +51,8 @@ public class ScenarioTests
         Assert.AreEqual( new Amount( 4.0, "centimeter" ), height );
     }
 
+    /// <summary>   (Unit Test Method) tests scenario 02. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod()]
     public void Scenario02Test()
     {
@@ -58,6 +68,8 @@ public class ScenarioTests
         Assert.AreEqual( new Amount( 70.0, SpeedUnits.MilePerHour ), speed );
     }
 
+    /// <summary>   (Unit Test Method) tests scenario 03. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod()]
     public void Scenario03Test()
     {
@@ -74,6 +86,8 @@ public class ScenarioTests
         Assert.AreEqual( new Amount( 30, LengthUnits.Kilometer ), distance );
     }
 
+    /// <summary>   (Unit Test Method) tests scenario 04. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod()]
     public void Scenario04Test()
     {
@@ -90,6 +104,8 @@ public class ScenarioTests
         Assert.AreEqual( new Amount( 3718.6880, LengthUnits.Meter ), sum );
     }
 
+    /// <summary>   (Unit Test Method) tests scenario 05. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod]
     public void Scenario05Test()
     {
@@ -113,6 +129,8 @@ public class ScenarioTests
         Assert.AreEqual( new Amount( 125.9, LengthUnits.Meter ), distance.ConvertedTo( LengthUnits.Meter, 1 ) );
     }
 
+    /// <summary>   (Unit Test Method) tests scenario 06. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod]
     public void Scenario06Test()
     {
@@ -131,6 +149,8 @@ public class ScenarioTests
         Assert.AreEqual( new Amount( 3.95, VolumeUnits.CubicMeter ), outerVolume.ConvertedTo( "Meter" + UnitSymbols.Cubed, 2 ) );
     }
 
+    /// <summary>   (Unit Test Method) tests scenario 07. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod]
     public void Scenario07Test()
     {
@@ -151,6 +171,8 @@ public class ScenarioTests
         Assert.AreEqual( new Amount( 557625.0, EnergyUnits.KilowattHour ), energy.ConvertedTo( EnergyUnits.KilowattHour, 0 ) );
     }
 
+    /// <summary>   (Unit Test Method) tests scenario 08. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod]
     public void Scenario08Test()
     {

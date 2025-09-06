@@ -1,7 +1,7 @@
-namespace cc.isr.UnitsAmounts.MSTest;
-/// <summary>
-/// Summary description for PerformanceTests
-/// </summary>
+namespace cc.isr.UnitsAmounts.Tests;
+
+/// <summary>   (Unit Test Class) a performance tests. </summary>
+/// <remarks>   2025-09-06. </remarks>
 [TestClass]
 public class PerformanceTests
 {
@@ -12,6 +12,8 @@ public class PerformanceTests
 
     private UnitManager? _defaultUnitManager;
 
+    /// <summary>   Sets up this unit test class prior to execution. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestInitialize()]
     public void InitializeBeforeEachTest()
     {
@@ -22,6 +24,8 @@ public class PerformanceTests
         Console.WriteLine( " done." );
     }
 
+    /// <summary>   Cleans up after this unit test class has executed its tests. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestCleanup()]
     public void CleanupAfterEachTest()
     {
@@ -30,6 +34,8 @@ public class PerformanceTests
 
     #endregion Initialize & cleanup
 
+    /// <summary>   (Unit Test Method) tests amount addition performance. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod]
     public void AmountAdditionPerformanceTest()
     {
@@ -53,6 +59,8 @@ public class PerformanceTests
             Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
 
+    /// <summary>   (Unit Test Method) tests amount derived addition performance. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod]
     public void AmountDerivedAdditionPerformanceTest()
     {
@@ -77,6 +85,8 @@ public class PerformanceTests
             Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
 
+    /// <summary>   (Unit Test Method) tests amount simple division performance. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod]
     public void AmountSimpleDivisionPerformanceTest()
     {
@@ -101,6 +111,8 @@ public class PerformanceTests
             Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
 
+    /// <summary>   (Unit Test Method) tests amount complex division performance. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod]
     public void AmountComplexDivisionPerformanceTest()
     {
@@ -126,6 +138,8 @@ public class PerformanceTests
             Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
 
+    /// <summary>   (Unit Test Method) tests amount scenario 01 performance. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod]
     public void AmountScenario01PerformanceTest()
     {
@@ -156,6 +170,8 @@ public class PerformanceTests
             Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
 
+    /// <summary>   (Unit Test Method) tests amount simple convert performance. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod]
     public void AmountSimpleConvertPerformanceTest()
     {
@@ -179,6 +195,8 @@ public class PerformanceTests
             Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
 
+    /// <summary>   (Unit Test Method) tests amount complex convert performance. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod]
     public void AmountComplexConvertPerformanceTest()
     {
@@ -205,6 +223,8 @@ public class PerformanceTests
             Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
 
+    /// <summary>   (Unit Test Method) tests unit manager resolve named to named. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod]
     public void UnitManagerResolveNamedToNamedTest()
     {
@@ -232,6 +252,8 @@ public class PerformanceTests
             Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
 
+    /// <summary>   (Unit Test Method) tests unit manager resolve known to named. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod]
     public void UnitManagerResolveKnownToNamedTest()
     {
@@ -259,6 +281,8 @@ public class PerformanceTests
             Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
 
+    /// <summary>   (Unit Test Method) tests unit manager resolve unknown to named. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod]
     public void UnitManagerResolveUnknownToNamedTest()
     {
@@ -285,6 +309,8 @@ public class PerformanceTests
             Assert.Inconclusive( $"Performance {var} was much better than expected {MIN_ACCEPTANCE_VARIANCE}." );
     }
 
+    /// <summary>   (Unit Test Method) tests unit manager resolve unfamiliar to named. </summary>
+    /// <remarks>   2025-09-06. </remarks>
     [TestMethod]
     public void UnitManagerResolveUnfamiliarToNamedTest()
     {
