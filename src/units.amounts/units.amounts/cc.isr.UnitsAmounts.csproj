@@ -38,6 +38,11 @@
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
 
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="standard\**" />
+    <EmbeddedResource Remove="standard\**" />
+    <None Remove="standard\**" />
+  </ItemGroup>
 
   <!-- Assembly attributes -->
   <ItemGroup>
@@ -55,11 +60,6 @@
 
   <ItemGroup>
     <Compile Include="..\..\items\ProductKey.cs" Link="Properties\ProductKey.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="standard\Index.cs" />
-    <Compile Include="standard\NullableAttributes.cs" />
   </ItemGroup>
 
   <ItemGroup>

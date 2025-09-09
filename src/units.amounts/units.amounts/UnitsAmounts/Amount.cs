@@ -1,4 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 
 namespace cc.isr.UnitsAmounts;
@@ -184,7 +183,8 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
         }
 
         // Handle the last unit:
-        amounts[units.Length - 1] = rest!.ConvertedTo( units[^1], decimals );
+        int index = units.Length - 1;
+        amounts[index] = rest!.ConvertedTo( units[index], decimals );
 
         return amounts;
     }
@@ -194,13 +194,15 @@ public sealed class Amount : ICloneable, IComparable, IComparable<Amount>, IConv
     /// <param name="amounts">  The amounts. </param>
     /// <param name="unit">     The unit of the amount. </param>
     /// <returns>   An Amount. </returns>
-    public static Amount Combine( Amount[] amounts, [NotNull] Unit unit )
+    public static Amount Combine( Amount[] amounts, Unit unit )
     {
-        Amount result = new( 0, unit! );
+        if ( amounts is null ) throw new ArgumentNullException( nameof( amounts ) );
+        if ( unit is null ) throw new ArgumentNullException( nameof( unit ) );
+        Amount result = new( 0, unit );
         foreach ( Amount amount in amounts )
         {
             if ( amount is not null )
-                result = (result + amount)!;
+                result = result + amount ?? result;
         }
         return result;
     }
