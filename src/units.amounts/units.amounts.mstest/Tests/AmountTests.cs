@@ -169,7 +169,7 @@ public class AmountTests
         }
         Console.WriteLine();
 
-        Assert.AreEqual( 3, values.Length );
+        Assert.HasCount<Amount>( 3, values );
         Assert.AreEqual( new Amount( 0.0, TimeUnits.Hour ), values[0] );
         Assert.AreEqual( new Amount( 2.0, TimeUnits.Minute ), values[1] );
         Assert.AreEqual( new Amount( 26.0, TimeUnits.Second ), values[2] );
@@ -192,7 +192,7 @@ public class AmountTests
         }
         Console.WriteLine();
 
-        Assert.AreEqual( 3, values.Length );
+        Assert.HasCount<Amount>( 3, values );
         Assert.AreEqual( new Amount( 11.0, LengthUnits.Yard ), values[0] );
         Assert.AreEqual( new Amount( 1.0, LengthUnits.Foot ), values[1] );
         Assert.AreEqual( new Amount( 5.4, LengthUnits.Inch ), values[2] );
@@ -555,7 +555,7 @@ public class AmountTests
         foreach ( Amount item in result )
             Console.WriteLine( item );
 
-        Assert.AreEqual( 4, result.Length );
+        Assert.HasCount<Amount>( 4, result );
         CollectionAssert.AreEqual( _oneFifthWeekZeroSecondsArray.ToList(), result.Select( x => x.Value ).ToList() );
     }
 
@@ -576,7 +576,7 @@ public class AmountTests
         // This is due to rounding; it results in ..., 35 minutes and 59.99999 seconds,
         // which once rounded, end up to be 60 seconds...
 
-        Assert.AreEqual( 4, result.Length );
+        Assert.HasCount<Amount>( 4, result );
         CollectionAssert.AreEqual( _oneFifthWeekSixtySecondsArray.ToList(), result.Select( x => x.Value ).ToList() );
     }
 
