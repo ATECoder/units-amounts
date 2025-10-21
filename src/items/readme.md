@@ -1,6 +1,6 @@
 # About
 
-[cc.isr.Units.Amounts] is a .Net library for implementing strongly typed units and amounts.
+[cc.isr.Units.Amounts] is a .NET standard 2.0 library for implementing strongly typed units and amounts.
 
 More information is to be found in the original contribution at [Working with units and amounts].
 

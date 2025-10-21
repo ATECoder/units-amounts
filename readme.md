@@ -1,6 +1,7 @@
 # Units and Amounts
 
-Libraries for implementing strongly typed units and amounts.
+The [dn.Units-Amounts]: libraries implement strongly typed units and amounts. The libraries target the Microsoft .NET standard 2.0 framework thus supporting all versions of the .NET Framework above 4.72 and all versions of the .NET Core.
+
 
 [![TBA: Units Amounts](https://github.com/AteCoder/units-amounts/actions/workflows/ci.yaml/badge.svg)](https://github.com/AteCoder/units-amounts/actions/workflows/ci.yaml)
 [![](https://img.shields.io/nuget/dt/cc.isr.UnitsAmounts?color=004880&label=downloads&logo=NuGet)](https://www.nuget.org/packages/cc.isr.UnitsAmounts/)
@@ -53,4 +54,4 @@ Integrated Scientific Resources, Inc., and any contributors reserve all other ri
  
 [ATE Coder]: https://www.IntegratedScientificResources.com
 [Rudi Breedenraedt]: https://www.codeproject.com/Articles/611731/Working-with-Units-and-Amounts
-
+[dn.Units-Amounts]: https://github.com/AteCoder/units-amounts.git
