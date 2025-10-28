@@ -20,6 +20,11 @@ public class UnknownUnitException : Exception
     /// <param name="context"> The <see cref="StreamingContext" />
     /// that contains contextual information about the source or destination.
     /// </param>
+#if NET8_0_OR_GREATER
+#pragma warning disable CA1041 // Provide ObsoleteAttribute message
+    [Obsolete( DiagnosticId = "SYSLIB0051" )] // add this attribute to the serialization ctor
+#pragma warning restore CA1041 // Provide ObsoleteAttribute message
+#endif
     protected UnknownUnitException( SerializationInfo info, StreamingContext context )
         : base( info, context ) => this.Name = ( string ) info.GetValue( nameof( this.Name ), typeof( string ) );
 
@@ -37,6 +42,11 @@ public class UnknownUnitException : Exception
     ///                         thrown. </param>
     /// <param name="context">  The <see cref="StreamingContext"></see>
     ///                         that contains contextual information about the source or destination. </param>
+#if NET8_0_OR_GREATER
+#pragma warning disable CA1041 // Provide ObsoleteAttribute message
+    [Obsolete( DiagnosticId = "SYSLIB0051" )] // add this attribute to the serialization ctor
+#pragma warning restore CA1041 // Provide ObsoleteAttribute message
+#endif
     public override void GetObjectData( SerializationInfo info, StreamingContext context )
     {
         if ( info is not null )

@@ -25,6 +25,11 @@ public class UnitConversionException : InvalidOperationException
     /// <param name="context"> The <see cref="StreamingContext" />
     /// that contains contextual information about the source or destination.
     /// </param>
+#if NET8_0_OR_GREATER
+#pragma warning disable CA1041 // Provide ObsoleteAttribute message
+    [Obsolete( DiagnosticId = "SYSLIB0051" )] // add this attribute to the serialization ctor
+#pragma warning restore CA1041 // Provide ObsoleteAttribute message
+#endif
     protected UnitConversionException( SerializationInfo info, StreamingContext context )
         : base( info, context )
     {
@@ -50,6 +55,11 @@ public class UnitConversionException : InvalidOperationException
     ///                         thrown. </param>
     /// <param name="context">  The <see cref="StreamingContext"></see>
     ///                         that contains contextual information about the source or destination. </param>
+#if NET8_0_OR_GREATER
+#pragma warning disable CA1041 // Provide ObsoleteAttribute message
+    [Obsolete( DiagnosticId = "SYSLIB0051" )] // add this attribute to the serialization ctor
+#pragma warning restore CA1041 // Provide ObsoleteAttribute message
+#endif
     public override void GetObjectData( SerializationInfo info, StreamingContext context )
     {
         if ( info is not null )
