@@ -1,7 +1,8 @@
 ### TODO
 
 #### Updates
-* Replace Notify Propery Change calls with Set Property
+* Replace Notify Property Change calls with Set Property
+* Replace binary serialization with supported serialization.
 
 #### Package
 
