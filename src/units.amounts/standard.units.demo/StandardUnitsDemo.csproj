@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFrameworks>net472;net48;net10.0</TargetFrameworks>
     <OutputType>Exe</OutputType>
 
     <!-- NuGet -->
@@ -19,6 +19,11 @@
   <ItemGroup>
     <ProjectReference Include="..\standard.units\cc.isr.UnitsAmounts.StandardUnits.csproj" />
   </ItemGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net472' or '$(TargetFramework)'=='net48'">
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+  </PropertyGroup>
 
   <Import Project="..\standard.units\version.build.props" />
 

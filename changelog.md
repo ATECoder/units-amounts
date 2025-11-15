@@ -2,7 +2,10 @@
 Notable changes to this solution are documented in this file using the 
 [Keep a Changelog] style. The dates specified are in coordinated universal time (UTC).
 
-[2.1.9421]: https://github.com/atecoder/units-amounts/src/main/
+[2.1.9449]: https://github.com/atecoder/units-amounts/src/main/
+
+## [2.1.9449] - 2025-11-14
+- Transition .NET 9.0 projects to .NET 10 and VS2026.
 
 ## [2.1.9421] - 2025-10-17
 - Update packages:
