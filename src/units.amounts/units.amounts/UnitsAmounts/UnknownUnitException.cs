@@ -20,7 +20,7 @@ public class UnknownUnitException : Exception
     /// <param name="context"> The <see cref="StreamingContext" />
     /// that contains contextual information about the source or destination.
     /// </param>
-#if NET8_0_OR_GREATER
+#if NET5_0_OR_GREATER
 #pragma warning disable CA1041 // Provide ObsoleteAttribute message
     [Obsolete( DiagnosticId = "SYSLIB0051" )] // add this attribute to the serialization ctor
 #pragma warning restore CA1041 // Provide ObsoleteAttribute message
@@ -42,7 +42,7 @@ public class UnknownUnitException : Exception
     ///                         thrown. </param>
     /// <param name="context">  The <see cref="StreamingContext"></see>
     ///                         that contains contextual information about the source or destination. </param>
-#if NET8_0_OR_GREATER
+#if NET5_0_OR_GREATER
 #pragma warning disable CA1041 // Provide ObsoleteAttribute message
     [Obsolete( DiagnosticId = "SYSLIB0051" )] // add this attribute to the serialization ctor
 #pragma warning restore CA1041 // Provide ObsoleteAttribute message
