@@ -1,0 +1,22 @@
+<Solution>
+  <Folder Name="/`build/">
+    <File Path="directory.build.props" />
+    <File Path="exclusion.dic" />
+    <File Path="global.json" />
+  </Folder>
+  <Folder Name="/`docs/">
+    <File Path="../attributions.md" />
+    <File Path="../changelog.md" />
+    <File Path="../cloning.md" />
+    <File Path="../code_of_conduct.md" />
+    <File Path="../contributing.md" />
+    <File Path="../open-source.md" />
+    <File Path="../readme.md" />
+    <File Path="../security.md" />
+    <File Path="../todo.md" />
+  </Folder>
+  <Project Path="units.amounts/standard.units.demo/StandardUnitsDemo.csproj" />
+  <Project Path="units.amounts/standard.units/cc.isr.UnitsAmounts.StandardUnits.csproj" />
+  <Project Path="units.amounts/units.amounts.mstest/cc.isr.UnitsAmounts.MSTest.csproj" />
+  <Project Path="units.amounts/units.amounts/cc.isr.UnitsAmounts.csproj" />
+</Solution>
