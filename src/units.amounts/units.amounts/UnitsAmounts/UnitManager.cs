@@ -1,4 +1,3 @@
-
 using System.Reflection;
 
 namespace cc.isr.UnitsAmounts;

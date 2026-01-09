@@ -1,4 +1,3 @@
-
 namespace cc.isr.UnitsAmounts;
 
 /// <summary>   Information about this and related projects in this solution. </summary>

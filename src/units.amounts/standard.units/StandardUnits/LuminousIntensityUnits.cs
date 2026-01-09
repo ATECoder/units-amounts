@@ -1,4 +1,3 @@
-
 namespace cc.isr.UnitsAmounts.StandardUnits;
 
 /// <summary>   The luminous intensity units. </summary>

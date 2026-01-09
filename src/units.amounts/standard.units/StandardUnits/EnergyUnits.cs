@@ -1,4 +1,3 @@
-
 namespace cc.isr.UnitsAmounts.StandardUnits;
 
 /// <summary>   An energy units. </summary>

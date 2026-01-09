@@ -1,4 +1,3 @@
-
 namespace cc.isr.UnitsAmounts.StandardUnits;
 
 /// <summary>   A speed units. </summary>

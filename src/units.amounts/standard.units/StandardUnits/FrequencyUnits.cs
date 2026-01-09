@@ -1,4 +1,3 @@
-
 namespace cc.isr.UnitsAmounts.StandardUnits;
 
 /// <summary>   A frequency units. </summary>

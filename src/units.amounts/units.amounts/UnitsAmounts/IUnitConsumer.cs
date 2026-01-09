@@ -1,4 +1,3 @@
-
 namespace cc.isr.UnitsAmounts;
 
 /// <summary>   This interface represents a consumer of a unit, such as an Amount. </summary>

@@ -1,4 +1,3 @@
-
 namespace cc.isr.UnitsAmounts.ExceptionExtensions;
 
 /// <summary>

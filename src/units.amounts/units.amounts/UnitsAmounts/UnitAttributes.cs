@@ -1,4 +1,3 @@
-
 namespace cc.isr.UnitsAmounts;
 /// <summary>
 /// Attribute to mark classes having static unit fields to be registered by the UnitManager's
