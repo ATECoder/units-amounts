@@ -7,6 +7,13 @@ public class AmountTests
 {
     #region " initialize & cleanup "
 
+    /// <summary>
+    /// Gets or sets the test context which provides information about and functionality for the
+    /// current test run.
+    /// </summary>
+    /// <value> The test context. </value>
+    public TestContext? TestContext { get; set; }
+
     private UnitManager? _defaultUnitManager;
     private static readonly double[] _oneFifthWeekZeroSecondsArray = [1.0, 9.0, 36.0, 0.0];
     private static readonly double[] _oneFifthWeekSixtySecondsArray = [1.0, 9.0, 35.0, 60.0];
@@ -16,6 +23,10 @@ public class AmountTests
     [TestInitialize()]
     public void InitializeBeforeEachTest()
     {
+        Console.WriteLine( $"{this.TestContext?.FullyQualifiedTestClassName}: {DateTime.Now} {System.TimeZoneInfo.Local}" );
+        Console.WriteLine( $"\tTesting {typeof( cc.isr.UnitsAmounts.Amount ).Assembly.FullName}" );
+        Console.WriteLine( $"\tTesting {typeof( cc.isr.UnitsAmounts.StandardUnits.ElectricUnits ).Assembly.FullName}" );
+
         Console.Write( "Resetting the Unit Manager instance..." );
         this._defaultUnitManager = UnitManager.Instance;
         UnitManager.Instance = new UnitManager();

@@ -5,10 +5,17 @@ namespace cc.isr.UnitsAmounts.Tests;
 [TestClass]
 public class PerformanceTests
 {
+    #region " initialize & cleanup "
+
     private const double MAX_ACCEPTANCE_VARIANCE = +0.25;
     private const double MIN_ACCEPTANCE_VARIANCE = -2.0;
 
-    #region " initialize & cleanup "
+    /// <summary>
+    /// Gets or sets the test context which provides information about and functionality for the
+    /// current test run.
+    /// </summary>
+    /// <value> The test context. </value>
+    public TestContext? TestContext { get; set; }
 
     private UnitManager? _defaultUnitManager;
 
@@ -17,6 +24,10 @@ public class PerformanceTests
     [TestInitialize()]
     public void InitializeBeforeEachTest()
     {
+        Console.WriteLine( $"{this.TestContext?.FullyQualifiedTestClassName}: {DateTime.Now} {System.TimeZoneInfo.Local}" );
+        Console.WriteLine( $"\tTesting {typeof( cc.isr.UnitsAmounts.Amount ).Assembly.FullName}" );
+        Console.WriteLine( $"\tTesting {typeof( cc.isr.UnitsAmounts.StandardUnits.ElectricUnits ).Assembly.FullName}" );
+
         Console.Write( "Resetting the Unit Manager instance..." );
         this._defaultUnitManager = UnitManager.Instance;
         UnitManager.Instance = new UnitManager();

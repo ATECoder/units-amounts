@@ -56,7 +56,7 @@ public sealed class Unit : IComparable, IComparable<Unit>, IEquatable<Unit>, IFo
     /// <param name="factor">   Gets the factor of the unit. </param>
     /// <param name="unitType"> Gets the type of the unit. </param>
     /// <param name="isNamed">  Whether the unit is named. </param>
-    private Unit( string name, string symbol, double factor, UnitType unitType, bool isNamed )
+    public Unit( string name, string symbol, double factor, UnitType unitType, bool isNamed )
     {
         this.Name = name;
         this.Symbol = symbol;

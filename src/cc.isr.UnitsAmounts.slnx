@@ -17,6 +17,7 @@
   </Folder>
   <Project Path="units.amounts/standard.units.demo/StandardUnitsDemo.csproj" />
   <Project Path="units.amounts/standard.units/cc.isr.UnitsAmounts.StandardUnits.csproj" />
+  <Project Path="units.amounts/units.amounts.extensions/cc.isr.UnitsAmounts.Extensions.csproj" />
   <Project Path="units.amounts/units.amounts.mstest/cc.isr.UnitsAmounts.MSTest.csproj" />
   <Project Path="units.amounts/units.amounts/cc.isr.UnitsAmounts.csproj" />
 </Solution>

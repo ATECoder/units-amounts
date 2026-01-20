@@ -47,6 +47,16 @@ namespace SampleConsoleApplication
 }
 ```
 
+# Serialization
+
+The [cc.isr.Units.Amounts] library supported serialization of _Amount_ instances using the standard .NET ISerialization mechanisms. The ISerialization interface was obsoleted in .NET 8 because it uses  the insecure binary serialization.
+
+The _cc.isr.Units.Amounts.Extension_ project includes extension methods to serialize and deserialize the _Amount_ and _Unit_ instances using the [System.Text.Json] serializer.
+
+The unit test project _cc.isr.Units.Amounts.Tests_ contains tests that demonstrate serialization and deserialization of _Amount_ and _Unit_ instances using the [NewtonSoft.Json] serializer.
+
+ Modern serialization is not implemented in the [cc.isr.Units.Amounts] .Net Standard classes because the [System.Text.Json] package is not an intergal part of the .Net Standard framework.
+
 # Key Features
 
 * Full typed units and amounts;
@@ -67,5 +77,8 @@ Bug reports and contributions are welcome at the [cc.isr.Units.Amounts] reposito
 
 [Working with units and amounts]: https://www.codeproject.com/Articles/611731/Working-with-Units-and-Amounts
 [cc.isr.Units.Amounts]: https://github.com/atecoder/units-amounts
+
+[NewtonSoft.Json]: https://www.nuget.org/packages/newtonsoft.json/
+[System.Text.Json]: https://www.nuget.org/packages/System.Text.json
 
 

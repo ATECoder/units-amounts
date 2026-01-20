@@ -1,13 +1,26 @@
-﻿<Project Sdk="MSTest.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
     <TargetFrameworks>net472;net48;net10.0</TargetFrameworks>
-    <LangVersion>preview</LangVersion>
+
+        <LangVersion>preview</LangVersion>
 
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+
     <!-- Assembly Info -->
     <RootNamespace>cc.isr.UnitsAmounts</RootNamespace>
+    <AssemblyName>cc.isr.UnitsAmounts.Extensions</AssemblyName>
+    <ApplicationTitle>cc.isr.UnitsAmounts.Extensions</ApplicationTitle>
+    <ApplicationId>cc.isr.units.amounts.extensions</ApplicationId>
+
+    <!-- Coding -->
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>On</OptionStrict>
+    <OptionInfer>Off</OptionInfer>
 
     <!-- Signature -->
     <SignAssembly>true</SignAssembly>
@@ -15,20 +28,31 @@
     <DelaySign>false</DelaySign>
 
     <!-- NuGet -->
-    <IsPackable>false</IsPackable>
-    <Description>Unit tests of strongly typed standard Units amounts</Description>
+    <IsPackable>true</IsPackable>
+    <PackageId>cc.isr.UnitsAmounts.Extensions</PackageId>
+    <Description>Strongly typed units and amounts extensions</Description>
+    <PackageTags>strongly typed units amounts extensions</PackageTags>
+    <PackageOutputPath>C:\my\nuget</PackageOutputPath>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+
+    <!-- Documentation -->
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
 
   </PropertyGroup>
 
   <!-- Assembly attributes -->
   <ItemGroup>
-    <AssemblyAttribute Include="Microsoft.VisualStudio.TestTools.UnitTesting.DoNotParallelize" />
     <AssemblyAttribute Include="System.CLSCompliantAttribute">
       <_Parameter1>true</_Parameter1>
     </AssemblyAttribute>
     <AssemblyAttribute Include="System.Runtime.InteropServices.ComVisibleAttribute">
       <_Parameter1>false</_Parameter1>
     </AssemblyAttribute>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\items\readme.md" Pack="true" PackagePath="" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,41 +66,40 @@
   <Choose>
     <When Condition="$(DefineConstants.Contains(';PROJREF;')) OR $(DefineConstants.Contains(';MYPROJREF;'))">
       <ItemGroup>
-        <ProjectReference Include="..\units.amounts.extensions\cc.isr.UnitsAmounts.Extensions.csproj" />
         <ProjectReference Include="..\standard.units\cc.isr.UnitsAmounts.StandardUnits.csproj" />
       </ItemGroup>
     </When>
     <Otherwise>
       <ItemGroup>
-        <ProjectReference Include="..\units.amounts.extensions\cc.isr.UnitsAmounts.Extensions.csproj" />
         <PackageReference Include="cc.isr.UnitsAmounts.StandardUnits" Version="2.0.8109" />
       </ItemGroup>
     </Otherwise>
   </Choose>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-  </ItemGroup>
-
-  <ItemGroup>
     <!-- This service generates text from T4 text templates. -->
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
-    <None Update="Tests\ExceptionExtensionsTests.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ExceptionExtensionsTests.cs</LastGenOutput>
-    </None>
-    <Compile Update="Tests\ExceptionExtensionsTests.cs">
+    <None Update="version.build.props">
+      <DependentUpon>version.build.tt</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>ExceptionExtensionsTests.tt</DependentUpon>
-    </Compile>
+    </None>
+    <None Update="version.build.tt">
+      <LastGenOutput>version.build.props</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+  </ItemGroup>
+
+  <Import Project="version.build.props" />
+    
+  <ItemGroup>
+    <None Include="..\..\items\readme.md" Link="readme.md">
+      <Pack>true</Pack>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
-    <!-- Suppress warning about newton soft 9.0.1 which is part of the .net fx testing extensions code coverage.
-      <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-5crp-9r3c-p9vr" />
-    -->
-    <PackageReference Update="Microsoft.Testing.Extensions.CodeCoverage" Version="18.3.2" />
+    <PackageReference Include="System.Text.Json" Version="10.0.2" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net472' or '$(TargetFramework)'=='net48'">
@@ -84,6 +107,5 @@
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
   </PropertyGroup>
 
-  <Import Project="..\standard.units\version.build.props" />
 
 </Project>

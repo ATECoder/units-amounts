@@ -8,9 +8,6 @@ namespace cc.isr.UnitsAmounts;
 [Serializable]
 public sealed class UnitType : ISerializable
 {
-    /// <summary>   The base unit indices. </summary>
-    private readonly sbyte[] _baseUnitIndices;
-
     /// <summary>   The cached hash code. </summary>
     [NonSerialized]
     private int _cachedHashCode;
@@ -26,20 +23,20 @@ public sealed class UnitType : ISerializable
     /// <param name="unitTypeName"> Name of the unit type. </param>
     public UnitType( string unitTypeName )
     {
-        int unitIndex = GetBaseUnitIndex( unitTypeName );
-        this._baseUnitIndices = new sbyte[unitIndex + 1];
-        this._baseUnitIndices[unitIndex] = 1;
+        int unitIndex = UnitType.GetBaseUnitIndex( unitTypeName );
+        this.BaseUnitIndices = new short[unitIndex + 1];
+        this.BaseUnitIndices[unitIndex] = 1;
     }
 
     /// <summary>   Constructor. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="indicesLength">    Length of the indices. </param>
-    private UnitType( int indicesLength ) => this._baseUnitIndices = new sbyte[indicesLength];
+    private UnitType( int indicesLength ) => this.BaseUnitIndices = new short[indicesLength];
 
     /// <summary>   Constructor. </summary>
     /// <remarks>   David, 2021-03-22. </remarks>
     /// <param name="baseUnitIndices">  The base unit indices. </param>
-    private UnitType( sbyte[] baseUnitIndices ) => this._baseUnitIndices = ( sbyte[] ) baseUnitIndices.Clone();
+    public UnitType( short[] baseUnitIndices ) => this.BaseUnitIndices = ( short[] ) baseUnitIndices.Clone();
 
     /// <summary>   Type of the none unit. </summary>
     private static readonly UnitType _noneUnitType = new( 0 );
@@ -51,6 +48,10 @@ public sealed class UnitType : ISerializable
     #endregion
 
     #region " unit type base units "
+
+    /// <summary>   The base unit indices. </summary>
+    /// <remarks> Defines the power of each indexes unit name. </remarks>
+    public short[] BaseUnitIndices { get; set; }
 
     /// <summary>   The base unit type lock. </summary>
     private static readonly ReaderWriterLock _baseUnitTypeLock = new();
@@ -128,10 +129,10 @@ public sealed class UnitType : ISerializable
     /// <returns>   An UnitType. </returns>
     public UnitType Power( int value )
     {
-        UnitType result = new( this._baseUnitIndices );
-        for ( int i = 0; i < result._baseUnitIndices.Length; i++ )
+        UnitType result = new( this.BaseUnitIndices );
+        for ( int i = 0; i < result.BaseUnitIndices.Length; i++ )
         {
-            result._baseUnitIndices[i] = ( sbyte ) (result._baseUnitIndices[i] * value);
+            result.BaseUnitIndices[i] = ( short ) (result.BaseUnitIndices[i] * value);
         }
 
         return result;
@@ -173,18 +174,18 @@ public sealed class UnitType : ISerializable
             return false;
         }
         // Determine longest and shortest base Unit Index arrays:
-        sbyte[] longest, shortest;
-        int leftLength = this._baseUnitIndices.Length;
-        int rightLength = other._baseUnitIndices.Length;
+        short[] longest, shortest;
+        int leftLength = this.BaseUnitIndices.Length;
+        int rightLength = other.BaseUnitIndices.Length;
         if ( leftLength > rightLength )
         {
-            longest = this._baseUnitIndices;
-            shortest = other._baseUnitIndices;
+            longest = this.BaseUnitIndices;
+            shortest = other.BaseUnitIndices;
         }
         else
         {
-            longest = other._baseUnitIndices;
-            shortest = this._baseUnitIndices;
+            longest = other.BaseUnitIndices;
+            shortest = this.BaseUnitIndices;
         }
 
         // Compare base Unit Indices array content:
@@ -215,10 +216,10 @@ public sealed class UnitType : ISerializable
         if ( this._cachedHashCode == 0 )
         {
             int hash = 0;
-            for ( int i = 0; i < this._baseUnitIndices.Length; i++ )
+            for ( int i = 0; i < this.BaseUnitIndices.Length; i++ )
             {
                 int factor = i + i + 1;
-                hash += factor * factor * this._baseUnitIndices[i] * this._baseUnitIndices[i];
+                hash += factor * factor * this.BaseUnitIndices[i] * this.BaseUnitIndices[i];
             }
             this._cachedHashCode = hash;
         }
@@ -232,14 +233,14 @@ public sealed class UnitType : ISerializable
     {
         StringBuilder sb = new();
         string sep = "";
-        for ( int i = 0; i < this._baseUnitIndices.Length; i++ )
+        for ( int i = 0; i < this.BaseUnitIndices.Length; i++ )
         {
-            if ( this._baseUnitIndices[i] != 0 )
+            if ( this.BaseUnitIndices[i] != 0 )
             {
                 _ = sb.Append( sep );
-                _ = sb.Append( GetBaseUnitName( i ) );
+                _ = sb.Append( UnitType.GetBaseUnitName( i ) );
                 _ = sb.Append( '^' );
-                _ = sb.Append( this._baseUnitIndices[i] );
+                _ = sb.Append( this.BaseUnitIndices[i] );
                 sep = " * ";
             }
         }
@@ -257,11 +258,11 @@ public sealed class UnitType : ISerializable
     /// <returns>   The result of the operation. </returns>
     public static UnitType operator *( UnitType left, UnitType right )
     {
-        UnitType result = new( Math.Max( left._baseUnitIndices.Length, right._baseUnitIndices.Length ) );
-        left._baseUnitIndices.CopyTo( result._baseUnitIndices, 0 );
-        for ( int i = 0; i < right._baseUnitIndices.Length; i++ )
+        UnitType result = new( Math.Max( left.BaseUnitIndices.Length, right.BaseUnitIndices.Length ) );
+        left.BaseUnitIndices.CopyTo( result.BaseUnitIndices, 0 );
+        for ( int i = 0; i < right.BaseUnitIndices.Length; i++ )
         {
-            result._baseUnitIndices[i] += right._baseUnitIndices[i];
+            result.BaseUnitIndices[i] += right.BaseUnitIndices[i];
         }
 
         return result;
@@ -274,11 +275,11 @@ public sealed class UnitType : ISerializable
     /// <returns>   The result of the operation. </returns>
     public static UnitType operator /( UnitType left, UnitType right )
     {
-        UnitType result = new( Math.Max( left._baseUnitIndices.Length, right._baseUnitIndices.Length ) );
-        left._baseUnitIndices.CopyTo( result._baseUnitIndices, 0 );
-        for ( int i = 0; i < right._baseUnitIndices.Length; i++ )
+        UnitType result = new( Math.Max( left.BaseUnitIndices.Length, right.BaseUnitIndices.Length ) );
+        left.BaseUnitIndices.CopyTo( result.BaseUnitIndices, 0 );
+        for ( int i = 0; i < right.BaseUnitIndices.Length; i++ )
         {
-            result._baseUnitIndices[i] -= right._baseUnitIndices[i];
+            result.BaseUnitIndices[i] -= right.BaseUnitIndices[i];
         }
 
         return result;
@@ -317,20 +318,20 @@ public sealed class UnitType : ISerializable
     {
         // Retrieve data from serialization:
         int[] baseUnitIndexes = [.. info.GetString( "names" ).Split( ['|'], StringSplitOptions.RemoveEmptyEntries ).Select( UnitType.GetBaseUnitIndex )];
-        sbyte[] exponents = [.. info.GetString( "exponents" ).Split( ['|'], StringSplitOptions.RemoveEmptyEntries ).Select( x => Convert.ToSByte( x ) )];
+        short[] exponents = [.. info.GetString( "exponents" ).Split( ['|'], StringSplitOptions.RemoveEmptyEntries ).Select( x => Convert.ToInt16( x ) )];
 
         // Construct instance:
         if ( exponents.Length > 0 )
         {
-            this._baseUnitIndices = new sbyte[baseUnitIndexes.Max() + 1];
+            this.BaseUnitIndices = new short[baseUnitIndexes.Max() + 1];
             for ( int i = 0; i < exponents.Length; i++ )
             {
-                this._baseUnitIndices[baseUnitIndexes[i]] = exponents[i];
+                this.BaseUnitIndices[baseUnitIndexes[i]] = exponents[i];
             }
         }
         else
         {
-            this._baseUnitIndices = [];
+            this.BaseUnitIndices = [];
         }
     }
 
@@ -363,11 +364,11 @@ public sealed class UnitType : ISerializable
         if ( info is not null )
         {
             bool first = true;
-            StringBuilder unitNames = new( this._baseUnitIndices.Length * 8 );
-            StringBuilder unitExponents = new( this._baseUnitIndices.Length * 4 );
-            for ( int i = 0; i < this._baseUnitIndices.Length; i++ )
+            StringBuilder unitNames = new( this.BaseUnitIndices.Length * 8 );
+            StringBuilder unitExponents = new( this.BaseUnitIndices.Length * 4 );
+            for ( int i = 0; i < this.BaseUnitIndices.Length; i++ )
             {
-                if ( this._baseUnitIndices[i] != 0 )
+                if ( this.BaseUnitIndices[i] != 0 )
                 {
                     if ( !first )
                     {
@@ -380,7 +381,7 @@ public sealed class UnitType : ISerializable
                         _ = unitExponents.Append( '|' );
                     }
 
-                    _ = unitExponents.Append( this._baseUnitIndices[i] );
+                    _ = unitExponents.Append( this.BaseUnitIndices[i] );
                     first = false;
                 }
             }

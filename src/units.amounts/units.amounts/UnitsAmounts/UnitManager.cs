@@ -1,6 +1,7 @@
 using System.Reflection;
 
 namespace cc.isr.UnitsAmounts;
+
 /// <summary>
 /// An event handler called whenever unit names cannot be resolved. Provides a last chance to
 /// resolve units.

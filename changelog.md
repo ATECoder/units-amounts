@@ -2,7 +2,20 @@
 Notable changes to this solution are documented in this file using the 
 [Keep a Changelog] style. The dates specified are in coordinated universal time (UTC).
 
-[2.1.9449]: https://github.com/atecoder/units-amounts/src/main/
+[2.1.9516]: https://github.com/atecoder/units-amounts/src/main/
+
+## [2.1.9516] - 2026-01-20
+- Unit Type
+  - Change `sbyte` to `short`.
+  - Expose the base unit indices to enable external serialization.
+- Readme: Document the serialization issue.
+- Add units amounts extension project.
+  - Add unit amounts serialization extensions.
+- MS Test
+  - Add test context to the unit test classes.
+  - Report test time and target assembly of  each test.
+  - Add System.Text.Json serialization tests.
+  - Rewrite serialization tests to test each example using a common assertion method.
 
 ## [2.1.9449] - 2025-11-14
 - Transition .NET 9.0 projects to .NET 10 and VS2026.

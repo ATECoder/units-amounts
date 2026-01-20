@@ -7,6 +7,13 @@ public class ScenarioTests
 {
     #region " initialize & cleanup "
 
+    /// <summary>
+    /// Gets or sets the test context which provides information about and functionality for the
+    /// current test run.
+    /// </summary>
+    /// <value> The test context. </value>
+    public TestContext? TestContext { get; set; }
+
     private UnitManager? _defaultUnitManager;
 
     /// <summary>   Sets up this unit test class prior to execution. </summary>
@@ -14,6 +21,10 @@ public class ScenarioTests
     [TestInitialize()]
     public void InitializeBeforeEachTest()
     {
+        Console.WriteLine( $"{this.TestContext?.FullyQualifiedTestClassName}: {DateTime.Now} {System.TimeZoneInfo.Local}" );
+        Console.WriteLine( $"\tTesting {typeof( cc.isr.UnitsAmounts.Amount ).Assembly.FullName}" );
+        Console.WriteLine( $"\tTesting {typeof( cc.isr.UnitsAmounts.StandardUnits.ElectricUnits ).Assembly.FullName}" );
+
         Console.Write( "Resetting the Unit Manager instance..." );
         this._defaultUnitManager = UnitManager.Instance;
         UnitManager.Instance = new UnitManager();
