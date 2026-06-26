@@ -2,7 +2,10 @@
 Notable changes to this solution are documented in this file using the 
 [Keep a Changelog] style. The dates specified are in coordinated universal time (UTC).
 
-[2.1.9516]: https://github.com/atecoder/units-amounts/src/main/
+[2.1.9673]: https://github.com/atecoder/units-amounts/src/main/
+
+## [2.1.9673] - 2026-06-26
+Add reference to the BuildPackages project from the [IDE Repo].
 
 ## [2.1.9516] - 2026-01-20
 - Unit Type
@@ -172,3 +175,4 @@ Created
 &copy;  2013 Rudi Breedenraedt.
 
 [Keep a Changelog]: https://keepachangelog.com/en/1.0.0/
+[IDE Repo]: https://github.com/ATECoder/vs.ide.git

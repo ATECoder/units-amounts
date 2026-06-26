@@ -15,6 +15,7 @@
     <File Path="../security.md" />
     <File Path="../todo.md" />
   </Folder>
+  <Project Path="../../ide/src/my/lib/BuildPackages/BuildPackages.csproj" />
   <Project Path="units.amounts/standard.units.demo/StandardUnitsDemo.csproj" />
   <Project Path="units.amounts/standard.units/cc.isr.UnitsAmounts.StandardUnits.csproj" />
   <Project Path="units.amounts/units.amounts.extensions/cc.isr.UnitsAmounts.Extensions.csproj" />
