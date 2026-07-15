@@ -1,4 +1,4 @@
 CommitID,LocalRepoName,TargetDirectory
-0be29f68c97992ea192a1fea4ef4e1ba7fae4132,ide,lib\vs\core
-a15b1dd37125a1b89975f43ce7add34e1a8dcd6a,Units.Amounts,lib\vs\core
-a15b1dd37125a1b89975f43ce7add34e1a8dcd6a,Units.Amounts,lib\vs\core
+549eddcc7621f77a2e23f32c10a03dfca18de90c,ide,lib\vs\core
+770ee49f725a57344202414abc063e928b169a9a,Units.Amounts,lib\vs\core
+770ee49f725a57344202414abc063e928b169a9a,Units.Amounts,lib\vs\core
