@@ -33,13 +33,13 @@ These files can be found in the [IDE Repository].
 Restoring Editor Configuration:
 ```
 xcopy /Y %my%\.editorconfig %my%\.editorconfig.bak
-xcopy /Y %vslib%\core\ide\code\.editorconfig %my%\.editorconfig
+xcopy /Y %dnlib%\core\ide\code\.editorconfig %my%\.editorconfig
 ```
 
 Restoring Run Settings:
 ```
 xcopy /Y %userprofile%\.runsettings %userprofile%\.runsettings.bak
-xcopy /Y %vslib%\core\ide\code\.runsettings %userprofile%\.runsettings
+xcopy /Y %dnlib%\core\ide\code\.runsettings %userprofile%\.runsettings
 ```
 where %userprofile% is the root user folder.
 
